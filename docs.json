@@ -35,10 +35,10 @@
         ]
       },
       {
-        "tab": "API Reference",
+        "tab": "samantha",
         "groups": [
           {
-            "group": "API Documentation",
+            "group": "samantha",
             "pages": [
               "api-reference/introduction"
             ]
