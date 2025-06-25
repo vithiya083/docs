@@ -11,7 +11,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guide",
+        "tab": "learn",
         "groups": [
           {
             "group": "how to create a doc",
@@ -35,7 +35,7 @@
         ]
       },
       {
-        "tab": "samantha",
+        "tab": "implement",
         "groups": [
           {
             "group": "samantha",
