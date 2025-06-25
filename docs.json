@@ -22,14 +22,14 @@
             ]
           },
           {
-            "group": "how to create a google doc",
+            "group": "example",
             "pages": [
-              "essentials/open",
-              "essentials/create",
-              "essentials/insert",
-              "essentials/apply",
-              "essentials/until",
-              "essentials/done"
+              "example/open",
+              "example/create",
+              "example/insert",
+              "example/apply",
+              "example/until",
+              "example/done"
             ]
           }
         ]
