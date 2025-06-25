@@ -4,7 +4,7 @@
 
 # Guide
 
-1. set up
+1. set up 
 2. link git
 3. create repo
 4. create branch
