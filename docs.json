@@ -11,14 +11,14 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Guide",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "how to create a doc",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "create repo",
+              "link the gi hub",
+              "develop the site"
             ]
           },
           {
