@@ -14,11 +14,11 @@
         "tab": "learn",
         "groups": [
           {
-            "group": "how to create a doc",
+            "group": "doc",
             "pages": [
-              "how to create a doc/create a repo",
-              "how to create a doc/link the git hub",
-              "how to create a doc/develop the site"
+              "doc/create a repo",
+              "doc/link the git hub",
+              "doc/develop the site"
             ]
           },
           {
