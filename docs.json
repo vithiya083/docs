@@ -22,14 +22,14 @@
             ]
           },
           {
-            "group": "Essentials",
+            "group": "how to createa google doc",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
+              "essentials/open",
+              "essentials/create",
+              "essentials/insert",
+              "essentials/apply",
               "essentials/navigation",
-              "essentials/reusable-snippets"
+              "essentials/done"
             ]
           }
         ]
