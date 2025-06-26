@@ -16,9 +16,9 @@
           {
             "group": "doc",
             "pages": [
-              "doc/create a repo",
-              "doc/link the git hub",
-              "doc/develop the site"
+              "doc/create",
+              "doc/link",
+              "doc/develop"
             ]
           },
           {
