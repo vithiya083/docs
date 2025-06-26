@@ -14,11 +14,11 @@
         "tab": "learn",
         "groups": [
           {
-            "group": "doc",
+            "group": "welcome",
             "pages": [
-              "doc/create",
-              "doc/link",
-              "doc/develop"
+              "welcome/new",
+              "welcome/create",
+              "welcome/continue"
             ]
           },
           {
