@@ -44,12 +44,12 @@
             ]
           },
           {
-            "group": "Endpoint Examples",
+            "group": "friend",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "friend/sam",
+              "friend/kix",
+              "friend/lantern",
+              "friend/llm"
             ]
           }
         ]
