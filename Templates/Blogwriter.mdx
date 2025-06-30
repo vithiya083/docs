@@ -2,7 +2,6 @@
 title: "Blog writer"
 ---
 
-
 Build a Blog Writer flow for a one-shot application using OpenAI.
 
 This flow extends the Basic Prompting flow with the **URL** and **Parser** components that fetch content from multiple URLs and convert the loaded data into plain text.
@@ -31,4 +30,9 @@ To examine the flow's prompt, click the **Template** field of the **Prompt** com
 ```
 ```
 
-Now that your query has completed the journey from **Chat input** to **Chat output**, you have completed the **Simple Agent** flow.
+The `{instructions}` value is received from the **Text Input** component, and one or more `{references}` are received from a list of URLs parsed from the **URL** component.
+
+### **Run the blog writer flow**
+
+1. Click the **Playground** button, and then click **Run Flow**. A blog post about Langflow is generated, with content sourced from `langflow.org` and `docs.langflow.org`.
+2. To write about something different, change the values in the **URL** component and adjust the instructions on the left side bar of the **Playground**. Try again and see what the LLM constructs.
