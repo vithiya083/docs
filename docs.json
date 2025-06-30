@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Langflow Docs",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
@@ -11,69 +11,130 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Welcome to Langflow",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Get started",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "get-started/quickstart"
             ]
           },
           {
-            "group": "Essentials",
+            "group": "Templates",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "samantha",
-        "groups": [
-          {
-            "group": "samantha",
-            "pages": [
-              "api-reference/introduction"
+              "templates/Basic prompting",
+              "templates/Simple agent",
+              "templates/Blog writer",
+              "templates/Document QA",
+              "templates/Memory chatbot",
+              "templates/Vector store RAG",
+              "templates/Financial reort parser",
+              "templates/Sequential tasks agent",
+              "templates/Travel planning agent"
             ]
           },
           {
-            "group": "Endpoint Examples",
+            "group": "Concepts",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "concepts/index"
+            ]
+          },
+          {
+            "group": "Components",
+            "pages": [
+              "components/Agents",
+              "components/Bundles",
+              "components/Create custom Python components",
+              "components/Data",
+              "components/Embeddings",
+              "components/Helpers",
+              "components/Inputs and outputs",
+              "components/Logic",
+              "components/Memories",
+              "components/Models",
+              "components/Processing",
+              "components/Prompts",
+              "components/Tools",
+              "components/Vector stores"
+            ]
+          },
+          {
+            "group": "Agents",
+            "pages": [
+              "agents/Use Langflow Agents",
+              "agents/Configure tools for agents"
+            ]
+          },
+          {
+            "group": "Model Context Protocol (MCP)",
+            "pages": [
+              "mcp/Use Langflow as an MCP server",
+              "mcp/Use Langflow as an MCP client"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              "integrations/Apify",
+              "integrations/Arize",
+              "integrations/AssemblyAI",
+              "integrations/Astra DB MCP server",
+              "integrations/Cleanlab",
+              "integrations/Composition"
+            ]
+          },
+          {
+            "group": "Google",
+            "pages": [
+              "integrations-setup/google-oauth-langflow",
+              "integrations-setup/google-vertex-ai-langflow",
+              "integrations-setup/google-bigquery-langflow"
+            ]
+          },
+          {
+            "group": "Langfuse",
+            "pages": [
+              "integrations/langfuse"
+            ]
+          },
+          {
+            "group": "LangSmith",
+            "pages": [
+              "integrations/langsmith"
+            ]
+          },
+          {
+            "group": "LangWatch",
+            "pages": [
+              "integrations/langwatch"
+            ]
+          },
+          {
+            "group": "Opik",
+            "pages": [
+              "integrations/opik"
+            ]
+          },
+          {
+            "group": "Notion",
+            "pages": [
+              "integrations/notion-setup",
+              "integrations/notion-conversational-agent",
+              "integrations/notion-meeting-notes-agent"
+            ]
+          },
+          {
+            "group": "NVIDIA",
+            "pages": [
+              "integrations/nvidia-ingest",
+              "integrations/nvidia-nim-wsl2",
+              "integrations/nvidia-gassist"
             ]
           }
         ]
       }
     ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    "global": {}
   },
   "logo": {
     "light": "/logo/light.svg",
@@ -82,21 +143,25 @@
   "navbar": {
     "links": [
       {
+        "label": "GitHub",
+        "href": "https://github.com/langflow/langflow"
+      },
+      {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@langflow.org"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://dashboard.langflow.org"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/langflow",
+      "github": "https://github.com/langflow/langflow",
+      "linkedin": "https://linkedin.com/company/langflow"
     }
   }
 }
