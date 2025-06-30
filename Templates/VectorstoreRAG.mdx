@@ -1,6 +1,5 @@
 ---
 title: "Vector store RAG"
-description: "Description of your new file."
 ---
 
 Retrieval Augmented Generation, or RAG, is a pattern for training LLMs on your data and querying it.
@@ -54,14 +53,12 @@ The **Retriever Flow** (top of the screen) embeds the user's queries into vecto
    3. Select your **Collection**. Collections are created in your [Astra DB deployment](https://astra.datastax.com/) for storing vector data.
    4. 
 
-      <Info>
-        INFO
+   <Info>
+     INFO
 
-        If you select a collection embedded with Nvidia through Astra's vectorize service, the **Embedding Model** port is removed, because you have already generated embeddings for this collection with the Nvidia `NV-Embed-QA` model. The component fetches the data from the collection, and uses the same embeddings for queries.
-      </Info>
-
-
-1. If you don't have a collection, create a new one within the component.
+     If you select a collection embedded with Nvidia through Astra's vectorize service, the **Embedding Model** port is removed, because you have already generated embeddings for this collection with the Nvidia `NV-Embed-QA` model. The component fetches the data from the collection, and uses the same embeddings for queries.
+   </Info>
+3. If you don't have a collection, create a new one within the component.
    1. Select **New collection**.
    2. Complete the **Name**, **Embedding generation method**, **Embedding model**, and **Dimensions** fields, and then click **Create**.
 
