@@ -1,6 +1,5 @@
 ---
 title: "Memory chatbot"
-description: "Description of your new file."
 ---
 
 <Info>
@@ -27,9 +26,6 @@ This flow extends the [basic prompting flow](https://docs.langflow.org/basic-pro
 This flow adds a **Message history** component to the Basic Prompting flow. This component retrieves previous messages and sends them to the **Prompt** component to fill a part of the **Template** with context.
 
 To examine the template, click the **Template** field in the **Prompt** component. The **Prompt** tells the **OpenAI model** component how to respond to input.
-
-```
-```
 
 The `{memory}` code in the prompt creates a new input port in the component called **memory**. The **Message history** component is connected to this port to store chat messages from the **Playground**, and provide the **OpenAI** component with a memory of previous chat messages.
 
