@@ -1,5 +1,70 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Flows"
 ---
 
+Flows in Langflow are fully serializable and can be saved and loaded from the file system. In this guide, we'll explore how to import and export flows.
+
+## **Import Flow**[**​**](https://docs.langflow.org/concepts-flows#import-flow)
+
+If you've already got a Langflow JSON file, import it into Langflow by clicking on the project name and choosing **Import Flow**.
+
+# video
+
+Once imported, your flow is ready to use.
+
+<Tip>
+  TIP
+
+  You can drag and drop LLMC files directly from your file system into the LLMC window to import a flow, even into the initial LLMC splash screen.
+</Tip>
+
+## **Export Flow**[**​**](https://docs.langflow.org/concepts-flows#export-flow)
+
+The option to export a flow is available in the same menu as shown above. Once exported as JSON, you can import your flow into another Langflow instance.
+
+## **Langflow JSON file contents**[**​**](https://docs.langflow.org/concepts-flows#langflow-json-file-contents)
+
+Langflow JSON files contain [nodes](https://docs.langflow.org/concepts-flows#nodes) and [edges](https://docs.langflow.org/concepts-flows#edges) that describe components and connections, and [additional metadata](https://docs.langflow.org/concepts-flows#additional-metadata-and-project-information) that describe the flow.
+
+For an example Langflow JSON file, examine the [Basic Prompting.json](https://github.com/langflow-ai/langflow/blob/main/src/backend/base/langflow/initial_setup/starter_projects/Basic%20Prompting.json) file in the Langflow repository.
+
+### **Nodes**[**​**](https://docs.langflow.org/concepts-flows#nodes)
+
+**Nodes** represent the components that make up the flow.
+
+The `ChatInput` node is the entry point of the flow. It's the first node that will be executed.
+
+`ChatInput-jFwUm` is a unique identifier for the node.
+
+```
+```
+
+### **Edges**[**​**](https://docs.langflow.org/concepts-flows#edges)
+
+**Edges** represent the connections between nodes.
+
+The connection between the `ChatInput` node and the `OpenAIModel` node is represented as an edge:
+
+```
+```
+
+This edge shows that the `ChatInput` component outputs a `Message` type to the `target` node, which is the `OpenAIModel` node. The `OpenAIModel` component accepts the `Message` type at the `input_value` field.
+
+### **Additional metadata and project informatio**[**​**](https://docs.langflow.org/concepts-flows#additional-metadata-and-project-information)
+
+Additional information about the flow is stored in the root `data` object.
+
+- Metadata and project information including the name, description, and `last_tested_version` of the flow.
+
+```
+```
+
+- Visual information about the flow defining the initial position of the flow in the workspace.
+
+```
+```
+
+**Notes** are like comments to help you understand the flow within the workspace. They may contain links, code snippets, and other information. Notes are written in Markdown and stored as `node` objects.
+
+```
+```

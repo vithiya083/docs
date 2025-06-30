@@ -1,5 +1,34 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Blog writer"
 ---
 
+
+Build a Blog Writer flow for a one-shot application using OpenAI.
+
+This flow extends the Basic Prompting flow with the **URL** and **Parser** components that fetch content from multiple URLs and convert the loaded data into plain text.
+
+OpenAI uses this loaded data to generate a blog post, as instructed by the **Text Input** and **Prompt** components.
+
+## **Prerequisites**[**​**](https://docs.langflow.org/blog-writer#prerequisites)
+
+- [A running Langflow instance](https://docs.langflow.org/get-started-installation)
+- [An OpenAI API key](https://platform.openai.com/)
+
+## **Create the blog writer flow**[**​**](https://docs.langflow.org/blog-writer#create-the-blog-writer-flow)
+
+1. From the Langflow dashboard, click **New Flow**.
+2. Select **Blog Writer**.
+3. The **Blog Writer** flow is created.
+
+# image
+
+This flow creates a blog article generator with **Prompt**, **OpenAI**, and **Chat Output** components, augmented with reference content and instructions from the **URL** and **Text Input** components.
+
+The **URL** component extracts raw text and metadata from one or more web links. The **Parser** component converts the data coming from the **URL** component into plain text to feed the prompt.
+
+To examine the flow's prompt, click the **Template** field of the **Prompt** component.
+
+```
+```
+
+Now that your query has completed the journey from **Chat input** to **Chat output**, you have completed the **Simple Agent** flow.

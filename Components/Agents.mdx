@@ -1,5 +1,37 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Agent components in Langflow"
 ---
 
+Agent components define the behavior and capabilities of AI agents in your flow.
+
+Agents use LLMs as a reasoning engine to decide which of the connected tool components to use to solve a problem.
+
+Tools in agentic functions are essentially functions that the agent can call to perform tasks or access external resources. A function is wrapped as a `Tool` object with a common interface the agent understands. Agents become aware of tools through tool registration where the agent is provided a list of available tools typically at agent initialization. The `Tool` object's description tells the agent what the tool can do.
+
+The agent then uses a connected LLM to reason through the problem to decide which tool is best for the job.
+
+## **Use an agent in a flow**[**​**](https://docs.langflow.org/components-agents#use-an-agent-in-a-flow)
+
+The [simple agent starter project](https://docs.langflow.org/simple-agent) uses an [agent component](https://docs.langflow.org/components-agents#agent-component) connected to URL and Calculator tools to answer a user's questions. The OpenAI LLM acts as a brain for the agent to decide which tool to use. Tools are connected to agent components at the **Tools** port.
+
+# image
+
+For a multi-agent example see [Create a flow with an agent](https://docs.langflow.org/agents).
+
+## **Agent component**[**​**](https://docs.langflow.org/components-agents#agent-component)
+
+This component creates an agent that can use tools to answer questions and perform tasks based on given instructions.
+
+The component includes an LLM model integration, a system message prompt, and a **Tools** port to connect tools to extend its capabilities.
+
+For more information on this component, see the [Agent documentation](https://docs.langflow.org/agents).
+
+<Accordion title="Parameters">
+  ## **Legacy components**[**​**](https://docs.langflow.org/components-agents#legacy-components)
+
+  **Legacy** components are available for use but are no longer supported.
+
+  ### **JSON Agent**[**​**](https://docs.langflow.org/components-agents#json-agent)
+
+  This component creates a JSON agent from a JSON or YAML file and an LLM.
+</Accordion>

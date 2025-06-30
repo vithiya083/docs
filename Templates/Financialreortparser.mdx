@@ -1,5 +1,44 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Financial report parser"
+description: "Description of your new file."
 ---
 
+Build a **Financial Report Parser** flow with the [Structured output](https://docs.langflow.org/components-helpers#structured-output) and [Parser](https://docs.langflow.org/components-processing#parser) components to parse LLM responses into a structured format.
+
+In this example, the **Chat Input** component is pre-loaded with a sample financial report to demonstrate extracting `Gross Profit`, `EBITDA`, and `Net Income`.
+
+## **Prerequisites**[**​**](https://docs.langflow.org/financial-report-parser#prerequisites)
+
+- [<u>A running Langflow instance</u>](https://docs.langflow.org/get-started-installation)
+- [An OpenAI API key](https://platform.openai.com/)
+
+## **Create the financial report parser flow**[**​**](https://docs.langflow.org/financial-report-parser#create-the-financial-report-parser-flow)
+
+1. From the Langflow dashboard, click **New Flow**.
+2. Select **Financial Report Parser**.
+
+The **Financial Report Parser** flow is created.
+
+# image
+
+## **Run the memory chatbot flow**[**​**](https://docs.langflow.org/financial-report-parser#run-the-memory-chatbot-flow)
+
+1. Add your OpenAI API key to the OpenAI model.
+2. Click the **Playground** button, and then click **Send**. The **Chat Input** component is pre-loaded with a sample financial report for demonstration purposes. The chat returns a structured response:
+
+```
+```
+
+Inspect the flow to understand how this information was extracted.
+
+3. To inspect the output schema table, in the **Structured Output** component, click **Open table**. The **Structured Output** component uses the attached **OpenAI** model component as its "brain" to extract financial data into a [DataFrame](https://docs.langflow.org/concepts-objects#dataframe-object) with this defined schema.
+
+   ```
+   
+   ```
+
+
+4. To inspect the template that contains the extracted data, in the **Parser** component, click the **Scan** icon in the **Template** field. The **Parser** component converts the extracted data into formatted messages for chat consumption. Each variable receives its value from the structured outputs.
+
+```
+```

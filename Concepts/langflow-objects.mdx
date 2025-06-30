@@ -1,5 +1,115 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Langflow objects"
 ---
 
+In Langflow, objects are [Pydantic](https://docs.pydantic.dev/latest/api/base_model/) models that serve as structured, functional representations of data.
+
+## **Data object**[**​**](https://docs.langflow.org/concepts-objects#data-object)
+
+The `Data` object is a [Pydantic](https://docs.pydantic.dev/latest/api/base_model/) model that serves as a container for storing and manipulating data. It carries `data`—a dictionary that can be accessed as attributes—and uses `text_key` to specify which key in the dictionary should be considered the primary text content.
+
+- **Main Attributes:**
+  - `text_key`: Specifies the key to retrieve the primary text data.
+  - `data`: A dictionary to store additional data.
+  - `default_value`: default value when the `text_key` is not present in the `data` dictionary.
+
+### **Create a Data Object**[**​**](https://docs.langflow.org/concepts-objects#create-a-data-object)
+
+Create a `Data` object by directly assigning key-value pairs to it. For example:
+
+```
+```
+
+The `text_key` specifies which key in the `data` dictionary should be considered the primary text content. The `default_value` provides a fallback if the `text_key` is not present.
+
+```
+```
+
+The `Data` object is also convenient for visualization of outputs, since the output preview has visual elements to inspect data as a table and its cells as pop ups for basic types. The idea is to create a unified way to work and visualize complex information in Langflow.
+
+To receive `Data` objects in a component input, use the `DataInput` input type.
+
+```
+```
+
+## **Message object**[**​**](https://docs.langflow.org/concepts-objects#message-object)
+
+The `Message` object extends the functionality of `Data` and includes additional attributes and methods for chat interactions.
+
+- **Core message data:**
+  - `text`: The main text content of the message
+  - `sender`: Identifier for the sender ("User" or "AI")
+  - `sender_name`: Name of the sender
+  - `session_id`: Identifier for the chat session (`string` or `UUID`)
+  - `timestamp`: Timestamp when the message was created (UTC)
+  - `flow_id`: Identifier for the flow (`string` or `UUID`)
+  - `id`: Unique identifier for the message
+- **Content and files:**
+  - `files`: List of files or images associated with the message
+  - `content_blocks`: List of structured content block objects
+  - `properties`: Additional properties including visual styling and source information
+- **Message state:**
+  - `error`: Boolean indicating if there was an error
+  - `edit`: Boolean indicating if the message was edited
+  - `category`: Message category ("message", "error", "warning", "info")
+
+The `Message` object can be used to send, store, and manipulate chat messages within Langflow.
+
+### **Create a Message object**[**​**](https://docs.langflow.org/concepts-objects#create-a-message-object)
+
+You can create a `Message` object by directly assigning key-value pairs to it. For example:
+
+```
+```
+
+To receive `Message` objects in a component input, you can use the `MessageInput` input type or `MessageTextInput` when the goal is to extract just the `text` field of the `Message` object.
+
+## **ContentBlock object**[**​**](https://docs.langflow.org/concepts-objects#contentblock-object)
+
+The `ContentBlock` object is a list of multiple `ContentTypes`. It allows you to include multiple types of content within a single `Message`, including images, videos, and text.
+
+Content types are Pydantic base classes constructed from the types in [content\_](https://github.com/langflow-ai/langflow/blob/main/src/backend/base/langflow/schema/content_types.py)[types.py](http://types.py).
+
+Each content type has specific fields related to its data type. For example:
+
+- `TextContent` has a `text` field for storing strings of text
+- `MediaContent` has a `urls` field for storing media file URLs
+- `CodeContent` has `code` and `language` fields for code snippets
+- `JSONContent` has a `data` field for storing arbitrary JSON data
+- `ToolContent` has a `tool_input` field for storing input parameters for the tool
+
+### **Create a ContentBlock object**[**​**](https://docs.langflow.org/concepts-objects#create-a-contentblock-object)
+
+Create a `ContentBlock` object with a list of different content types.
+
+```
+```
+
+### **Add ContentBlocks objects to a message**
+
+In this example, a text and a media `ContentBlock` are added to a message.
+
+```
+```
+
+## **DataFrame object**[**​**](https://docs.langflow.org/concepts-objects#dataframe-object)
+
+The `DataFrame` class is a custom extension of the Pandas [DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) class, specifically designed to work seamlessly with Langflow's `Data` objects. The class includes methods for converting between `DataFrame` and lists of `Data` objects.
+
+A `DataFrame` object accepts various input formats, including lists of `Data` objects, dictionaries, and existing `DataFrames`.
+
+### **Create a DataFrame object**[**​**](https://docs.langflow.org/concepts-objects#create-a-dataframe-object)
+
+You can create a DataFrame object using different data formats:
+
+```
+```
+
+To use DataFrame objects in a component input,use the DataFrameInput input type.
+
+```
+```
+
+## **See also**
+
+- [Session ID](https://docs.langflow.org/session-id)
