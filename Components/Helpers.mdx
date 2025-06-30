@@ -1,5 +1,44 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Helper components in Langflow"
 ---
 
+Helper components provide utility functions to help manage data, tasks, and other components in your flow.
+
+## **Use a helper component in a flow**[**​**](https://docs.langflow.org/components-helpers#use-a-helper-component-in-a-flow)
+
+Chat memory in Langflow is stored either in local Langflow tables with `LCBufferMemory`, or connected to an external database.
+
+The **Store Message** helper component stores chat memories as [Data](https://docs.langflow.org/concepts-objects) objects, and the **Message History** helper component retrieves chat messages as data objects or strings.
+
+This example flow stores and retrieves chat history from an [AstraDBChatMemory](https://docs.langflow.org/components-memories#astradbchatmemory-component) component with **Store Message** and **Chat Memory** components.
+
+# image
+
+## **Batch Run**[**​**](https://docs.langflow.org/components-helpers#batch-run)
+
+The **Batch Run** component runs a language model over **each row** of a [DataFrame](https://docs.langflow.org/concepts-objects#dataframe-object) text column and returns a new DataFrame with the original text and an LLM response.
+
+The response contains the following columns:
+
+- `text_input`: The original text from the input DataFrame.
+- `model_response`: The model's response for each input.
+- `batch_index`: The processing order, with a `0`-based index.
+- `metadata` (optional): Additional information about the processing.
+
+These columns, when connected to a **Parser** component, can be used as variables within curly braces.
+
+To use the Batch Run component with a **Parser** component, do the following:
+
+1. Connect a **Model** component to the **Batch Run** component's **Language model** port.
+2. Connect a component that outputs DataFrame, like **File** component, to the **Batch Run** component's **DataFrame** input.
+3. Connect the **Batch Run** component's **Batch Results** output to a **Parser** component's **DataFrame** input. The flow looks like this:
+
+# image
+
+4. In the **Column Name** field of the **Batch Run** component, enter a column name based on the data you're loading from the **File** loader. For example, to process a column of `name`, enter `name`.
+5. Optionally, in the **System Message** field of the **Batch Run** component, enter a **System Message** to instruct the connected LLM on how to process your file. For example, `Create a business card for each name.`
+6. In the **Template** field of the **Parser** component, enter a template for using the **Batch Run** component's new DataFrame columns. To use all three columns from the **Batch Run** component, include them like this:
+
+   ```
+   
+   ```

@@ -1,5 +1,27 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Data components in Langflow"
 ---
 
+Data components load data from a source into your flow.
+
+They may perform some processing or type checking, like converting raw HTML data into text, or ensuring your loaded file is of an acceptable type.
+
+## **Use a data component in a flow**[**​**](https://docs.langflow.org/components-data#use-a-data-component-in-a-flow)
+
+The **URL** data component loads content from a list of URLs.
+
+In the component's **URLs** field, enter the URL you want to load. To add multiple URL fields, click .
+
+Alternatively, connect a component that outputs the `Message` type, like the **Chat Input** component, to supply your URLs from a component.
+
+In this example of a document ingestion pipeline, the URL component outputs raw HTML to a text splitter, which splits the raw content into chunks for a vector database to ingest.
+
+# image
+
+## **API Request**[**​**](https://docs.langflow.org/components-data#api-request)
+
+This component makes HTTP requests using URLs or cURL commands.
+
+1. To use this component in a flow, connect the **Data** output to a component that accepts the input. For example, connect the **API Request** component to a **Chat Output** component.
+
+# image
