@@ -1,0 +1,124 @@
+---
+title: "Quickstart"
+description: "Get started with LLMC by loading a template flow, running it, and then serving it at the /run API endpoint."
+---
+
+## **Prerequisites**[**​**](https://docs.langflow.org/get-started-quickstart#prerequisites)
+
+- [A running Langflow instance](https://docs.langflow.org/get-started-installation)
+- [An OpenAI API key](https://platform.openai.com/api-keys)
+
+## **Run the Simple Agent template flow**[**​**](https://docs.langflow.org/get-started-quickstart#run-the-simple-agent-template-flow)
+
+1. In Langflow, click **New Flow**, and then select the **Simple Agent** template.
+
+## image here
+
+The Simple Agent flow consists of an [Agent component](https://docs.langflow.org/agents) connected to [Chat I/O components](https://docs.langflow.org/components-io), a [Calculator component](https://docs.langflow.org/components-tools#calculator-tool), and a [URL component](https://docs.langflow.org/components-data#url). When you run this flow, you submit a query to the agent through the Chat Input component, the agent uses the Calculator and URL tools to generate a response, and then returns the response through the Chat Output component.
+
+Many components can be tools for agents, including [Model Context Protocol (MCP) servers](https://docs.langflow.org/mcp-server). The agent decides which tools to call based on the context of a given query.
+
+2. In the **Agent** component's settings, in the **OpenAI API Key** field, enter your OpenAI API key. This guide uses an OpenAI model for demonstration purposes. If you want to use a different provider, change the **Model Provider** field, and then provide credentials for your selected provider.
+
+   Optionally, you can click <Icon icon="globe" color="#0d0606" size={21} /> **Globe** to store the key in a Langflow [global variable](https://docs.langflow.org/configuration-global-variables).
+3. To run the flow, click <Icon icon="play" color="#150f0f" />**Playground**.
+4. To test the Calculator tool, ask the agent a simple math question, such as `I want to add 4 and 4.` To help you test and evaluate your flows, the Playground shows the agent's reasoning process as it analyzes the prompt, selects a tool, and then uses the tool to generate a response. In this case, a math question causes the agent to select the Calculator tool and use an action like `evaluate_expression`.
+
+## image here
+
+5. To test the URL tool, ask the agent about current events. For this request, the agent selects the URL tool's `fetch_content` action, and then returns a summary of current news headlines.
+6. When you are done testing the flow, click <Icon icon="notdef" color="#020101" />**Close**.
+
+Now that you've run your first flow, try these next steps:
+
+- Edit your **Simple Agent** flow by attaching different tools or adding more components to the flow.
+- Build your own flows from scratch or by modifying other template flows.
+- Integrate flows into your applications, as explained in [Run your flows from external applications](https://docs.langflow.org/get-started-quickstart#run-your-flows-from-external-applications).
+
+Optionally, stop here if you just want to create more flows within Langflow.
+
+If you want to learn how Langflow integrates into external applications, read on.
+
+## **Run your flows from external applications**[**​**](https://docs.langflow.org/get-started-quickstart#run-your-flows-from-external-applications)
+
+Langflow is an IDE, but it's also a runtime you can call through an API with Python, JavaScript, or HTTP.
+
+When you start Langflow locally, you can send requests to the local Langflow server. For production applications, you need to deploy a stable Langflow instance to handle API calls. For more information, see [Langflow deployment overview](https://docs.langflow.org/deployment-overview).
+
+For example, you can use `POST /run` to run a flow and get the result.
+
+Langflow provides code snippets to help you get started with the Langflow API.
+
+1. To open the **API access pane**, in the **Playground**, click **Share**, and then click **API access**.
+
+   The default code in the API access pane constructs a request with the Langflow server `url`, `headers`, and a `payload` of request data. The code snippets automatically include the `LANGFLOW_SERVER_ADDRESS` and `FLOW_ID` values for the flow. Replace these values if you're using the code for a different server or flow. The default Langflow server address is `http://localhost:7860`
+
+<Tabs>
+  <Tab title="Tab">
+    ```
+    
+    ```
+  </Tab>
+  <Tab title="Tab">
+    ```
+    
+    ```
+  </Tab>
+  <Tab title="Tab">
+    ```
+    
+    ```
+  </Tab>
+</Tabs>
+
+2. Copy the snippet, paste it in a script file, and then run the script to send the request. If you are using the curl snippet, you can run the command directly in your terminal.
+
+If the request is successful, the response includes many details about the flow run, including the session ID, inputs, outputs, components, durations, and more. The following is an example of a response from running the **Simple Agent** template flow:
+
+<Accordion title="Response">
+  ```
+  
+  ```
+</Accordion>
+
+
+In a production application, you probably want to select parts of this response to return to the user, store in logs, and so on. The next steps demonstrate how you can extract data from a Langflow API response to use in your application.
+
+### **Extract data from the response**[**​**](https://docs.langflow.org/get-started-quickstart#extract-data-from-the-response)
+
+The following example builds on the API pane's example code to create a question-and-answer chat in your terminal that stores the Agent's previous answer.
+
+1. Incorporate your **Simple Agent** flow's `/run` snippet into the following script. This script runs a question-and-answer chat in your terminal and stores the Agent's previous answer so you can compare them.
+
+<Tabs>
+  <Tab title="Tab">
+    ```
+    
+    ```
+  </Tab>
+  <Tab title="Tab">
+    ```
+    
+    ```
+  </Tab>
+</Tabs>
+
+2. To view the Agent's previous answer, type `compare`. To close the terminal chat, type `exit`.
+
+### **Use tweaks to apply temporary overrides to a flow run**[**​**](https://docs.langflow.org/get-started-quickstart#use-tweaks-to-apply-temporary-overrides-to-a-flow-run)
+
+You can include tweaks with your requests to temporarily modify flow parameters. Tweaks are added to the API request, and temporarily change component parameters within your flow. Tweaks override the flow's components' settings for a single run only. They don't modify the underlying flow configuration or persist between runs.
+
+Tweaks are added to the `/run` endpoint's `payload`. To assist with formatting, you can define tweaks in Langflow's **Input Schema** pane before copying the code snippet.
+
+1. To open the **Input Schema** pane, from the **API access** pane, click **Input Schema**.
+2. In the **Input Schema** pane, select the parameter you want to modify in your next request. Enabling parameters in the **Input Schema** pane does not **allow** modifications to the listed parameters. It only adds them to the example code.
+3. For example, to change the LLM provider from OpenAI to Groq, and include your Groq API key with the request, select the values **Model Providers**, **Model**, and **Groq API Key**. Langflow updates the `tweaks` object in the code snippets based on your input parameters, and includes default values to guide you. Use the updated code snippets in your script to run your flow with your overrides.
+
+```
+```
+
+## **Next steps**[**​**](https://docs.langflow.org/get-started-quickstart#next-steps)
+
+- [Model Context Protocol (MCP) servers](https://docs.langflow.org/mcp-server)
+- [Langflow deployment overview](https://docs.langflow.org/deployment-overview)
