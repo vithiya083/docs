@@ -1,119 +1,141 @@
 {
-"$schema": "https://mintlify.com/docs.json",
-"name": "Langflow Docs",
-"theme": "mint",
-"colors": {
-"primary": "#16A34A",
-"light": "#07C983",
-"dark": "#15803D"
-},
-"favicon": "/favicon.svg",
-"navigation": {
-"tabs": [
-{
-"tab": "Welcome to Langflow",
-"groups": [
-{
-"group": "Get started",
-"pages": [
-"get-started/quickstart"
-]
-},
-{
-"group": "Templates",
-"pages": [
-"templates/Basic prompting",
-"templates/Simple agent",
-"templates/Blog writer",
-"templates/Document QA",
-"templates/Memory chatbot",
-"templates/Vector store RAG",
-"templates/Financial report parser",
-"templates/Sequential tasks agent",
-"templates/Travel planning agent"
-]
-},
-{
-"group": "Concepts",
-"pages": [
-"concepts/langflow-overview",
-"concepts/playground",
-"concepts/flows",
-"concepts/langflow-objects",
-"concepts/publish-flows",
-"concepts/embedded-chat-widget",
-"concepts/manage-files"
-]
-},
-{
-"group": "Components",
-"pages": [
-"components/components-overview",
-"components/agents",
-"components/bundles",
-"components/create-custom-python-components",
-"components/data",
-"components/embeddings",
-"components/helpers",
-"components/inputs-and-outputs",
-"components/logic",
-"components/memories",
-"components/models",
-"components/processing",
-"components/prompts",
-"components/tools",
-"components/vector-stores"
-]
-},
-{
-"group": "Integrations",
-"pages": [
-"integrations/apify",
-"integrations/arize",
-"integrations/assemblyai",
-"integrations/astra-db-mcp-server",
-"integrations/cleanlab",
-"integrations/composio",
-"integrations/google",
-"integrations/langfuse",
-"integrations/langsmith",
-"integrations/langwatch",
-"integrations/opik",
-"integrations/notion",
-"integrations/nvidia"
-]
-}
-]
-}
-]
-},
-"logo": {
-"light": "/logo/light.svg",
-"dark": "/logo/dark.svg"
-},
-"navbar": {
-"links": [
-{
-"label": "GitHub",
-"href": "https://github.com/langflow/langflow"
-},
-{
-"label": "Support",
-"href": "mailto:support@langflow.org"
-}
-],
-"primary": {
-"type": "button",
-"label": "Dashboard",
-"href": "https://dashboard.langflow.org"
-}
-},
-"footer": {
-"socials": {
-"x": "https://x.com/langflow",
-"github": "https://github.com/langflow/langflow",
-"linkedin": "https://linkedin.com/company/langflow"
-}
-}
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Langflow Docs",
+  "colors": {
+    "primary": "#16A34A",
+    "light": "#07C983",
+    "dark": "#15803D"
+  },
+  "favicon": "/favicon.svg",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/langflow/langflow"
+      },
+      {
+        "label": "Support",
+        "href": "mailto:support@langflow.org"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://dashboard.langflow.org"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/langflow",
+      "github": "https://github.com/langflow/langflow",
+      "linkedin": "https://linkedin.com/company/langflow"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Welcome to Langflow",
+        "groups": [
+          {
+            "group": "Get started",
+            "pages": [
+              "Getstarted/quickstart"
+            ]
+          },
+          {
+            "group": "Templates",
+            "pages": [
+              "Templates/Basicprompting",
+              "Templates/Simpleagent",
+              "Templates/Blogwriter",
+              "Templates/DocumentQA",
+              "Templates/Memorychatbot",
+              "Templates/VectorstoreRAG",
+              "Templates/Financialreortparser",
+              "Templates/Sequentialtasksgent",
+              "Templates/Travelplanningagent"
+            ]
+          },
+          {
+            "group": "Concepts",
+            "pages": [
+              "Concepts/langflow-overview",
+              "Concepts/playground",
+              "Concepts/flows",
+              "Concepts/langflow-objects",
+              "Concepts/publish-flows",
+              "Concepts/embedded-chat-widget",
+              "Concepts/manage-files",
+              "Concepts/components"
+            ]
+          },
+          {
+            "group": "Components",
+            "pages": [
+              "Components/Agents",
+              "Components/Bundles",
+              "Components/CreatecustomPythoncomponents",
+              "Components/Data",
+              "Components/Embeddings",
+              "Components/Helpers",
+              "Components/Inputsandoutputs",
+              "Components/Logic",
+              "Components/Memories",
+              "Components/Models",
+              "Components/Processing",
+              "Components/Prompts",
+              "Components/Tools",
+              "Components/Vectorstores"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              {
+                "group": "Google",
+                "pages": [
+                  "Integrations/Google/google-oauth-langflow",
+                  "Integrations/Google/google-vertex-ai-langflow",
+                  "Integrations/Google/google-bigquery-langflow"
+                ]
+              },
+              {
+                "group": "Notion",
+                "pages": [
+                  "Integrations/Notion/notion-setup",
+                  "Integrations/Notion/notion-conversational-agent",
+                  "Integrations/Notion/notion-meeting-notes-agent"
+                ]
+              },
+              {
+                "group": "Opik",
+                "pages": [
+                  "Integrations/Opik/opik"
+                ]
+              },
+              "Integrations/Apify",
+              "Integrations/Arize",
+              "Integrations/AssemblyAI",
+              "Integrations/AstraDBMCPServer",
+              "Integrations/Cleanlab",
+              "Integrations/Composition",
+              "Integrations/langfuse",
+              "Integrations/langsmith",
+              "Integrations/langwatch",
+              "Integrations/nvidia-ingest",
+              "Integrations/nvidia-nim-wsl2",
+              "Integrations/nvidia-gassist"
+            ]
+          }
+        ]
+      }
+    ],
+    "global": {}
+  }
 }
 
