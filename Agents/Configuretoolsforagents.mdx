@@ -2,7 +2,7 @@
 title: "Configure tools for agents"
 ---
 
- Configure tools connected to agents to extend their capabilities.
+Configure tools connected to agents to extend their capabilities.
 
 ## **Edit a tool component's actions**[**​**](https://docs.langflow.org/agents-tools#edit-a-tool-components-actions)
 
@@ -30,6 +30,7 @@ Add an agent to your flow that uses a different OpenAI model for a larger contex
 3. Add your **Open AI API Key** to the **Agent** component.
 4. In the **Model Name** field, select `gpt-4.1`.
 5. Click **Tool Mode** to use this new agent as a tool.
-6. Connect the new agent's **Toolset** port to the previously created agent's **Tools** port. The new agent will use `gpt-4.1` for the larger tasks of scraping and searching information that require large context windows. The previously created agent will now use this agent as a tool, with its unique LLM and toolset.
 
-    
+Connect the new agent's **Toolset** port to the previously created agent's **Tools** port. The new agent will use `gpt-4.1` for the larger tasks of scraping and searching information that require large context windows. The previously created agent will now use this agent as a tool, with its unique LLM and toolset.
+
+# **Image**
