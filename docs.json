@@ -67,13 +67,6 @@
             ]
           },
           {
-            "group": "Model Context Protocol (MCP)",
-            "pages": [
-              "mcp/Use Langflow as an MCP server",
-              "mcp/Use Langflow as an MCP client"
-            ]
-          },
-          {
             "group": "Integrations",
             "pages": [
               "integrations/Apify",
