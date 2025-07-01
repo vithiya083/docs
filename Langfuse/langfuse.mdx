@@ -38,10 +38,6 @@ The following examples set environment variables in a Linux or macOS terminal se
 ## **Start Langflow and view traces in Langfuse**
 
 1. Start Langflow in the same terminal or environment where you set the environment variables:
-
-```
-```
-
 2. In Langflow, open an existing project, and then run a flow.
 
    Langflow automatically collects and sends tracing data about the flow execution to Langfuse.
@@ -68,18 +64,19 @@ If you prefer to self-host Langfuse, you can run both services with Docker Compo
 
 3. Add your Langflow API keys to your `docker-compose.yml` file. An example [docker-compose.yml](https://github.com/langflow-ai/langflow/blob/main/docker_example/docker-compose.yml) file is available in the Langflow GitHub repo.
 
-```
-```
-
+   ```
+   
+   ```
 4. Start the Docker container.
 
-```
-```
-
+   ```
+   
+   ```
 5. To confirm Langfuse is connected to your Langflow container, run this command. Ensure you've exported `LANGFLOW_HOST` as a variable in your terminal.
 
-```
-```
+   ```
+   
+   ```
 
 An output similar to this indicates success:
 
