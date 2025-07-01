@@ -44,7 +44,6 @@
               "concepts/publish-flows",
               "concepts/embedded-chat-widget",
               "concepts/manage-files"
-          
             ]
           },
           {
@@ -74,52 +73,17 @@
               "integrations/AssemblyAI",
               "integrations/Astra DB MCP server",
               "integrations/Cleanlab",
-              "integrations/Composition"
-            ]
-          },
-          {
-            "group": "Google",
-            "pages": [
+              "integrations/Composio",
               "integrations-setup/google-oauth-langflow",
               "integrations-setup/google-vertex-ai-langflow",
-              "integrations-setup/google-bigquery-langflow"
-            ]
-          },
-          {
-            "group": "Langfuse",
-            "pages": [
-              "integrations/langfuse"
-            ]
-          },
-          {
-            "group": "LangSmith",
-            "pages": [
-              "integrations/langsmith"
-            ]
-          },
-          {
-            "group": "LangWatch",
-            "pages": [
-              "integrations/langwatch"
-            ]
-          },
-          {
-            "group": "Opik",
-            "pages": [
-              "integrations/opik"
-            ]
-          },
-          {
-            "group": "Notion",
-            "pages": [
+              "integrations-setup/google-bigquery-langflow",
+              "integrations/langfuse",
+              "integrations/langsmith",
+              "integrations/langwatch",
+              "integrations/opik",
               "integrations/notion-setup",
               "integrations/notion-conversational-agent",
-              "integrations/notion-meeting-notes-agent"
-            ]
-          },
-          {
-            "group": "NVIDIA",
-            "pages": [
+              "integrations/notion-meeting-notes-agent",
               "integrations/nvidia-ingest",
               "integrations/nvidia-nim-wsl2",
               "integrations/nvidia-gassist"
