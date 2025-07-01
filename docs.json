@@ -67,13 +67,6 @@
             ]
           },
           {
-            "group": "Agents",
-            "pages": [
-              "agents/Use Langflow Agents",
-              "agents/Configure tools for agents"
-            ]
-          },
-          {
             "group": "Model Context Protocol (MCP)",
             "pages": [
               "mcp/Use Langflow as an MCP server",
