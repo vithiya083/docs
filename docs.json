@@ -50,15 +50,15 @@
           {
             "group": "Templates",
             "pages": [
-              "templates/Basicprompting",
-              "templates/Simpleagent",
-              "templates/Blogwriter",
-              "templates/DocumentQA",
-              "templates/Memorychatbot",
-              "templates/VectorstoreRAG",
-              "templates/Financialreortparser",
-              "templates/Sequentialtasksagent",
-              "templates/Travelplanningagent"
+              "templates/basic-prompting",
+              "templates/simple-agent",
+              "templates/blog-writer",
+              "templates/document-qa",
+              "templates/memory-chatbot",
+              "templates/vectorstore-rag",
+              "templates/financial-report-parser",
+              "templates/sequential-tasks-agent",
+              "templates/travel-planning-agent"
             ]
           },
           {
@@ -77,37 +77,37 @@
           {
             "group": "Components",
             "pages": [
-              "components/Agents",
-              "components/Bundles",
-              "components/CreatecustomPythoncomponents",
-              "components/Data",
-              "components/Embeddings",
-              "components/Helpers",
-              "components/Inputsandoutputs",
-              "components/Logic",
-              "components/Memories",
-              "components/Models",
-              "components/Processing",
-              "components/Prompts",
-              "components/Tools",
-              "components/Vectorstores"
+              "components/agents",
+              "components/bundles",
+              "components/create-custom-python-components",
+              "components/data",
+              "components/embeddings",
+              "components/helpers",
+              "components/inputs-and-outputs",
+              "components/logic",
+              "components/memories",
+              "components/models",
+              "components/processing",
+              "components/prompts",
+              "components/tools",
+              "components/vectorstores"
             ]
           },
           {
             "group": "Integrations",
             "pages": [
-              "integrations/Apify",
-              "integrations/Arize",
-              "integrations/AssemblyAI",
-              "integrations/AstraDBMCPServer",
-              "integrations/Cleanlab",
-              "integrations/Composition",
+              "integrations/apify",
+              "integrations/arize",
+              "integrations/assemblyai",
+              "integrations/astra-db-mcp-server",
+              "integrations/cleanlab",
+              "integrations/composition",
               {
                 "group": "Google",
                 "pages": [
-                  "integrations/Google/google-oauth-langflow",
-                  "integrations/Google/google-vertex-ai-langflow",
-                  "integrations/Google/google-bigquery-langflow"
+                  "integrations/google/google-oauth-langflow",
+                  "integrations/google/google-vertex-ai-langflow",
+                  "integrations/google/google-bigquery-langflow"
                 ]
               },
               "integrations/langfuse",
@@ -116,23 +116,23 @@
               {
                 "group": "Opik",
                 "pages": [
-                  "integrations/Opik/opik"
+                  "integrations/opik/opik"
                 ]
               },
               {
                 "group": "Notion",
                 "pages": [
-                  "integrations/Notion/notion-setup",
-                  "integrations/Notion/notion-conversational-agent",
-                  "integrations/Notion/notion-meeting-notes-agent"
+                  "integrations/notion/notion-setup",
+                  "integrations/notion/notion-conversational-agent",
+                  "integrations/notion/notion-meeting-notes-agent"
                 ]
               },
               {
                 "group": "NVIDIA",
                 "pages": [
-                  "integrations/NVIDIA/nvidia-ingest",
-                  "integrations/NVIDIA/nvidia-nim-wsl2",
-                  "integrations/NVIDIA/nvidia-gassist"
+                  "integrations/nvidia/nvidia-ingest",
+                  "integrations/nvidia/nvidia-nim-wsl2",
+                  "integrations/nvidia/nvidia-gassist"
                 ]
               }
             ]
@@ -143,4 +143,3 @@
     "global": {}
   }
 }
-
