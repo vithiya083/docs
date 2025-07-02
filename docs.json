@@ -42,9 +42,9 @@
         "tab": "Welcome to Langflow",
         "groups": [
           {
-            "group": "Get started",
+            "group": "Getstarted",
             "pages": [
-              "getstarted/quickstart"
+              "Getstarted/quickstart"
             ]
           },
           {
