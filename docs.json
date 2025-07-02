@@ -44,92 +44,97 @@
           {
             "group": "Get started",
             "pages": [
-              "Getstarted/quickstart"
+              "getstarted/quickstart"
             ]
           },
           {
             "group": "Templates",
             "pages": [
-              "Templates/Basicprompting",
-              "Templates/Simpleagent",
-              "Templates/Blogwriter",
-              "Templates/DocumentQA",
-              "Templates/Memorychatbot",
-              "Templates/VectorstoreRAG",
-              "Templates/Financialreortparser",
-              "Templates/Sequentialtasksgent",
-              "Templates/Travelplanningagent"
+              "templates/Basicprompting",
+              "templates/Simpleagent",
+              "templates/Blogwriter",
+              "templates/DocumentQA",
+              "templates/Memorychatbot",
+              "templates/VectorstoreRAG",
+              "templates/Financialreortparser",
+              "templates/Sequentialtasksagent",
+              "templates/Travelplanningagent"
             ]
           },
           {
             "group": "Concepts",
             "pages": [
-              "Concepts/langflow-overview",
-              "Concepts/playground",
-              "Concepts/flows",
-              "Concepts/langflow-objects",
-              "Concepts/publish-flows",
-              "Concepts/embedded-chat-widget",
-              "Concepts/manage-files",
-              "Concepts/components"
+              "concepts/langflow-overview",
+              "concepts/playground",
+              "concepts/flows",
+              "concepts/langflow-objects",
+              "concepts/publish-flows",
+              "concepts/embedded-chat-widget",
+              "concepts/manage-files",
+              "concepts/components"
             ]
           },
           {
             "group": "Components",
             "pages": [
-              "Components/Agents",
-              "Components/Bundles",
-              "Components/CreatecustomPythoncomponents",
-              "Components/Data",
-              "Components/Embeddings",
-              "Components/Helpers",
-              "Components/Inputsandoutputs",
-              "Components/Logic",
-              "Components/Memories",
-              "Components/Models",
-              "Components/Processing",
-              "Components/Prompts",
-              "Components/Tools",
-              "Components/Vectorstores"
+              "components/Agents",
+              "components/Bundles",
+              "components/CreatecustomPythoncomponents",
+              "components/Data",
+              "components/Embeddings",
+              "components/Helpers",
+              "components/Inputsandoutputs",
+              "components/Logic",
+              "components/Memories",
+              "components/Models",
+              "components/Processing",
+              "components/Prompts",
+              "components/Tools",
+              "components/Vectorstores"
             ]
           },
           {
             "group": "Integrations",
             "pages": [
+              "integrations/Apify",
+              "integrations/Arize",
+              "integrations/AssemblyAI",
+              "integrations/AstraDBMCPServer",
+              "integrations/Cleanlab",
+              "integrations/Composition",
               {
                 "group": "Google",
                 "pages": [
-                  "Integrations/Google/google-oauth-langflow",
-                  "Integrations/Google/google-vertex-ai-langflow",
-                  "Integrations/Google/google-bigquery-langflow"
+                  "integrations/Google/google-oauth-langflow",
+                  "integrations/Google/google-vertex-ai-langflow",
+                  "integrations/Google/google-bigquery-langflow"
+                ]
+              },
+              "integrations/langfuse",
+              "integrations/langsmith",
+              "integrations/langwatch",
+              {
+                "group": "Opik",
+                "pages": [
+                  "integrations/Opik/opik"
                 ]
               },
               {
                 "group": "Notion",
                 "pages": [
-                  "Integrations/Notion/notion-setup",
-                  "Integrations/Notion/notion-conversational-agent",
-                  "Integrations/Notion/notion-meeting-notes-agent"
+                  "integrations/Notion/notion-setup",
+                  "integrations/Notion/notion-conversational-agent",
+                  "integrations/Notion/notion-meeting-notes-agent"
                 ]
               },
               {
-                "group": "Opik",
+                "group": "NVIDIA",
                 "pages": [
-                  "Integrations/Opik/opik"
+                  "integrations/NVIDIA/nvidia-ingest",
+                  "integrations/NVIDIA/nvidia-nim-wsl2",
+                  "integrations/NVIDIA/nvidia-gassist"
                 ]
-              },
-              "Integrations/Apify",
-              "Integrations/Arize",
-              "Integrations/AssemblyAI",
-              "Integrations/AstraDBMCPServer",
-              "Integrations/Cleanlab",
-              "Integrations/Composition",
-              "Integrations/langfuse",
-              "Integrations/langsmith",
-              "Integrations/langwatch",
-              "Integrations/nvidia-ingest",
-              "Integrations/nvidia-nim-wsl2",
-              "Integrations/nvidia-gassist"
+              }
             ]
           }
         ]
