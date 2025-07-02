@@ -56,7 +56,7 @@
               "Templates/DocumentQA",
               "Templates/Memorychatbot",
               "Templates/VectorstoreRAG",
-              "Templates/Financialreportparser",
+              "Templates/Financialreortparser",
               "Templates/Sequentialtasksagent",
               "Templates/Travelplanningagent"
             ]
