@@ -78,7 +78,7 @@
             "group": "Components",
             "pages": [
               "Components/Agents",
-              "Components/Aundles",
+              "Components/Bundles",
               "Components/CreatecustomPythoncomponents",
               "Components/Data",
               "Components/Embeddings",
@@ -132,9 +132,9 @@
           {
             "group": "NVIDIA",
             "pages": [
-              "integrations/nvidia/nvidia-ingest",
-              "integrations/nvidia/nvidia-nim-wsl2",
-              "integrations/nvidia/nvidia-gassist"
+              "Integrations/NVIDIA/NVIDIAIngest",
+              "Integrations/NVIDIA/NVIDIAMonWSL2",
+              "Integrations/NVIDIA/NVIDIAG-Assist"
             ]
           }
         ]
