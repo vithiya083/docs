@@ -102,39 +102,39 @@
               "integrations/astra-db-mcp-server",
               "integrations/cleanlab",
               "integrations/composition",
-              {
-                "group": "Google",
-                "pages": [
-                  "integrations/google/google-oauth-langflow",
-                  "integrations/google/google-vertex-ai-langflow",
-                  "integrations/google/google-bigquery-langflow"
-                ]
-              },
               "integrations/langfuse",
               "integrations/langsmith",
-              "integrations/langwatch",
-              {
-                "group": "Opik",
-                "pages": [
-                  "integrations/opik/opik"
-                ]
-              },
-              {
-                "group": "Notion",
-                "pages": [
-                  "integrations/notion/notion-setup",
-                  "integrations/notion/notion-conversational-agent",
-                  "integrations/notion/notion-meeting-notes-agent"
-                ]
-              },
-              {
-                "group": "NVIDIA",
-                "pages": [
-                  "integrations/nvidia/nvidia-ingest",
-                  "integrations/nvidia/nvidia-nim-wsl2",
-                  "integrations/nvidia/nvidia-gassist"
-                ]
-              }
+              "integrations/langwatch"
+            ]
+          },
+          {
+            "group": "Google",
+            "pages": [
+              "integrations/google/google-oauth-langflow",
+              "integrations/google/google-vertex-ai-langflow",
+              "integrations/google/google-bigquery-langflow"
+            ]
+          },
+          {
+            "group": "Notion",
+            "pages": [
+              "integrations/notion/notion-setup",
+              "integrations/notion/notion-conversational-agent",
+              "integrations/notion/notion-meeting-notes-agent"
+            ]
+          },
+          {
+            "group": "Opik",
+            "pages": [
+              "integrations/opik/opik"
+            ]
+          },
+          {
+            "group": "NVIDIA",
+            "pages": [
+              "integrations/nvidia/nvidia-ingest",
+              "integrations/nvidia/nvidia-nim-wsl2",
+              "integrations/nvidia/nvidia-gassist"
             ]
           }
         ]
