@@ -50,15 +50,15 @@
           {
             "group": "Templates",
             "pages": [
-              "templates/Basicprompting",
-              "templates/Simpleagent",
-              "templates/Blogwriter",
-              "templates/DocumentQA",
-              "templates/Memorychatbot",
-              "templates/VectorstoreRAG",
-              "templates/Financialreportparser",
-              "templates/Sequentialtasksagent",
-              "templates/Travelplanningagent"
+              "templates/basic-prompting",
+              "templates/simple-agent",
+              "templates/blog-writer",
+              "templates/document-qa",
+              "templates/memory-chatbot",
+              "templates/vectorstore-rag",
+              "templates/financial-report-parser",
+              "templates/sequential-tasks-agent",
+              "templates/travel-planning-agent"
             ]
           },
           {
