@@ -50,83 +50,83 @@
           {
             "group": "Templates",
             "pages": [
-              "templates/basic-prompting",
-              "templates/simple-agent",
-              "templates/blog-writer",
-              "templates/document-qa",
-              "templates/memory-chatbot",
-              "templates/vectorstore-rag",
-              "templates/financial-report-parser",
-              "templates/sequential-tasks-agent",
-              "templates/travel-planning-agent"
+              "Templates/Basicprompting",
+              "Templates/Simpleagent",
+              "Templates/Blogwriter",
+              "Templates/DocumentQA",
+              "Templates/Memorychatbot",
+              "Templates/VectorstoreRAG",
+              "Templates/Financialreportparser",
+              "Templates/Sequentialtasksagent",
+              "Templates/Travelplanningagent"
             ]
           },
           {
             "group": "Concepts",
             "pages": [
-              "concepts/langflow-overview",
-              "concepts/playground",
-              "concepts/flows",
-              "concepts/langflow-objects",
-              "concepts/publish-flows",
-              "concepts/embedded-chat-widget",
-              "concepts/manage-files",
-              "concepts/components"
+              "Concepts/langflow-overview",
+              "Concepts/playground",
+              "Concepts/flows",
+              "Concepts/langflow-objects",
+              "Concepts/publish-flows",
+              "Concepts/embedded-chat-widget",
+              "Concepts/manage-files",
+              "Concepts/components"
             ]
           },
           {
             "group": "Components",
             "pages": [
-              "components/agents",
-              "components/bundles",
-              "components/create-custom-python-components",
-              "components/data",
-              "components/embeddings",
-              "components/helpers",
-              "components/inputs-and-outputs",
-              "components/logic",
-              "components/memories",
-              "components/models",
-              "components/processing",
-              "components/prompts",
-              "components/tools",
-              "components/vectorstores"
+              "Components/Agents",
+              "Components/Aundles",
+              "Components/CreatecustomPythoncomponents",
+              "Components/Data",
+              "Components/Embeddings",
+              "Components/Helpers",
+              "Components/Inputsandoutputs",
+              "Components/Logic",
+              "Components/Memories",
+              "Components/Models",
+              "Components/Processing",
+              "Components/Prompts",
+              "Components/Tools",
+              "Components/Vectorstores"
             ]
           },
           {
             "group": "Integrations",
             "pages": [
-              "integrations/apify",
-              "integrations/arize",
-              "integrations/assemblyai",
-              "integrations/astra-db-mcp-server",
-              "integrations/cleanlab",
-              "integrations/composition",
-              "integrations/langfuse",
-              "integrations/langsmith",
-              "integrations/langwatch"
+              "Integrations/Apify",
+              "Integrations/Arize",
+              "Integrations/AssemblyAi",
+              "Integrations/AstraDBMCPserver",
+              "Integrations/Cleanlab",
+              "Integrations/Composition",
+              "Integrations/langfuse",
+              "Integrations/langsmith",
+              "Integrations/langwatch"
             ]
           },
           {
             "group": "Google",
             "pages": [
-              "integrations/google/google-oauth-langflow",
-              "integrations/google/google-vertex-ai-langflow",
-              "integrations/google/google-bigquery-langflow"
+              "Integrations/Google/google-oauth-langflow",
+              "Integrations/Google/google-vertex-ai-langflow",
+              "Integrations/Google/google-bigquery-langflow"
             ]
           },
           {
             "group": "Notion",
             "pages": [
-              "integrations/notion/notion-setup",
-              "integrations/notion/notion-conversational-agent",
-              "integrations/notion/notion-meeting-notes-agent"
+              "Integrations/Notion/notion-setup",
+              "Integrations/Notion/notion-conversational-agent",
+              "Integrations/Notion/notion-meeting-notes-agent"
             ]
           },
           {
             "group": "Opik",
             "pages": [
-              "integrations/opik/opik"
+              "Integrations/Opik/opik"
             ]
           },
           {
