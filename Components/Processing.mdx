@@ -165,8 +165,6 @@ The flow looks like this:
 4. In the **Structured Output** component, click **Open Table**. This opens a pane for structuring your table. The table contains the rows **Name**, **Description**, **Type**, and **Multiple**.
 5. Create a table that maps to the data you're loading from the **File** loader. For example, to create a table for employees, you might have the rows `id`, `name`, and `email`, all of type `string`.
 6. In the **Template** field of the **Parser** component, enter a template for parsing the **Structured Output** component's DataFrame output into structured text. Create variables for values in the `template` the same way you would in a [Prompt](https://docs.langflow.org/components-prompts) component. For example, to present a table of employees in Markdown:
-
-
 7. To run the flow, in the **Parser** component, click **Run component**.
 8. To view your parsed text, in the **Parser** component, click **Inspect output**.
 9. Optionally, connect a **Chat Output** component, and open the **Playground** to see the output.
@@ -189,13 +187,7 @@ To use this component in a flow:
 
 2. In the **Regex Extractor** tool, enter a pattern to extract text from the **URL** component's raw output. This example extracts the first paragraph from the "In the News" section of `https://en.wikipedia.org/wiki/Main_Page`:
 
-```
-```
-
 Result:
-
-```
-```
 
 ## **Save to File**
 
@@ -216,14 +208,7 @@ This component saves [DataFrames, Data, or Messages](https://docs.langflow.org/c
 </Tip>
 
 5. Send a POST request to the **Webhook** containing your JSON data. Replace `YOUR_FLOW_ID` with your flow ID. This example uses the default Langflow server address.
-
-```
-```
-
 6. In your local filesystem, open the `outputs` directory. You should see two files created from the data you've sent: one in `.xlsx` for structured spreadsheets, and one in Markdown.
-
-```
-```
 
 ### **File input format options**
 
@@ -273,5 +258,104 @@ For `Message` inputs, the component can create:
 
   To use the **Smart function** component, you must connect it to a [Language Model](https://docs.langflow.org/components-models#language-model) component, which the component uses to generate a function based on the natural language instructions in the **Instructions** field.
 
+  This example gets JSON data from the `https://jsonplaceholder.typicode.com/users` API endpoint. The **Instructions** field in the **Smart function** component specifies the task `extract emails`. The connected LLM creates a filter based on the instructions, and successfully extracts a list of email addresses from the JSON data.**Smart function**
+
+  This component uses an LLM to generate a Lambda function for filtering or transforming structured data.
+
+  To use the **Smart function** component, you must connect it to a [Language Model](https://docs.langflow.org/components-models#language-model) component, which the component uses to generate a function based on the natural language instructions in the **Instructions** field.
+
   This example gets JSON data from the `https://jsonplaceholder.typicode.com/users` API endpoint. The **Instructions** field in the **Smart function** component specifies the task `extract emails`. The connected LLM creates a filter based on the instructions, and successfully extracts a list of email addresses from the JSON data.
+</Accordion>
+
+## **Smart function**
+
+This component uses an LLM to generate a Lambda function for filtering or transforming structured data.
+
+To use the **Smart function** component, you must connect it to a [Language Model](https://docs.langflow.org/components-models#language-model) component, which the component uses to generate a function based on the natural language instructions in the **Instructions** field.
+
+This example gets JSON data from the `https://jsonplaceholder.typicode.com/users` API endpoint. The **Instructions** field in the **Smart function** component specifies the task `extract emails`. The connected LLM creates a filter based on the instructions, and successfully extracts a list of email addresses from the JSON data.
+
+# image
+
+<Accordion title="Parameters">
+  ## **Split text**
+
+  This component splits text into chunks based on specified criteria. It's ideal for chunking data to be tokenized and embedded into vector databases.
+
+  The **Split Text** component outputs **Chunks** or **DataFrame**. The **Chunks** output returns a list of individual text chunks. The **DataFrame** output returns a structured data format, with additional `text` and `metadata` columns applied.
+
+  1. To use this component in a flow, connect a component that outputs [Data or DataFrame](https://docs.langflow.org/concepts-objects) to the **Split Text** component's **Data** port. This example uses the **URL** component, which is fetching JSON placeholder data.**Split text**
+
+     This component splits text into chunks based on specified criteria. It's ideal for chunking data to be tokenized and embedded into vector databases.
+
+     The **Split Text** component outputs **Chunks** or **DataFrame**. The **Chunks** output returns a list of individual text chunks. The **DataFrame** output returns a structured data format, with additional `text` and `metadata` columns applied.
+     1. To use this component in a flow, connect a component that outputs [Data or DataFrame](https://docs.langflow.org/concepts-objects) to the **Split Text** component's **Data** port. This example uses the **URL** component, which is fetching JSON placeholder data.**Split text**
+
+        This component splits text into chunks based on specified criteria. It's ideal for chunking data to be tokenized and embedded into vector databases.
+
+        The **Split Text** component outputs **Chunks** or **DataFrame**. The **Chunks** output returns a list of individual text chunks. The **DataFrame** output returns a structured data format, with additional `text` and `metadata` columns applied.
+        1. To use this component in a flow, connect a component that outputs [Data or DataFrame](https://docs.langflow.org/concepts-objects) to the **Split Text** component's **Data** port. This example uses the **URL** component, which is fetching JSON placeholder data.**plit text**
+
+           This component splits text into chunks based on specified criteria. It's ideal for chunking data to be tokenized and embedded into vector databases.
+
+           The **Split Text** component outputs **Chunks** or **DataFrame**. The **Chunks** output returns a list of individual text chunks. The **DataFrame** output returns a structured data format, with additional `text` and `metadata` columns applied.
+           1. To use this component in a flow, connect a component that outputs [Data or DataFrame](https://docs.langflow.org/concepts-objects) to the **Split Text** component's **Data** port. This example uses the **URL** component, which is fetching JSON placeholder data.**plit text**
+
+              This component splits text into chunks based on specified criteria. It's ideal for chunking data to be tokenized and embedded into vector databases.
+
+              The **Split Text** component outputs **Chunks** or **DataFrame**. The **Chunks** output returns a list of individual text chunks. The **DataFrame** output returns a structured data format, with additional `text` and `metadata` columns applied.
+              1. To use this component in a flow, connect a component that outputs [Data or DataFrame](https://docs.langflow.org/concepts-objects) to the **Split Text** component's **Data** port. This example uses the **URL** component, which is fetching JSON placeholder data.
+</Accordion>
+
+## **Split text**
+
+This component splits text into chunks based on specified criteria. It's ideal for chunking data to be tokenized and embedded into vector databases.
+
+The **Split Text** component outputs **Chunks** or **DataFrame**. The **Chunks** output returns a list of individual text chunks. The **DataFrame** output returns a structured data format, with additional `text` and `metadata` columns applied.
+
+1. To use this component in a flow, connect a component that outputs [Data or DataFrame](https://docs.langflow.org/concepts-objects) to the **Split Text** component's **Data** port. This example uses the **URL** component, which is fetching JSON placeholder data.
+
+# image
+
+2. In the **Split Text** component, define your data splitting parameters.
+
+This example splits incoming JSON data at the separator `},`, so each chunk contains one JSON object.
+
+The order of precedence is **Separator**, then **Chunk Size**, and then **Chunk Overlap**. If any segment after separator splitting is longer than `chunk_size`, it is split again to fit within `chunk_size`.
+
+After `chunk_size`, **Chunk Overlap** is applied between chunks to maintain context.
+
+3. Connect a **Chat Output** component to the **Split Text** component's **DataFrame** output to view its output.
+4. Click **Playground**, and then click **Run Flow**. The output contains a table of JSON objects split at `},`.
+
+```
+```
+
+5. Clear the **Separator** field, and then run the flow again. Instead of JSON objects, the output contains 50-character lines of text with 10 characters of overlap.
+
+```
+```
+
+<Accordion title="Parameters">
+  ## **Update data**
+
+  This component dynamically updates or appends data with specified fields.
+
+  Parameters
+
+  ## **Legacy components**
+
+  **Legacy** components are available for use but are no longer supported.
+
+  ### **Alter metadatUpdate data**
+
+  This component dynamically updates or appends data with specified fields.
+
+  Parameters
+
+  ## **Legacy components**
+
+  **Legacy** components are available for use but are no longer supported.
+
+  ### **Alter metadatUpdate data**
 </Accordion>
