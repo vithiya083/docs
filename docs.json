@@ -102,39 +102,39 @@
               "Integrations/AstraDBMCPserver",
               "Integrations/Cleanlab",
               "Integrations/Composition",
+              {
+                "group": "Google",
+                "pages": [
+                  "Integrations/Google/google-oauth-langflow",
+                  "Integrations/Google/google-vertex-ai-langflow",
+                  "Integrations/Google/google-bigquery-langflow"
+                ]
+              },
               "Integrations/langfuse",
               "Integrations/langsmith",
-              "Integrations/langwatch"
-            ]
-          },
-          {
-            "group": "Google",
-            "pages": [
-              "Integrations/Google/google-oauth-langflow",
-              "Integrations/Google/google-vertex-ai-langflow",
-              "Integrations/Google/google-bigquery-langflow"
-            ]
-          },
-          {
-            "group": "Notion",
-            "pages": [
-              "Integrations/Notion/notion-setup",
-              "Integrations/Notion/notion-conversational-agent",
-              "Integrations/Notion/notion-meeting-notes-agent"
-            ]
-          },
-          {
-            "group": "Opik",
-            "pages": [
-              "Integrations/Opik/opik"
-            ]
-          },
-          {
-            "group": "NVIDIA",
-            "pages": [
-              "Integrations/NVIDIA/NVIDIAIngest",
-              "Integrations/NVIDIA/NVIDIAMonWSL2",
-              "Integrations/NVIDIA/NVIDIAG-Assist"
+              "Integrations/langwatch",
+              {
+                "group": "Opik",
+                "pages": [
+                  "Integrations/Opik/opik"
+                ]
+              },
+              {
+                "group": "Notion",
+                "pages": [
+                  "Integrations/Notion/notion-setup",
+                  "Integrations/Notion/notion-conversational-agent",
+                  "Integrations/Notion/notion-meeting-notes-agent"
+                ]
+              },
+              {
+                "group": "NVIDIA",
+                "pages": [
+                  "Integrations/NVIDIA/NVIDIAIngest",
+                  "Integrations/NVIDIA/NVIDIAMonWSL2",
+                  "Integrations/NVIDIA/NVIDIAG-Assist"
+                ]
+              }
             ]
           }
         ]
