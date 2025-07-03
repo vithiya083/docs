@@ -1,5 +1,93 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Model components in Langflow"
 ---
 
+Model components generate text using large language models.
+
+Refer to your specific component's documentation for more information on parameters.
+
+## **Use a model component in a flow**
+
+Model components receive inputs and prompts for generating text, and the generated text is sent to an output component.
+
+The model output can also be sent to the **Language Model** port and on to a **Parse Data** component, where the output can be parsed into structured [Data](https://docs.langflow.org/concepts-objects) objects.
+
+This example has the OpenAI model in a chatbot flow. For more information, see the [Basic prompting flow](https://docs.langflow.org/basic-prompting).
+
+# image
+
+## **AIML**
+
+This component creates a ChatOpenAI model instance using the AIML API.
+
+For more information, see [AIML documentation](https://docs.aimlapi.com/).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Amazon Bedrock**
+
+This component generates text using Amazon Bedrock LLMs.
+
+For more information, see [Amazon Bedrock documentation](https://docs.aws.amazon.com/bedrock).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Anthropic**
+
+This component allows the generation of text using Anthropic Chat and Language models.
+
+For more information, see the [Anthropic documentation](https://docs.anthropic.com/en/docs/welcome).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Azure OpenAI**
+
+This component generates text using Azure OpenAI LLM.
+
+For more information, see the [Azure OpenAI documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Cohere**
+
+This component generates text using Cohere's language models.
+
+For more information, see the [Cohere documentation](https://cohere.ai/).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **DeepSeek**
+
+This component generates text using DeepSeek's language models.
+
+For more information, see the [DeepSeek documentation](https://api-docs.deepseek.com/).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Google Generative AI**
+
+This component generates text using Google's Generative AI models.
+
+For more information, see the [Google Generative AI documentation](https://cloud.google.com/vertex-ai/docs/).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Groq**
+
+This component generates text using Groq's language models.
+
+1. To use this component in a flow, connect it as a **Model** in a flow like the [Basic prompting flow](https://docs.langflow.org/basic-prompting), or select it as the **Model Provider** if you're using an **Agent** component.
