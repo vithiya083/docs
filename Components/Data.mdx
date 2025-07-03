@@ -4,21 +4,21 @@ title: "Data components in Langflow"
 
 # Data Components
 
-Data components load data from a source into your flow. They may perform some processing or type checking, like converting raw HTML data into text, or ensuring your loaded file is of an acceptable type.
+Data components load data from a source into your flow. 
 
-## URL Component
+They may perform some processing or type checking, like converting raw HTML data into text, or ensuring your loaded file is of an acceptable type.
+
+## **Use a data component in a flow**
 
 The **URL** data component loads content from a list of URLs.
 
-### Configuration
+     In the component's **URLs** field, enter the URL you want to load
 
-- In the component's **URLs** field, enter the URL you want to load
-- To add multiple URL fields, click the add button
-- Alternatively, connect a component that outputs the `Message` type, like the **Chat Input** component, to supply your URLs from a component
+     To add multiple URL fields, click the add button
 
-### Example Use Case
+      Alternatively, connect a component that outputs the `Message` type, like the **Chat Input**              component, to supply your URLs from a component
 
-In a document ingestion pipeline, the URL component outputs raw HTML to a text splitter, which splits the raw content into chunks for a vector database to ingest.
+# image
 
 ## API Request Component
 
@@ -27,34 +27,38 @@ This component makes HTTP requests using URLs or cURL commands.
 ### Setup Instructions
 
 1. Connect the **Data** output to a component that accepts the input (for example, connect the **API Request** component to a **Chat Output** component)
+
+# image
+
 2. In the API component's **URLs** field, enter the endpoint for your request
 3. In the **Method** field, enter the type of request (GET, POST, PATCH, PUT, or DELETE)
 4. Optionally, enable the **Use cURL** button to create a field for pasting curl requests
 5. Click **Playground**, then click **Run Flow** to execute your request
 
-## Directory Component
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## Directory 
 
 This component recursively loads files from a directory, with options for file types, depth, and concurrency.
 
-### Features
+<Accordion title="Parameters">
+  
+</Accordion>
 
-- Recursive file loading
-- Configurable file type filtering
-- Adjustable directory depth
-- Concurrent processing options
-
-## File Component
+##  File
 
 This component loads and parses files of various supported formats and converts the content into a Data object. It supports multiple file types and provides options for parallel processing and error handling.
 
-### How to Load a Document
+To Load a Document
 
 1. Click the **Select files** button
 2. Select a local file or a file loaded with File management
-3. Click **Select file**
-4. The loaded file name appears in the component
 
-**Note:** The default maximum supported file size is 100 MB. To modify this value, see the `--max-file-size-upload` configuration option.
+   <Accordion title="Parameters">
+     
+   </Accordion>
 
 ### Supported File Types
 
@@ -88,51 +92,28 @@ _For bundling multiple files:_
 - `.bz2` - Bzip2 compressed files
 - `.gz` - Gzip compressed files
 
-## SQL Query Component
+## SQL Query
 
 This component executes SQL queries on a specified database.
 
-### Capabilities
+<Accordion title="Parameters">
+  
+</Accordion>
 
-- Execute SELECT, INSERT, UPDATE, DELETE queries
-- Connect to various database types
-- Handle query parameters safely
-- Return results in structured format
-
-## URL Data Component
+## URL 
 
 This component fetches content from one or more URLs, processes the content, and returns it in various formats. It supports output in plain text or raw HTML.
 
-### Configuration Steps
+In the component's **URLs** field, enter the URL you want to load
 
-1. In the component's **URLs** field, enter the URL you want to load
-2. To add multiple URL fields, click **Add URL**
-3. Connect the **DataFrame** output to a component that accepts the input
-4. For example, connect the **URL** component to a **Chat Output** component
+1. To use this component in a flow, connect the **DataFrame** output to a component that accepts the input. For example, connect the **URL** component to a **Chat Output** component.
 
-### Output Options
+# image
 
-- Plain text format
-- Raw HTML format
-- Structured data format
+2. In the URL component's **URLs** field, enter the URL for your request. This example uses `langflow.org`.
+3. Optionally, in the **Max Depth** field, enter how many pages away from the initial URL you want to crawl. Select `1` to crawl only the page specified in the **URLs** field. Select `2` to crawl all pages linked from that page. The component crawls by link traversal, not by URL path depth.
+4. Click **Playground**, and then click **Run Flow**. The text contents of the URL are returned to the Playground as a structured DataFrame.
+5. In the **URL** component, change the output port to **Message**, and then run the flow again. The text contents of the URL are returned as unstructured raw text, which you can extract patterns from with the **Regex Extractor** tool.
+6. Connect the **URL** component to a **Regex Extractor** and **Chat Output**.
 
-## Best Practices
-
-### Performance Optimization
-
-- Use appropriate file size limits
-- Enable parallel processing when handling multiple files
-- Configure timeout settings for network requests
-
-### Error Handling
-
-- Implement retry logic for network requests
-- Validate file formats before processing
-- Handle missing or corrupted files gracefully
-
-### Security Considerations
-
-- Validate URLs before making requests
-- Sanitize file inputs
-- Use appropriate authentication methods
-- Implement rate limiting for API requests
+# image
