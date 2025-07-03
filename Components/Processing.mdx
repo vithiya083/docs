@@ -328,13 +328,8 @@ After `chunk_size`, **Chunk Overlap** is applied between chunks to maintain cont
 3. Connect a **Chat Output** component to the **Split Text** component's **DataFrame** output to view its output.
 4. Click **Playground**, and then click **Run Flow**. The output contains a table of JSON objects split at `},`.
 
-```
-```
 
 5. Clear the **Separator** field, and then run the flow again. Instead of JSON objects, the output contains 50-character lines of text with 10 characters of overlap.
-
-```
-```
 
 <Accordion title="Parameters">
   ## **Update data**
@@ -358,4 +353,170 @@ After `chunk_size`, **Chunk Overlap** is applied between chunks to maintain cont
   **Legacy** components are available for use but are no longer supported.
 
   ### **Alter metadatUpdate data**
+</Accordion>
+
+## **Update data**
+
+This component dynamically updates or appends data with specified fields.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Legacy components**
+
+**Legacy** components are available for use but are no longer supported.
+
+### **Alter metadata**
+
+<Note>
+  **important**
+
+  This component is in **Legacy**, which means it is available for use but no longer in active development. Instead, use the [<u>Data operations</u>](https://docs.langflow.org/components-processing#data-operations) component.
+</Note>
+
+This component modifies metadata of input objects. It can add new metadata, update existing metadata, and remove specified metadata fields. The component works with both [Message](https://docs.langflow.org/concepts-objects#message-object) and [Data](https://docs.langflow.org/concepts-objects#data-object) objects, and can also create a new Data object from user-provided text.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Combine data**
+
+<Note>
+  **important**
+
+  This component is in **Legacy**, which means it is available for use but no longer in active development. Prior to Langflow version 1.1.3, this component was named **Merge Data**.
+</Note>
+
+This component combines multiple data sources into a single unified [Data](https://docs.langflow.org/concepts-objects#data-object) object.
+
+The component iterates through the input list of data objects, merging them into a single data object. If the input list is empty, it returns an empty data object. If there's only one input data object, it returns that object unchanged. The merging process uses the addition operator to combine data objects.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Combine text**
+
+<Note>
+  **important**
+
+  This component is in **Legacy**, which means it is available for use but no longer in active development. Prior to Langflow version 1.1.3, this component was named **Merge Data**.
+</Note>
+
+This component concatenates two text sources into a single text chunk using a specified delimiter.
+
+1. To use this component in a flow, connect two components that output [Messages](https://docs.langflow.org/concepts-objects#message-object) to the **Combine Text** component's **First Text** and **Second Text** inputs. This example uses two **Text Input** components.
+
+# image
+
+2. In the **Combine Text** component, in the **Text** fields of both **Text Input** components, enter some text to combine.
+3. In the **Combine Text** component, enter an optional **Delimiter** value. The delimiter character separates the combined texts. This example uses `\n\n **end first text** \n\n **start second text** \n\n` to label the texts and create newlines between them.
+4. Connect a **Chat Output** component to view the text combination.
+5. Click **Playground**, and then click **Run Flow**. The combined text appears in the **Playground**.
+
+```
+```
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Create data**
+
+<Note>
+  **important**
+
+  This component is in **Legacy**, which means it is available for use but no longer in active development.
+</Note>
+
+This component dynamically creates a [Data](https://docs.langflow.org/concepts-objects#data-object) object with a specified number of fields.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Filter data**
+
+<Note>
+  **important**
+
+  This component is in **Legacy**, which means it is available for use but no longer in active development. Instead, use the [<u>Data operations</u>](https://docs.langflow.org/components-processing#data-operations) component.
+</Note>
+
+This component filters a [Data](https://docs.langflow.org/concepts-objects#data-object) object based on a list of keys.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Filter values**
+
+<Note>
+  **important**
+
+  This component is in **Legacy**, which means it is available for use but no longer in active development. Instead, use the [<u>Data operations</u>](https://docs.langflow.org/components-processing#data-operations) component.
+</Note>
+
+The Filter values component filters a list of data items based on a specified key, filter value, and comparison operator.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **JSON cleaner**
+
+<Note>
+  **important**
+
+  This component is in **Legacy**, which means it is available for use but no longer in active development.
+</Note>
+
+The JSON cleaner component cleans JSON strings to ensure they are fully compliant with the JSON specification.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Parse DataFrame**
+
+<Note>
+  **important**
+
+  This component is in **Legacy**, which means it is available for use but no longer in active development. Instead, use the [<u>Parser</u>](https://docs.langflow.org/components-processing#parser) component.
+</Note>
+
+This component converts DataFrames into plain text using templates.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Parse JSON**
+
+<Note>
+  **important**
+
+  This component is in **Legacy**, which means it is available for use but no longer in active development.
+</Note>
+
+This component converts and extracts JSON fields using JQ queries.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Select data**
+
+<Note>
+  **important**
+
+  This component is in **Legacy**, which means it is available for use but no longer in active development.
+</Note>
+
+This component selects a single [Data](https://docs.langflow.org/concepts-objects#data-object) item from a list.
+
+<Accordion title="Parameters">
+  
 </Accordion>
