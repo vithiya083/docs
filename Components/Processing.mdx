@@ -27,9 +27,6 @@ This example fetches JSON data from an API. The **Smart function** component ext
 3. In the **Groq** model component, add your **Groq** API key.
 4. To filter the data, in the **Smart function** component, in the **Instructions** field, use natural language to describe how the data should be filtered. For this example, enter:
 
-```
-```
-
 <Tip>
   TIP
 
@@ -39,14 +36,123 @@ This example fetches JSON data from an API. The **Smart function** component ext
 5. To run the flow, in the **Smart function** component, click **Run component**.
 6. To inspect the filtered data, in the **Smart function** component, click **Inspect output**. The result is a structured DataFrame.
 
-```
-```
 
  7. Add the **DataFrame Operations** component, and a **Chat Output** component to the flow.
  8. In the **DataFrame Operations** component, in the **Operation** field, select **Filter**.
  9. To apply a filter, in the **Column Name** field, enter a column to filter on. This example filters by `name`.
 10. Click **Playground**, and then click **Run Flow**. The flow extracts the values from the `name` column.
 
-    ```
-    
-    ```
+```
+```
+
+### **Operations**
+
+This component can perform the following operations on Pandas [DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html).
+
+| **Operation**  | **Required Inputs**                           | **Info**                                 |
+| :------------- | :-------------------------------------------- | :--------------------------------------- |
+| Add Column     | new_column_name, new_column_value             | Adds a new column with a constant value. |
+| Drop Column    | column_name                                   | Removes a specified column.              |
+| Filter         | column_name, filter_value                     | Filters rows based on column value.      |
+| Head           | num_rows                                      | Returns first `n` rows.                  |
+| Rename Column  | column_name, new_column_name                  | Renames an existing column.              |
+| Replace Value  | column_name, replace_value, replacement_value | Replaces values in a column.             |
+| Select Columns | columns_to_select                             | Selects specific columns.                |
+| Sort           | column_name, ascending                        | Sorts DataFrame by column.               |
+| Tail           | num_rows                                      | Returns last `n` rows.                   |
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Data operations**
+
+This component performs operations on [Data](https://docs.langflow.org/concepts-objects#data-object) objects, including selecting keys, evaluating literals, combining data, filtering values, appending/updating data, removing keys, and renaming keys.
+
+1. To use this component in a flow, connect a component that outputs [Data](https://docs.langflow.org/concepts-objects#data-object) to the **Data Operations** component's input. All operations in the component require at least one [Data](https://docs.langflow.org/concepts-objects#data-object) input.
+2. In the **Operations** field, select the operation you want to perform. For example, send this request to the **Webhook** component. Replace `YOUR_FLOW_ID` with your flow ID.
+
+```
+```
+
+   3. In the **Data Operations** component, select the **Select Keys** operation to extract specific user information. To add additional keys, click **Add More**.
+
+# image
+
+4. Filter by `name`, `username`, and `email` to select the values from the request.
+
+```
+```
+
+### **Operations**
+
+The component supports the following operations. All operations in the **Data operations** component require at least one [Data](https://docs.langflow.org/concepts-objects#data-object) input.
+
+| **Operation**    | **Required Inputs**                       | **Info**                                    |
+| :--------------- | :---------------------------------------- | :------------------------------------------ |
+| Select Keys      | `select_keys_input`                       | Selects specific keys from the data.        |
+| Literal Eval     | None                                      | Evaluates string values as Python literals. |
+| Combine          | None                                      | Combines multiple data objects into one.    |
+| Filter Values    | `filter_key`, `filter_values`, `operator` | Filters data based on key-value pair.       |
+| Append or Update | `append_update_data`                      | Adds or updates key-value pairs.            |
+| Remove Keys      | `remove_keys_input`                       | Removes specified keys from the data.       |
+| Rename Keys      | `rename_keys_input`                       | Renames keys in the data.                   |
+
+Parameters
+
+## **Data to DataFrame**
+
+This component converts one or multiple [Data](https://docs.langflow.org/concepts-objects#data-object) objects into a [DataFrame](https://docs.langflow.org/concepts-objects#dataframe-object). Each Data object corresponds to one row in the resulting DataFrame. Fields from the `.data` attribute become columns, and the `.text` field (if present) is placed in a 'text' column.
+
+1. To use this component in a flow, connect a component that outputs [Data](https://docs.langflow.org/concepts-objects#data-object) to the **Data to Dataframe** component's input. This example connects a **Webhook** component to convert `text` and `data` into a DataFrame.
+2. To view the flow's output, connect a **Chat Output** component to the **Data to Dataframe** component.
+
+# image
+
+3. Send a POST request to the **Webhook** containing your JSON data. Replace `YOUR_FLOW_ID` with your flow ID. This example uses the default Langflow server address.
+
+```
+```
+
+4. In the **Playground**, view the output of your flow. The **Data to DataFrame** component converts the webhook request into a `DataFrame`, with `text` and `data` fields as columns.
+
+```
+```
+
+5. Send another employee data object.
+
+```
+```
+
+6. In the **Playground**, this request is also converted to `DataFrame`.
+
+```
+```
+
+<Accordion title="Parameters">
+  ## **LLM router**
+
+  This component routes requests to the most appropriate LLM based on OpenRouter model specifications.
+
+  Parameters
+
+  ## **Message tLLM router**
+
+  This component routes requests to the most appropriate LLM based on OpenRouter model specifications.
+
+  Parameters
+
+  ## **Message tLLM router**
+
+  This component routes requests to the most appropriate LLM based on OpenRouter model specifications.
+
+  Parameters
+
+  ## **Message tLLM router**
+
+  This component routes requests to the most appropriate LLM based on OpenRouter model specifications.
+
+  Parameters
+
+  ## **Message tLLM routerLLM routerLLM router**
+</Accordion>
