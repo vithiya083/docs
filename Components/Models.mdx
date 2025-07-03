@@ -91,3 +91,123 @@ For more information, see the [Google Generative AI documentation](https://cloud
 This component generates text using Groq's language models.
 
 1. To use this component in a flow, connect it as a **Model** in a flow like the [Basic prompting flow](https://docs.langflow.org/basic-prompting), or select it as the **Model Provider** if you're using an **Agent** component.
+
+# image
+
+2. In the **Groq API Key** field, paste your Groq API key. The Groq model component automatically retrieves a list of the latest models. To refresh your list of models, click **Refresh**.
+3. In the **Model** field, select the model you want to use for your LLM. This example uses [llama-3.1-8b-instant](https://console.groq.com/docs/model/llama-3.1-8b-instant), which Groq recommends for real-time conversational interfaces.
+4. In the **Prompt** component, enter:
+
+
+5. Click **Playground** and ask your Groq LLM a question. The responses include a list of sources.
+
+For more information, see the [Groq documentation](https://groq.com/).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Hugging Face API**
+
+This component sends requests to the Hugging Face API to generate text using the model specified in the **Model ID** field.
+
+The Hugging Face API is a hosted inference API for models hosted on Hugging Face, and requires a [Hugging Face API token](https://huggingface.co/docs/hub/security-tokens) to authenticate.
+
+In this example based on the [Basic prompting flow](https://docs.langflow.org/basic-prompting), the **Hugging Face API** model component replaces the **Open AI** model. By selecting different hosted models, you can see how different models return different results.
+
+1. Create a [Basic prompting flow](https://docs.langflow.org/basic-prompting).
+2. Replace the **OpenAI** model component with a **Hugging Face API** model component.
+3. In the **Hugging Face API** component, add your Hugging Face API token to the **API Token** field.
+4. Open the **Playground** and ask a question to the model, and see how it responds.
+5. Try different models, and see how they perform differently.
+
+For more information, see the [Hugging Face documentation](https://huggingface.co/).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## IBM  [**watsonx.ai**](http://watsonx.ai)
+
+This component generates text using [IBM ](https://www.ibm.com/watsonx)[watsonx.ai](http://watsonx.ai) foundation models.
+
+To use \*\*IBM \*\*[**watsonx.ai**](http://watsonx.ai) model components, replace a model component with the IBM [watsonx.ai](http://watsonx.ai) component in a flow.
+
+An example flow looks like the following:
+
+# image
+
+The values for **API endpoint**, **Project ID**, **API key**, and **Model Name** are found in your IBM watsonx.ai deployment. For more information, see the [Langchain documentation](https://python.langchain.com/docs/integrations/chat/ibm_watsonx/).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Language model**
+
+This component generates text using either OpenAI or Anthropic language models.
+
+Use this component as a drop-in replacement for LLM models to switch between different model providers and models.
+
+Instead of swapping out model components when you want to try a different provider, like switching between OpenAI and Anthropic components, change the provider dropdown in this single component. This makes it easier to experiment with and compare different models while keeping the rest of your flow intact.
+
+For more information, see the [OpenAI documentation](https://platform.openai.com/docs) and [Anthropic documentation](https://docs.anthropic.com/).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **LMStudio**
+
+This component generates text using LM Studio's local language models.
+
+For more information, see [LM Studio documentation](https://lmstudio.ai/).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Maritalk**
+
+This component generates text using Maritalk LLMs.
+
+For more information, see [Maritalk documentation](https://www.maritalk.com/).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Mistral**
+
+This component generates text using MistralAI LLMs.
+
+For more information, see [Mistral AI documentation](https://docs.mistral.ai/).
+
+/
+
+## **Novita AI**
+
+This component generates text using Novita AI's language models.
+
+For more information, see [Novita AI documentation](https://novita.ai/docs/model-api/reference/llm/llm.html?utm_source=github_langflow&utm_medium=github_readme&utm_campaign=link).
+
+Parameters
+
+## **NVIDIA**
+
+This component generates text using NVIDIA LLMs.
+
+For more information, see [NVIDIA AI documentation](https://developer.nvidia.com/generative-ai).
+
+Parameters
+
+## **Ollama**
+
+This component generates text using Ollama's language models.
+
+To use this component in a flow, connect Langflow to your locally running Ollama server and select a model.
+
+1. In the Ollama component, in the **Base URL** field, enter the address for your locally running Ollama server. This value is set as the `OLLAMA_HOST` environment variable in Ollama. The default base URL is `http://localhost:11434`.
+2. To refresh the server's list of models, click **Refresh**.
+3. In the **Model Name** field, select a model. This example uses `llama3.2:latest`.
+4. Connect the **Ollama** model component to a flow. For example, this flow connects a local Ollama server running a Llama 3.2 model as the custom model for an [Agent](https://docs.langflow.org/components-agents) component.
