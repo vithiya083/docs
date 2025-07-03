@@ -4,7 +4,7 @@ title: "Data components in Langflow"
 
 # Data Components
 
-Data components load data from a source into your flow. 
+Data components load data from a source into your flow.
 
 They may perform some processing or type checking, like converting raw HTML data into text, or ensuring your loaded file is of an acceptable type.
 
@@ -12,11 +12,11 @@ They may perform some processing or type checking, like converting raw HTML data
 
 The **URL** data component loads content from a list of URLs.
 
-     In the component's **URLs** field, enter the URL you want to load
+In the component's **URLs** field, enter the URL you want to load
 
-     To add multiple URL fields, click the add button
+To add multiple URL fields, click the add button
 
-      Alternatively, connect a component that outputs the `Message` type, like the **Chat Input**              component, to supply your URLs from a component
+Alternatively, connect a component that outputs the `Message` type, like the **Chat Input**              component, to supply your URLs from a component
 
 # image
 
@@ -39,7 +39,7 @@ This component makes HTTP requests using URLs or cURL commands.
   
 </Accordion>
 
-## Directory 
+## Directory
 
 This component recursively loads files from a directory, with options for file types, depth, and concurrency.
 
@@ -47,7 +47,7 @@ This component recursively loads files from a directory, with options for file t
   
 </Accordion>
 
-##  File
+## File
 
 This component loads and parses files of various supported formats and converts the content into a Data object. It supports multiple file types and provides options for parallel processing and error handling.
 
@@ -100,7 +100,7 @@ This component executes SQL queries on a specified database.
   
 </Accordion>
 
-## URL 
+## URL
 
 This component fetches content from one or more URLs, processes the content, and returns it in various formats. It supports output in plain text or raw HTML.
 
@@ -117,3 +117,70 @@ In the component's **URLs** field, enter the URL you want to load
 6. Connect the **URL** component to a **Regex Extractor** and **Chat Output**.
 
 # image
+
+7. In the **Regex Extractor** tool, enter a pattern to extract text from the **URL** component's raw output. This example extracts the first paragraph from the "In the News" section of `https://en.wikipedia.org/wiki/Main_Page`.
+
+Result:
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Webhook**
+
+This component defines a webhook trigger that runs a flow when it receives an HTTP POST request.
+
+If the input is not valid JSON, the component wraps it in a `payload` object so that it can be processed and still trigger the flow. The component does not require an API key.
+
+When a **Webhook** component is added to the workspace, a new **Webhook cURL** tab becomes available in the **API** pane that contains an HTTP POST request for triggering the webhook component. For example:
+
+```
+```
+
+To test the webhook component:
+
+1. Add a **Webhook** component to the flow.
+2. Connect the **Webhook** component's **Data** output to the **Data** input of a [Parser](https://docs.langflow.org/components-processing#parser) component.
+3. Connect the **Parser** component's **Parsed Text** output to the **Text** input of a [Chat Output](https://docs.langflow.org/components-io#chat-output) component.
+4. In the **Parser** component, under **Mode**, select **Stringify**. This mode passes the webhook's data as a string for the **Chat Output** component to print.
+5. To send a POST request, copy the code from the **Webhook cURL** tab in the **API** pane and paste it into a terminal.
+6. Send the POST request.
+7. Open the **Playground**. Your JSON data is posted to the **Chat Output** component, which indicates that the webhook component is correctly triggering the flow.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Legacy components**
+
+Legacy components are available for use but are no longer supported.
+
+### **Gmail Loader**
+
+This component loads emails from Gmail using provided credentials and filters.
+
+For more information about creating a service account JSON, see [Service Account JSON](https://developers.google.com/identity/protocols/oauth2/service-account).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Google Drive Loader**
+
+This component loads documents from Google Drive using provided credentials and a single document ID.
+
+For more information about creating a service account JSON, see [Service Account JSON](https://developers.google.com/identity/protocols/oauth2/service-account).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Google Drive Search**
+
+This component searches Google Drive files using provided credentials and query parameters.
+
+For more information about creating a service account JSON, see [Service Account JSON](https://developers.google.com/identity/protocols/oauth2/service-account).
+
+<Accordion title="Parameters">
+  
+</Accordion>
