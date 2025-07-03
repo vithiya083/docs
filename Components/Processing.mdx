@@ -1,5 +1,52 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Processing"
 ---
 
+Processing components process and transform data within a flow.
+
+## **Use a processing component in a flow**
+
+The **Split Text** processing component in this flow splits the incoming [Data](https://docs.langflow.org/concepts-objects) into chunks to be embedded into the vector store component.
+
+The component offers control over chunk size, overlap, and separator, which affect context and granularity in vector store retrieval results.
+
+# image
+
+## **DataFrame operations**
+
+This component performs operations on [DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) rows and columns.
+
+To use this component in a flow, connect a component that outputs [DataFrame](https://docs.langflow.org/concepts-objects#dataframe-object) to the **DataFrame Operations** component.
+
+This example fetches JSON data from an API. The **Smart function** component extracts and flattens the results into a tabular DataFrame. The **DataFrame Operations** component can then work with the retrieved data.
+
+# image
+
+1. The **API Request** component retrieves data with only `source` and `result` fields. For this example, the desired data is nested within the `result` field.
+2. Connect a **Smart function** to the API request component, and a **Language model** to the **Smart function**. This example connects a **Groq** model component.
+3. In the **Groq** model component, add your **Groq** API key.
+4. To filter the data, in the **Smart function** component, in the **Instructions** field, use natural language to describe how the data should be filtered. For this example, enter:
+
+```
+```
+
+<Tip>
+  TIP
+
+  Avoid punctuation in the **Instructions** field, as it can cause errors.
+</Tip>
+
+5. To run the flow, in the **Smart function** component, click **Run component**.
+6. To inspect the filtered data, in the **Smart function** component, click **Inspect output**. The result is a structured DataFrame.
+
+```
+```
+
+ 7. Add the **DataFrame Operations** component, and a **Chat Output** component to the flow.
+ 8. In the **DataFrame Operations** component, in the **Operation** field, select **Filter**.
+ 9. To apply a filter, in the **Column Name** field, enter a column to filter on. This example filters by `name`.
+10. Click **Playground**, and then click **Run Flow**. The flow extracts the values from the `name` column.
+
+    ```
+    
+    ```
