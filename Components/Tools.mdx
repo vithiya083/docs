@@ -1,5 +1,219 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Tool components in Langflow"
 ---
 
+Tools are typically connected to agent components at the **Tools** port. Agents use LLMs as a reasoning engine to decide which of the connected tool components to use to solve a problem.
+
+Tools in agentic functions are, essentially, functions that the agent can call to perform tasks or access external resources. A function is wrapped as a `Tool` object, with a common interface the agent understands. Agents become aware of tools through tool registration, where the agent is provided a list of available tools, typically at agent initialization. The `Tool` object's description tells the agent what the tool can do.
+
+The agent then uses a connected LLM to reason through the problem to decide which tool is best for the job.
+
+## **Use a tool in a flow**
+
+Tools are typically connected to agent components at the **Tools** port.
+
+The [simple agent starter project](https://docs.langflow.org/simple-agent) uses URL and Calculator tools connected to an [agent component](https://docs.langflow.org/components-agents#agent-component) to answer a user's questions. The OpenAI LLM acts as a brain for the agent to decide which tool to use.
+
+# image
+
+To make a component into a tool that an agent can use, enable **Tool Mode** in the component. Enabling tool mode modifies a component input to accept calls from an agent. If the component you want to connect to an agent doesn't have a **Tool Mode** option, you can modify the component's inputs to become a tool. For an example, see [Make any component a tool](https://docs.langflow.org/agents-tools#make-any-component-a-tool).
+
+## **arXiv**
+
+This component searches and retrieves papers from [arXiv.org](http://arXiv.org).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Astra DB tool**
+
+This component allows agents to query data from Astra DB collections.
+
+To use this tool in a flow, connect it to an **Agent** component. The flow looks like this:
+
+# image
+
+The **Tool Name** and **Tool Description** fields are required for the Agent to decide when to use the tool. **Tool Name** cannot contain spaces.
+
+The values for **Collection Name**, **Astra DB Application Token**, and **Astra DB API Endpoint** are found in your Astra DB deployment. For more information, see the [DataStax documentation](https://docs.datastax.com/en/astra-db-serverless/databases/create-database.html).
+
+In this example, an **OpenAI** embeddings component is connected to use the Astra DB tool component's **Semantic Search** capability. To use **Semantic Search**, you must have an embedding model or Astra DB Vectorize enabled. If you try to run the flow without an embedding model, you will get an error.
+
+Open the **Playground** and ask a question about your data. The Agent uses the **Astra DB Tool** to return information about your collection.
+
+### **Define Astra DB tool parameters**
+
+The **Tool Parameters** configuration pane allows you to define parameters for [filter conditions](https://docs.datastax.com/en/astra-db-serverless/api-reference/document-methods/find-many.html#parameters) for the component's **Find** command.
+
+These filters become available as parameters that the LLM can use when calling the tool, with a better understanding of each parameter provided by the **Description** field.
+
+1. To define a parameter for your query, in the **Tool Parameters** pane, click **Add a new row**.
+2. Complete the fields based on your data. For example, with this filter, the LLM can filter by unique `customer_id` values.
+
+- Name: `customer_id`
+- Attribute Name: Leave empty if the attribute matches the field name in the database.
+- Description: `"The unique identifier of the customer to filter by"`.
+- Is Metadata: `False` unless the value stored in the metadata field.
+- Is Mandatory: `True` to require this filter.
+- Is Timestamp: `False` since the value is an ID, not a timestamp.
+- Operator: `$eq` to look for an exact match.
+
+If you want to apply filters regardless of the LLM's input, use the **Static Filters** option, which is available in the component's **Controls** pane.
+
+| **Parameter**  | **Description**                                                                                                                                                                                                                                                                                                                                                                                   |
+| :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Name           | The name of the parameter that is exposed to the LLM. It can be the same as the underlying field name or a more descriptive label. The LLM uses this name, along with the description, to infer what value to provide during execution.                                                                                                                                                           |
+| Attribute Name | When the parameter name shown to the LLM differs from the actual field or property in the database, use this setting to map the user-facing name to the correct attribute. For example, to apply a range filter to the timestamp field, define two separate parameters, such as `start_date` and `end_date`, that both reference the same timestamp attribute.                                    |
+| Description    | Provides instructions to the LLM on how the parameter should be used. Clear and specific guidance helps the LLM provide valid input. For example, if a field such as `specialty` is stored in lowercase, the description should indicate that the input must be lowercase.                                                                                                                        |
+| Is Metadata    | When loading data using LangChain or Langflow, additional attributes may be stored under a metadata object. If the target attribute is stored this way, enable this option. It adjusts the query by generating a filter in the format: `{"metadata.<attribute_name>": "<value>"}`                                                                                                                 |
+| Is Timestamp   | For date or time-based filters, enable this option to automatically convert values to the timestamp format that the Astrapy client expects. This ensures compatibility with the underlying API without requiring manual formatting.                                                                                                                                                               |
+| Operator       | Defines the filtering logic applied to the attribute. You can use any valid [Data API filter operator](https://docs.datastax.com/en/astra-db-serverless/api-reference/filter-operator-collections.html). For example, to filter a time range on the timestamp attribute, use two parameters: one with the `$gt` operator for "greater than", and another with the `$lt` operator for "less than". |
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Astra DB CQL Tool**
+
+The `Astra DB CQL Tool` allows agents to query data from CQL tables in Astra DB.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Bing Search API**
+
+This component allows you to call the Bing Search API.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Combinatorial Reasoner**
+
+This component runs Icosa's Combinatorial Reasoning (CR) pipeline on an input to create an optimized prompt with embedded reasons. For more information, see [Icosa computing](https://www.icosacomputing.com/).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **DuckDuckGo search**
+
+This component performs web searches using the [DuckDuckGo](https://www.duckduckgo.com/) search engine with result-limiting capabilities.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Exa Search**
+
+This component provides an [Exa Search](https://exa.ai/) toolkit for search and content retrieval.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Glean Search API**
+
+This component allows you to call the Glean Search API.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Google Serper API**
+
+This component allows you to call the Serper.dev Google Search API.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **MCP connection**
+
+The **MCP connection** component exposes Model Context Protocol (MCP) servers, including your other flows, as tools for Langflow agents. For information about this component, see [Use Langflow as an MCP client](https://docs.langflow.org/mcp-client).
+
+### **MCP Tools (deprecated)**
+
+The **MCP Tools (stdio)** and **MCP Tools (SSE)** components are deprecated as of Langflow version 1.3. They are replaced by the [MCP connection component](https://docs.langflow.org/mcp-client).
+
+## **Wikidata**
+
+This component performs a search using the Wikidata API.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Legacy components**
+
+Legacy components are available for use but are no longer supported.
+
+### **Calculator Tool**
+
+This component allows you to evaluate basic arithmetic expressions. It supports addition, subtraction, multiplication, division, and exponentiation.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Google Search API**
+
+This component allows you to call the Google Search API.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Python Code Structured Tool**
+
+This component creates a structured tool from Python code using a dataclass.
+
+The component dynamically updates its configuration based on the provided Python code, allowing for custom function arguments and descriptions.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Python REPL Tool**
+
+This component creates a Python REPL (Read-Eval-Print Loop) tool for executing Python code.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Retriever Tool**
+
+This component creates a tool for interacting with a retriever in LangChain.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Search API**
+
+This component calls the `searchapi.io` API. It can be used to search the web for information.
+
+For more information, see the [SearchAPI documentation](https://www.searchapi.io/docs/google).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **SearXNG Search Tool**
+
+This component creates a tool for searching using SearXNG, a metasearch engine.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Wikipedia API**
+
+This component creates a tool for searching and retrieving information from Wikipedia.
+
+<Accordion title="Parameters">
+  
+</Accordion>
