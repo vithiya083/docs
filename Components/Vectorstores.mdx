@@ -12,7 +12,7 @@ Vector database components are distinct from [memory components](https://docs.la
 
 This example uses the **Astra DB vector store** component. Your vector store component's parameters and authentication may be different, but the document ingestion workflow is the same. A document is loaded from a local machine and chunked. The Astra DB vector store generates embeddings with the connected [model](https://docs.langflow.org/components-models) component, and stores them in the connected Astra DB database.
 
-This vector data can then be retrieved for workloads like Retrieval Augmented Generation.
+This vector data can then be retrieved for workloads like Retrieval Augmented Generation..
 
 # image
 
@@ -76,13 +76,9 @@ To use **Hybrid search** in the **Astra DB** component, do the following:
 5. In the **Collection** field, select or create a collection with hybrid search capabilities enabled.
 6. In the **Playground**, enter a question about your data, such as `What are the features of my data?` Your query is sent to two components: an **OpenAI** model component and the **Astra DB** vector database component. The **OpenAI** component contains a prompt for creating the lexical query from your input:
 
-```
-```
 
 7. To view the keywords and questions the **OpenAI** component generates from your collection, in the **OpenAI** component, click **Inspect output**.
 
-```
-```
 
 8. To view the [DataFrame](https://docs.langflow.org/concepts-objects#dataframe-object) generated from the **OpenAI** component's response, in the **Structured Output** component, click **Inspect output**. The DataFrame is passed to a **Parser** component, which parses the contents of the **Keywords** column into a string.
 
@@ -222,3 +218,81 @@ To use the HCD vector store for embeddings ingestion, connect it to an embedding
 <Accordion title="Parameters">
   
 </Accordion>
+
+## **Milvus**
+
+This component creates a Milvus Vector Store with search capabilities. For more information, see the [Milvus documentation](https://milvus.io/docs).
+
+Parameters
+
+## **MongoDB Atlas**
+
+This component creates a MongoDB Atlas Vector Store with search capabilities. For more information, see the [MongoDB Atlas documentation](https://www.mongodb.com/docs/atlas/atlas-vector-search/tutorials/vector-search-quick-start/).
+
+Parameters
+
+## **Opensearch**
+
+This component creates an Opensearch vector store with search capabilities For more information, see [Opensearch documentation](https://opensearch.org/platform/search/vector-database.html).
+
+Parameters
+
+## **PGVector**
+
+This component creates a PGVector Vector Store with search capabilities. For more information, see the [PGVector documentation](https://github.com/pgvector/pgvector).
+
+Parameters
+
+## **Pinecone**
+
+This component creates a Pinecone Vector Store with search capabilities. For more information, see the [Pinecone documentation](https://docs.pinecone.io/home).
+
+Parameters
+
+## **Qdrant**
+
+This component creates a Qdrant Vector Store with search capabilities. For more information, see the [Qdrant documentation](https://qdrant.tech/documentation/).
+
+Parameters
+
+## **Redis**
+
+This component creates a Redis Vector Store with search capabilities. For more information, see the [Redis documentation](https://redis.io/docs/latest/develop/interact/search-and-query/advanced-concepts/vectors/).
+
+Parameters
+
+## **Supabase**
+
+This component creates a connection to a Supabase Vector Store with search capabilities. For more information, see the [Supabase documentation](https://supabase.com/docs/guides/ai).
+
+Parameters
+
+## **Upstash**
+
+This component creates an Upstash Vector Store with search capabilities. For more information, see the [Upstash documentation](https://upstash.com/docs/introduction).
+
+Parameters
+
+## **Vectara**
+
+This component creates a Vectara Vector Store with search capabilities. For more information, see the [Vectara documentation](https://docs.vectara.com/docs/).
+
+Parameters
+
+## **Vectara Search**
+
+This component searches a Vectara Vector Store for documents based on the provided input. For more information, see the [Vectara documentation](https://docs.vectara.com/docs/).
+
+Parameters
+
+## **Weaviate**
+
+This component facilitates a Weaviate Vector Store setup, optimizing text and document indexing and retrieval. For more information, see the [Weaviate Documentation](https://weaviate.io/developers/weaviate).
+
+Parameters
+
+## **Weaviate Search**
+
+This component searches a Weaviate Vector Store for documents similar to the input. For more information, see the [Weaviate Documentation](https://weaviate.io/developers/weaviate).
+
+Parameters
