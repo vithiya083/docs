@@ -75,11 +75,7 @@ To use **Hybrid search** in the **Astra DB** component, do the following:
 4. In the **Database** field, select your database.
 5. In the **Collection** field, select or create a collection with hybrid search capabilities enabled.
 6. In the **Playground**, enter a question about your data, such as `What are the features of my data?` Your query is sent to two components: an **OpenAI** model component and the **Astra DB** vector database component. The **OpenAI** component contains a prompt for creating the lexical query from your input:
-
-
 7. To view the keywords and questions the **OpenAI** component generates from your collection, in the **OpenAI** component, click **Inspect output**.
-
-
 8. To view the [DataFrame](https://docs.langflow.org/concepts-objects#dataframe-object) generated from the **OpenAI** component's response, in the **Structured Output** component, click **Inspect output**. The DataFrame is passed to a **Parser** component, which parses the contents of the **Keywords** column into a string.
 
    This string of comma-separated words is passed to the **Lexical Terms** port of the **Astra DB** component. Note that the **Search Query** port of the Astra DB port is connected to the **Chat Input** component from step 6. This **Search Query** is vectorized, and both the **Search Query** and **Lexical Terms** content are sent to the reranker at the `find_and_rerank` endpoint.
@@ -223,76 +219,102 @@ To use the HCD vector store for embeddings ingestion, connect it to an embedding
 
 This component creates a Milvus Vector Store with search capabilities. For more information, see the [Milvus documentation](https://milvus.io/docs).
 
-Parameters
+<Accordion title="Parameters">
+  
+</Accordion>
 
 ## **MongoDB Atlas**
 
 This component creates a MongoDB Atlas Vector Store with search capabilities. For more information, see the [MongoDB Atlas documentation](https://www.mongodb.com/docs/atlas/atlas-vector-search/tutorials/vector-search-quick-start/).
 
-Parameters
+<Accordion title="Parameters">
+  
+</Accordion>
 
 ## **Opensearch**
 
 This component creates an Opensearch vector store with search capabilities For more information, see [Opensearch documentation](https://opensearch.org/platform/search/vector-database.html).
 
-Parameters
+<Accordion title="Parameters">
+  
+</Accordion>
 
 ## **PGVector**
 
 This component creates a PGVector Vector Store with search capabilities. For more information, see the [PGVector documentation](https://github.com/pgvector/pgvector).
 
-Parameters
+<Accordion title="Parameters">
+  
+</Accordion>
 
 ## **Pinecone**
 
 This component creates a Pinecone Vector Store with search capabilities. For more information, see the [Pinecone documentation](https://docs.pinecone.io/home).
 
-Parameters
+<Accordion title="Parameters">
+  
+</Accordion>
 
 ## **Qdrant**
 
 This component creates a Qdrant Vector Store with search capabilities. For more information, see the [Qdrant documentation](https://qdrant.tech/documentation/).
 
-Parameters
+<Accordion title="Parameters">
+  
+</Accordion>
 
 ## **Redis**
 
 This component creates a Redis Vector Store with search capabilities. For more information, see the [Redis documentation](https://redis.io/docs/latest/develop/interact/search-and-query/advanced-concepts/vectors/).
 
-Parameters
+<Accordion title="Parameters">
+  
+</Accordion>
 
 ## **Supabase**
 
 This component creates a connection to a Supabase Vector Store with search capabilities. For more information, see the [Supabase documentation](https://supabase.com/docs/guides/ai).
 
-Parameters
+<Accordion title="Parameters">
+  
+</Accordion>
 
 ## **Upstash**
 
 This component creates an Upstash Vector Store with search capabilities. For more information, see the [Upstash documentation](https://upstash.com/docs/introduction).
 
-Parameters
+<Accordion title="Parameters">
+  
+</Accordion>
 
 ## **Vectara**
 
 This component creates a Vectara Vector Store with search capabilities. For more information, see the [Vectara documentation](https://docs.vectara.com/docs/).
 
-Parameters
+<Accordion title="Parameters">
+  
+</Accordion>
 
 ## **Vectara Search**
 
 This component searches a Vectara Vector Store for documents based on the provided input. For more information, see the [Vectara documentation](https://docs.vectara.com/docs/).
 
-Parameters
+<Accordion title="Parameters">
+  
+</Accordion>
 
 ## **Weaviate**
 
 This component facilitates a Weaviate Vector Store setup, optimizing text and document indexing and retrieval. For more information, see the [Weaviate Documentation](https://weaviate.io/developers/weaviate).
 
-Parameters
+<Accordion title="Parameters">
+  
+</Accordion>
 
 ## **Weaviate Search**
 
 This component searches a Weaviate Vector Store for documents similar to the input. For more information, see the [Weaviate Documentation](https://weaviate.io/developers/weaviate).
 
-Parameters
+<Accordion title="Parameters">
+  
+</Accordion>
