@@ -66,8 +66,6 @@ This component performs operations on [Data](https://docs.langflow.org/concepts-
 
 1. To use this component in a flow, connect a component that outputs [Data](https://docs.langflow.org/concepts-objects#data-object) to the **Data Operations** component's input. All operations in the component require at least one [Data](https://docs.langflow.org/concepts-objects#data-object) input.
 2. In the **Operations** field, select the operation you want to perform. For example, send this request to the **Webhook** component. Replace `YOUR_FLOW_ID` with your flow ID.
-
-
 3. In the **Data Operations** component, select the **Select Keys** operation to extract specific user information. To add additional keys, click **Add More**.
 
 # image
@@ -100,14 +98,8 @@ This component converts one or multiple [Data](https://docs.langflow.org/concept
 # image
 
 3. Send a POST request to the **Webhook** containing your JSON data. Replace `YOUR_FLOW_ID` with your flow ID. This example uses the default Langflow server address.
-
-
 4. In the **Playground**, view the output of your flow. The **Data to DataFrame** component converts the webhook request into a `DataFrame`, with `text` and `data` fields as columns.
-
-
 5. Send another employee data object.
-
-
 6. In the **Playground**, this request is also converted to `DataFrame`.
 
 <Accordion title="Parameters">
@@ -174,8 +166,6 @@ The flow looks like this:
 5. Create a table that maps to the data you're loading from the **File** loader. For example, to create a table for employees, you might have the rows `id`, `name`, and `email`, all of type `string`.
 6. In the **Template** field of the **Parser** component, enter a template for parsing the **Structured Output** component's DataFrame output into structured text. Create variables for values in the `template` the same way you would in a [Prompt](https://docs.langflow.org/components-prompts) component. For example, to present a table of employees in Markdown:
 
-```
-```
 
 7. To run the flow, in the **Parser** component, click **Run component**.
 8. To view your parsed text, in the **Parser** component, click **Inspect output**.
@@ -198,3 +188,90 @@ To use this component in a flow:
 # image
 
 2. In the **Regex Extractor** tool, enter a pattern to extract text from the **URL** component's raw output. This example extracts the first paragraph from the "In the News" section of `https://en.wikipedia.org/wiki/Main_Page`:
+
+```
+```
+
+Result:
+
+```
+```
+
+## **Save to File**
+
+This component saves [DataFrames, Data, or Messages](https://docs.langflow.org/concepts-objects) to various file formats.
+
+1. To use this component in a flow, connect a component that outputs [DataFrames, Data, or Messages](https://docs.langflow.org/concepts-objects) to the **Save to File** component's input. The following example connects a **Webhook** component to two **Save to File** components to demonstrate the different outputs.
+
+# image
+
+2. In the **Save to File** component's **Input Type** field, select the expected input type. This example expects **Data** from the **Webhook**.
+3. In the **File Format** field, select the file type for your saved file. This example uses `.md` in one **Save to File** component, and `.xlsx` in another.
+4. In the **File Path** field, enter the path for your saved file. This example uses `./output/employees.xlsx` and `./output/employees.md` to save the files in a directory relative to where Langflow is running. The component accepts both relative and absolute paths, and creates any necessary directories if they don't exist.
+
+<Tip>
+  **tip**
+
+  If you enter a format in the `file_path` that is not accepted, the component appends the proper format to the file. For example, if the selected `file_format` is `csv`, and you enter `file_path` as `./output/test.txt`, the file is saved as `./output/test.txt.csv` so the file is not corrupted.
+</Tip>
+
+5. Send a POST request to the **Webhook** containing your JSON data. Replace `YOUR_FLOW_ID` with your flow ID. This example uses the default Langflow server address.
+
+```
+```
+
+6. In your local filesystem, open the `outputs` directory. You should see two files created from the data you've sent: one in `.xlsx` for structured spreadsheets, and one in Markdown.
+
+```
+```
+
+### **File input format options**
+
+For `DataFrame` and `Data` inputs, the component can create:
+
+- `csv`
+- `excel`
+- `json`
+- `markdown`
+- `pdf`
+
+For `Message` inputs, the component can create:
+
+- `txt`
+- `json`
+- `markdown`
+- `pdf`
+
+<Accordion title="Parameters">
+  ## **Smart function**
+
+  This component uses an LLM to generate a Lambda function for filtering or transforming structured data.
+
+  To use the **Smart function** component, you must connect it to a [Language Model](https://docs.langflow.org/components-models#language-model) component, which the component uses to generate a function based on the natural language instructions in the **Instructions** field.
+
+  This example gets JSON data from the `https://jsonplaceholder.typicode.com/users` API endpoint. The **Instructions** field in the **Smart function** component specifies the task `extract emails`. The connected LLM creates a filter based on the instructions, and successfully extracts a list of email addresses from the JSON data.**Smart function**
+
+  This component uses an LLM to generate a Lambda function for filtering or transforming structured data.
+
+  To use the **Smart function** component, you must connect it to a [Language Model](https://docs.langflow.org/components-models#language-model) component, which the component uses to generate a function based on the natural language instructions in the **Instructions** field.
+
+  This example gets JSON data from the `https://jsonplaceholder.typicode.com/users` API endpoint. The **Instructions** field in the **Smart function** component specifies the task `extract emails`. The connected LLM creates a filter based on the instructions, and successfully extracts a list of email addresses from the JSON data.**Smart function**
+
+  This component uses an LLM to generate a Lambda function for filtering or transforming structured data.
+
+  To use the **Smart function** component, you must connect it to a [Language Model](https://docs.langflow.org/components-models#language-model) component, which the component uses to generate a function based on the natural language instructions in the **Instructions** field.
+
+  This example gets JSON data from the `https://jsonplaceholder.typicode.com/users` API endpoint. The **Instructions** field in the **Smart function** component specifies the task `extract emails`. The connected LLM creates a filter based on the instructions, and successfully extracts a list of email addresses from the JSON data.**Smart function**
+
+  This component uses an LLM to generate a Lambda function for filtering or transforming structured data.
+
+  To use the **Smart function** component, you must connect it to a [Language Model](https://docs.langflow.org/components-models#language-model) component, which the component uses to generate a function based on the natural language instructions in the **Instructions** field.
+
+  This example gets JSON data from the `https://jsonplaceholder.typicode.com/users` API endpoint. The **Instructions** field in the **Smart function** component specifies the task `extract emails`. The connected LLM creates a filter based on the instructions, and successfully extracts a list of email addresses from the JSON data.**Smart function**
+
+  This component uses an LLM to generate a Lambda function for filtering or transforming structured data.
+
+  To use the **Smart function** component, you must connect it to a [Language Model](https://docs.langflow.org/components-models#language-model) component, which the component uses to generate a function based on the natural language instructions in the **Instructions** field.
+
+  This example gets JSON data from the `https://jsonplaceholder.typicode.com/users` API endpoint. The **Instructions** field in the **Smart function** component specifies the task `extract emails`. The connected LLM creates a filter based on the instructions, and successfully extracts a list of email addresses from the JSON data.
+</Accordion>
