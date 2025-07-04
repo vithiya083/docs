@@ -30,7 +30,7 @@ Each component has inputs, outputs, parameters, and controls related to the comp
 
 To access a component's header menu, click the component in your **Workspace**.
 
-# image
+![1 Pn](/images/1.png)
 
 A few options are available directly on the header menu. For example:
 
@@ -72,7 +72,7 @@ To freeze a component, click the component in the **Workspace** to expose the co
 
 Circular port icons () on the border of a component indicate the types of inputs and outputs that can be connected to the component at that port.
 
-# image
+![2 Pn](/images/2.png)
 
 ### **Port colors**
 
@@ -111,13 +111,7 @@ All components inherit from a base `Component` class that defines the component'
 
 Each component's code includes definitions for inputs and outputs, which are represented in the **Workspace** as [component ports](https://docs.langflow.org/concepts-components#component-ports). For example, the `RecursiveCharacterTextSplitter` has four inputs. Each input definition specifies the input type, such as `IntInput`, as well as the encoded name, display name, description, and other parameters for that specific input. These values determine the component settings, such as display names and tooltips in the Langflow UI.
 
-```
-```
-
 Additionally, components have methods or functions that handle their functionality. For example, the `RecursiveCharacterTextSplitter` has two methods:
-
-```
-```
 
 The `get_data_input` method retrieves the text data to be split from the component's input, which makes the data available to the class. The `build_text_splitter` method creates a `RecursiveCharacterTextSplitter` object by calling its parent class's `build` method. Then, the text is split with the created splitter and passed to the next component.
 
@@ -151,7 +145,9 @@ Components are updated to the latest available version, based on the version of 
 
 Multiple components can be grouped into a single component for reuse. This is useful for organizing large flows by combining related components together, such as a RAG **Agent** component and an associated vector database component.
 
-1. Hold <kbd>Shift</kbd>, and then click and drag to highlight all components you want to merge. Components must be completely within the selection area to be merged.
+1. Hold <kbd>Shift</kbd>
+
+   , and then click and drag to highlight all components you want to merge. Components must be completely within the selection area to be merged.
 2. Release the mouse and keyboard, and then click **Group** to merge the components into a single, group component.
 
 Grouped components are configured and managed as a single component, including the component name, code, and settings.
