@@ -18,25 +18,16 @@ In this example, the **Chat Input** component is pre-loaded with a sample financ
 
 The **Financial Report Parser** flow is created.
 
-# image
+![Finance Pn](/images/finance.png)
 
 ## **Run the memory chatbot flow**[**​**](https://docs.langflow.org/financial-report-parser#run-the-memory-chatbot-flow)
 
 1. Add your OpenAI API key to the OpenAI model.
 2. Click the **Playground** button, and then click **Send**. The **Chat Input** component is pre-loaded with a sample financial report for demonstration purposes. The chat returns a structured response:
 
-   ```
-   
-   ```
-
 Inspect the flow to understand how this information was extracted.
 
 3. To inspect the output schema table, in the **Structured Output** component, click **Open table**. The **Structured Output** component uses the attached **OpenAI** model component as its "brain" to extract financial data into a [DataFrame](https://docs.langflow.org/concepts-objects#dataframe-object) with this defined schema.
 
-```
-```
 
- 4. To inspect the template that contains the extracted data, in the **Parser** component, click the **Scan** icon in the **Template** field. The **Parser** component converts the extracted data into formatted messages for chat consumption. Each variable receives its value from the structured outputs.
-
-```
-```
+4. To inspect the template that contains the extracted data, in the **Parser** component, click the **Scan** icon in the **Template** field. The **Parser** component converts the extracted data into formatted messages for chat consumption. Each variable receives its value from the structured outputs.
