@@ -41,11 +41,31 @@ With your component credentials configured, query your BigQuery datasets and tab
 2. Open the **Playground**, and then submit a valid SQL query. This example queries a table of Oscar winners stored within a BigQuery dataset called `the_oscar_award`.
 
 <Tabs>
-  <Tab title="Tab">
+  <Tab title="SQL query">
+    ```
+    SELECT film, category, year_film
+    FROM `big-query-langflow-project.the_oscar_award.oscar_winners`
+    WHERE winner = TRUE
+    LIMIT 10
     
+    ```
   </Tab>
-  <Tab title="Tab">
+  <Tab title="Result">
+    ```
+    film	category	year_film
+    The Last Command	ACTOR	1927
+    7th Heaven	ACTRESS	1927
+    The Dove;	ART DIRECTION	1927
+    Sunrise	CINEMATOGRAPHY	1927
+    Sunrise	CINEMATOGRAPHY	1927
+    Two Arabian Knights	DIRECTING (Comedy Picture)	1927
+    7th Heaven	DIRECTING (Dramatic Picture)	1927
+    Wings	ENGINEERING EFFECTS	1927
+    Wings	OUTSTANDING PICTURE	1927
+    Sunrise	UNIQUE AND ARTISTIC PICTURE	1927
     
+    
+    ```
   </Tab>
 </Tabs>
 
