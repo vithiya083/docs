@@ -14,14 +14,46 @@ To add tracing to your Langflow application, add Arize environment variables to 
 ## **Connect Arize to Langflow**
 
 <Tabs>
-  <Tab title="Tab">
+  <Tab title="Arize Platform">
+    1. To retrieve your **Arize Space ID** and **Arize API Key**, navigate to the [Arize dashboard](https://app.arize.com/).
+    2. Click **Settings**, and then click **Space Settings and Keys**.
+    3. Copy the **SpaceID** and **API Key (Ingestion Service Account Key)** values.
+    4. Create a `.env` file in the root of your Langflow application.
+    5. Add the `ARIZE_SPACE_ID` and `ARIZE_API_KEY` environment variables to your Langflow application. You do not need to specify the **Arize Project** name if you're using the standard Arize platform. Replace the following:
+
+    - YOUR_ARIZE_SPACE_ID: the **SpaceID** value copied from Arize
+    - YOUR_ARIZE_API_KEY: the **API Key** value copied from Arize
+
+    ```
+    ARIZE_SPACE_ID=YOUR_ARIZE_SPACE_ID
+    ARIZE_API_KEY=YOUR_ARIZE_API_KEY
     
+    ```
   </Tab>
-  <Tab title="Tab">
-    
+  <Tab title="Arize Phoenix">
+    1. To retrieve your **Arize Phoenix API key**, navigate to the [Arize dashboard](https://app.phoenix.arize.com/).
+    2. Click **API Key**.
+    3. Copy the **API Key** value.
+    4. Create a `.env` file in the root of your Langflow application.
+    5. Add the `PHOENIX_API_KEY` environment variable to your application instead. Replace `YOUR_PHOENIX_API_KEY` with the Arize Phoenix API key that you copied from
+
+       YOUR_ARIZE_SPACE_ID: the **SpaceID** value copied from Arize
+
+       YOUR_ARIZE_API_KEY: the **API Key** value copied from Arize
+
+       ```
+       ARIZE_SPACE_ID=YOUR_ARIZE_SPACE_ID
+       ARIZE_API_KEY=YOUR_ARIZE_API_KEY
+       ```
   </Tab>
 </Tabs>
 
+6. Save the `.env` file.
+7. Start your Langflow application with the values from the `.env` file.
+
+```
+uv run langflow run --env-file .env
+```
 
 For more information, see the [Arize documentation](https://docs.arize.com/phoenix/tracing/integrations-tracing/langflow#go-to-arize-phoenix).
 
