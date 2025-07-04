@@ -14,7 +14,7 @@ The agent then uses a connected LLM to reason through the problem to decide whic
 
 The [simple agent starter project](https://docs.langflow.org/simple-agent) uses an [agent component](https://docs.langflow.org/components-agents#agent-component) connected to URL and Calculator tools to answer a user's questions. The OpenAI LLM acts as a brain for the agent to decide which tool to use. Tools are connected to agent components at the **Tools** port.
 
-# image
+![Agent Pn](/images/agent.png)
 
 For a multi-agent example see [Create a flow with an agent](https://docs.langflow.org/agents).
 
@@ -27,13 +27,23 @@ The component includes an LLM model integration, a system message prompt, and a 
 For more information on this component, see the [Agent documentation](https://docs.langflow.org/agents).
 
 <Accordion title="Parameters">
-  ## **Legacy components**[**​**](https://docs.langflow.org/components-agents#legacy-components)
+  | **Name**              | **Type** | **Description**                                                                                                                     |
+  | :-------------------- | :------- | :---------------------------------------------------------------------------------------------------------------------------------- |
+  | agent_llm             | Dropdown | The provider of the language model that the agent uses to generate responses. Options include OpenAI and other providers or Custom. |
+  | system_prompt         | String   | The system prompt provides initial instructions and context to guide the agent's behavior.                                          |
+  | tools                 | List     | The list of tools available for the agent to use. This field is optional and can be empty.                                          |
+  | input_value           | String   | The input task or question for the agent to process.                                                                                |
+  | add_current_date_tool | Boolean  | When true this adds a tool to the agent that returns the current date.                                                              |
+  | memory                | Memory   | An optional memory configuration for maintaining conversation history.                                                              |
+  | max_iterations        | Integer  | The maximum number of iterations the agent can perform.                                                                             |
+  | handle_parsing_errors | Boolean  | This determines whether to handle parsing errors during agent execution.                                                            |
+  | verbose               | Boolean  | This enables verbose output for detailed logging.                                                                                   |
 
-  **Legacy** components are available for use but are no longer supported.
+  **Outputs**
 
-  ### **JSON Agent**[**​**](https://docs.langflow.org/components-agents#json-agent)
-
-  This component creates a JSON agent from a JSON or YAML file and an LLM.
+  | **Name** | **Type** | **Description**                               |
+  | :------- | :------- | :-------------------------------------------- |
+  | response | Message  | The agent's response to the given input task. |
 </Accordion>
 
 ## **Legacy components**[**​**](https://docs.langflow.org/components-agents#legacy-components)
@@ -45,7 +55,16 @@ For more information on this component, see the [Agent documentation](https://do
 This component creates a JSON agent from a JSON or YAML file and an LLM.
 
 <Accordion title="Parameters">
-  
+  | **Name** | **Type**      | **Description**                          |
+  | :------- | :------------ | :--------------------------------------- |
+  | llm      | LanguageModel | The language model to use for the agent. |
+  | path     | File          | The path to the JSON or YAML file.       |
+
+  **Outputs**
+
+  | **Name** | **Type**      | **Description**          |
+  | :------- | :------------ | :----------------------- |
+  | agent    | AgentExecutor | The JSON agent instance. |
 </Accordion>
 
 ### **Vector Store Agent**[**​**](https://docs.langflow.org/components-agents#vector-store-agent)
@@ -53,7 +72,18 @@ This component creates a JSON agent from a JSON or YAML file and an LLM.
 This component creates a Vector Store Agent using LangChain.
 
 <Accordion title="Parameters">
-  
+  **Inputs**
+
+  | **Name**    | **Type**        | **Description**                                    |
+  | :---------- | :-------------- | :------------------------------------------------- |
+  | llm         | LanguageModel   | The language model to use for the agent.           |
+  | vectorstore | VectorStoreInfo | The vector store information for the agent to use. |
+
+  **Outputs**
+
+  | **Name** | **Type**      | **Description**                  |
+  | :------- | :------------ | :------------------------------- |
+  | agent    | AgentExecutor | The Vector Store Agent instance. |
 </Accordion>
 
 ### **Vector Store Router Agent**[**​**](https://docs.langflow.org/components-agents#vector-store-router-agent)
@@ -61,5 +91,16 @@ This component creates a Vector Store Agent using LangChain.
 This component creates a Vector Store Router Agent using LangChain.
 
 <Accordion title="Parameters">
-  
+  **Inputs**
+
+  | **Name**     | **Type**              | **Description**                                                      |
+  | :----------- | :-------------------- | :------------------------------------------------------------------- |
+  | llm          | LanguageModel         | The language model to use for the agent.                             |
+  | vectorstores | List[VectorStoreInfo] | The list of vector store information for the agent to route between. |
+
+  **Outputs**
+
+  | **Name** | **Type**      | **Description**                         |
+  | :------- | :------------ | :-------------------------------------- |
+  | agent    | AgentExecutor | The Vector Store Router Agent instance. |
 </Accordion>
