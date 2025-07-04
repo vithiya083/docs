@@ -19,16 +19,13 @@ OpenAI uses this loaded data to generate a blog post, as instructed by the **Tex
 2. Select **Blog Writer**.
 3. The **Blog Writer** flow is created.
 
-# image
+![Blogwriter Pn](/images/blogwriter.png)
 
 This flow creates a blog article generator with **Prompt**, **OpenAI**, and **Chat Output** components, augmented with reference content and instructions from the **URL** and **Text Input** components.
 
 The **URL** component extracts raw text and metadata from one or more web links. The **Parser** component converts the data coming from the **URL** component into plain text to feed the prompt.
 
 To examine the flow's prompt, click the **Template** field of the **Prompt** component.
-
-```
-```
 
 The `{instructions}` value is received from the **Text Input** component, and one or more `{references}` are received from a list of URLs parsed from the **URL** component.
 
