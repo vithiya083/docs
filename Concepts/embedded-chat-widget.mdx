@@ -10,6 +10,9 @@ For a sandbox example, see the [Langflow embedded chat CodeSandbox](https://code
 
 The following example includes the minimum required inputs, called [props](https://react.dev/learn/passing-props-to-a-component) in React, for using the chat widget in your HTML code, which are `host_url` and `flow_id`. The `host_url` value must be `HTTPS`, and may not include a `/` after the URL. The `flow_id` value is found in your Langflow URL. For a Langflow server running the [Basic prompting flow](https://docs.langflow.org/basic-prompting) at `https://c822-73-64-93-151.ngrok-free.app/flow/dcbed533-859f-4b99-b1f5-16fce884f28f`, your chat widget code is similar to the following:
 
+```
+```
+
 When this code is embedded within HTML, it becomes a responsive chatbot, powered by the basic prompting flow.
 
 # image
@@ -18,29 +21,42 @@ To configure your chat widget further, include additional props.
 
 All props and their types are listed in [index.tsx](https://github.com/langflow-ai/langflow-embedded-chat/blob/main/src/index.tsx).
 
-To add some styling to the chat widget, customize its elements with json
+To add some styling to the chat widget, customize its elements with JSON:
+
+```
+```
 
 To add a custom [session ID](https://docs.langflow.org/session-id) value and an API key for authentication to your Langflow server:
 
+```
+```
+
 The chat widget requires your flow to contain **Chat Input** and **Chat Output** components for the widget to communicate with it. Sending a message to Langflow without a **Chat Input** still triggers the flow, but the LLM warns you the message is empty. **Text Input** and **Text Output** components can send and receive messages with Langflow, but without the ongoing LLM "chat" context.
 
-## Embed the chat widget with React
+## **Embed the chat widget with React**
 
 To use the chat widget in your React application, create a component that loads the widget script and renders the chat interface:
 
 1. Declare your web component and encapsulate it in a React component.
 
+```
+```
 
 2. Place the component anywhere in your code to display the chat widget.
 
 For example, in this docset, the React widget component is located at `docs > src > components > ChatWidget > index.tsx`. `index.tsx` includes a script to load the chat widget code from CDN and initialize the `ChatWidget` component with props pointing to a Langflow server.
 
+```
+```
+
 3. To import the component to your page, add this to your site.
 
+```
+```
 
 4. To add the widget to your page, include `<ChatWidget className="my-chat-widget" />`.
 
-## Embed the chat widget with Angular
+## **Embed the chat widget with Angular**
 
 To use the chat widget in your [Angular](https://angular.dev/overview) application, create a component that loads the widget script and renders the chat interface.
 
@@ -65,7 +81,7 @@ For style properties that accept `JSON` objects like `chat_window_style` and `bo
 ```
 ```
 
-## Chat widget configuration
+## **Chat widget configuration**
 
 Use the widget API to customize your chat widget.
 
@@ -73,33 +89,33 @@ Props with the type `JSON` need to be passed as stringified JSON, with the forma
 
 All props and their types are listed in [index.tsx](https://github.com/langflow-ai/langflow-embedded-chat/blob/main/src/index.tsx).
 
-| Prop                  | Type    | Description                                                          |
-| :-------------------- | :------ | :------------------------------------------------------------------- |
-| flow_id               | String  | Required. Identifier for the flow associated with the component.     |
-| host_url              | String  | Required. URL of the host for communication with the chat component. |
-| api_key               | String  | X-API-Key header to send to Langflow.                                |
-| additional_headers    | JSON    | Additional headers to be sent to the Langflow server.                |
-| session_id            | String  | Custom session id to override the random session id.                 |
-| height                | Number  | Height of the chat window in pixels.                                 |
-| width                 | Number  | Width of the chat window in pixels.                                  |
-| chat_position         | String  | Position of chat window, such as `top-right` or `bottom-left`.       |
-| start_open            | Boolean | Whether the chat window should be open by default.                   |
-| chat_window_style     | JSON    | Overall chat window appearance.                                      |
-| chat_trigger_style    | JSON    | Chat trigger button styling.                                         |
-| bot_message_style     | JSON    | Bot message formatting.                                              |
-| user_message_style    | JSON    | User message formatting.                                             |
-| error_message_style   | JSON    | Error message formatting.                                            |
-| input_style           | JSON    | Chat input field styling.                                            |
-| input_container_style | JSON    | Input container styling.                                             |
-| send_button_style     | JSON    | Send button styling.                                                 |
-| send_icon_style       | JSON    | Send icon styling.                                                   |
-| window_title          | String  | Title displayed in the chat window header.                           |
-| placeholder           | String  | Placeholder text for the chat input field.                           |
-| placeholder_sending   | String  | Placeholder text while sending a message.                            |
-| online                | Boolean | Whether the chat component is online.                                |
-| online_message        | String  | Custom message when chat is online.                                  |
-| input_type            | String  | Input type for chat messages.                                        |
-| output_type           | String  | Output type for chat messages.                                       |
-| output_component      | String  | Output ID when multiple outputs are present.                         |
-| chat_output_key       | String  | Which output to display if multiple outputs are available.           |
-| tweaks                | JSON    | Additional custom adjustments for the flow.                          |
+| **Prop**              | **Type** | **Description**                                                      |
+| :-------------------- | :------- | :------------------------------------------------------------------- |
+| flow_id               | String   | Required. Identifier for the flow associated with the component.     |
+| host_url              | String   | Required. URL of the host for communication with the chat component. |
+| api_key               | String   | X-API-Key header to send to Langflow.                                |
+| additional_headers    | JSON     | Additional headers to be sent to the Langflow server.                |
+| session_id            | String   | Custom session id to override the random session id.                 |
+| height                | Number   | Height of the chat window in pixels.                                 |
+| width                 | Number   | Width of the chat window in pixels.                                  |
+| chat_position         | String   | Position of chat window, such as `top-right` or `bottom-left`.       |
+| start_open            | Boolean  | Whether the chat window should be open by default.                   |
+| chat_window_style     | JSON     | Overall chat window appearance.                                      |
+| chat_trigger_style    | JSON     | Chat trigger button styling.                                         |
+| bot_message_style     | JSON     | Bot message formatting.                                              |
+| user_message_style    | JSON     | User message formatting.                                             |
+| error_message_style   | JSON     | Error message formatting.                                            |
+| input_style           | JSON     | Chat input field styling.                                            |
+| input_container_style | JSON     | Input container styling.                                             |
+| send_button_style     | JSON     | Send button styling.                                                 |
+| send_icon_style       | JSON     | Send icon styling.                                                   |
+| window_title          | String   | Title displayed in the chat window header.                           |
+| placeholder           | String   | Placeholder text for the chat input field.                           |
+| placeholder_sending   | String   | Placeholder text while sending a message.                            |
+| online                | Boolean  | Whether the chat component is online.                                |
+| online_message        | String   | Custom message when chat is online.                                  |
+| input_type            | String   | Input type for chat messages.                                        |
+| output_type           | String   | Output type for chat messages.                                       |
+| output_component      | String   | Output ID when multiple outputs are present.                         |
+| chat_output_key       | String   | Which output to display if multiple outputs are available.           |
+| tweaks                | JSON     | Additional custom adjustments for the flow.                          |
