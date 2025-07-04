@@ -39,6 +39,129 @@ To use the Batch Run component with a **Parser** component, do the following:
 5. Optionally, in the **System Message** field of the **Batch Run** component, enter a **System Message** to instruct the connected LLM on how to process your file. For example, `Create a business card for each name.`
 6. In the **Template** field of the **Parser** component, enter a template for using the **Batch Run** component's new DataFrame columns. To use all three columns from the **Batch Run** component, include them like this:
 
-   ```
-   
-   ```
+```
+```
+
+7. To run the flow, in the **Parser** component, click **Run component**.
+8. To view your created DataFrame, in the **Parser** component, click .
+9. Optionally, connect a **Chat Output** component, and open the **Playground** to see the output.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Current date**
+
+The Current Date component returns the current date and time in a selected timezone. This component provides a flexible way to obtain timezone-specific date and time information within a Langflow pipeline.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **ID Generator**
+
+This component generates a unique ID.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Message history**
+
+<Note>
+  **info**
+
+  Prior to Langflow 1.1, this component was known as the Chat Memory component.
+</Note>
+
+This component retrieves chat messages from Langflow tables or external memory.
+
+In this example, the **Message Store** component stores the complete chat history in a local Langflow table, which the **Message History** component retrieves as context for the LLM to answer each question.
+
+# image
+
+For more information on configuring memory in Langflow, see [Memory](https://docs.langflow.org/memory).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Message store**
+
+This component stores chat messages or text in Langflow tables or external memory.
+
+In this example, the **Message Store** component stores the complete chat history in a local Langflow table, which the **Message History** component retrieves as context for the LLM to answer each question.
+
+# image
+
+For more information on configuring memory in Langflow, see [Memory](https://docs.langflow.org/memory).
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Structured output**
+
+This component transforms LLM responses into structured data formats.
+
+In this example from the **Financial Report Parser** template, the **Structured Output** component transforms unstructured financial reports into structured data.
+
+# image
+
+The connected LLM model is prompted by the **Structured Output** component's `Format Instructions` parameter to extract structured output from the unstructured text. `Format Instructions` is utilized as the system prompt for the **Structured Output** component.
+
+In the **Structured Output** component, click the **Open table** button to view the `Output Schema` table. The `Output Schema` parameter defines the structure and data types for the model's output using a table with the following fields:
+
+- **Name**: The name of the output field.
+- **Description**: The purpose of the output field.
+- **Type**: The data type of the output field. The available types are `str`, `int`, `float`, `bool`, `list`, or `dict`. The default is `text`.
+- **Multiple**: This feature is deprecated. Currently, it is set to `True` by default if you expect multiple values for a single field. For example, a `list` of `features` is set to `True` to contain multiple values, such as `["waterproof", "durable", "lightweight"]`. Default: `True`.
+
+The **Parser** component parses the structured output into a template for orderly presentation in chat output. The template receives the values from the `output_schema` table with curly braces.
+
+For example, the template `EBITDA: {EBITDA} , Net Income: {NET_INCOME} , GROSS_PROFIT: {GROSS_PROFIT}` presents the extracted values in the **Playground** as `EBITDA: 900 million , Net Income: 500 million , GROSS_PROFIT: 1.2 billion`.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+## **Legacy components**
+
+Legacy components are available for use but are no longer supported.
+
+### **Create List**
+
+This component dynamically creates a record with a specified number of fields.
+
+<Accordion title="Parameters">
+  
+</Accordion>
+
+### **Output Parser**
+
+This component transforms the output of a language model into a specified format. It supports CSV format parsing, which converts LLM responses into comma-separated lists using Langchain's `CommaSeparatedListOutputParser`.
+
+<Note>
+  **note**
+
+  This component only provides formatting instructions and parsing functionality. It does not include a prompt. You'll need to connect it to a separate Prompt component to create the actual prompt template for the LLM to use.
+</Note>
+
+Both the **Output Parser** and **Structured Output** components format LLM responses, but they have different use cases. The **Output Parser** is simpler and focused on converting responses into comma-separated lists. Use this when you just need a list of items, for example `["item1", "item2", "item3"]`. The **Structured Output** is more complex and flexible, and allows you to define custom schemas with multiple fields of different types. Use this when you need to extract structured data with specific fields and types.
+
+To use this component:
+
+1. Create a Prompt component and connect the Output Parser's `format_instructions` output to it. This ensures the LLM knows how to format its response.
+2. Write your actual prompt text in the Prompt component, including the `{format_instructions}` variable. For example, in your Prompt component, the template might look like:
+
+```
+```
+
+3. Connect the `output_parser` output to your LLM model.
+4. The output parser converts this into a Python list: `["apple", "banana", "orange"]`.
+
+Parameters
+
+## **See also**
+
+- [Session ID](https://docs.langflow.org/session-id)
