@@ -19,7 +19,25 @@ This component collects user input as `Text` strings from the chat and wraps i
 It can optionally store the message in a chat history.
 
 <Accordion title="Parameters">
-  
+  **nputs**
+
+  | **Name**             | **Display Name** | **Info**                                                                                        |
+  | :------------------- | :--------------- | :---------------------------------------------------------------------------------------------- |
+  | input_value          | Text             | The Message to be passed as input.                                                              |
+  | should_store_message | Store Messages   | Store the message in the history.                                                               |
+  | sender               | Sender Type      | The type of sender.                                                                             |
+  | sender_name          | Sender Name      | The name of the sender.                                                                         |
+  | session_id           | Session ID       | The unique identifier for the chat session. If empty, the current session ID parameter is used. |
+  | files                | Files            | The files to be sent with the message.                                                          |
+  | background_color     | Background Color | The background color of the icon.                                                               |
+  | chat_icon            | Icon             | The icon of the message.                                                                        |
+  | text_color           | Text Color       | The text color of the name.                                                                     |
+
+  **Outputs**
+
+  | **Name** | **Display Name** | **Info**                                                         |
+  | :------- | :--------------- | :--------------------------------------------------------------- |
+  | message  | Message          | The resulting chat message object with all specified properties. |
 </Accordion>
 
 ### **Message method**[**​**](https://docs.langflow.org/components-io#message-method)
@@ -33,7 +51,17 @@ The **Text Input** component accepts a text string input and returns a `Messa
 The output does not appear in the **Playground**.
 
 <Accordion title="Parameters">
-  
+  **Inputs**
+
+  | **Name**    | **Display Name** | **Info**                                 |
+  | :---------- | :--------------- | :--------------------------------------- |
+  | input_value | Text             | The text/content to be passed as output. |
+
+  **Outputs**
+
+  | **Name** | **Display Name** | **Info**                    |
+  | :------- | :--------------- | :-------------------------- |
+  | text     | Text             | The resulting text message. |
 </Accordion>
 
 ## **Chat Output**[**​**](https://docs.langflow.org/components-io#chat-output)
@@ -47,7 +75,26 @@ The component accepts the following input types.
 - [Message](https://docs.langflow.org/concepts-objects#message-object)
 
 <Accordion title="Parameters">
-  
+  **Inputs**
+
+  | **Name**             | **Display Name** | **Info**                                                                                                                                       |
+  | :------------------- | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
+  | input_value          | Text             | The message to be passed as output.                                                                                                            |
+  | should_store_message | Store Messages   | The flag to store the message in the history.                                                                                                  |
+  | sender               | Sender Type      | The type of sender.                                                                                                                            |
+  | sender_name          | Sender Name      | The name of the sender.                                                                                                                        |
+  | session_id           | Session ID       | The unique identifier for the chat session. If empty, the current session ID parameter is used.                                                |
+  | data_template        | Data Template    | The template to convert Data to Text. If the option is left empty, it is dynamically set to the Data's text key.                               |
+  | background_color     | Background Color | The background color of the icon.                                                                                                              |
+  | chat_icon            | Icon             | The icon of the message.                                                                                                                       |
+  | text_color           | Text Color       | The text color of the name.                                                                                                                    |
+  | clean_data           | Basic Clean Data | When enabled, `DataFrame` inputs are cleaned when converted to text. Cleaning removes empty rows, empty lines in cells, and multiple newlines. |
+
+  **Outputs**
+
+  | **Name** | **Display Name** | **Info**                                                         |
+  | :------- | :--------------- | :--------------------------------------------------------------- |
+  | message  | Message          | The resulting chat message object with all specified properties. |
 </Accordion>
 
 ## **Text Output**[**​**](https://docs.langflow.org/components-io#text-output)
@@ -57,7 +104,17 @@ The **Text Output** takes a single input of text and returns a [Message](http
 The output does not appear in the **Playground**.
 
 <Accordion title="Parameters">
-  
+  **Inputs**
+
+  | **Name**    | **Display Name** | **Info**                         |
+  | :---------- | :--------------- | :------------------------------- |
+  | input_value | Text             | The text to be passed as output. |
+
+  **Outputs**
+
+  | **Name** | **Display Name** | **Info**                    |
+  | :------- | :--------------- | :-------------------------- |
+  | text     | Text             | The resulting text message. |
 </Accordion>
 
 ## **Chat components example flow**[**​**](https://docs.langflow.org/components-io#chat-components-example-flow)
@@ -70,12 +127,12 @@ For this example, connect a **Chat Input** component to an **OpenAI** model 
 
 The flow looks like this:
 
-# image
+![1 Pn](/images/1.png)
 
 3. To send a message to your flow, open the **Playground**, and then enter a message. The **OpenAI** model component responds. Optionally, in the **OpenAI** model component, enter a **System Message** to control the model's response.
 4. In the Langflow UI, click your flow name, and then click **Logs**. The **Logs** pane opens. Here, you can inspect your component logs.
 
-# image
+![2 Pn](/images/2.png)
 
 5. Your first message was sent by the **Chat Input** component to the **OpenAI** model component. Click **Outputs** to view the sent message:
 6. Your second message was sent by the **OpenAI** model component to the **Chat Output** component. This is the raw text output of the model's response. The **Chat Output** component accepts this text as input and presents it as a formatted message. Click **Outputs** to view the sent message:
@@ -92,8 +149,6 @@ The **Chat Input** component is often the entry point for passing messages to 
 
 1. To get your Langflow endpoint, click **Publish**, and then click **API access**.
 2. Copy the command from the **cURL** tab, and then paste it in your terminal. It looks similar to this:
-
-
 3. Modify `input_value` so it contains the question, `What's the recommended way to install Docker on Mac M1?`.
 
    Note the `output_type` and `input_type` parameters that are passed with the message. The `chat` type provides additional configuration options, and the messages appear in the **Playground**. The `text` type returns only text strings, and does not appear in the **Playground**.
@@ -105,9 +160,6 @@ The custom `session_id` value starts a new chat session between your client an
 6. Navigate to the **Playground**. A new chat session called `docker-question-on-m1` has appeared, using your unique `session_id`.
 7. To modify additional parameters with **Tweaks** for your **Chat Input** and **Chat Output** components, click **Publish**, and then click **API access**.
 8. Click **Tweaks** to modify parameters in the component's `data` object. For example, disabling storing messages from the **Chat Input** component adds a **Tweak** to your command:
-
-```
-```
 
 To confirm your command is using the tweak, navigate to the **Logs** pane and view the request from the **Chat Input** component. The value for `should_store_message` is `false`.
 
