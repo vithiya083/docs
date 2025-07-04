@@ -70,12 +70,14 @@
               "Concepts/langflow-objects",
               "Concepts/publish-flows",
               "Concepts/embedded-chat-widget",
-              "Concepts/manage-files"
+              "Concepts/manage-files",
+              "Concepts/components"
             ]
           },
           {
             "group": "Components",
             "pages": [
+              "Components/"componentoverview",
               "Components/Agents",
               "Components/Bundles",
               "Components/CreatecustomPythoncomponents",
