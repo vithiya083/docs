@@ -15,24 +15,15 @@ The `Data` object is a [Pydantic](https://docs.pydantic.dev/latest/api/base_mo
 
 ### **Create a Data Object**[**​**](https://docs.langflow.org/concepts-objects#create-a-data-object)
 
-Create a `Data` object by directly assigning key-value pairs to it. For example:
-
-```
-```
+Create a `Data` object by directly assigning key-value pairs to it. 
 
 The `text_key` specifies which key in the `data` dictionary should be considered the primary text content. The `default_value` provides a fallback if the `text_key` is not present.
-
-```
-```
 
 The `Data` object is also convenient for visualization of outputs, since the output preview has visual elements to inspect data as a table and its cells as pop ups for basic types. The idea is to create a unified way to work and visualize complex information in Langflow.
 
 To receive `Data` objects in a component input, use the `DataInput` input type.
 
-```
-```
-
-## **Message object**[**​**](https://docs.langflow.org/concepts-objects#message-object)
+### **Message object**[**​**](https://docs.langflow.org/concepts-objects#message-object)
 
 The `Message` object extends the functionality of `Data` and includes additional attributes and methods for chat interactions.
 
@@ -57,10 +48,7 @@ The `Message` object can be used to send, store, and manipulate chat messages 
 
 ### **Create a Message object**[**​**](https://docs.langflow.org/concepts-objects#create-a-message-object)
 
-You can create a `Message` object by directly assigning key-value pairs to it. For example:
-
-```
-```
+You can create a `Message` object by directly assigning key-value pairs to it. 
 
 To receive `Message` objects in a component input, you can use the `MessageInput` input type or `MessageTextInput` when the goal is to extract just the `text` field of the `Message` object.
 
@@ -82,17 +70,11 @@ Each content type has specific fields related to its data type. For example:
 
 Create a `ContentBlock` object with a list of different content types.
 
-```
-```
-
 ### **Add ContentBlocks objects to a message**
 
 In this example, a text and a media `ContentBlock` are added to a message.
 
-```
-```
-
-## **DataFrame object**[**​**](https://docs.langflow.org/concepts-objects#dataframe-object)
+### **DataFrame object**[**​**](https://docs.langflow.org/concepts-objects#dataframe-object)
 
 The `DataFrame` class is a custom extension of the Pandas [DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) class, specifically designed to work seamlessly with Langflow's `Data` objects. The class includes methods for converting between `DataFrame` and lists of `Data` objects.
 
@@ -100,10 +82,7 @@ A `DataFrame` object accepts various input formats, including lists of `Data` ob
 
 ### **Create a DataFrame object**[**​**](https://docs.langflow.org/concepts-objects#create-a-dataframe-object)
 
-You can create a DataFrame object using different data formats:
-
-```
-```
+You can create a DataFrame object using different data formats
 
 To use DataFrame objects in a component input,use the DataFrameInput input type.
 
