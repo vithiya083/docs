@@ -12,7 +12,7 @@ description: "Get started with LLMC by loading a template flow, running it, and 
 
 1. In Langflow, click **New Flow**, and then select the **Simple Agent** template.
 
-## image here
+![Quickstart1below Pn](/images/quickstart1below.png)
 
 The Simple Agent flow consists of an [Agent component](https://docs.langflow.org/agents) connected to [Chat I/O components](https://docs.langflow.org/components-io), a [Calculator component](https://docs.langflow.org/components-tools#calculator-tool), and a [URL component](https://docs.langflow.org/components-data#url). When you run this flow, you submit a query to the agent through the Chat Input component, the agent uses the Calculator and URL tools to generate a response, and then returns the response through the Chat Output component.
 
@@ -24,7 +24,8 @@ Many components can be tools for agents, including [Model Context Protocol (MCP)
 3. To run the flow, click <Icon icon="play" color="#150f0f" />**Playground**.
 4. To test the Calculator tool, ask the agent a simple math question, such as `I want to add 4 and 4.` To help you test and evaluate your flows, the Playground shows the agent's reasoning process as it analyzes the prompt, selects a tool, and then uses the tool to generate a response. In this case, a math question causes the agent to select the Calculator tool and use an action like `evaluate_expression`.
 
-## image here
+   ![Quickstart4below Pn](/images/quickstart4below.png)
+
 
 5. To test the URL tool, ask the agent about current events. For this request, the agent selects the URL tool's `fetch_content` action, and then returns a summary of current news headlines.
 6. When you are done testing the flow, click <Icon icon="notdef" color="#020101" />**Close**.
@@ -55,19 +56,13 @@ Langflow provides code snippets to help you get started with the Langflow API.
 
 <Tabs>
   <Tab title="Tab">
-    ```
     
-    ```
   </Tab>
   <Tab title="Tab">
-    ```
     
-    ```
   </Tab>
   <Tab title="Tab">
-    ```
     
-    ```
   </Tab>
 </Tabs>
 
@@ -76,11 +71,8 @@ Langflow provides code snippets to help you get started with the Langflow API.
 If the request is successful, the response includes many details about the flow run, including the session ID, inputs, outputs, components, durations, and more. The following is an example of a response from running the **Simple Agent** template flow:
 
 <Accordion title="Response">
-  ```
   
-  ```
 </Accordion>
-
 
 In a production application, you probably want to select parts of this response to return to the user, store in logs, and so on. The next steps demonstrate how you can extract data from a Langflow API response to use in your application.
 
@@ -92,14 +84,10 @@ The following example builds on the API pane's example code to create a question
 
 <Tabs>
   <Tab title="Tab">
-    ```
     
-    ```
   </Tab>
   <Tab title="Tab">
-    ```
     
-    ```
   </Tab>
 </Tabs>
 
@@ -114,9 +102,6 @@ Tweaks are added to the `/run` endpoint's `payload`. To assist with formatting, 
 1. To open the **Input Schema** pane, from the **API access** pane, click **Input Schema**.
 2. In the **Input Schema** pane, select the parameter you want to modify in your next request. Enabling parameters in the **Input Schema** pane does not **allow** modifications to the listed parameters. It only adds them to the example code.
 3. For example, to change the LLM provider from OpenAI to Groq, and include your Groq API key with the request, select the values **Model Providers**, **Model**, and **Groq API Key**. Langflow updates the `tweaks` object in the code snippets based on your input parameters, and includes default values to guide you. Use the updated code snippets in your script to run your flow with your overrides.
-
-```
-```
 
 ## **Next steps**[**​**](https://docs.langflow.org/get-started-quickstart#next-steps)
 
