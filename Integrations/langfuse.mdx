@@ -6,8 +6,6 @@ title: "Integrate Langfuse with Langflow file"
 
 This guide walks you through how to configure Langflow to collect [tracing](https://langfuse.com/docs/tracing) data about your flow executions and automatically send the data to Langfuse.
 
-# video
-
 ## **Prerequisites**[**​**](https://docs.langflow.org/integrations-langfuse#prerequisites)
 
 - A project in Langflow with a runnable flow
@@ -39,15 +37,13 @@ The following examples set environment variables in a Linux or macOS terminal se
 
 1. Start Langflow in the same terminal or environment where you set the environment variables:
 
-```
-```
 
 2. In Langflow, open an existing project, and then run a flow.
 
    Langflow automatically collects and sends tracing data about the flow execution to Langfuse.
 3. View the collected data in your Langfuse project dashboard.
 
-# image
+![Langfuse Pn](/images/langfuse.png)
 
 For a live public example trace in a Langfuse dashboard, see [Public example trace in Langfuse](https://cloud.langfuse.com/project/cm0nywmaa005c3ol2msoisiho/traces/f016ae6d-4527-43f5-93ba-9d78388cd3d9?timestamp=2024-11-15T10%3A22%3A56.378Z&observation=c3680212-31f0-46e2-9310-add4352e4cc7).
 
@@ -68,20 +64,10 @@ If you prefer to self-host Langfuse, you can run both services with Docker Compo
 
 3. Add your Langflow API keys to your `docker-compose.yml` file. An example [docker-compose.yml](https://github.com/langflow-ai/langflow/blob/main/docker_example/docker-compose.yml) file is available in the Langflow GitHub repo.
 
-```
-```
 
 4. Start the Docker container.
 
-```
-```
 
 5. To confirm Langfuse is connected to your Langflow container, run this command. Ensure you've exported `LANGFLOW_HOST` as a variable in your terminal.
 
-```
-```
-
 An output similar to this indicates success:
-
-```
-```
