@@ -6,7 +6,7 @@ The **Playground** is a dynamic interface designed for real-time interaction w
 
 As long as you have an [Input or Output](https://docs.langflow.org/components-io) component working, you can open it by clicking the **Playground** button. The Playground's window arrangement changes depending on what components are being used
 
-# image
+![1 Pn](/images/1.png)
 
 ## **Run a flow in the playgound**[**​**](https://docs.langflow.org/concepts-playground#run-a-flow-in-the-playgound)
 
@@ -20,7 +20,7 @@ When you send a message from the **Playground** interface, the interactions are 
 
 To view messages by `session_id` within the Playground, click the menu of any chat session, and then select **Message Logs**.
 
-# image
+![2 Pn](/images/2.png)
 
 Individual messages in chat memory can be edited or deleted. Modifying these memories influences the behavior of the chatbot responses.
 
@@ -35,9 +35,6 @@ The `session_id` value can be configured in the **Advanced Settings** of the **C
 To have more than one session in a single flow, pass a specific session ID to a flow with the `session_id` parameter in the URL. All the components in the flow will automatically use this `session_id` value.
 
 To post a message to a flow with a specific Session ID with curl, enter the following command:
-
-```
-```
 
 Check your flow's **Playground**. In addition to the messages stored for the Default Session, a new session is started with your custom Session ID.
 
@@ -60,9 +57,6 @@ You can work with base64 images in the Playground in several ways:
 - **Programmatic Input**: Send base64-encoded images through the API.
 
 This example sends a base64-encoded image to the Playground using curl:
-
-```
-```
 
 The image is displayed in the chat interface and can be processed by your flow components.
 
