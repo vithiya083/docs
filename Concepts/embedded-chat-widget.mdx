@@ -1,3 +1,4 @@
+
 ---
 title: "Embedded chat widget"
 ---
@@ -8,114 +9,203 @@ The chat widget is implemented as a web component called `langflow-chat` and is 
 
 For a sandbox example, see the [Langflow embedded chat CodeSandbox](https://codesandbox.io/p/sandbox/langflow-embedded-chat-example-dv9zpx).
 
-The following example includes the minimum required inputs, called [props](https://react.dev/learn/passing-props-to-a-component) in React, for using the chat widget in your HTML code, which are `host_url` and `flow_id`. The `host_url` value must be `HTTPS`, and may not include a `/` after the URL. The `flow_id` value is found in your Langflow URL. For a Langflow server running the [Basic prompting flow](https://docs.langflow.org/basic-prompting) at `https://c822-73-64-93-151.ngrok-free.app/flow/dcbed533-859f-4b99-b1f5-16fce884f28f`, your chat widget code is similar to the following:
+The following example includes the minimum required inputs, called [props](https://react.dev/learn/passing-props-to-a-component) in React, for using the chat widget in your HTML code, which are `host_url` and `flow_id`. The `host_url` value must be `HTTPS`, and may not include a `/` after the URL. The `flow_id` value is found in your Langflow URL. For a Langflow server running the [Basic prompting flow](https://docs.langflow.org/basic-prompting) at `https://c822-73-64-93-151.ngrok-free.app/flow/dcbed533-859f-4b99-b1f5-16fce884f28f`, your chat widget code is:
 
-```
-```
+```html
+<script type="module" src="https://cdn.jsdelivr.net/npm/@langflow/embedded-chat@latest/dist/index.js"></script>
+<langflow-chat
+  host_url="https://c822-73-64-93-151.ngrok-free.app"
+  flow_id="dcbed533-859f-4b99-b1f5-16fce884f28f">
+</langflow-chat>
+````
 
 When this code is embedded within HTML, it becomes a responsive chatbot, powered by the basic prompting flow.
 
-# image
+## Chat widget with style customization
 
 To configure your chat widget further, include additional props.
 
 All props and their types are listed in [index.tsx](https://github.com/langflow-ai/langflow-embedded-chat/blob/main/src/index.tsx).
 
-To add some styling to the chat widget, customize its elements with JSON:
-
-```
-```
-
-To add a custom [session ID](https://docs.langflow.org/session-id) value and an API key for authentication to your Langflow server:
-
-```
-```
-
-The chat widget requires your flow to contain **Chat Input** and **Chat Output** components for the widget to communicate with it. Sending a message to Langflow without a **Chat Input** still triggers the flow, but the LLM warns you the message is empty. **Text Input** and **Text Output** components can send and receive messages with Langflow, but without the ongoing LLM "chat" context.
-
-## **Embed the chat widget with React**
-
-To use the chat widget in your React application, create a component that loads the widget script and renders the chat interface:
-
-1. Declare your web component and encapsulate it in a React component.
-
-```
+```html
+<langflow-chat
+  host_url="https://c822-73-64-93-151.ngrok-free.app"
+  flow_id="dcbed533-859f-4b99-b1f5-16fce884f28f"
+  chat_window_style='{"border-radius":"10px","box-shadow":"0 0 10px rgba(0,0,0,0.1)"}'
+  bot_message_style='{"background-color":"#f0f0f0","color":"#333","border-radius":"10px"}'
+  user_message_style='{"background-color":"#4CAF50","color":"white","border-radius":"10px"}'>
+</langflow-chat>
 ```
 
-2. Place the component anywhere in your code to display the chat widget.
+To add a custom [session ID](https://docs.langflow.org/session-id) and an API key:
 
-For example, in this docset, the React widget component is located at `docs > src > components > ChatWidget > index.tsx`. `index.tsx` includes a script to load the chat widget code from CDN and initialize the `ChatWidget` component with props pointing to a Langflow server.
-
-```
-```
-
-3. To import the component to your page, add this to your site.
-
-```
-```
-
-4. To add the widget to your page, include `<ChatWidget className="my-chat-widget" />`.
-
-## **Embed the chat widget with Angular**
-
-To use the chat widget in your [Angular](https://angular.dev/overview) application, create a component that loads the widget script and renders the chat interface.
-
-Angular requires you to explicitly allow custom web components like `langflow-chat` in components, so you must add the `<langflow-chat>` element to your Angular template and configure Angular to recognize it. Add `CUSTOM_ELEMENTS_SCHEMA` to your module's configuration to enable this.
-
-To add `CUSTOM_ELEMENTS_SCHEMA` to your module's configuration, do the following:
-
-1. Open the module file `.module.ts` where you want to add the `langflow-chat` web component.
-2. Import `CUSTOM_ELEMENTS_SCHEMA` at the top of the `.module.ts` file:
-
-`import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';`
-
-3. Add `CUSTOM_ELEMENTS_SCHEMA` to the `schemas` array inside the `@NgModule` decorator:
-
-```
+```html
+<langflow-chat
+  host_url="https://c822-73-64-93-151.ngrok-free.app"
+  flow_id="dcbed533-859f-4b99-b1f5-16fce884f28f"
+  session_id="custom-session-123"
+  api_key="your-api-key-here">
+</langflow-chat>
 ```
 
-4. Add the chat widget to your component's template by including the `langflow-chat` element in your component's `.component.ts` file:
+> Note: Your flow must contain **Chat Input** and **Chat Output** components.
 
-For style properties that accept `JSON` objects like `chat_window_style` and `bot_message_style`, use Angular's property binding syntax `[propertyName]` to pass them as JavaScript objects.
+---
 
+## Embed in React
+
+To use the chat widget in your React application, create a wrapper component like this:
+
+```tsx
+import React, { useEffect, useRef } from 'react';
+
+interface ChatWidgetProps {
+  className?: string;
+  flowId?: string;
+  hostUrl?: string;
+  apiKey?: string;
+  sessionId?: string;
+}
+
+export const ChatWidget: React.FC<ChatWidgetProps> = ({
+  className,
+  flowId = "your-default-flow-id",
+  hostUrl = "https://your-langflow-server.com",
+  apiKey,
+  sessionId,
+  ...props
+}) => {
+  const scriptLoaded = useRef(false);
+
+  useEffect(() => {
+    if (!scriptLoaded.current) {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/@langflow/embedded-chat@latest/dist/index.js';
+      script.type = 'module';
+      document.body.appendChild(script);
+      scriptLoaded.current = true;
+    }
+  }, []);
+
+  return (
+    <langflow-chat
+      className={className}
+      flow_id={flowId}
+      host_url={hostUrl}
+      api_key={apiKey}
+      session_id={sessionId}
+      {...props}
+    />
+  );
+};
 ```
+
+Example usage:
+
+```tsx
+import { ChatWidget } from './components/ChatWidget';
+
+function App() {
+  return (
+    <div className="App">
+      <ChatWidget
+        flowId="dcbed533-859f-4b99-b1f5-16fce884f28f"
+        hostUrl="https://c822-73-64-93-151.ngrok-free.app"
+        className="my-chat-widget"
+      />
+    </div>
+  );
+}
 ```
 
-## **Chat widget configuration**
+---
 
-Use the widget API to customize your chat widget.
+## Embed in Angular
 
-Props with the type `JSON` need to be passed as stringified JSON, with the format {"key":"value"}.
+Add `CUSTOM_ELEMENTS_SCHEMA` to your Angular module:
 
-All props and their types are listed in [index.tsx](https://github.com/langflow-ai/langflow-embedded-chat/blob/main/src/index.tsx).
+```ts
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-| **Prop**              | **Type** | **Description**                                                      |
-| :-------------------- | :------- | :------------------------------------------------------------------- |
-| flow_id               | String   | Required. Identifier for the flow associated with the component.     |
-| host_url              | String   | Required. URL of the host for communication with the chat component. |
-| api_key               | String   | X-API-Key header to send to Langflow.                                |
-| additional_headers    | JSON     | Additional headers to be sent to the Langflow server.                |
-| session_id            | String   | Custom session id to override the random session id.                 |
-| height                | Number   | Height of the chat window in pixels.                                 |
-| width                 | Number   | Width of the chat window in pixels.                                  |
-| chat_position         | String   | Position of chat window, such as `top-right` or `bottom-left`.       |
-| start_open            | Boolean  | Whether the chat window should be open by default.                   |
-| chat_window_style     | JSON     | Overall chat window appearance.                                      |
-| chat_trigger_style    | JSON     | Chat trigger button styling.                                         |
-| bot_message_style     | JSON     | Bot message formatting.                                              |
-| user_message_style    | JSON     | User message formatting.                                             |
-| error_message_style   | JSON     | Error message formatting.                                            |
-| input_style           | JSON     | Chat input field styling.                                            |
-| input_container_style | JSON     | Input container styling.                                             |
-| send_button_style     | JSON     | Send button styling.                                                 |
-| send_icon_style       | JSON     | Send icon styling.                                                   |
-| window_title          | String   | Title displayed in the chat window header.                           |
-| placeholder           | String   | Placeholder text for the chat input field.                           |
-| placeholder_sending   | String   | Placeholder text while sending a message.                            |
-| online                | Boolean  | Whether the chat component is online.                                |
-| online_message        | String   | Custom message when chat is online.                                  |
-| input_type            | String   | Input type for chat messages.                                        |
-| output_type           | String   | Output type for chat messages.                                       |
-| output_component      | String   | Output ID when multiple outputs are present.                         |
-| chat_output_key       | String   | Which output to display if multiple outputs are available.           |
-| tweaks                | JSON     | Additional custom adjustments for the flow.                          |
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule],
+  providers: [],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+})
+export class AppModule {}
+```
+
+Use the component:
+
+```ts
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-chat-widget',
+  template: `
+    <langflow-chat
+      host_url="https://c822-73-64-93-151.ngrok-free.app"
+      flow_id="dcbed533-859f-4b99-b1f5-16fce884f28f"
+      [chat_window_style]="chatWindowStyle"
+      [bot_message_style]="botMessageStyle">
+    </langflow-chat>
+  `
+})
+export class ChatWidgetComponent implements OnInit {
+  chatWindowStyle = {
+    'border-radius': '10px',
+    'box-shadow': '0 0 10px rgba(0,0,0,0.1)'
+  };
+
+  botMessageStyle = {
+    'background-color': '#f0f0f0',
+    'color': '#333',
+    'border-radius': '10px'
+  };
+
+  ngOnInit(): void {
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = 'https://cdn.jsdelivr.net/npm/@langflow/embedded-chat@latest/dist/index.js';
+    document.body.appendChild(script);
+  }
+}
+```
+
+---
+
+## Chat widget configuration
+
+Props with the type `JSON` need to be passed as stringified JSON (i.e., `'{"key":"value"}'`).
+
+| Prop                    | Type    | Description                                                    |
+| ----------------------- | ------- | -------------------------------------------------------------- |
+| `flow_id`               | String  | Required. The flow’s unique ID.                                |
+| `host_url`              | String  | Required. Base URL of Langflow server (HTTPS, no trailing `/`) |
+| `api_key`               | String  | Optional API key for auth.                                     |
+| `session_id`            | String  | Custom session ID.                                             |
+| `additional_headers`    | JSON    | Extra HTTP headers.                                            |
+| `height`, `width`       | Number  | Dimensions of the widget.                                      |
+| `chat_position`         | String  | `top-left`, `bottom-right`, etc.                               |
+| `start_open`            | Boolean | Whether the chat window opens automatically.                   |
+| `chat_window_style`     | JSON    | Full widget styling.                                           |
+| `chat_trigger_style`    | JSON    | Trigger button styling.                                        |
+| `bot_message_style`     | JSON    | Bot message appearance.                                        |
+| `user_message_style`    | JSON    | User message appearance.                                       |
+| `error_message_style`   | JSON    | Error styling.                                                 |
+| `input_style`           | JSON    | Chat input box.                                                |
+| `input_container_style` | JSON    | Chat input container.                                          |
+| `send_button_style`     | JSON    | Send button.                                                   |
+| `send_icon_style`       | JSON    | Icon for send button.                                          |
+| `window_title`          | String  | Widget header title.                                           |
+| `placeholder`           | String  | Input placeholder.                                             |
+| `placeholder_sending`   | String  | Placeholder while sending.                                     |
+| `online`                | Boolean | Toggle online state.                                           |
+| `online_message`        | String  | Message shown when online.                                     |
+| `input_type`            | String  | Chat input type.                                               |
+| `output_type`           | String  | Chat output type.                                              |
+| `output_component`      | String  | Which component to route output to.                            |
+| `chat_output_key`       | String  | Output key to render.                                          |
+| `tweaks`                | JSON    | Custom tweaks for flow.                                 
