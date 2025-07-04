@@ -28,7 +28,7 @@ We've chosen [Astra DB](https://astra.datastax.com/signup?utm_source=langflow-p
 
 The vector store RAG flow is built of two separate flows for ingestion and query.
 
-# image
+![Vectorrag Pn](/images/vectorrag.png)
 
 The **Load Data Flow** (bottom of the screen) creates a searchable index to be queried for contextual similarity. This flow populates the vector store with data from a local file. It ingests data from a local file, splits it into chunks, indexes it in Astra DB, and computes embeddings for the chunks using the OpenAI embeddings model.
 
