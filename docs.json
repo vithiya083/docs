@@ -77,7 +77,7 @@
           {
             "group": "Components",
             "pages": [
-              "Components/"componentoverview",
+              "Components/componentoverview",
               "Components/Agents",
               "Components/Bundles",
               "Components/CreatecustomPythoncomponents",
