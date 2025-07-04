@@ -20,13 +20,8 @@ The **NVIDIA Retriever Extraction** component imports the NVIDIA `Ingestor` clie
 - The **NVIDIA Retriever Extraction** component requires the installation of additional dependencies to your Langflow environment. To install the dependencies in a virtual environment, run the following commands.
   - If you have the Langflow repository cloned and installed from source:
 
-```
-```
 
 - If you are installing Langflow from the Python Package Index:
-
-```
-```
 
 ## Use the NVIDIA Retriever Extraction component in a flow
 
@@ -48,7 +43,7 @@ To use the NVIDIA Retriever Extraction component in your flow, follow these step
 7. To confirm the component is ingesting the file, open the **Logs** pane to view the output of the flow.
 8. To store the processed data in a vector database, add an **AstraDB Vector** component to your flow, and connect the **NVIDIA Retriever Extraction** component to the **AstraDB Vector** component with a **Data** output.
 
-# image
+![Ingest Pn](/images/ingest.png)
 
 10. Run the flow. Inspect your Astra DB vector database to view the processed data.
 
