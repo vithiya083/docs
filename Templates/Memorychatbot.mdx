@@ -2,9 +2,9 @@
 title: "Memory chatbot"
 ---
 
-<Info>
-  **info**
+**info**
 
+<Info>
   The **Chat memory** component is also known as the **Message history** component.
 </Info>
 
@@ -21,7 +21,7 @@ This flow extends the [basic prompting flow](https://docs.langflow.org/basic-pro
 2. Select **Memory Chatbot**.
 3. The **Memory Chatbot** flow is created.
 
-# image
+![Memorychatbot3below Pn](/images/memorychatbot3below.png)
 
 This flow adds a **Message history** component to the Basic Prompting flow. This component retrieves previous messages and sends them to the **Prompt** component to fill a part of the **Template** with context.
 
@@ -34,14 +34,11 @@ The `{memory}` code in the prompt creates a new input port in the component call
 1. Open the **Playground**.
 2. Enter multiple questions. For example, try entering this conversation:
 
-```
-```
-
 The chatbot remembers your name and previous questions.
 
 3. To view the **Message Logs** pane, click , and then click **Message Logs**. The **Message Logs** pane displays all previous messages, with each conversation sorted by `session_id`.
 
-# image
+![Run Pn](/images/run.png)
 
 ## **Use Session ID with the memory chatbot flow**[**​**](https://docs.langflow.org/memory-chatbot#use-session-id-with-the-memory-chatbot-flow)
 
