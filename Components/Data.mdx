@@ -18,7 +18,7 @@ To add multiple URL fields, click the add button
 
 Alternatively, connect a component that outputs the `Message` type, like the **Chat Input**              component, to supply your URLs from a component
 
-# image
+![1 Pn](/images/1.png)
 
 ## API Request Component
 
@@ -28,7 +28,7 @@ This component makes HTTP requests using URLs or cURL commands.
 
 1. Connect the **Data** output to a component that accepts the input (for example, connect the **API Request** component to a **Chat Output** component)
 
-# image
+![2 Pn](/images/2.png)
 
 2. In the API component's **URLs** field, enter the endpoint for your request
 3. In the **Method** field, enter the type of request (GET, POST, PATCH, PUT, or DELETE)
@@ -36,7 +36,28 @@ This component makes HTTP requests using URLs or cURL commands.
 5. Click **Playground**, then click **Run Flow** to execute your request
 
 <Accordion title="Parameters">
-  
+  **Inputs**
+
+  | **Name**               | **Display Name**       | **Info**                                                                                                          |
+  | :--------------------- | :--------------------- | :---------------------------------------------------------------------------------------------------------------- |
+  | urls                   | URLs                   | Enter one or more URLs, separated by commas.                                                                      |
+  | curl                   | cURL                   | Paste a curl command to populate the dictionary fields for headers and body.                                      |
+  | method                 | Method                 | The HTTP method to use.                                                                                           |
+  | use_curl               | Use cURL               | Enable cURL mode to populate fields from a cURL command.                                                          |
+  | query_params           | Query Parameters       | The query parameters to append to the URL.                                                                        |
+  | body                   | Body                   | The body to send with the request as a dictionary (for `POST`, `PATCH`, `PUT`).                                   |
+  | headers                | Headers                | The headers to send with the request as a dictionary.                                                             |
+  | timeout                | Timeout                | The timeout to use for the request.                                                                               |
+  | follow_redirects       | Follow Redirects       | Whether to follow http redirects.                                                                                 |
+  | save_to_file           | Save to File           | Save the API response to a temporary file.                                                                        |
+  | include_httpx_metadata | Include HTTPx Metadata | Include properties such as `headers`, `status_code`, `response_headers`, and `redirection_history` in the output. |
+
+  **Outputs**
+
+  | **Name**  | **Display Name** | **Info**                                                                                 |
+  | :-------- | :--------------- | :--------------------------------------------------------------------------------------- |
+  | data      | Data             | The result of the API requests. Returns a Data object containing source URL and results. |
+  | dataframe | DataFrame        | Converts the API response data into a tabular DataFrame format.                          |
 </Accordion>
 
 ## Directory
@@ -44,7 +65,25 @@ This component makes HTTP requests using URLs or cURL commands.
 This component recursively loads files from a directory, with options for file types, depth, and concurrency.
 
 <Accordion title="Parameters">
-  
+  **Inputs**
+
+  | **Input**          | **Type**         | **Description**                                         |
+  | :----------------- | :--------------- | :------------------------------------------------------ |
+  | path               | MessageTextInput | The path to the directory to load files from.           |
+  | types              | MessageTextInput | The file types to load (leave empty to load all types). |
+  | depth              | IntInput         | The depth to search for files.                          |
+  | max_concurrency    | IntInput         | The maximum concurrency for loading files.              |
+  | load_hidden        | BoolInput        | If true, hidden files are loaded.                       |
+  | recursive          | BoolInput        | If true, the search is recursive.                       |
+  | silent_errors      | BoolInput        | If true, errors do not raise an exception.              |
+  | use_multithreading | BoolInput        | If true, multithreading is used.                        |
+
+  **Outputs**
+
+  | **Output** | **Type**   | **Description**                                   |
+  | :--------- | :--------- | :------------------------------------------------ |
+  | data       | List[Data] | The loaded file data from the directory.          |
+  | dataframe  | DataFrame  | The loaded file data in tabular DataFrame format. |
 </Accordion>
 
 ## File
@@ -57,7 +96,27 @@ To Load a Document
 2. Select a local file or a file loaded with File management
 
    <Accordion title="Parameters">
-     
+     **Inputs**
+
+     | **Name**                            | **Display Name**                    | **Info**                                                                                                                                                                  |
+     | :---------------------------------- | :---------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+     | path                                | Files                               | The path to files to load. Supports individual files or bundled archives.                                                                                                 |
+     | file_path                           | Server File Path                    | A Data object with a `file_path` property pointing to the server file or a Message object with a path to the file. Supersedes 'Path' but supports the same file types.    |
+     | separator                           | Separator                           | The separator to use between multiple outputs in Message format.                                                                                                          |
+     | silent_errors                       | Silent Errors                       | If true, errors do not raise an exception.                                                                                                                                |
+     | delete_server_file_after_processing | Delete Server File After Processing | If true, the Server File Path is deleted after processing.                                                                                                                |
+     | ignore_unsupported_extensions       | Ignore Unsupported Extensions       | If true, files with unsupported extensions are not processed.                                                                                                             |
+     | ignore_unspecified_files            | Ignore Unspecified Files            | If true, `Data` with no `file_path` property is ignored.                                                                                                                  |
+     | use_multithreading                  | [Deprecated] Use Multithreading     | Set 'Processing Concurrency' greater than `1` to enable multithreading. This option is deprecated.                                                                        |
+     | concurrency_multithreading          | Processing Concurrency              | When multiple files are being processed, the number of files to process concurrently. Default is 1. Values greater than 1 enable parallel processing for 2 or more files. |
+
+     **Outputs**
+
+     | **Name**  | **Display Name** | **Info**                                                                                                      |
+     | :-------- | :--------------- | :------------------------------------------------------------------------------------------------------------ |
+     | data      | Data             | The parsed content of the file as a [<u>Data</u>](https://docs.langflow.org/concepts-objects) object.         |
+     | dataframe | DataFrame        | The file content as a [<u>DataFrame</u>](https://docs.langflow.org/concepts-objects#dataframe-object) object. |
+     | message   | Message          | The file content as a [<u>Message</u>](https://docs.langflow.org/concepts-objects#message-object) object.     |
    </Accordion>
 
 ### Supported File Types
@@ -97,7 +156,21 @@ _For bundling multiple files:_
 This component executes SQL queries on a specified database.
 
 <Accordion title="Parameters">
-  
+  **Inputs**
+
+  | **Name**        | **Display Name** | **Info**                                                              |
+  | :-------------- | :--------------- | :-------------------------------------------------------------------- |
+  | query           | Query            | The SQL query to execute.                                             |
+  | database_url    | Database URL     | The URL of the database.                                              |
+  | include_columns | Include Columns  | Include columns in the result.                                        |
+  | passthrough     | Passthrough      | If an error occurs, return the query instead of raising an exception. |
+  | add_error       | Add Error        | Add the error to the result.                                          |
+
+  **Outputs**
+
+  | **Name** | **Display Name** | **Info**                               |
+  | :------- | :--------------- | :------------------------------------- |
+  | result   | Result           | The result of the SQL query execution. |
 </Accordion>
 
 ## URL
@@ -108,7 +181,7 @@ In the component's **URLs** field, enter the URL you want to load
 
 1. To use this component in a flow, connect the **DataFrame** output to a component that accepts the input. For example, connect the **URL** component to a **Chat Output** component.
 
-# image
+![3 Pn](/images/3..png)
 
 2. In the URL component's **URLs** field, enter the URL for your request. This example uses `langflow.org`.
 3. Optionally, in the **Max Depth** field, enter how many pages away from the initial URL you want to crawl. Select `1` to crawl only the page specified in the **URLs** field. Select `2` to crawl all pages linked from that page. The component crawls by link traversal, not by URL path depth.
@@ -116,14 +189,32 @@ In the component's **URLs** field, enter the URL you want to load
 5. In the **URL** component, change the output port to **Message**, and then run the flow again. The text contents of the URL are returned as unstructured raw text, which you can extract patterns from with the **Regex Extractor** tool.
 6. Connect the **URL** component to a **Regex Extractor** and **Chat Output**.
 
-# image
+![4 Pn](/images/4.png)
 
 7. In the **Regex Extractor** tool, enter a pattern to extract text from the **URL** component's raw output. This example extracts the first paragraph from the "In the News" section of `https://en.wikipedia.org/wiki/Main_Page`.
 
 Result:
 
 <Accordion title="Parameters">
-  
+  **Inputs**
+
+  | **Name**        | **Display Name** | **Info**                                                                                                     |
+  | :-------------- | :--------------- | :----------------------------------------------------------------------------------------------------------- |
+  | urls            | URLs             | Click the '\+' button to enter one or more URLs to crawl recursively.                                        |
+  | max_depth       | Max Depth        | Controls how many 'clicks' away from the initial page the crawler will go.                                   |
+  | prevent_outside | Prevent Outside  | If enabled, only crawls URLs within the same domain as the root URL.                                         |
+  | use_async       | Use Async        | If enabled, uses asynchronous loading which can be significantly faster but might use more system resources. |
+  | format          | Output Format    | Output Format. Use `Text` to extract the text from the HTML or `HTML` for the raw HTML content.              |
+  | timeout         | Timeout          | Timeout for the request in seconds.                                                                          |
+  | headers         | Headers          | The headers to send with the request.                                                                        |
+
+  **Outputs**
+
+  | **Name**  | **Display Name** | **Info**                                                                                                             |
+  | :-------- | :--------------- | :------------------------------------------------------------------------------------------------------------------- |
+  | data      | Data             | A list of [<u>Data</u>](https://docs.langflow.org/concepts-objects) objects containing fetched content and metadata. |
+  | text      | Message          | The fetched content as formatted text.                                                                               |
+  | dataframe | DataFrame        | The content formatted as a [<u>DataFrame</u>](https://docs.langflow.org/concepts-objects#dataframe-object) object.   |
 </Accordion>
 
 ## **Webhook**
@@ -133,9 +224,6 @@ This component defines a webhook trigger that runs a flow when it receives an HT
 If the input is not valid JSON, the component wraps it in a `payload` object so that it can be processed and still trigger the flow. The component does not require an API key.
 
 When a **Webhook** component is added to the workspace, a new **Webhook cURL** tab becomes available in the **API** pane that contains an HTTP POST request for triggering the webhook component. For example:
-
-```
-```
 
 To test the webhook component:
 
@@ -148,7 +236,19 @@ To test the webhook component:
 7. Open the **Playground**. Your JSON data is posted to the **Chat Output** component, which indicates that the webhook component is correctly triggering the flow.
 
 <Accordion title="Parameters">
-  
+  **Inputs**
+
+  | **Name** | **Display Name** | **Description**                                                      |
+  | :------- | :--------------- | :------------------------------------------------------------------- |
+  | data     | Payload          | Receives a payload from external systems through HTTP POST requests. |
+  | curl     | cURL             | The cURL command template for making requests to this webhook.       |
+  | endpoint | Endpoint         | The endpoint URL where this webhook receives requests.               |
+
+  **Outputs**
+
+  | **Name**    | **Display Name** | **Description**                                                                                                                                                                                                                             |
+  | :---------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | output_data | Data             | Outputs processed data from the webhook input, and returns an empty [<u>Data</u>](https://docs.langflow.org/concepts-objects) object if no input is provided. If the input is not valid JSON, the component wraps it in a `payload` object. |
 </Accordion>
 
 ## **Legacy components**
@@ -162,7 +262,19 @@ This component loads emails from Gmail using provided credentials and filters.
 For more information about creating a service account JSON, see [Service Account JSON](https://developers.google.com/identity/protocols/oauth2/service-account).
 
 <Accordion title="Parameters">
-  
+  **Inputs**
+
+  | **Input**   | **Type**         | **Description**                                                                         |
+  | :---------- | :--------------- | :-------------------------------------------------------------------------------------- |
+  | json_string | SecretStrInput   | A JSON string containing OAuth 2.0 access token information for service account access. |
+  | label_ids   | MessageTextInput | A comma-separated list of label IDs to filter emails.                                   |
+  | max_results | MessageTextInput | The maximum number of emails to load.                                                   |
+
+  **Outputs**
+
+  | **Output** | **Type** | **Description**        |
+  | :--------- | :------- | :--------------------- |
+  | data       | Data     | The loaded email data. |
 </Accordion>
 
 ### **Google Drive Loader**
@@ -172,7 +284,18 @@ This component loads documents from Google Drive using provided credentials and 
 For more information about creating a service account JSON, see [Service Account JSON](https://developers.google.com/identity/protocols/oauth2/service-account).
 
 <Accordion title="Parameters">
-  
+  **Inputs**
+
+  | **Input**   | **Type**         | **Description**                                                                         |
+  | :---------- | :--------------- | :-------------------------------------------------------------------------------------- |
+  | json_string | SecretStrInput   | A JSON string containing OAuth 2.0 access token information for service account access. |
+  | document_id | MessageTextInput | A single Google Drive document ID.                                                      |
+
+  **Outputs**
+
+  | **Output** | **Type** | **Description**           |
+  | :--------- | :------- | :------------------------ |
+  | docs       | Data     | The loaded document data. |
 </Accordion>
 
 ### **Google Drive Search**
@@ -182,5 +305,22 @@ This component searches Google Drive files using provided credentials and query 
 For more information about creating a service account JSON, see [Service Account JSON](https://developers.google.com/identity/protocols/oauth2/service-account).
 
 <Accordion title="Parameters">
-  
+  **Inputs**
+
+  | **Input**      | **Type**         | **Description**                                                                         |
+  | :------------- | :--------------- | :-------------------------------------------------------------------------------------- |
+  | token_string   | SecretStrInput   | A JSON string containing OAuth 2.0 access token information for service account access. |
+  | query_item     | DropdownInput    | The field to query.                                                                     |
+  | valid_operator | DropdownInput    | The operator to use in the query.                                                       |
+  | search_term    | MessageTextInput | The value to search for in the specified query item.                                    |
+  | query_string   | MessageTextInput | The query string used for searching.                                                    |
+
+  **Outputs**
+
+  | **Output** | **Type**  | **Description**                                      |
+  | :--------- | :-------- | :--------------------------------------------------- |
+  | doc_urls   | List[str] | The URLs of the found documents.                     |
+  | doc_ids    | List[str] | The IDs of the found documents.                      |
+  | doc_titles | List[str] | The titles of the found documents.                   |
+  | Data       | Data      | The document titles and URLs in a structured format. |
 </Accordion>
