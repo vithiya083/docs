@@ -132,7 +132,7 @@
                 "group": "NVIDIA",
                 "pages": [
                   "Integrations/NVIDIA/NVIDIAIngest",
-                  "Integrations/NVIDIA/NVIDIAMonWSL2",
+                  "Integrations/NVIDIA/NVIDIANIMonWSL2",
                   "Integrations/NVIDIA/NVIDIAG-Assist"
                 ]
               }
