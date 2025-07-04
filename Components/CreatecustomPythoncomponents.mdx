@@ -303,9 +303,6 @@ In Langflow, robust error handling ensures that your components behave predictab
 
 **Return Structured Error Data**: Instead of stopping a flow abruptly, you can return a Data object containing an "error" field. This approach allows the flow to continue operating and enables downstream components to detect and handle the error gracefully.
 
-```
-```
-
 ### **Improve debugging and flow management**
 
 Use `self.status`: Each component has a status field where you can store short messages about the execution result—such as success summaries, partial progress, or error notifications. These appear directly in the UI, making troubleshooting easier for users.
