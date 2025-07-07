@@ -10,7 +10,8 @@
   "favicon": "/favicon.svg",
   "logo": {
     "light": "/logo/llmclogo.svg",
-    "dark": "/logo/llmclogo.svg"
+    "dark": "/logo/llmclogo.svg",
+    "alt":"LLMC DOCS"
   },
   "navbar": {
     "primary": {
