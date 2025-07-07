@@ -13,16 +13,6 @@
     "dark": "/logo/dark.svg"
   },
   "navbar": {
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/langflow/langflow"
-      },
-      {
-        "label": "Support",
-        "href": "mailto:support@langflow.org"
-      }
-    ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
@@ -65,7 +55,6 @@
               "Concepts/publish-flows",
               "Concepts/embedded-chat-widget",
               "Concepts/manage-files"
-              
             ]
           },
           {
