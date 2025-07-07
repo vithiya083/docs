@@ -1,6 +1,6 @@
 ---
 title: "Quickstart"
-description: "Get started with LLMC by loading a template flow, running it, and then serving it at the /run API endpoint."
+description: "Get started with LLM controls by loading a template flow, running it, and then serving it at the /run API endpoint."
 ---
 
 ## **Prerequisites**[**​**](https://docs.langflow.org/get-started-quickstart#prerequisites)
@@ -20,7 +20,7 @@ Many components can be tools for agents, including [Model Context Protocol (MCP)
 
 2. In the **Agent** component's settings, in the **OpenAI API Key** field, enter your OpenAI API key. This guide uses an OpenAI model for demonstration purposes. If you want to use a different provider, change the **Model Provider** field, and then provide credentials for your selected provider.
 
-   Optionally, you can click <Icon icon="globe" color="#0d0606" size={21} /> **Globe** to store the key in a Langflow [global variable](https://docs.langflow.org/configuration-global-variables).
+   Optionally, you can click <Icon icon="globe" color="#0d0606" size={21} /> **Globe** to store the key in a LLM controls [global variable](https://docs.langflow.org/configuration-global-variables).
 3. To run the flow, click <Icon icon="play" color="#150f0f" />**Playground**.
 4. To test the Calculator tool, ask the agent a simple math question, such as `I want to add 4 and 4.` To help you test and evaluate your flows, the Playground shows the agent's reasoning process as it analyzes the prompt, selects a tool, and then uses the tool to generate a response. In this case, a math question causes the agent to select the Calculator tool and use an action like `evaluate_expression`.
 
@@ -36,21 +36,21 @@ Now that you've run your first flow, try these next steps:
 
 Optionally, stop here if you just want to create more flows within Langflow.
 
-If you want to learn how Langflow integrates into external applications, read on.
+If you want to learn how LLM controls integrates into external applications, read on.
 
 ## **Run your flows from external applications**[**​**](https://docs.langflow.org/get-started-quickstart#run-your-flows-from-external-applications)
 
-Langflow is an IDE, but it's also a runtime you can call through an API with Python, JavaScript, or HTTP.
+LLM controls is an IDE, but it's also a runtime you can call through an API with Python, JavaScript, or HTTP.
 
-When you start Langflow locally, you can send requests to the local Langflow server. For production applications, you need to deploy a stable Langflow instance to handle API calls. For more information, see [Langflow deployment overview](https://docs.langflow.org/deployment-overview).
+When you start LLM controls locally, you can send requests to the local LLM controls server. For production applications, you need to deploy a stable LLM controls instance to handle API calls. For more information, see [Langflow deployment overview](https://docs.langflow.org/deployment-overview).
 
 For example, you can use `POST /run` to run a flow and get the result.
 
-Langflow provides code snippets to help you get started with the Langflow API.
+LLM controls provides code snippets to help you get started with the LLM controls API.
 
 1. To open the **API access pane**, in the **Playground**, click **Share**, and then click **API access**.
 
-   The default code in the API access pane constructs a request with the Langflow server `url`, `headers`, and a `payload` of request data. The code snippets automatically include the `LANGFLOW_SERVER_ADDRESS` and `FLOW_ID` values for the flow. Replace these values if you're using the code for a different server or flow. The default Langflow server address is `http://localhost:7860`
+   The default code in the API access pane constructs a request with the LLM controls server `url`, `headers`, and a `payload` of request data. The code snippets automatically include the `LANGFLOW_SERVER_ADDRESS` and `FLOW_ID` values for the flow. Replace these values if you're using the code for a different server or flow. The default LLM controls server address is `http://localhost:7860`
 
 <Tabs>
   <Tab title="Python">
@@ -128,7 +128,7 @@ Langflow provides code snippets to help you get started with the Langflow API.
   </Tab>
 </Tabs>
 
-**_2._** _Copy_ the snippet, paste it in a script file, and then run the script to send the request. If you are using the curl snippet, you can run the command directly in your terminal.
+_2_**_._** _Copy_ the snippet, paste it in a script file, and then run the script to send the request. If you are using the curl snippet, you can run the command directly in your terminal.
 
 If the request is successful, the response includes many details about the flow run, including the session ID, inputs, outputs, components, durations, and more. The following is an example of a response from running the **Simple Agent** template flow:
 
@@ -136,7 +136,7 @@ If the request is successful, the response includes many details about the flow 
   
 </Accordion>
 
-In a production application, you probably want to select parts of this response to return to the user, store in logs, and so on. The next steps demonstrate how you can extract data from a Langflow API response to use in your application.
+In a production application, you probably want to select parts of this response to return to the user, store in logs, and so on. The next steps demonstrate how you can extract data from a LLM controls API response to use in your application.
 
 ### **Extract data from the response**[**​**](https://docs.langflow.org/get-started-quickstart#extract-data-from-the-response)
 
@@ -295,7 +295,7 @@ Tweaks are added to the `/run` endpoint's `payload`. To assist with formatting, 
 
 1. To open the **Input Schema** pane, from the **API access** pane, click **Input Schema**.
 2. In the **Input Schema** pane, select the parameter you want to modify in your next request. Enabling parameters in the **Input Schema** pane does not **allow** modifications to the listed parameters. It only adds them to the example code.
-3. For example, to change the LLM provider from OpenAI to Groq, and include your Groq API key with the request, select the values **Model Providers**, **Model**, and **Groq API Key**. Langflow updates the `tweaks` object in the code snippets based on your input parameters, and includes default values to guide you. Use the updated code snippets in your script to run your flow with your overrides.
+3. For example, to change the LLM provider from OpenAI to Groq, and include your Groq API key with the request, select the values **Model Providers**, **Model**, and **Groq API Key**. LLM controls updates the `tweaks` object in the code snippets based on your input parameters, and includes default values to guide you. Use the updated code snippets in your script to run your flow with your overrides.
 
 ## **Next steps**[**​**](https://docs.langflow.org/get-started-quickstart#next-steps)
 
