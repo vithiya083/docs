@@ -1,5 +1,5 @@
 ---
-title: "Langflow objects"
+title: "LLMC objects"
 ---
 
 In Langflow, objects are [Pydantic](https://docs.pydantic.dev/latest/api/base_model/) models that serve as structured, functional representations of data.
@@ -15,7 +15,7 @@ The `Data` object is a [Pydantic](https://docs.pydantic.dev/latest/api/base_mo
 
 ### **Create a Data Object**[**​**](https://docs.langflow.org/concepts-objects#create-a-data-object)
 
-Create a `Data` object by directly assigning key-value pairs to it. 
+Create a `Data` object by directly assigning key-value pairs to it.
 
 The `text_key` specifies which key in the `data` dictionary should be considered the primary text content. The `default_value` provides a fallback if the `text_key` is not present.
 
@@ -48,7 +48,7 @@ The `Message` object can be used to send, store, and manipulate chat messages 
 
 ### **Create a Message object**[**​**](https://docs.langflow.org/concepts-objects#create-a-message-object)
 
-You can create a `Message` object by directly assigning key-value pairs to it. 
+You can create a `Message` object by directly assigning key-value pairs to it.
 
 To receive `Message` objects in a component input, you can use the `MessageInput` input type or `MessageTextInput` when the goal is to extract just the `text` field of the `Message` object.
 
