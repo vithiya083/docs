@@ -13,7 +13,7 @@ In this example, the **Chat Input** component is pre-loaded with a sample financ
 
 ## **Create the financial report parser flow**[**​**](https://docs.langflow.org/financial-report-parser#create-the-financial-report-parser-flow)
 
-1. From the Langflow dashboard, click **New Flow**.
+1. From the LLMC dashboard, click **New Flow**.
 2. Select **Financial Report Parser**.
 
 The **Financial Report Parser** flow is created.
@@ -28,6 +28,4 @@ The **Financial Report Parser** flow is created.
 Inspect the flow to understand how this information was extracted.
 
 3. To inspect the output schema table, in the **Structured Output** component, click **Open table**. The **Structured Output** component uses the attached **OpenAI** model component as its "brain" to extract financial data into a [DataFrame](https://docs.langflow.org/concepts-objects#dataframe-object) with this defined schema.
-
-
 4. To inspect the template that contains the extracted data, in the **Parser** component, click the **Scan** icon in the **Template** field. The **Parser** component converts the extracted data into formatted messages for chat consumption. Each variable receives its value from the structured outputs.
