@@ -29,13 +29,7 @@
       "href": "https://dashboard.langflow.org"
     }
   },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/langflow",
-      "github": "https://github.com/langflow/langflow",
-      "linkedin": "https://linkedin.com/company/langflow"
-    }
-  },
+  "footer": {},
   "navigation": {
     "tabs": [
       {
