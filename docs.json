@@ -9,8 +9,8 @@
   },
   "favicon": "/favicon.svg",
   "logo": {
-    "light": "/logo/LLMC logo.svg",
-    "dark": "/logo/LLMC logo.svg"
+    "light": "/logo/llmclogo.svg",
+    "dark": "/logo/llmclogo.svg"
   },
   "navbar": {
     "primary": {
