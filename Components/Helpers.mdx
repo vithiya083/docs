@@ -1,12 +1,12 @@
 ---
-title: "Helper components in Langflow"
+title: "Helper components in LLMC"
 ---
 
 Helper components provide utility functions to help manage data, tasks, and other components in your flow.
 
 ## **Use a helper component in a flow**[**​**](https://docs.langflow.org/components-helpers#use-a-helper-component-in-a-flow)
 
-Chat memory in Langflow is stored either in local Langflow tables with `LCBufferMemory`, or connected to an external database.
+Chat memory in LLMC is stored either in local LLMC tables with `LCBufferMemory`, or connected to an external database.
 
 The **Store Message** helper component stores chat memories as [Data](https://docs.langflow.org/concepts-objects) objects, and the **Message History** helper component retrieves chat messages as data objects or strings.
 
@@ -38,8 +38,6 @@ To use the Batch Run component with a **Parser** component, do the following:
 4. In the **Column Name** field of the **Batch Run** component, enter a column name based on the data you're loading from the **File** loader. For example, to process a column of `name`, enter `name`.
 5. Optionally, in the **System Message** field of the **Batch Run** component, enter a **System Message** to instruct the connected LLM on how to process your file. For example, `Create a business card for each name.`
 6. In the **Template** field of the **Parser** component, enter a template for using the **Batch Run** component's new DataFrame columns. To use all three columns from the **Batch Run** component, include them like this:
-
-
 7. To run the flow, in the **Parser** component, click **Run component**.
 8. To view your created DataFrame, in the **Parser** component, click .
 9. Optionally, connect a **Chat Output** component, and open the **Playground** to see the output.
@@ -65,7 +63,7 @@ To use the Batch Run component with a **Parser** component, do the following:
 
 ## **Current date**
 
-The Current Date component returns the current date and time in a selected timezone. This component provides a flexible way to obtain timezone-specific date and time information within a Langflow pipeline.
+The Current Date component returns the current date and time in a selected timezone. This component provides a flexible way to obtain timezone-specific date and time information within a LLMC pipeline.
 
 <Accordion title="Parameters">
   **Inputs**
@@ -104,7 +102,7 @@ This component generates a unique ID.
 <Note>
   **info**
 
-  Prior to Langflow 1.1, this component was known as the Chat Memory component.
+  Prior to LLMC 1.1, this component was known as the Chat Memory component.
 </Note>
 
 This component retrieves chat messages from Langflow tables or external memory.
@@ -113,14 +111,14 @@ In this example, the **Message Store** component stores the complete chat histor
 
 ![3 Pn](/images/3.png)
 
-For more information on configuring memory in Langflow, see [Memory](https://docs.langflow.org/memory).
+For more information on configuring memory in LLMC, see [Memory](https://docs.langflow.org/memory).
 
 <Accordion title="Parameters">
   **Inputs**
 
   | **Name**    | **Type** | **Description**                                                                                                                 |
   | :---------- | :------- | :------------------------------------------------------------------------------------------------------------------------------ |
-  | memory      | Memory   | Retrieve messages from an external memory. If empty, the Langflow tables are used.                                              |
+  | memory      | Memory   | Retrieve messages from an external memory. If empty, the LLMC tables are used.                                                  |
   | sender      | String   | Filter by sender type.                                                                                                          |
   | sender_name | String   | Filter by sender name.                                                                                                          |
   | n_messages  | Integer  | The number of messages to retrieve.                                                                                             |
@@ -139,13 +137,13 @@ For more information on configuring memory in Langflow, see [Memory](https://doc
 
 ## **Message store**
 
-This component stores chat messages or text in Langflow tables or external memory.
+This component stores chat messages or text in LLMC tables or external memory.
 
-In this example, the **Message Store** component stores the complete chat history in a local Langflow table, which the **Message History** component retrieves as context for the LLM to answer each question.
+In this example, the **Message Store** component stores the complete chat history in a local LLMC table, which the **Message History** component retrieves as context for the LLM to answer each question.
 
 ![4 Pn](/images/4.png)
 
-For more information on configuring memory in Langflow, see [Memory](https://docs.langflow.org/memory).
+For more information on configuring memory in LLMC, see [Memory](https://docs.langflow.org/memory).
 
 <Accordion title="Parameters">
   **Inputs**
@@ -153,7 +151,7 @@ For more information on configuring memory in Langflow, see [Memory](https://doc
   | **Name**    | **Type** | **Description**                                                                                    |
   | :---------- | :------- | :------------------------------------------------------------------------------------------------- |
   | message     | String   | The chat message to be stored. (Required)                                                          |
-  | memory      | Memory   | The external memory to store the message. If empty, the Langflow tables are used.                  |
+  | memory      | Memory   | The external memory to store the message. If empty, the LLMC tables are used.                      |
   | sender      | String   | The sender of the message. Can be Machine or User. If empty, the current sender parameter is used. |
   | sender_name | String   | The name of the sender. Can be AI or User. If empty, the current sender parameter is used.         |
   | session_id  | String   | The session ID of the chat. If empty, the current session ID parameter is used.                    |
@@ -244,8 +242,6 @@ To use this component:
 
 1. Create a Prompt component and connect the Output Parser's `format_instructions` output to it. This ensures the LLM knows how to format its response.
 2. Write your actual prompt text in the Prompt component, including the `{format_instructions}` variable. For example, in your Prompt component, the template might look like:
-
-
 3. Connect the `output_parser` output to your LLM model.
 4. The output parser converts this into a Python list: `["apple", "banana", "orange"]`.
 
