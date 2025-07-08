@@ -1,5 +1,5 @@
 ---
-title: "Model components in Langflow"
+title: "Model components in LLMC"
 ---
 
 Model components generate text using large language models.
@@ -276,7 +276,7 @@ For more information, see the [Hugging Face documentation](https://huggingface.c
 
 This component generates text using [IBM ](https://www.ibm.com/watsonx)[watsonx.ai](http://watsonx.ai) foundation models.
 
-To use \*\*IBM \*\*[**watsonx.ai**](http://watsonx.ai) model components, replace a model component with the IBM [watsonx.ai](http://watsonx.ai) component in a flow.
+To use IBM [**watsonx.ai**](http://watsonx.ai) model components, replace a model component with the IBM [watsonx.ai](http://watsonx.ai) component in a flow.
 
 An example flow looks like the following:
 
@@ -391,9 +391,7 @@ For more information, see [Maritalk documentation](https://www.maritalk.com/).
   | :------- | :------------ | :-------------------------------------------------------------------- |
   | model    | LanguageModel | An instance of ChatMaritalk configured with the specified parameters. |
 
-  ## **Mistral**
-
-  This com
+  ## 
 </Accordion>
 
 ## **Mistral**
@@ -483,7 +481,7 @@ For more information, see [NVIDIA AI documentation](https://developer.nvidia.com
 
 This component generates text using Ollama's language models.
 
-To use this component in a flow, connect Langflow to your locally running Ollama server and select a model.
+To use this component in a flow, connect LLMC to your locally running Ollama server and select a model.
 
 1. In the Ollama component, in the **Base URL** field, enter the address for your locally running Ollama server. This value is set as the `OLLAMA_HOST` environment variable in Ollama. The default base URL is `http://localhost:11434`.
 2. To refresh the server's list of models, click **Refresh**.
