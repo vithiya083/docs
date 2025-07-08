@@ -2,7 +2,7 @@
 title: "LLMC overview"
 ---
 
-This page explores the fundamental building blocks of Langflow, beginning with the question, **"What is a flow?"**
+This page explores the fundamental building blocks of LLMC, beginning with the question, **"What is a flow?"**
 
 ## **What is a flow?**[**​**](https://docs.langflow.org/concepts-overview#what-is-a-flow)
 
@@ -20,7 +20,7 @@ A flow can be as simple as the [basic prompting flow](https://docs.langflow.org/
 
 If you're familiar with [React Flow](https://reactflow.dev/learn), a **flow** is a node-based application, a **component** is a node, and the connections between components are **edges**.
 
-When a flow is run, Langflow builds a Directed Acyclic Graph (DAG) graph object from the nodes (components) and edges (connections between components), with the nodes sorted to determine the order of execution. The graph build calls the individual components' `def_build` functions to validate and prepare the nodes. This graph is then processed in dependency order. Each node is built and executed sequentially, with results from each built node being passed to nodes that are dependent on the previous node's results.
+When a flow is run, LLMC builds a Directed Acyclic Graph (DAG) graph object from the nodes (components) and edges (connections between components), with the nodes sorted to determine the order of execution. The graph build calls the individual components' `def_build` functions to validate and prepare the nodes. This graph is then processed in dependency order. Each node is built and executed sequentially, with results from each built node being passed to nodes that are dependent on the previous node's results.
 
 Flows are stored on local disk at the following default locations:
 
@@ -31,9 +31,9 @@ The flow storage location can be customized with the [LANGFLOW_CONFIG_DIR](https
 
 ## **Find your way around**[**​**](https://docs.langflow.org/concepts-overview#find-your-way-around)
 
-If you're new to Langflow, it's OK to feel a bit lost at first. We’ll take you on a tour, so you can orient yourself and start creating applications quickly.
+If you're new to LLMC, it's OK to feel a bit lost at first. We’ll take you on a tour, so you can orient yourself and start creating applications quickly.
 
-Langflow has four distinct regions: the [workspace](https://docs.langflow.org/concepts-overview#workspace) is the main area where you build your flows. The components sidebar is on the left, and lists the available [components](https://docs.langflow.org/concepts-overview#components). The [playground](https://docs.langflow.org/concepts-overview#playground) and [publish pane](https://docs.langflow.org/concepts-overview#publish-pane) are available in the upper right corner.
+LLMC has four distinct regions: the [workspace](https://docs.langflow.org/concepts-overview#workspace) is the main area where you build your flows. The components sidebar is on the left, and lists the available [components](https://docs.langflow.org/concepts-overview#components). The [playground](https://docs.langflow.org/concepts-overview#playground) and [publish pane](https://docs.langflow.org/concepts-overview#publish-pane) are available in the upper right corner.
 
 ## **Workspace**[**​**](https://docs.langflow.org/concepts-overview#workspace)
 
@@ -87,7 +87,7 @@ To access the **Logs** pane, click your **Flow Name**, and then select **Logs**.
 
 ![6 Pn](/images/6.png)
 
-Langflow stores logs at the location specified in the `LANGFLOW_CONFIG_DIR` environment variable.
+LLMC stores logs at the location specified in the `LLMC_CONFIG_DIR` environment variable.
 
 This directory's default location depends on your operating system.
 
@@ -97,14 +97,14 @@ This directory's default location depends on your operating system.
 
 To modify the location of your log file:
 
-1. Add `LANGFLOW_LOG_FILE=path/to/logfile.log` in your `.env` file.
-2. To start Langflow with the values from your `.env` file, start Langflow with `uv run langflow run --env-file .env`.
+1. Add `LLMC_LOG_FILE=path/to/logfile.log` in your `.env` file.
+2. To start LLMC with the values from your `.env` file, start LLMC with `uv run llmc run --env-file .env`.
 
 An example `.env` file is available in the [project repository](https://github.com/langflow-ai/langflow/blob/main/.env.example).
 
 ## **Projects**[**​**](https://docs.langflow.org/concepts-overview#projects)
 
-The **Projects** page displays all the flows you've created in the Langflow workspace.
+The **Projects** page displays all the flows you've created in the LLMC workspace.
 
 ![7 Pn](/images/7.png)
 
@@ -116,31 +116,23 @@ To delete a flow from your project, click a flow's checkbox to select it, and th
 
 ## **File management**[**​**](https://docs.langflow.org/concepts-overview#file-management)
 
-Upload, store, and manage files in Langflow's **File management** system.
+Upload, store, and manage files in LLMC's **File management** system.
 
 For more on managing your files, see [Manage files](https://docs.langflow.org/concepts-file-management).
 
 ## **Options menu**[**​**](https://docs.langflow.org/concepts-overview#options-menu)
 
-The dropdown menu labeled with the project name offers several management and customization options for the current flow in the Langflow workspace:
+The dropdown menu labeled with the project name offers several management and customization options for the current flow in the LLMC workspace:
 
 - <Icon icon="circle-plus" color="#080202" />**New**: Create a new flow from scratch.
 - **Edit Details**: Adjust settings specific to the current flow, such as its name, description, and endpoint name.
 - **Logs**: View logs for the current project, including execution history, errors, and other runtime events.
 - <Icon icon="file-import" color="#010000" />**Import**: Import a flow or component from a JSON file into the workspace.
 - **Export**: Export the current flow as a JSON file.
-- **Undo**: Revert the last action taken in the project. Keyboard shortcut: <kbd>Control\+Z</kbd>
-
-   (or <kbd>Command\+Z</kbd>
-
-   on macOS).
-- **Redo**: Reapply a previously undone action. Keyboard shortcut: <kbd>Control\+Y</kbd>
-
-   (or <kbd>Command\+Y</kbd>
-
-   on macOS).
+- **Undo**: Revert the last action taken in the project. Keyboard shortcut: Control\+Z(or on macOS).
+- **Redo**: Reapply a previously undone action. Keyboard shortcut: Control\+Y(or on macOS).
 - **Refresh All**: Refresh all components and delete cache.
 
 ## **Settings**
 
-In the Langflow header, click your profile icon, and then select **Settings** to access general Langflow settings, including global variables, Langflow API keys, keyboard shortcuts, and log messages.
+In the LLMC header, click your profile icon, and then select **Settings** to access general LLMC settings, including global variables, LLMC API keys, keyboard shortcuts, and log messages.
