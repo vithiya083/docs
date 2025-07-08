@@ -13,13 +13,13 @@ description: "Get started with LLM controls by loading a template flow, running 
 
 ![Quickstart1below Pn](/images/quickstart1below.png)
 
-The Simple Agent flow consists of an Agent component connected to [Chat I/O components](/Components/Inputsandoutputs), a [Calculator component](https://docs.langflow.org/components-tools#calculator-tool), and a [URL component](https://docs.langflow.org/components-data#url). When you run this flow, you submit a query to the agent through the Chat Input component, the agent uses the Calculator and URL tools to generate a response, and then returns the response through the Chat Output component.
+The Simple Agent flow consists of an Agent component connected to [Chat I/O components](/Components/Inputsandoutputs), a [Calculator component](/Components/Tools), and a [URL component](/Components/Data). When you run this flow, you submit a query to the agent through the Chat Input component, the agent uses the Calculator and URL tools to generate a response, and then returns the response through the Chat Output component.
 
-Many components can be tools for agents, including [Model Context Protocol (MCP) servers](https://docs.langflow.org/mcp-server). The agent decides which tools to call based on the context of a given query.
+Many components can be tools for agents, including **MCP** The agent decides which tools to call based on the context of a given query.
 
 2. In the **Agent** component's settings, in the **OpenAI API Key** field, enter your OpenAI API key. This guide uses an OpenAI model for demonstration purposes. If you want to use a different provider, change the **Model Provider** field, and then provide credentials for your selected provider.
 
-   Optionally, you can click <Icon icon="globe" color="#0d0606" size={21} /> **Globe** to store the key in a LLM controls [global variable](https://docs.langflow.org/configuration-global-variables).
+   Optionally, you can click <Icon icon="globe" color="#0d0606" size={21} /> **Globe** to store the key in a LLM controls global variable.
 3. To run the flow, click <Icon icon="play" color="#150f0f" />**Playground**.
 4. To test the Calculator tool, ask the agent a simple math question, such as `I want to add 4 and 4.` To help you test and evaluate your flows, the Playground shows the agent's reasoning process as it analyzes the prompt, selects a tool, and then uses the tool to generate a response. In this case, a math question causes the agent to select the Calculator tool and use an action like `evaluate_expression`.
 
@@ -31,7 +31,7 @@ Now that you've run your first flow, try these next steps:
 
 - Edit your **Simple Agent** flow by attaching different tools or adding more components to the flow.
 - Build your own flows from scratch or by modifying other template flows.
-- Integrate flows into your applications, as explained in [Run your flows from external applications](/Components/Agents).
+- Integrate flows into your applications, as explained in [Run your flows from external applications](/Getstarted/quickstart).
 
 Optionally, stop here if you just want to create more flows within LLM controls.
 
@@ -41,7 +41,7 @@ If you want to learn how LLM controls integrates into external applications, rea
 
 LLM controls is an IDE, but it's also a runtime you can call through an API with Python, JavaScript, or HTTP.
 
-When you start LLM controls locally, you can send requests to the local LLM controls server. For production applications, you need to deploy a stable LLM controls instance to handle API calls. For more information, see [Langflow deployment overview](https://docs.langflow.org/deployment-overview).
+When you start LLM controls locally, you can send requests to the local LLM controls server. For production applications, you need to deploy a stable LLM controls instance to handle API calls. For more information, see**Langflow deployment overview.** 
 
 For example, you can use `POST /run` to run a flow and get the result.
 
@@ -296,9 +296,4 @@ Tweaks are added to the `/run` endpoint's `payload`. To assist with formatting, 
 2. In the **Input Schema** pane, select the parameter you want to modify in your next request. Enabling parameters in the **Input Schema** pane does not **allow** modifications to the listed parameters. It only adds them to the example code.
 3. For example, to change the LLM provider from OpenAI to Groq, and include your Groq API key with the request, select the values **Model Providers**, **Model**, and **Groq API Key**. LLM controls updates the `tweaks` object in the code snippets based on your input parameters, and includes default values to guide you. Use the updated code snippets in your script to run your flow with your overrides.
 
-## **Next steps**[**​**](https://docs.langflow.org/get-started-quickstart#next-steps)
-
-- [Model Context Protocol (MCP) servers](https://docs.langflow.org/mcp-server)
-- [Langflow deployment overview](https://docs.langflow.org/deployment-overview)
-
-/
+## 
