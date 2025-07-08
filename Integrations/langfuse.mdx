@@ -1,14 +1,14 @@
 ---
-title: "Integrate Langfuse with Langflow file"
+title: "Integrate Langfuse with LLMC file"
 ---
 
-[Langfuse](https://langfuse.com/) ([GitHub](https://github.com/langfuse/langfuse)) is an open-source platform for LLM observability. It provides tracing and monitoring capabilities for AI applications, helping developers debug, analyze, and optimize their AI systems. Langfuse integrates with various tools and frameworks such as workflows builders like Langflow.
+[Langfuse](https://langfuse.com/) ([GitHub](https://github.com/langfuse/langfuse)) is an open-source platform for LLM observability. It provides tracing and monitoring capabilities for AI applications, helping developers debug, analyze, and optimize their AI systems. Langfuse integrates with various tools and frameworks such as workflows builders like LLMC.
 
-This guide walks you through how to configure Langflow to collect [tracing](https://langfuse.com/docs/tracing) data about your flow executions and automatically send the data to Langfuse.
+This guide walks you through how to configure LLMC to collect [tracing](https://langfuse.com/docs/tracing) data about your flow executions and automatically send the data to Langfuse.
 
 ## **Prerequisites**[**​**](https://docs.langflow.org/integrations-langfuse#prerequisites)
 
-- A project in Langflow with a runnable flow
+- A project in LLMC with a runnable flow
 - A [Langfuse Cloud](https://cloud.langfuse.com/) or [self-hosted Langfuse](https://langfuse.com/self-hosting) account
 
 ## **Set Langfuse credentials as environment variables**[**​**](https://docs.langflow.org/integrations-langfuse#set-langfuse-credentials-as-environment-variables)
@@ -20,7 +20,7 @@ This guide walks you through how to configure Langflow to collect [tracing](http
 - Public Key
 - Host URL
 
-3. Set your Langfuse project credentials as environment variables in the same environment where you run Langflow.
+3. Set your Langfuse project credentials as environment variables in the same environment where you run LLMC.
 
 The following examples set environment variables in a Linux or macOS terminal session or in a Windows command prompt session: Replace `SECRET_KEY`, `PUBLIC_KEY`, and `HOST_URL` with the API key information you copied from Langfuse.
 
@@ -42,12 +42,12 @@ The following examples set environment variables in a Linux or macOS terminal se
   </Tab>
 </Tabs>
 
-## **Start Langflow and view traces in Langfuse**[**​**](https://docs.langflow.org/integrations-langfuse#start-langflow-and-view-traces-in-langfuse)
+## **Start LLMC and view traces in Langfuse**[**​**](https://docs.langflow.org/integrations-langfuse#start-langflow-and-view-traces-in-langfuse)
 
-1. Start Langflow in the same terminal or environment where you set the environment variables:
+1. Start LLMC in the same terminal or environment where you set the environment variables:
 2. In Langflow, open an existing project, and then run a flow.
 
-   Langflow automatically collects and sends tracing data about the flow execution to Langfuse.
+   LLMC automatically collects and sends tracing data about the flow execution to Langfuse.
 3. View the collected data in your Langfuse project dashboard.
 
 ![Langfuse Pn](/images/langfuse.png)
@@ -56,9 +56,9 @@ For a live public example trace in a Langfuse dashboard, see [Public example tra
 
 ## **Disable Langfuse Tracing**[**​**](https://docs.langflow.org/integrations-langfuse#disable-langfuse-tracing)
 
-To disable the Langfuse integration, remove the environment variables you set in the previous steps and restart Langflow.
+To disable the Langfuse integration, remove the environment variables you set in the previous steps and restart LLMC.
 
-## **Run Langfuse and Langflow with Docker Compose**[**​**](https://docs.langflow.org/integrations-langfuse#run-langfuse-and-langflow-with-docker-compose)
+## **Run Langfuse and LLMC with Docker Compose**[**​**](https://docs.langflow.org/integrations-langfuse#run-langfuse-and-langflow-with-docker-compose)
 
 If you prefer to self-host Langfuse, you can run both services with Docker Compose.
 
@@ -69,8 +69,8 @@ If you prefer to self-host Langfuse, you can run both services with Docker Compo
 - Public Key
 - Host URL
 
-3. Add your Langflow API keys to your `docker-compose.yml` file. An example [docker-compose.yml](https://github.com/langflow-ai/langflow/blob/main/docker_example/docker-compose.yml) file is available in the Langflow GitHub repo.
+3. Add your LLMC API keys to your `docker-compose.yml` file. An example [docker-compose.yml](https://github.com/langflow-ai/langflow/blob/main/docker_example/docker-compose.yml) file is available in the LLMC GitHub repo.
 4. Start the Docker container.
-5. To confirm Langfuse is connected to your Langflow container, run this command. Ensure you've exported `LANGFLOW_HOST` as a variable in your terminal.
+5. To confirm Langfuse is connected to your LLMC container, run this command. Ensure you've exported `LLMC_HOST` as a variable in your terminal.
 
 An output similar to this indicates success:
