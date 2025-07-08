@@ -137,7 +137,7 @@ This component converts one or multiple [Data](https://docs.langflow.org/concept
 
 ![4 Pn](/images/4.png)
 
-3. Send a POST request to the **Webhook** containing your JSON data. Replace `YOUR_FLOW_ID` with your flow ID. This example uses the default Langflow server address.
+3. Send a POST request to the **Webhook** containing your JSON data. Replace `YOUR_FLOW_ID` with your flow ID. This example uses the default LLMC server address.
 4. In the **Playground**, view the output of your flow. The **Data to DataFrame** component converts the webhook request into a `DataFrame`, with `text` and `data` fields as columns.
 5. Send another employee data object.
 6. In the **Playground**, this request is also converted to `DataFrame`.
@@ -267,7 +267,7 @@ This component saves [DataFrames, Data, or Messages](https://docs.langflow.org/c
 
 2. In the **Save to File** component's **Input Type** field, select the expected input type. This example expects **Data** from the **Webhook**.
 3. In the **File Format** field, select the file type for your saved file. This example uses `.md` in one **Save to File** component, and `.xlsx` in another.
-4. In the **File Path** field, enter the path for your saved file. This example uses `./output/employees.xlsx` and `./output/employees.md` to save the files in a directory relative to where Langflow is running. The component accepts both relative and absolute paths, and creates any necessary directories if they don't exist.
+4. In the **File Path** field, enter the path for your saved file. This example uses `./output/employees.xlsx` and `./output/employees.md` to save the files in a directory relative to where LLMC is running. The component accepts both relative and absolute paths, and creates any necessary directories if they don't exist.
 
 <Tip>
   **tip**
@@ -275,7 +275,7 @@ This component saves [DataFrames, Data, or Messages](https://docs.langflow.org/c
   If you enter a format in the `file_path` that is not accepted, the component appends the proper format to the file. For example, if the selected `file_format` is `csv`, and you enter `file_path` as `./output/test.txt`, the file is saved as `./output/test.txt.csv` so the file is not corrupted.
 </Tip>
 
-5. Send a POST request to the **Webhook** containing your JSON data. Replace `YOUR_FLOW_ID` with your flow ID. This example uses the default Langflow server address.
+5. Send a POST request to the **Webhook** containing your JSON data. Replace `YOUR_FLOW_ID` with your flow ID. This example uses the default LLMC server address.
 6. In your local filesystem, open the `outputs` directory. You should see two files created from the data you've sent: one in `.xlsx` for structured spreadsheets, and one in Markdown.
 
 ### **File input format options**
@@ -293,7 +293,7 @@ For `Message` inputs, the component can create:
 - `txt`
 - `json`
 - `markdown`
-- `pdf` 
+- `pdf`
 
 <Accordion title="Parameters">
   **nputs**
@@ -387,7 +387,7 @@ After `chunk_size`, **Chunk Overlap** is applied between chunks to maintain cont
   | chunks    | Chunks           | A list of split text chunks as [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects.           |
   | dataframe | DataFrame        | A list of split text chunks as [<u>DataFrame</u>](https://docs.langflow.org/concepts-objects#dataframe-object) objects. |
 
-  ##  
+  ## 
 </Accordion>
 
 ## **Update data**
@@ -447,7 +447,7 @@ This component modifies metadata of input objects. It can add new metadata, upda
 <Note>
   **important**
 
-  This component is in **Legacy**, which means it is available for use but no longer in active development. Prior to Langflow version 1.1.3, this component was named **Merge Data**.
+  This component is in **Legacy**, which means it is available for use but no longer in active development. Prior to LLMC version 1.1.3, this component was named **Merge Data**.
 </Note>
 
 This component combines multiple data sources into a single unified [Data](https://docs.langflow.org/concepts-objects#data-object) object.
@@ -473,7 +473,7 @@ The component iterates through the input list of data objects, merging them into
 <Note>
   **important**
 
-  This component is in **Legacy**, which means it is available for use but no longer in active development. Prior to Langflow version 1.1.3, this component was named **Merge Data**.
+  This component is in **Legacy**, which means it is available for use but no longer in active development. Prior to LLMC version 1.1.3, this component was named **Merge Data**.
 </Note>
 
 This component concatenates two text sources into a single text chunk using a specified delimiter.
