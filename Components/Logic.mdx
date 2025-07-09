@@ -6,9 +6,9 @@ Logic components provide functionalities for routing, conditional processing, an
 
 ## **Use a logic component in a flow**[**​**](https://docs.langflow.org/components-logic#use-a-logic-component-in-a-flow)
 
-This flow creates a summarizing "for each" loop with the [Loop](https://docs.langflow.org/components-logic#loop) component.
+This flow creates a summarizing "for each" loop with the [Loop](https://devrel.mintlify.app/Components/Logic#loop%E2%80%8B) component.
 
-The component iterates over a list of [Data](https://docs.langflow.org/concepts-objects#data-object) objects until it's completed, and then the **Done** loop aggregates the results.
+The component iterates over a list of [Data](https://devrel.mintlify.app/Concepts/LLMCobjects#data-object%E2%80%8B) objects until it's completed, and then the **Done** loop aggregates the results.
 
 The **File** component loads text files from your local machine, and then the **Parser** component parses them into a list of structured `Data` objects. The **Loop** component passes each `Data` object to a **Prompt** to be summarized.
 
@@ -22,7 +22,7 @@ The output is similar to this:
 
 This component routes messages by comparing two strings. It evaluates a condition by comparing two text inputs using the specified operator and routes the message to `true_result` or `false_result`.
 
-The operator looks for single strings based on your defined [operator behavior](https://docs.langflow.org/components-logic#operator-behavior), but it can also search for multiple words by regex matching.
+The operator looks for single strings based on your defined [operator behavior](https://devrel.mintlify.app/Components/Logic#operator-behavior%E2%80%8B), but it can also search for multiple words by regex matching.
 
 To use the **Conditional router** component to check incoming messages with regex matching, do the following:
 
@@ -30,7 +30,7 @@ To use the **Conditional router** component to check incoming messages with rege
 2. In the If-Else component, enter the following values.
 
 - In the **Match Text** field, enter `.*(urgent|warning|caution).*`. The component looks for these values. The regex match is case sensitive, so to look for all permutations of `warning`, enter `warning|Warning|WARNING`.
-- In the **Operator** field, enter `regex`. The component looks for the strings `urgent`, `warning`, and `caution`. For more operators, see [Operator behavior](https://docs.langflow.org/components-logic#operator-behavior).
+- In the **Operator** field, enter `regex`. The component looks for the strings `urgent`, `warning`, and `caution`. For more operators, see [Operator behavior](https://devrel.mintlify.app/Components/Logic#operator-behavior%E2%80%8B).
 - In the **Message** field, enter `New Message Detected`. This field is optional. The message is sent to both the **True** and **False** ports. The component is now set up to send a `New Message Detected` message out of its **True** port if it matches any of the strings. If no strings are detected, it sends a message out of the **False** port.
 
 3. Create two identical flows to process the messages. Connect an **Open AI** component, a **Prompt**, and a **Chat Output** component together.
@@ -108,7 +108,7 @@ This component listens for a notification and retrieves its associated state.
   For another **Loop** component example, see the **Research Translation Loop** template.
 </Tip>
 
-This component iterates over a list of [Data](https://docs.langflow.org/concepts-objects#data-object) objects, outputting one item at a time and aggregating results from loop inputs.
+This component iterates over a list of [Data](https://devrel.mintlify.app/Concepts/LLMCobjects#data-object%E2%80%8B) objects, outputting one item at a time and aggregating results from loop inputs.
 
 In this example, the **Loop** component iterates over a CSV file through the **Item** port until there are no rows left to process. Then, the **Loop** component performs the actions connected to the **Done** port, which in this case is loading the structured data into **Chroma DB**.
 
@@ -182,13 +182,13 @@ This component forwards the input message, unchanged.
 
 This component allows you to run any flow stored in your LLMC database without opening the flow editor.
 
-The Run Flow component can also be used as a tool when connected to an [Agent](https://docs.langflow.org/components-agents). The `name` and `description` metadata that the Agent uses to register the tool are created automatically.
+The Run Flow component can also be used as a tool when connected to an [Agent](/Components/Agents). The `name` and `description` metadata that the Agent uses to register the tool are created automatically.
 
 When you select a flow, the component fetches the flow's graph structure and uses it to generate the inputs and outputs for the Run Flow component.
 
 To use the Run Flow component as a tool, do the following:
 
-1. Add the **Run Flow** component to the [Simple Agent](https://docs.langflow.org/simple-agent) flow.
+1. Add the **Run Flow** component to the [Simple Agent](/Templates/Simpleagent) flow.
 2. In the **Flow Name** menu, select the sub-flow you want to run. The appearance of the **Run Flow** component changes to reflect the inputs and outputs of the selected flow.
 3. On the **Run Flow** component, enable **Tool Mode**.
 4. Connect the **Run Flow** component to the **Toolset** input of the Agent. Your flow should now look like this:
@@ -274,7 +274,7 @@ Deprecated components have been replaced by newer alternatives and should not be
 <Note>
   **important**
 
-  This component is deprecated as of LLMC version 1.1.2. Instead, use the [<u>Run flow component</u>](https://docs.langflow.org/components-logic#run-flow)
+  This component is deprecated as of LLMC version 1.1.2. Instead, use the [<u>Run flow component</u>](https://devrel.mintlify.app/Components/Logic#run-flow%E2%80%8B)
 </Note>
 
 This component constructs a tool from a function that runs a loaded flow.
@@ -299,7 +299,7 @@ This component constructs a tool from a function that runs a loaded flow.
 <Note>
   **important**
 
-  This component is deprecated as of LLMC version 1.1.2. Instead, use the [<u>Run flow component</u>](https://docs.langflow.org/components-logic#run-flow)
+  This component is deprecated as of LLMC version 1.1.2. Instead, use the [<u>Run flow component</u>](https://devrel.mintlify.app/Components/Logic#run-flow%E2%80%8B)
 </Note>
 
 This `SubFlowComponent` generates a component from a flow with all of its inputs and outputs.
