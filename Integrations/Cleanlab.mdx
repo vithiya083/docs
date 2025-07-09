@@ -41,7 +41,7 @@ This component evaluates and explains the trustworthiness of a prompt and respon
 
 ## **CleanlabRemediator**[**​**](https://docs.langflow.org/integrations-cleanlab#cleanlabremediator)
 
-This component uses the trust score from the [CleanlabEvaluator](https://docs.langflow.org/integrations-cleanlab#cleanlabevaluator) component to determine whether to show, warn about, or replace an LLM response. This component has configurables for the score threshold, warning text, and fallback message that you can customize as needed.
+This component uses the trust score from the [CleanlabEvaluator](https://devrel.mintlify.app/Integrations/Cleanlab#cleanlabevaluator%E2%80%8B) component to determine whether to show, warn about, or replace an LLM response. This component has configurables for the score threshold, warning text, and fallback message that you can customize as needed.
 
 <Accordion title="Parameters">
   **Inputs**
@@ -129,7 +129,7 @@ To hide untrustworthy responses, configure the **CleanlabRemediator** component 
 
 ### **Evaluate RAG pipeline**[**​**](https://docs.langflow.org/integrations-cleanlab#evaluate-rag-pipeline)
 
-This example flow includes the [Vector Store RAG](https://docs.langflow.org/vector-store-rag) template with the **CleanlabRAGEvaluator** component added to evaluate the flow's context, query, and response.
+This example flow includes the [Vector Store RAG](/Templates/VectorstoreRAG) template with the **CleanlabRAGEvaluator** component added to evaluate the flow's context, query, and response.
 
 To use the **CleanlabRAGEvaluator** component in a flow, connect the `context`, `query`, and `response` outputs from any RAG pipeline to the **CleanlabRAGEvaluator** component.
 
