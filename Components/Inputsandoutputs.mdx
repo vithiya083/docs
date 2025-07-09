@@ -14,7 +14,7 @@ The **Chat Input** component provides an interactive chat interface in the **
 
 ## **Chat Input**[**​**](https://docs.langflow.org/components-io#chat-input)
 
-This component collects user input as `Text` strings from the chat and wraps it in a [Message](https://docs.langflow.org/concepts-objects#message-object) object that includes the input text, sender information, session ID, file attachments, and styling properties.
+This component collects user input as `Text` strings from the chat and wraps it in a [Message](https://devrel.mintlify.app/Concepts/LLMCobjects#message-object%E2%80%8B) object that includes the input text, sender information, session ID, file attachments, and styling properties.
 
 It can optionally store the message in a chat history.
 
@@ -66,13 +66,13 @@ The output does not appear in the **Playground**.
 
 ## **Chat Output**[**​**](https://docs.langflow.org/components-io#chat-output)
 
-The **Chat Output** component creates a [Message](https://docs.langflow.org/concepts-objects#message-object) object that includes the input text, sender information, session ID, and styling properties.
+The **Chat Output** component creates a [Message](https://devrel.mintlify.app/Concepts/LLMCobjects#message-object%E2%80%8B) object that includes the input text, sender information, session ID, and styling properties.
 
 The component accepts the following input types.
 
-- [Data](https://docs.langflow.org/concepts-objects#data-object)
-- [DataFrame](https://docs.langflow.org/concepts-objects#dataframe-object)
-- [Message](https://docs.langflow.org/concepts-objects#message-object)
+- [Data](https://devrel.mintlify.app/Concepts/LLMCobjects#data-object%E2%80%8B)
+- [DataFrame](https://devrel.mintlify.app/Concepts/LLMCobjects#dataframe-object%E2%80%8B)
+- [Message](https://devrel.mintlify.app/Concepts/LLMCobjects#message-object%E2%80%8B)
 
 <Accordion title="Parameters">
   **Inputs**
@@ -99,7 +99,7 @@ The component accepts the following input types.
 
 ## **Text Output**[**​**](https://docs.langflow.org/components-io#text-output)
 
-The **Text Output** takes a single input of text and returns a [Message](https://docs.langflow.org/concepts-objects#message-object) object containing that text.
+The **Text Output** takes a single input of text and returns a [Message](https://devrel.mintlify.app/Concepts/LLMCobjects#message-object%E2%80%8B) object containing that text.
 
 The output does not appear in the **Playground**.
 
@@ -119,7 +119,7 @@ The output does not appear in the **Playground**.
 
 ## **Chat components example flow**[**​**](https://docs.langflow.org/components-io#chat-components-example-flow)
 
-1. To use the **Chat Input** and **Chat Output** components in a flow, connect them to components that accept or send the [Message](https://docs.langflow.org/concepts-objects#message-object) type.
+1. To use the **Chat Input** and **Chat Output** components in a flow, connect them to components that accept or send the [Message](https://devrel.mintlify.app/Concepts/LLMCobjects#message-object%E2%80%8B) type.
 
 For this example, connect a **Chat Input** component to an **OpenAI** model component's **Input** port, and then connect the **OpenAI** model component's **Message** port to the **Chat Output** component.
 
@@ -163,6 +163,4 @@ The custom `session_id` value starts a new chat session between your client an
 
 To confirm your command is using the tweak, navigate to the **Logs** pane and view the request from the **Chat Input** component. The value for `should_store_message` is `false`.
 
-## **See also**[**​**](https://docs.langflow.org/components-io#see-also)
-
-- [Session ID](https://docs.langflow.org/session-id)
+## 
