@@ -59,10 +59,10 @@ This component is used to load embedding models from [Amazon Bedrock](https://aw
 <Note>
   **important**
 
-  This component is deprecated as of LLMC version 1.1.2. Instead, use the [<u>Astra DB vector store component</u>](https://docs.langflow.org/components-vector-stores#astra-db-vector-store).
+  This component is deprecated as of LLMC version 1.1.2. Instead, use the [<u>Astra DB vector store component</u>](https://devrel.mintlify.app/Components/Vectorstores#astra-db-vector-store).
 </Note>
 
-Connect this component to the **Embeddings** port of the [Astra DB vector store component](https://docs.langflow.org/components-vector-stores#astra-db-vector-store) to generate embeddings.
+Connect this component to the **Embeddings** port of the [Astra DB vector store component](https://devrel.mintlify.app/Components/Vectorstores#astra-db-vector-store) to generate embeddings.
 
 This component requires that your Astra DB database has a collection that uses a vectorize embedding provider integration. For more information and instructions, see [Embedding Generation](https://docs.datastax.com/en/astra-db-serverless/databases/embedding-generation.html).
 
@@ -246,7 +246,7 @@ To run an embeddings inference locally, see the [HuggingFace documentation](http
 
 To connect the local Hugging Face model to the **Hugging Face embeddings inference** component and use it in a flow, follow these steps:
 
-1. Create a [Vector store RAG flow](https://docs.langflow.org/vector-store-rag). There are two embeddings models in this flow that you can replace with **Hugging Face** embeddings inference components.
+1. Create a [Vector store RAG flow](/Templates/VectorstoreRAG). There are two embeddings models in this flow that you can replace with **Hugging Face** embeddings inference components.
 2. Replace both **OpenAI** embeddings model components with **Hugging Face** model components.
 3. Connect both **Hugging Face** components to the **Embeddings** ports of the **Astra DB vector store** components.
 4. In the **Hugging Face** components, set the **Inference Endpoint** field to the URL of your local inference model. **The API Key field is not required for local inference.**
@@ -374,7 +374,7 @@ To use this component in a flow, connect LLMC to your locally running Ollama ser
 1. In the Ollama component, in the **Ollama Base URL** field, enter the address for your locally running Ollama server. This value is set as the `OLLAMA_HOST` environment variable in Ollama. The default base URL is `http://localhost:11434`.
 2. To refresh the server's list of models, click **Refresh**.
 3. In the **Ollama Model** field, select an embeddings model. This example uses `all-minilm:latest`.
-4. Connect the **Ollama** embeddings component to a flow. For example, this flow connects a local Ollama server running a `all-minilm:latest` embeddings model to a [Chroma DB](https://docs.langflow.org/components-vector-stores#chroma-db) vector store to generate embeddings for split text.
+4. Connect the **Ollama** embeddings component to a flow. For example, this flow connects a local Ollama server running a `all-minilm:latest` embeddings model to a [Chroma DB](https://devrel.mintlify.app/Components/Vectorstores#chroma-db) vector store to generate embeddings for split text.
 
 ![3 Pn](/images/3.png)
 
