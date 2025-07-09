@@ -93,7 +93,7 @@ This component loads and parses files of various supported formats and converts 
 To Load a Document
 
 1. Click the **Select files** button
-2. Select a local file or a file loaded with File management
+2. Select a local file or a file loaded with [File management](/Concepts/manage-files)
 
    <Accordion title="Parameters">
      **Inputs**
@@ -223,12 +223,12 @@ This component defines a webhook trigger that runs a flow when it receives an HT
 
 If the input is not valid JSON, the component wraps it in a `payload` object so that it can be processed and still trigger the flow. The component does not require an API key.
 
-When a **Webhook** component is added to the workspace, a new **Webhook cURL** tab becomes available in the **API** pane that contains an HTTP POST request for triggering the webhook component. For example:
+When you add a **Webhook** component to a flow, the flow's [**API access** pane](https://devrel.mintlify.app/Concepts/publish-flows#api-access%E2%80%8B) exposes an additional **Webhook cURL** tab that contains a `POST /v1/webhook/$FLOW_ID` code snippet. You can use this request to send data to the **Webhook** component and trigger the flow. For example:
 
 To test the webhook component:
 
 1. Add a **Webhook** component to the flow.
-2. Connect the **Webhook** component's **Data** output to the **Data** input of a [Parser](https://docs.langflow.org/components-processing#parser) component.
+2. Connect the **Webhook** component's **Data** output to the **Data** input of a [Parser](https://devrel.mintlify.app/Concepts/publish-flows#api-access%E2%80%8B) component.
 3. Connect the **Parser** component's **Parsed Text** output to the **Text** input of a [Chat Output](https://docs.langflow.org/components-io#chat-output) component.
 4. In the **Parser** component, under **Mode**, select **Stringify**. This mode passes the webhook's data as a string for the **Chat Output** component to print.
 5. To send a POST request, copy the code from the **Webhook cURL** tab in the **API** pane and paste it into a terminal.
