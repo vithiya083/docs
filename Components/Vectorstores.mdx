@@ -6,19 +6,19 @@ Vector databases store vector data, which backs AI workloads like chatbots and R
 
 Vector database components establish connections to existing vector databases or create in-memory vector stores for storing and retrieving vector data.
 
-Vector database components are distinct from [memory components](https://docs.langflow.org/components-memories), which are built specifically for storing and retrieving chat messages from external databases.
+Vector database components are distinct from [memory components](/Components/Memories), which are built specifically for storing and retrieving chat messages from external databases.
 
 ## **Use a vector store component in a flow**
 
-This example uses the **Astra DB vector store** component. Your vector store component's parameters and authentication may be different, but the document ingestion workflow is the same. A document is loaded from a local machine and chunked. The Astra DB vector store generates embeddings with the connected [model](https://docs.langflow.org/components-models) component, and stores them in the connected Astra DB database.
+This example uses the **Astra DB vector store** component. Your vector store component's parameters and authentication may be different, but the document ingestion workflow is the same. A document is loaded from a local machine and chunked. The Astra DB vector store generates embeddings with the connected [model](/Components/Models) component, and stores them in the connected Astra DB database.
 
 This vector data can then be retrieved for workloads like Retrieval Augmented Generation..
 
 ![1 Pn](/images/1.png)
 
-The user's chat input is embedded and compared to the vectors embedded during document ingestion for a similarity search. The results are output from the vector database component as a [Data](https://docs.langflow.org/concepts-objects) object and parsed into text. This text fills the `{context}` variable in the **Prompt** component, which informs the **Open AI model** component's responses.
+The user's chat input is embedded and compared to the vectors embedded during document ingestion for a similarity search. The results are output from the vector database component as a [Data](/Concepts/LLMCobjects) object and parsed into text. This text fills the `{context}` variable in the **Prompt** component, which informs the **Open AI model** component's responses.
 
-Alternatively, connect the vector database component's **Retriever** port to a [retriever tool](https://docs.langflow.org/components-tools#retriever-tool), and then to an [agent](https://docs.langflow.org/components-agents) component. This enables the agent to use your vector database as a tool and make decisions based on the available data.
+Alternatively, connect the vector database component's **Retriever** port to a [retriever tool](https://devrel.mintlify.app/Components/Tools#retriever-tool), and then to an [agent](/Components/Agents) component. This enables the agent to use your vector database as a tool and make decisions based on the available data.
 
 ![2 Pn](/images/2.png)
 
@@ -65,7 +65,7 @@ For more information, see the [DataStax documentation](https://docs.datastax.com
 
 The **Astra DB Vector Store** component offers two methods for generating embeddings.
 
-1. **Embedding Model**: Use your own embedding model by connecting an [Embeddings](https://docs.langflow.org/components-embedding-models) component in Langflow.
+1. **Embedding Model**: Use your own embedding model by connecting an [Embeddings](/Components/Embeddings) component in Langflow.
 2. **Astra Vectorize**: Use Astra DB's built-in embedding generation service. When creating a new collection, choose the embeddings provider and models, including NVIDIA's `NV-Embed-QA` model hosted by Datastax.
 
 <Note>
@@ -74,7 +74,7 @@ The **Astra DB Vector Store** component offers two methods for generating embedd
   The embedding model selection is made when creating a new collection and cannot be changed later.
 </Note>
 
-For an example of using the **Astra DB Vector Store** component with an embedding model, see the [Vector Store RAG starter project](https://docs.langflow.org/vector-store-rag).
+For an example of using the **Astra DB Vector Store** component with an embedding model, see the [Vector Store RAG starter project](/Components/Vectorstores).
 
 For more information, see the [Astra DB Serverless documentation](https://docs.datastax.com/en/astra-db-serverless/databases/embedding-generation.html).
 
@@ -105,7 +105,7 @@ To use **Hybrid search** in the **Astra DB** component, do the following:
 5. In the **Collection** field, select or create a collection with hybrid search capabilities enabled.
 6. In the **Playground**, enter a question about your data, such as `What are the features of my data?` Your query is sent to two components: an **OpenAI** model component and the **Astra DB** vector database component. The **OpenAI** component contains a prompt for creating the lexical query from your input:
 7. To view the keywords and questions the **OpenAI** component generates from your collection, in the **OpenAI** component, click **Inspect output**.
-8. To view the [DataFrame](https://docs.langflow.org/concepts-objects#dataframe-object) generated from the **OpenAI** component's response, in the **Structured Output** component, click **Inspect output**. The DataFrame is passed to a **Parser** component, which parses the contents of the **Keywords** column into a string.
+8. To view the [DataFrame](https://devrel.mintlify.app/Concepts/LLMCobjects#dataframe-object%E2%80%8B) generated from the **OpenAI** component's response, in the **Structured Output** component, click **Inspect output**. The DataFrame is passed to a **Parser** component, which parses the contents of the **Keywords** column into a string.
 
    This string of comma-separated words is passed to the **Lexical Terms** port of the **Astra DB** component. Note that the **Search Query** port of the Astra DB port is connected to the **Chat Input** component from step 6. This **Search Query** is vectorized, and both the **Search Query** and **Lexical Terms** content are sent to the reranker at the `find_and_rerank` endpoint.
 
@@ -344,7 +344,7 @@ The component adds a user-friendly interface with two modes (Ingest and Retrieve
 
 Local DB includes **Ingest** and **Retrieve** modes.
 
-The **Ingest** mode works similarly to [ChromaDB](https://docs.langflow.org/components-vector-stores#chroma-db), and persists your database to the Langflow cache directory. The Langflow cache directory location is specified in `LLMC_CONFIG_DIR`. For more information, see [Environment variables](https://docs.langflow.org/environment-variables).
+The **Ingest** mode works similarly to [ChromaDB](https://devrel.mintlify.app/Components/Vectorstores#chroma-db), and persists your database to the Langflow cache directory. The Langflow cache directory location is specified in `LLMC_CONFIG_DIR`. For more information .
 
 The **Retrieve** mode can query your **Chroma DB** collections.
 
