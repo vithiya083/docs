@@ -8,7 +8,7 @@ This page explores the fundamental building blocks of LLMC, beginning with the q
 
 A **flow** is an application. It receives input, processes it, and produces output.
 
-Flows are created in the **workspace** with components dragged from the components sidebar.
+Flows consist of [components](/Components/componentoverview) that you configure and connect in the **Workspace**.
 
 ![1 Pn](/images/1.png)
 
@@ -27,13 +27,11 @@ Flows are stored on local disk at the following default locations:
 - **Linux and WSL**: `home/<username>/.cache/llmc/`
 - **macOS**: `/Users/<username>/Library/Caches/llmc/`
 
-The flow storage location can be customized with the [LANGFLOW_CONFIG_DIR](https://docs.langflow.org/environment-variables#LANGFLOW_CONFIG_DIR) environment variable.
-
 ## **Find your way around**[**​**](https://docs.langflow.org/concepts-overview#find-your-way-around)
 
 If you're new to LLMC, it's OK to feel a bit lost at first. We’ll take you on a tour, so you can orient yourself and start creating applications quickly.
 
-LLMC has four distinct regions: the [workspace](https://docs.langflow.org/concepts-overview#workspace) is the main area where you build your flows. The components sidebar is on the left, and lists the available [components](https://docs.langflow.org/concepts-overview#components). The [playground](https://docs.langflow.org/concepts-overview#playground) and [publish pane](https://docs.langflow.org/concepts-overview#publish-pane) are available in the upper right corner.
+LLMC has four distinct regions: the [workspace](https://devrel.mintlify.app/Concepts/LLMCoverview#workspace%E2%80%8B) is the main area where you build your flows. The components sidebar is on the left, and lists the available [components](https://devrel.mintlify.app/Concepts/LLMCoverview#components%E2%80%8B). The [playground](https://devrel.mintlify.app/Concepts/LLMCoverview#playground%E2%80%8B) and [publish pane](https://devrel.mintlify.app/Concepts/LLMCoverview#publish-pane%E2%80%8B) are available in the upper right corner.
 
 ## **Workspace**[**​**](https://docs.langflow.org/concepts-overview#workspace)
 
@@ -55,7 +53,7 @@ To add a component to your flow, drag it from the sidebar onto the workspace.
 
 To connect components, drag a line from the output handle (⚪) of one component to the input handle of another.
 
-For more information, see [Components overview](https://docs.langflow.org/concepts-components).
+For more information, see [Components overview](/Components/componentoverview).
 
 ![3 Pn](/images/3.png)
 
@@ -67,7 +65,7 @@ Chat with your flow, view inputs and outputs, and modify your AI's memories to t
 
 Either the **Chat Input** or **Chat Output** component can be opened in the **Playground** and tested in real time.
 
-For more information, see the [Playground](https://docs.langflow.org/concepts-playground).
+For more information, see the [Playground](/Concepts/playground).
 
 ![4 Pn](/images/4.png)
 
@@ -75,7 +73,7 @@ For more information, see the [Playground](https://docs.langflow.org/concepts-pl
 
 The **Publish** pane provides code templates to integrate your flows into external applications.
 
-For more information, see the [Publish pane](https://docs.langflow.org/concepts-publish).
+For more information, see the [Publish pane](/Concepts/publish-flows).
 
 ![5 Pn](/images/5.png)
 
@@ -118,7 +116,7 @@ To delete a flow from your project, click a flow's checkbox to select it, and th
 
 Upload, store, and manage files in LLMC's **File management** system.
 
-For more on managing your files, see [Manage files](https://docs.langflow.org/concepts-file-management).
+For more on managing your files, see [Manage files](/Concepts/manage-files).
 
 ## **Options menu**[**​**](https://docs.langflow.org/concepts-overview#options-menu)
 
