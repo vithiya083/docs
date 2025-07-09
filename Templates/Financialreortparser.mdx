@@ -2,7 +2,7 @@
 title: "Financial report parser"
 ---
 
-Build a **Financial Report Parser** flow with the [Structured output](/Components/Helpers) and [Parser](https://docs.langflow.org/components-processing#parser) components to parse LLM responses into a structured format.
+Build a **Financial Report Parser** flow with the [Structured output](https://devrel.mintlify.app/Components/Helpers#structured-output) and [Parser](https://devrel.mintlify.app/Components/Processing#parser) components to parse LLM responses into a structured format.
 
 In this example, the **Chat Input** component is pre-loaded with a sample financial report to demonstrate extracting `Gross Profit`, `EBITDA`, and `Net Income`.
 
@@ -26,5 +26,5 @@ The **Financial Report Parser** flow is created.
 
 Inspect the flow to understand how this information was extracted.
 
-3. To inspect the output schema table, in the **Structured Output** component, click **Open table**. The **Structured Output** component uses the attached **OpenAI** model component as its "brain" to extract financial data into a [DataFrame](https://docs.langflow.org/concepts-objects#dataframe-object) with this defined schema.
+3. To inspect the output schema table, in the **Structured Output** component, click **Open table**. The **Structured Output** component uses the attached **OpenAI** model component as its "brain" to extract financial data into a [DataFrame](https://devrel.mintlify.app/Concepts/LLMCobjects#dataframe-object%E2%80%8B) with this defined schema.
 4. To inspect the template that contains the extracted data, in the **Parser** component, click the **Scan** icon in the **Template** field. The **Parser** component converts the extracted data into formatted messages for chat consumption. Each variable receives its value from the structured outputs.
