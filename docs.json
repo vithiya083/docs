@@ -24,7 +24,7 @@
     "tabs": [
       {
         "tab": "Welcome to LLMC",
-        "page": "welcome",
+        "pages": "welcome",
         "groups": [
           {
             "group": "Getstarted",
