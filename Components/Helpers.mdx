@@ -1,12 +1,12 @@
 ---
-title: "Helper components in LLMC"
+title: "Helper components in LLMControls"
 ---
 
 Helper components provide utility functions to help manage data, tasks, and other components in your flow.
 
 ## **Use a helper component in a flow**[**​**](https://docs.langflow.org/components-helpers#use-a-helper-component-in-a-flow)
 
-Chat memory in LLMC is stored either in local LLMC tables with `LCBufferMemory`, or connected to an external database.
+Chat memory in LLMControls  is stored either in local LLMControls tables with `LCBufferMemory`, or connected to an external database.
 
 The **Store Message** helper component stores chat memories as [Data](/Concepts/LLMCobjects) objects, and the **Message History** helper component retrieves chat messages as data objects or strings.
 
@@ -63,7 +63,7 @@ To use the Batch Run component with a **Parser** component, do the following:
 
 ## **Current date**
 
-The Current Date component returns the current date and time in a selected timezone. This component provides a flexible way to obtain timezone-specific date and time information within a LLMC pipeline.
+The Current Date component returns the current date and time in a selected timezone. This component provides a flexible way to obtain timezone-specific date and time information within a LLMControls pipeline.
 
 <Accordion title="Parameters">
   **Inputs**
@@ -102,7 +102,7 @@ This component generates a unique ID.
 <Note>
   **info**
 
-  Prior to LLMC 1.1, this component was known as the Chat Memory component.
+  Prior to LLMControls 1.1, this component was known as the Chat Memory component.
 </Note>
 
 This component retrieves chat messages from Langflow tables or external memory.
@@ -111,14 +111,14 @@ In this example, the **Message Store** component stores the complete chat histor
 
 ![3 Pn](/images/3.png)
 
-For more information on configuring memory in LLMC.
+For more information on configuring memory in LLMControls.
 
 <Accordion title="Parameters">
   **Inputs**
 
   | **Name**    | **Type** | **Description**                                                                                                                 |
   | :---------- | :------- | :------------------------------------------------------------------------------------------------------------------------------ |
-  | memory      | Memory   | Retrieve messages from an external memory. If empty, the LLMC tables are used.                                                  |
+  | memory      | Memory   | Retrieve messages from an external memory. If empty, the LLMControls tables are used.                                           |
   | sender      | String   | Filter by sender type.                                                                                                          |
   | sender_name | String   | Filter by sender name.                                                                                                          |
   | n_messages  | Integer  | The number of messages to retrieve.                                                                                             |
@@ -137,13 +137,13 @@ For more information on configuring memory in LLMC.
 
 ## **Message store**
 
-This component stores chat messages or text in LLMC tables or external memory.
+This component stores chat messages or text in LLMControls tables or external memory.
 
-In this example, the **Message Store** component stores the complete chat history in a local LLMC table, which the **Message History** component retrieves as context for the LLM to answer each question.
+In this example, the **Message Store** component stores the complete chat history in a local LLMControls table, which the **Message History** component retrieves as context for the LLM to answer each question.
 
 ![4 Pn](/images/4.png)
 
-For more information on configuring memory in LLMC .
+For more information on configuring memory in LLMControls .
 
 <Accordion title="Parameters">
   **Inputs**
@@ -151,7 +151,7 @@ For more information on configuring memory in LLMC .
   | **Name**    | **Type** | **Description**                                                                                    |
   | :---------- | :------- | :------------------------------------------------------------------------------------------------- |
   | message     | String   | The chat message to be stored. (Required)                                                          |
-  | memory      | Memory   | The external memory to store the message. If empty, the LLMC tables are used.                      |
+  | memory      | Memory   | The external memory to store the message. If empty, the LLMControls tables are used.               |
   | sender      | String   | The sender of the message. Can be Machine or User. If empty, the current sender parameter is used. |
   | sender_name | String   | The name of the sender. Can be AI or User. If empty, the current sender parameter is used.         |
   | session_id  | String   | The session ID of the chat. If empty, the current session ID parameter is used.                    |
@@ -202,10 +202,6 @@ For example, the template `EBITDA: {EBITDA} , Net Income: {NET_INCOME} , GROSS_P
   | :---------------- | :------- | :------------------------------------------------------------------ |
   | structured_output | Data     | The structured output is a Data object based on the defined schema. |
 </Accordion>
-
-## **Legacy components**
-
-Legacy components are available for use but are no longer supported.
 
 ### **Create List**
 
@@ -259,5 +255,3 @@ To use this component:
   | format_instructions | String   | Pass to a prompt template to include formatting instructions for LLM responses. |
   | output_parser       | Parser   | The constructed output parser that can be used to parse LLM responses.          |
 </Accordion>
-
-## 
