@@ -2,7 +2,7 @@
 title: "Create custom Python components"
 ---
 
-Custom components extend LLMC's functionality through Python classes that inherit from `Component`. This enables integration of new features, data manipulation, external services, and specialized tools.
+Custom components extend LLMControl's functionality through Python classes that inherit from `Component`. This enables integration of new features, data manipulation, external services, and specialized tools.
 
 In LLMC's node-based environment, each node is a "component" that performs discrete functions. Custom components are Python classes which define:
 
@@ -14,7 +14,7 @@ The benefits of creating custom components include unlimited extensibility, reus
 
 Create custom components for performing specialized tasks, calling APIs, or adding advanced logic.
 
-Custom components in LLMC are built upon:
+Custom components in LLMControls are built upon:
 
 - The Python class that inherits from `Component`.
 - Class-level attributes that identify and describe the component.
@@ -34,12 +34,12 @@ Define these attributes to control a custom component's appearance and behavior:
 <Tip>
   **ICON USAGE**
 
-  Langflow uses [<u>Lucide</u>](https://lucide.dev/icons) for icons. To assign an icon to your component, set the icon attribute to the name of a Lucide icon as a string, such as `icon = "file-text"`. LLMC renders icons from the Lucide library automatically.
+  Langflow uses [<u>Lucide</u>](https://lucide.dev/icons) for icons. To assign an icon to your component, set the icon attribute to the name of a Lucide icon as a string, such as `icon = "file-text"`. LLMControls renders icons from the Lucide library automatically.
 </Tip>
 
 ### **Structure of a custom component**
 
-A **LLMC custom component** goes beyond a simple class with inputs and outputs. It includes an internal structure with optional lifecycle steps, output generation, front-end interaction, and logic organization.
+A **LLMControls custom component** goes beyond a simple class with inputs and outputs. It includes an internal structure with optional lifecycle steps, output generation, front-end interaction, and logic organization.
 
 A basic component:
 
@@ -52,7 +52,7 @@ A minimal custom component skeleton contains the following:
 
 ### **Internal Lifecycle and Execution Flow**
 
-LLMC's engine manages:
+LLMControl's engine manages:
 
 - **Instantiation**: A component is created and internal structures are initialized.
 - **Assigning Inputs**: Values from the UI or connections are assigned to component fields.
@@ -114,9 +114,9 @@ Use `self.ctx` as a shared storage for data or counters across the component's e
 
 ## **Directory structure requirements**
 
-By default, LLMC looks for custom components in the `llmc/components` directory.
+By default, LLMControls looks for custom components in the `llmc/components` directory.
 
-If you're creating custom components in a different location using the  LLMC COMPONENTS PATH environment variable, components must be organized in a specific directory structure to be properly loaded and displayed in the UI:
+If you're creating custom components in a different location using the  LLMControls COMPONENTS PATH environment variable, components must be organized in a specific directory structure to be properly loaded and displayed in the UI:
 
 Components must be placed inside **category folders**, not directly in the base directory. The category folder name determines where the component appears in the UI menu.
 
@@ -124,7 +124,7 @@ For example, to add a component to the **Helpers** menu, place it in a `helpers`
 
 You can have **multiple category folders** to organize components into different menus:
 
-This folder structure is required for LLMC to properly discover and load your custom components. Components placed directly in the base directory will not be loaded.
+This folder structure is required for LLMControls to properly discover and load your custom components. Components placed directly in the base directory will not be loaded.
 
 ## **Custom component inputs and outputs**
 
@@ -132,7 +132,7 @@ Inputs and outputs define how data flows through the component, how it appears i
 
 ### **Inputs**[**​**](https://docs.langflow.org/components-custom-components#inputs)
 
-Inputs are defined in a class-level `inputs` list. When LLMC loads the component, it uses this list to render fields and [ports](https://devrel.mintlify.app/Components/componentoverview#component-ports) in the UI. Users or other components provide values or connections to fill these inputs.
+Inputs are defined in a class-level `inputs` list. When LLMControls loads the component, it uses this list to render fields and [ports](https://devrel.mintlify.app/Components/componentoverview#component-ports) in the UI. Users or other components provide values or connections to fill these inputs.
 
 An input is usually an instance of a class from `llmc.io` (such as `StrInput`, `DataInput`, or `MessageTextInput`). The most common constructor parameters are:
 
@@ -184,7 +184,7 @@ This example defines three inputs: a text field (`StrInput`), a boolean toggle (
 
 ### **Outputs**[**​**](https://docs.langflow.org/components-custom-components#outputs)
 
-Outputs are defined in a class-level `outputs` list. When LLMC renders a component, each output becomes a connector point in the UI. When you connect something to an output, LLMC automatically calls the corresponding method and passes the returned object to the next component.
+Outputs are defined in a class-level `outputs` list. When LLMControls renders a component, each output becomes a connector point in the UI. When you connect something to an output, LLMControls automatically calls the corresponding method and passes the returned object to the next component.
 
 An output is usually an instance of `Output` from `llmc.io`, with common parameters:
 
@@ -202,7 +202,7 @@ The method must exist in the class, and it is recommended to annotate its return
 - `DataFrame`: Pandas-based tables (`llmc.schema.DataFrame`).
 - **Primitive types**: `str`, `int`, `bool` (not recommended if you need type/color consistency).
 
-In this example, the `DataToDataFrame` component defines its output using the outputs list. The `df_out` output is linked to the `build_df` method, so when connected in the UI, LLMC calls this method and passes its returned DataFrame to the next node. This demonstrates how each output maps to a method that generates the actual output data.
+In this example, the `DataToDataFrame` component defines its output using the outputs list. The `df_out` output is linked to the `build_df` method, so when connected in the UI, LLMControls calls this method and passes its returned DataFrame to the next node. This demonstrates how each output maps to a method that generates the actual output data.
 
 ### **Tool mode**[**​**](https://docs.langflow.org/components-custom-components#tool-mode)
 
@@ -219,12 +219,12 @@ Langflow currently supports the following input types for Tool Mode:
 
 ## **Typed annotations**[**​**](https://docs.langflow.org/components-custom-components#typed-annotations)
 
-In LLMC, **typed annotations** allow LLMC to visually guide users and maintain flow consistency.
+In LLMControls, **typed annotations** allow LLMControls to visually guide users and maintain flow consistency.
 
 Typed annotations provide:
 
 - **Color-coding**: Outputs like `-> Data` or `-> Message` get distinct colors.
-- **Validation**: LLMC blocks incompatible connections automatically.
+- **Validation**: LLMControls blocks incompatible connections automatically.
 - **Readability**: Developers can quickly understand data flow.
 - **Development tools**: Better code suggestions and error checking in your code editor.
 
@@ -265,13 +265,13 @@ When using typed annotations, consider the following best practices:
 
 ## **Enable dynamic fields**[**​**](https://docs.langflow.org/components-custom-components#enable-dynamic-fields)
 
-In **LLMC**, dynamic fields allow inputs to change or appear based on user interactions. You can make an input dynamic by setting `dynamic=True`. Optionally, setting `real_time_refresh=True` triggers the `update_build_config` method to adjust the input's visibility or properties in real time, creating a contextual UI that only displays relevant fields based on the user's choices.
+In **LLMControls**, dynamic fields allow inputs to change or appear based on user interactions. You can make an input dynamic by setting `dynamic=True`. Optionally, setting `real_time_refresh=True` triggers the `update_build_config` method to adjust the input's visibility or properties in real time, creating a contextual UI that only displays relevant fields based on the user's choices.
 
 In this example, the operator field triggers updates via `real_time_refresh=True`. The `regex_pattern` field is initially hidden and controlled via `dynamic=True`.
 
 ### Implement `update_build_config`[**​**](https://docs.langflow.org/components-custom-components#implement-update_build_config)
 
-When a field with `real_time_refresh=True` is modified, LLMC calls the `update_build_config` method, passing the updated field name, value, and the component's configuration to dynamically adjust the visibility or properties of other fields based on user input.
+When a field with `real_time_refresh=True` is modified, LLMControls calls the `update_build_config` method, passing the updated field name, value, and the component's configuration to dynamically adjust the visibility or properties of other fields based on user input.
 
 This example will show or hide the `regex_pattern` field when the user selects a different operator.
 
@@ -295,11 +295,11 @@ When working with dynamic fields, consider the following best practices to ensur
 
 ## **Error handling and logging**[**​**](https://docs.langflow.org/components-custom-components#error-handling-and-logging)
 
-In LLMC, robust error handling ensures that your components behave predictably, even when unexpected situations occur, such as invalid inputs, external API failures, or internal logic errors.
+In LLMControls, robust error handling ensures that your components behave predictably, even when unexpected situations occur, such as invalid inputs, external API failures, or internal logic errors.
 
 ### **Error handling techniques**[**​**](https://docs.langflow.org/components-custom-components#error-handling-techniques)
 
-- **Raise Exceptions**: If a critical error occurs, you can raise standard Python exceptions such as `ValueError`, or specialized exceptions like `ToolException`. LLMC will automatically catch these and display appropriate error messages in the UI, helping users quickly identify what went wrong.
+- **Raise Exceptions**: If a critical error occurs, you can raise standard Python exceptions such as `ValueError`, or specialized exceptions like `ToolException`. LLMControls will automatically catch these and display appropriate error messages in the UI, helping users quickly identify what went wrong.
 
 **Return Structured Error Data**: Instead of stopping a flow abruptly, you can return a Data object containing an "error" field. This approach allows the flow to continue operating and enables downstream components to detect and handle the error gracefully.
 
@@ -320,5 +320,3 @@ To build more reliable components, consider the following best practices:
 - **Keep logs concise**: Focus on meaningful messages to avoid cluttering the UI.
 - **Return structured errors**: When appropriate, return `Data(data={"error": ...})` instead of raising exceptions to allow downstream handling.
 - **Stop outputs selectively**: Only halt specific outputs with `self.stop(...)` if necessary, to preserve correct flow behavior elsewhere.
-
-## 
