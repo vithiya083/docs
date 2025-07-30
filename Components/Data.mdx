@@ -1,5 +1,5 @@
 ---
-title: "Data components in LLMC"
+title: "Data components in LLMControls"
 ---
 
 # Data Components
@@ -16,7 +16,7 @@ In the component's **URLs** field, enter the URL you want to load
 
 To add multiple URL fields, click the add button
 
-Alternatively, connect a component that outputs the `Message` type, like the **Chat Input**              component, to supply your URLs from a component
+Alternatively, connect a component that outputs the `Message` type, like the **Chat Input**  component, to supply your URLs from a component
 
 ![1 Pn](/images/1.png)
 
@@ -58,32 +58,6 @@ This component makes HTTP requests using URLs or cURL commands.
   | :-------- | :--------------- | :--------------------------------------------------------------------------------------- |
   | data      | Data             | The result of the API requests. Returns a Data object containing source URL and results. |
   | dataframe | DataFrame        | Converts the API response data into a tabular DataFrame format.                          |
-</Accordion>
-
-## Directory
-
-This component recursively loads files from a directory, with options for file types, depth, and concurrency.
-
-<Accordion title="Parameters">
-  **Inputs**
-
-  | **Input**          | **Type**         | **Description**                                         |
-  | :----------------- | :--------------- | :------------------------------------------------------ |
-  | path               | MessageTextInput | The path to the directory to load files from.           |
-  | types              | MessageTextInput | The file types to load (leave empty to load all types). |
-  | depth              | IntInput         | The depth to search for files.                          |
-  | max_concurrency    | IntInput         | The maximum concurrency for loading files.              |
-  | load_hidden        | BoolInput        | If true, hidden files are loaded.                       |
-  | recursive          | BoolInput        | If true, the search is recursive.                       |
-  | silent_errors      | BoolInput        | If true, errors do not raise an exception.              |
-  | use_multithreading | BoolInput        | If true, multithreading is used.                        |
-
-  **Outputs**
-
-  | **Output** | **Type**   | **Description**                                   |
-  | :--------- | :--------- | :------------------------------------------------ |
-  | data       | List[Data] | The loaded file data from the directory.          |
-  | dataframe  | DataFrame  | The loaded file data in tabular DataFrame format. |
 </Accordion>
 
 ## File
@@ -143,7 +117,7 @@ To Load a Document
 
 #### Archive Formats
 
-_For bundling multiple files:_
+For bundling multiple files:
 
 - `.zip` - ZIP archives
 - `.tar` - TAR archives
@@ -250,10 +224,6 @@ To test the webhook component:
   | :---------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
   | output_data | Data             | Outputs processed data from the webhook input, and returns an empty [<u>Data</u>](https://docs.langflow.org/concepts-objects) object if no input is provided. If the input is not valid JSON, the component wraps it in a `payload` object. |
 </Accordion>
-
-## **Legacy components**
-
-Legacy components are available for use but are no longer supported.
 
 ### **Gmail Loader**
 
