@@ -1,5 +1,5 @@
 ---
-title: "Input and output components in LLMC"
+title: "Input and output components in LLMControls"
 ---
 
 Input and output components define where data enters and exits your flow.
@@ -130,7 +130,7 @@ The flow looks like this:
 ![1 Pn](/images/1.png)
 
 3. To send a message to your flow, open the **Playground**, and then enter a message. The **OpenAI** model component responds. Optionally, in the **OpenAI** model component, enter a **System Message** to control the model's response.
-4. In the LLMC UI, click your flow name, and then click **Logs**. The **Logs** pane opens. Here, you can inspect your component logs.
+4. In the LLMControls UI, click your flow name, and then click **Logs**. The **Logs** pane opens. Here, you can inspect your component logs.
 
 ![2 Pn](/images/2.png)
 
@@ -145,16 +145,16 @@ The flow looks like this:
 
 ### **Send chat messages with the API**[**​**](https://docs.langflow.org/components-io#send-chat-messages-with-the-api)
 
-The **Chat Input** component is often the entry point for passing messages to the LLMC API. To send the same example messages programmatically to your LLMC server, do the following:
+The **Chat Input** component is often the entry point for passing messages to the LLMControls API. To send the same example messages programmatically to your LLMControls server, do the following:
 
-1. To get your LLMC endpoint, click **Publish**, and then click **API access**.
+1. To get your LLMControls endpoint, click **Publish**, and then click **API access**.
 2. Copy the command from the **cURL** tab, and then paste it in your terminal. It looks similar to this:
 3. Modify `input_value` so it contains the question, `What's the recommended way to install Docker on Mac M1?`.
 
    Note the `output_type` and `input_type` parameters that are passed with the message. The `chat` type provides additional configuration options, and the messages appear in the **Playground**. The `text` type returns only text strings, and does not appear in the **Playground**.
-   4. Add a custom `session_id` to the message's `data` object.
+4.  Add a custom `session_id` to the message's `data` object.
 
-The custom `session_id` value starts a new chat session between your client and the LLMC server, and can be useful in keeping conversations and AI context separate.
+The custom `session_id` value starts a new chat session between your client and the LLMControls server, and can be useful in keeping conversations and AI context separate.
 
 5. Send the POST request. Your request is answered.
 6. Navigate to the **Playground**. A new chat session called `docker-question-on-m1` has appeared, using your unique `session_id`.
@@ -162,5 +162,3 @@ The custom `session_id` value starts a new chat session between your client an
 8. Click **Tweaks** to modify parameters in the component's `data` object. For example, disabling storing messages from the **Chat Input** component adds a **Tweak** to your command:
 
 To confirm your command is using the tweak, navigate to the **Logs** pane and view the request from the **Chat Input** component. The value for `should_store_message` is `false`.
-
-## 
