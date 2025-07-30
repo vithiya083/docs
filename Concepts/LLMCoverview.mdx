@@ -1,8 +1,8 @@
 ---
-title: "LLMC overview"
+title: "LLMControls overview"
 ---
 
-This page explores the fundamental building blocks of LLMC, beginning with the question, **"What is a flow?"**
+This page explores the fundamental building blocks of LLMControls, beginning with the question, **"What is a flow?"**
 
 ## **What is a flow?**[**​**](https://docs.langflow.org/concepts-overview#what-is-a-flow)
 
@@ -18,30 +18,21 @@ A flow can be as simple as the [basic prompting flow](/Getstarted/quickstart), w
 - Each component has a **Configuration** menu. Click the **Code** button on a component to see its underlying Python code.
 - Components are connected with **edges** to form flows.
 
-If you're familiar with [React Flow](https://reactflow.dev/learn), a **flow** is a node-based application, a **component** is a node, and the connections between components are **edges**.
-
-When a flow is run, LLMC builds a Directed Acyclic Graph (DAG) graph object from the nodes (components) and edges (connections between components), with the nodes sorted to determine the order of execution. The graph build calls the individual components' `def_build` functions to validate and prepare the nodes. This graph is then processed in dependency order. Each node is built and executed sequentially, with results from each built node being passed to nodes that are dependent on the previous node's results.
-
-Flows are stored on local disk at the following default locations:
-
-- **Linux and WSL**: `home/<username>/.cache/llmc/`
-- **macOS**: `/Users/<username>/Library/Caches/llmc/`
-
 ## **Find your way around**[**​**](https://docs.langflow.org/concepts-overview#find-your-way-around)
 
-If you're new to LLMC, it's OK to feel a bit lost at first. We’ll take you on a tour, so you can orient yourself and start creating applications quickly.
+If you're new to LLMControls, it's OK to feel a bit lost at first. We’ll take you on a tour, so you can orient yourself and start creating applications quickly.
 
-LLMC has four distinct regions: the [workspace](https://devrel.mintlify.app/Concepts/LLMCoverview#workspace%E2%80%8B) is the main area where you build your flows. The components sidebar is on the left, and lists the available [components](https://devrel.mintlify.app/Concepts/LLMCoverview#components%E2%80%8B). The [playground](https://devrel.mintlify.app/Concepts/LLMCoverview#playground%E2%80%8B) and [publish pane](https://devrel.mintlify.app/Concepts/LLMCoverview#publish-pane%E2%80%8B) are available in the upper right corner.
+LLMControls has four distinct regions: the [workspace](https://devrel.mintlify.app/Concepts/LLMCoverview#workspace%E2%80%8B) is the main area where you build your flows. The components sidebar is on the left, and lists the available [components](https://devrel.mintlify.app/Concepts/LLMCoverview#components%E2%80%8B). The [playground](https://devrel.mintlify.app/Concepts/LLMCoverview#playground%E2%80%8B) and [publish pane](https://devrel.mintlify.app/Concepts/LLMCoverview#publish-pane%E2%80%8B) are available in the upper right corner.
 
 ## **Workspace**[**​**](https://docs.langflow.org/concepts-overview#workspace)
 
 The **workspace** is where you create AI applications by connecting and running components in flows.
 
 - Click and drag the workspace to move it left, right, up, and down.
-- Scroll up and down to zoom in and out of the workspace, or use the  <Icon icon="magnifying-glass-plus" color="#030202" />**Zoom In** and  <Icon icon="magnifying-glass-minus" color="#050202" />**Zoom Out** controls.
+- Scroll up and down to zoom in and out of the workspace, or use the  **Zoom In** and  **Zoom Out** controls.
 - Click  **Fit To Zoom** to center the workspace on the current flow.
 - Click **Lock** to lock the workspace in place, preventing accidental movement.
-- Click <Icon icon="note-sticky" color="#080505" />**Add Note** to add a note to your flow, similar to commenting in code.
+- Click **Add Note** to add a note to your flow, similar to commenting in code.
 
 ![2 Pn](/images/2.png)
 
@@ -85,47 +76,32 @@ To access the **Logs** pane, click your **Flow Name**, and then select **Logs**.
 
 ![6 Pn](/images/6.png)
 
-LLMC stores logs at the location specified in the `LLMC_CONFIG_DIR` environment variable.
-
-This directory's default location depends on your operating system.
-
-- **Linux and WSL**: `~/.cache/langflow/`
-- **macOS**: `/Users/<username>/Library/Caches/langflow/`
-- **Windows**: `%LOCALAPPDATA%\langflow\langflow\Cache`
-
-To modify the location of your log file:
-
-1. Add `LLMC_LOG_FILE=path/to/logfile.log` in your `.env` file.
-2. To start LLMC with the values from your `.env` file, start LLMC with `uv run llmc run --env-file .env`.
-
-An example `.env` file is available in the [project repository](https://github.com/langflow-ai/langflow/blob/main/.env.example).
-
 ## **Projects**[**​**](https://docs.langflow.org/concepts-overview#projects)
 
-The **Projects** page displays all the flows you've created in the LLMC workspace.
+The **Projects** page displays all the flows you've created in the LLMControls workspace.
 
 ![7 Pn](/images/7.png)
 
-**Starter Project** is the default space where all new projects are initially stored. To create a new project, click  <Icon icon="circle-plus" color="#040704" />**Create new project**.
+**Starter Project** is the default space where all new projects are initially stored. To create a new project, click  **Create new project**.
 
-To upload a flow to your project, click <Icon icon="upload" color="#030101" /> **Upload a flow**.
+To upload a flow to your project, click  **Upload a flow**.
 
 To delete a flow from your project, click a flow's checkbox to select it, and then click  **Delete**. You can select multiple flows in a single action.
 
 ## **File management**[**​**](https://docs.langflow.org/concepts-overview#file-management)
 
-Upload, store, and manage files in LLMC's **File management** system.
+Upload, store, and manage files in LLMControl's **File management** system.
 
 For more on managing your files, see [Manage files](/Concepts/manage-files).
 
 ## **Options menu**[**​**](https://docs.langflow.org/concepts-overview#options-menu)
 
-The dropdown menu labeled with the project name offers several management and customization options for the current flow in the LLMC workspace:
+The dropdown menu labeled with the project name offers several management and customization options for the current flow in the LLMControl workspace:
 
-- <Icon icon="circle-plus" color="#080202" />**New**: Create a new flow from scratch.
+- **New**: Create a new flow from scratch.
 - **Edit Details**: Adjust settings specific to the current flow, such as its name, description, and endpoint name.
 - **Logs**: View logs for the current project, including execution history, errors, and other runtime events.
-- <Icon icon="file-import" color="#010000" />**Import**: Import a flow or component from a JSON file into the workspace.
+- **Import**: Import a flow or component from a JSON file into the workspace.
 - **Export**: Export the current flow as a JSON file.
 - **Undo**: Revert the last action taken in the project. Keyboard shortcut: Control\+Z(or on macOS).
 - **Redo**: Reapply a previously undone action. Keyboard shortcut: Control\+Y(or on macOS).
@@ -133,4 +109,4 @@ The dropdown menu labeled with the project name offers several management and cu
 
 ## **Settings**
 
-In the LLMC header, click your profile icon, and then select **Settings** to access general LLMC settings, including global variables, LLMC API keys, keyboard shortcuts, and log messages.
+In the LLMControls header, click your profile icon, and then select **Settings** to access general LLMControls settings, including global variables, LLMControls API keys, keyboard shortcuts, and log messages.
