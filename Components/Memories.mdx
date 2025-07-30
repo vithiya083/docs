@@ -1,5 +1,5 @@
 ---
-title: "Memory components in LLMC"
+title: "Memory components in LLMControls"
 ---
 
 Memory components store and retrieve chat messages .
@@ -10,7 +10,7 @@ Memory components provide access to their respective external databases **as mem
 
 ## **Use a memory component in a flow**[**​**](https://docs.langflow.org/components-memories#use-a-memory-component-in-a-flow)
 
-This example flow stores and retrieves chat history from an **Astra DB Chat Memory** component with **Store Message** and **Message history** components.
+This example flow stores and retrieves chat history from an **LLMC Vector DB Chat Memory** component with **Store Message** and **Message history** components.
 
 The **Store Message** helper component stores chat memories as [Data](/Concepts/LLMCobjects) objects, and the **Message History** helper component retrieves chat messages as [Data](/Concepts/LLMCobjects) objects or strings.
 
@@ -111,10 +111,6 @@ This component retrieves and stores chat messages from Redis.
   | :------- | :--------------- | :------------------------------------ |
   | memory   | Memory           | The Redis chat message history object |
 </Accordion>
-
-## **Legacy components**
-
-**Legacy** components are available for use but are no longer supported.
 
 ### **ZepChatMemory Component**
 
