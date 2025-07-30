@@ -1,5 +1,5 @@
 ---
-title: "Model components in LLMC"
+title: "Model components in LLMControls"
 ---
 
 Model components generate text using large language models.
@@ -16,7 +16,15 @@ This example has the OpenAI model in a chatbot flow. For more information, see t
 
 ![1 Pn](/images/1.png)
 
-## **AIML**
+## **LLMControls Executor**
+
+Tightly integrated with Prompt Optimizer .
+
+Supports **multiple models .**
+
+This is the own component of LLMControls .
+
+## **AIML **
 
 This component creates a ChatOpenAI model instance using the AIML API.
 
@@ -272,7 +280,7 @@ For more information, see the [Hugging Face documentation](https://huggingface.c
   | model    | LanguageModel | An instance of HuggingFaceHub configured with the specified parameters. |
 </Accordion>
 
-## \*\*IBM \*\*[**watsonx.ai**](http://watsonx.ai)
+## IBM [**watsonx.ai**](http://watsonx.ai)
 
 This component generates text using [IBM ](https://www.ibm.com/watsonx)[watsonx.ai](http://watsonx.ai) foundation models.
 
@@ -481,7 +489,7 @@ For more information, see [NVIDIA AI documentation](https://developer.nvidia.com
 
 This component generates text using Ollama's language models.
 
-To use this component in a flow, connect LLMC to your locally running Ollama server and select a model.
+To use this component in a flow, connect LLMControls to your locally running Ollama server and select a model.
 
 1. In the Ollama component, in the **Base URL** field, enter the address for your locally running Ollama server. This value is set as the `OLLAMA_HOST` environment variable in Ollama. The default base URL is `http://localhost:11434`.
 2. To refresh the server's list of models, click **Refresh**.
