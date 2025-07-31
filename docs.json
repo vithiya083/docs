@@ -96,9 +96,6 @@
                   "Integrations/Google/google-bigquery-langflow"
                 ]
               },
-              "Integrations/langfuse",
-              "Integrations/langsmith",
-              "Integrations/langwatch",
               {
                 "group": "Opik",
                 "pages": ["Integrations/Opik/opik"]
@@ -127,5 +124,3 @@
     "global": {}
   }
 }
-
-
