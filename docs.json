@@ -83,7 +83,6 @@
             "group": "Integrations",
             "pages": [
               "Integrations/Apify",
-              "Integrations/Arize",
               "Integrations/AssemblyAI",
               "Integrations/AstraDBMCPserver",
               "Integrations/Cleanlab",
