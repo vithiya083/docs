@@ -1,8 +1,8 @@
 ---
-title: "Connect an Astra DB MCP server to LLMC"
+title: "Connect an Astra DB MCP server to LLMControls"
 ---
 
-Use the [MCP connection component](https://docs.langflow.org/mcp-client) to connect LLMC to a [Datastax Astra DB MCP server](https://github.com/datastax/astra-db-mcp).
+Use the [MCP connection component](https://docs.langflow.org/mcp-client) to connect LLMControls to a [Datastax Astra DB MCP server](https://github.com/datastax/astra-db-mcp).
 
 1. Install an LTS release of [Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 2. Create an [OpenAI](https://platform.openai.com/) API key.
@@ -20,11 +20,11 @@ Use the [MCP connection component](https://docs.langflow.org/mcp-client) to conn
 <Note>
   **important**
 
-  LLMC passes environment variables from the `.env` file to MCP, but not global variables declared in the UI. To add the values for `ASTRA_DB_APPLICATION_TOKEN` and `ASTRA_DB_API_ENDPOINT` as global variables, add them to LLMC's `.env` file at startup. For more information.
+  LLMControls passes environment variables from the `.env` file to MCP, but not global variables declared in the UI. To add the values for `ASTRA_DB_APPLICATION_TOKEN` and `ASTRA_DB_API_ENDPOINT` as global variables, add them to LLMControls' `.env` file at startup. For more information.
 </Note>
 
  9. To add another variable, click **Add More**.
 10. In the **Agent** component, add your **OpenAI API key**.
 11. Open the **Playground**, and then ask the agent, `What collections are available?`
 
-Since LLMC is connected to your Astra DB database through the MCP, the agent chooses the correct tool and connects to your database to retrieve the answer.
+Since LLMControls is connected to your Astra DB database through the MCP, the agent chooses the correct tool and connects to your database to retrieve the answer.
