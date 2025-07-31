@@ -2,7 +2,7 @@
 title: "Embedded chat widget"
 ---
 
-On the [Publish pane](/Concepts/publish-flows), the **Embed into site** tab displays code that can be inserted in the `<body>` of your HTML to interact with your flow.
+oOn the [Publish pane](/Concepts/publish-flows), the **Embed into site** tab displays code that can be inserted in the `<body>` of your HTML to interact with your flow.
 
 The chat widget is implemented as a web component called `llmc-chat` and is loaded from a CDN. For more information, see the [llmc-embedded-chat repository](https://github.com/langflow-ai/langflow-embedded-chat).
 
@@ -57,32 +57,32 @@ To add `CUSTOM_ELEMENTS_SCHEMA` to your module's configuration, do the following
 
 Props with the type `JSON` need to be passed as stringified JSON (i.e., `'{"key":"value"}'`).
 
-| Prop                    | Type    | Description                                                |
-| ----------------------- | ------- | ---------------------------------------------------------- |
-| `flow_id`               | String  | Required. The flow’s unique ID.                            |
-| `host_url`              | String  | Required. Base URL of LLMC server (HTTPS, no trailing `/`) |
-| `api_key`               | String  | Optional API key for auth.                                 |
-| `session_id`            | String  | Custom session ID.                                         |
-| `additional_headers`    | JSON    | Extra HTTP headers.                                        |
-| `height`, `width`       | Number  | Dimensions of the widget.                                  |
-| `chat_position`         | String  | `top-left`, `bottom-right`, etc.                           |
-| `start_open`            | Boolean | Whether the chat window opens automatically.               |
-| `chat_window_style`     | JSON    | Full widget styling.                                       |
-| `chat_trigger_style`    | JSON    | Trigger button styling.                                    |
-| `bot_message_style`     | JSON    | Bot message appearance.                                    |
-| `user_message_style`    | JSON    | User message appearance.                                   |
-| `error_message_style`   | JSON    | Error styling.                                             |
-| `input_style`           | JSON    | Chat input box.                                            |
-| `input_container_style` | JSON    | Chat input container.                                      |
-| `send_button_style`     | JSON    | Send button.                                               |
-| `send_icon_style`       | JSON    | Icon for send button.                                      |
-| `window_title`          | String  | Widget header title.                                       |
-| `placeholder`           | String  | Input placeholder.                                         |
-| `placeholder_sending`   | String  | Placeholder while sending.                                 |
-| `online`                | Boolean | Toggle online state.                                       |
-| `online_message`        | String  | Message shown when online.                                 |
-| `input_type`            | String  | Chat input type.                                           |
-| `output_type`           | String  | Chat output type.                                          |
-| `output_component`      | String  | Which component to route output to.                        |
-| `chat_output_key`       | String  | Output key to render.                                      |
-| `tweaks`                | JSON    | Custom tweaks for flow.                                    |
+| Prop                    | Type    | Description                                                       |
+| ----------------------- | ------- | ----------------------------------------------------------------- |
+| `flow_id`               | String  | Required. The flow’s unique ID.                                   |
+| `host_url`              | String  | Required. Base URL of LLMControls server (HTTPS, no trailing `/`) |
+| `api_key`               | String  | Optional API key for auth.                                        |
+| `session_id`            | String  | Custom session ID.                                                |
+| `additional_headers`    | JSON    | Extra HTTP headers.                                               |
+| `height`, `width`       | Number  | Dimensions of the widget.                                         |
+| `chat_position`         | String  | `top-left`, `bottom-right`, etc.                                  |
+| `start_open`            | Boolean | Whether the chat window opens automatically.                      |
+| `chat_window_style`     | JSON    | Full widget styling.                                              |
+| `chat_trigger_style`    | JSON    | Trigger button styling.                                           |
+| `bot_message_style`     | JSON    | Bot message appearance.                                           |
+| `user_message_style`    | JSON    | User message appearance.                                          |
+| `error_message_style`   | JSON    | Error styling.                                                    |
+| `input_style`           | JSON    | Chat input box.                                                   |
+| `input_container_style` | JSON    | Chat input container.                                             |
+| `send_button_style`     | JSON    | Send button.                                                      |
+| `send_icon_style`       | JSON    | Icon for send button.                                             |
+| `window_title`          | String  | Widget header title.                                              |
+| `placeholder`           | String  | Input placeholder.                                                |
+| `placeholder_sending`   | String  | Placeholder while sending.                                        |
+| `online`                | Boolean | Toggle online state.                                              |
+| `online_message`        | String  | Message shown when online.                                        |
+| `input_type`            | String  | Chat input type.                                                  |
+| `output_type`           | String  | Chat output type.                                                 |
+| `output_component`      | String  | Which component to route output to.                               |
+| `chat_output_key`       | String  | Output key to render.                                             |
+| `tweaks`                | JSON    | Custom tweaks for flow.                                           |
