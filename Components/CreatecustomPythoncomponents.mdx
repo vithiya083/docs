@@ -2,9 +2,9 @@
 title: "Create custom Python components"
 ---
 
-Custom components extend LLMControl's functionality through Python classes that inherit from `Component`. This enables integration of new features, data manipulation, external services, and specialized tools.
+Custom components extend LLMControls' functionality through Python classes that inherit from `Component`. This enables integration of new features, data manipulation, external services, and specialized tools.
 
-In LLMC's node-based environment, each node is a "component" that performs discrete functions. Custom components are Python classes which define:
+In LLMControls' node-based environment, each node is a "component" that performs discrete functions. Custom components are Python classes which define:
 
 - **Inputs** — Data or parameters your component requires.
 - **Outputs** — Data your component provides to downstream nodes.
@@ -27,7 +27,7 @@ Define these attributes to control a custom component's appearance and behavior:
 
 - **display_name**: A user-friendly label in the node header.
 - **description**: A brief summary shown in tooltips.
-- **icon**: A visual identifier from LLMC's icon library.
+- **icon**: A visual identifier from LLMControls' icon library.
 - **name**: A unique internal identifier.
 - **documentation**: An optional link to external docs.
 
@@ -52,7 +52,7 @@ A minimal custom component skeleton contains the following:
 
 ### **Internal Lifecycle and Execution Flow**
 
-LLMControl's engine manages:
+LLMControls' engine manages:
 
 - **Instantiation**: A component is created and internal structures are initialized.
 - **Assigning Inputs**: Values from the UI or connections are assigned to component fields.
@@ -206,7 +206,7 @@ In this example, the `DataToDataFrame` component defines its output using the ou
 
 ### **Tool mode**[**​**](https://docs.langflow.org/components-custom-components#tool-mode)
 
-You can configure a Custom Component to work as a **Tool** by setting the parameter `tool_mode=True`. This allows the component to be used in LLMC's Tool Mode workflows, such as by Agent components.
+You can configure a Custom Component to work as a **Tool** by setting the parameter `tool_mode=True`. This allows the component to be used in LLMControls' Tool Mode workflows, such as by Agent components.
 
 Langflow currently supports the following input types for Tool Mode:
 
