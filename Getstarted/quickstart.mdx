@@ -51,75 +51,94 @@ LLMControls provides code snippets to help you get started with the LLMcontrols 
 <Tabs>
   <Tab title="Python">
     ```
+    
     import requests
+    import os
+    import json
     
-    url = "http://LANGFLOW_SERVER_ADDRESS/api/v1/run/FLOW_ID"  # The complete API endpoint URL for this flow
+    # Get API key from environment variable
+    api_key = os.getenv("LLMC_API_KEY")
+    if not api_key:
+        raise ValueError("LLMC_API_KEY environment variable not found. Please set your API key in the environment variables.")
     
-    # Request payload configuration
-    payload = {
-        "output_type": "chat",
-        "input_type": "chat",
-        "input_value": "hello world!"
-    }
-    
-    # Request headers
+    url = "https://api.llmcontrols.ai/api/v1/run/9a453fad-2bb2-474f-a541-78dad816d45f?stream=false"
     headers = {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "x-api-key": os.environ["LLMC_API_KEY"]  # Authentication key from environment variable
+    }
+        
+    payload = {
+      "input_value": "hello world!",
+      "output_type": "chat",
+      "input_type": "chat"
     }
     
     try:
-        # Send API request
-        response = requests.request("POST", url, json=payload, headers=headers)
-        response.raise_for_status()  # Raise exception for bad status codes
-    
-        # Print response
-        print(response.text)
-    
+        # Make the API request
+        response = requests.post(url, json=payload, headers=headers)
+        response.raise_for_status()  # Raise an exception for HTTP errors
+        
+        # Process the response
+        data = response.json()
+        print("Initial response:", json.dumps(data, indent=2))
+        
     except requests.exceptions.RequestException as e:
-        print(f"Error making API request: {e}")
-    except ValueError as e:
-        print(f"Error parsing response: {e}")
-    
-    
+        print("Error making request:", e)
+    except json.JSONDecodeError as e:
+        print("Error decoding response:", e)
     
     ```
   </Tab>
   <Tab title="JavaScript">
     ```
+      // Get API key from environment variable
+    const apiKey = process.env.LLMC_API_KEY;
+    if (!apiKey) {
+      throw new Error("LLMC_API_KEY environment variable not found. Please set your API key in the environment variables.");
+    }
+    
+    const url = "https://api.llmcontrols.ai/api/v1/run/9a453fad-2bb2-474f-a541-78dad816d45f?stream=false";
+    const headers = {
+      "Content-Type": "application/json",
+      "x-api-key": process.env.LLMC_API_KEY  // Authentication key from environment variable
+    };
+    
     const payload = {
-        "output_type": "chat",
-        "input_type": "chat",
-        "input_value": "hello world!",
-        "session_id": "user_1"
+      "input_value": "hello world!",
+      "output_type": "chat",
+      "input_type": "chat"
     };
     
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    };
-    
-    fetch('http://LANGFLOW_SERVER_ADDRESS/api/v1/run/FLOW_ID', options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
+    fetch(url, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(payload)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Initial response:", data);
+      })
+      .catch(error => console.error("Error:", error));
     
     ```
   </Tab>
   <Tab title="curl">
     ```
-    curl --request POST \
-         --url 'http://LANGFLOW_SERVER_ADDRESS/api/v1/run/FLOW_ID?stream=false' \
-         --header 'Content-Type: application/json' \
-         --data '{
-          "output_type": "chat",
-          "input_type": "chat",
-          "input_value": "hello world!"
-          }'
     
-    # A 200 response confirms the call succeeded.
+    # Get API key from environment variable
+    if [ -z "$LLMC_API_KEY" ]; then
+      echo "Error: LLMC_API_KEY environment variable not found. Please set your API key in the environment variables."
+    fi
+    curl --request POST \
+      --url 'https://api.llmcontrols.ai/api/v1/run/9a453fad-2bb2-474f-a541-78dad816d45f?stream=false' \
+      --header 'Content-Type: application/json' \
+      --header "x-api-key: $LLMC_API_KEY" \
+      --data '{
+      "input_value": "hello world!",
+      "output_type": "chat",
+      "input_type": "chat"
+    }'
+    
     ```
   </Tab>
 </Tabs>
@@ -143,31 +162,41 @@ The following example builds on the API pane's example code to create a question
 <Tabs>
   <Tab title="Python">
     ```
+    
     import requests
+    import os
     import json
     
-    url = "http://LANGFLOW_SERVER_ADDRESS/api/v1/run/FLOW_ID"
+    # Get API key from environment variable
+    api_key = os.getenv("LLMC_API_KEY")
+    if not api_key:
+        raise ValueError("LLMC_API_KEY environment variable not found. Please set your API key in the environment variables.")
     
-    def ask_agent(question):
-        payload = {
-            "output_type": "chat",
-            "input_type": "chat",
-            "input_value": question,
-        }
+    url = "https://api.llmcontrols.ai/api/v1/run/9a453fad-2bb2-474f-a541-78dad816d45f?stream=false"
+    headers = {
+        "Content-Type": "application/json",
+        "x-api-key": os.environ["LLMC_API_KEY"]  # Authentication key from environment variable
+    }
+        
+    payload = {
+      "input_value": "hello world!",
+      "output_type": "chat",
+      "input_type": "chat"
+    }
     
-        headers = {"Content-Type": "application/json"}
-    
-        try:
-            response = requests.post(url, json=payload, headers=headers)
-            response.raise_for_status()
-    
-            # Get the response message
-            data = response.json()
-            message = data["outputs"][0]["outputs"][0]["outputs"]["message"]["message"]
-            return message
-    
-        except Exception as e:
-            return f"Error: {str(e)}"
+    try:
+        # Make the API request
+        response = requests.post(url, json=payload, headers=headers)
+        response.raise_for_status()  # Raise an exception for HTTP errors
+        
+        # Process the response
+        data = response.json()
+        print("Initial response:", json.dumps(data, indent=2))
+        
+    except requests.exceptions.RequestException as e:
+        print("Error making request:", e)
+    except json.JSONDecodeError as e:
+        print("Error decoding response:", e)
     
     def extract_message(data):
         try:
@@ -199,49 +228,40 @@ The following example builds on the API pane's example code to create a question
         print(f"\nAgent's answer: {result}")
         # Store the answer for comparison
         previous_answer = result
+    
     ```
   </Tab>
   <Tab title="JavaScript">
     ```
-    const readline = require('readline');
     
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    });
-    
-    const url = 'http://LANGFLOW_SERVER_ADDRESS/api/v1/run/FLOW_ID';
-    
-    // Store the previous answer from askAgent response
-    let previousAnswer = null;
-    
-    // the agent flow, with question as input_value
-    async function askAgent(question) {
-        const payload = {
-            "output_type": "chat",
-            "input_type": "chat",
-            "input_value": question
-        };
-    
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload)
-        };
-    
-        try {
-            const response = await fetch(url, options);
-            const data = await response.json();
-    
-            // Extract the message from the nested response
-            const message = data.outputs[0].outputs[0].outputs.message.message;
-            return message;
-        } catch (error) {
-            return `Error: ${error.message}`;
-        }
+      // Get API key from environment variable
+    const apiKey = process.env.LLMC_API_KEY;
+    if (!apiKey) {
+      throw new Error("LLMC_API_KEY environment variable not found. Please set your API key in the environment variables.");
     }
+    
+    const url = "https://api.llmcontrols.ai/api/v1/run/9a453fad-2bb2-474f-a541-78dad816d45f?stream=false";
+    const headers = {
+      "Content-Type": "application/json",
+      "x-api-key": process.env.LLMC_API_KEY  // Authentication key from environment variable
+    };
+    
+    const payload = {
+      "input_value": "hello world!",
+      "output_type": "chat",
+      "input_type": "chat"
+    };
+    
+    fetch(url, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(payload)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Initial response:", data);
+      })
+      .catch(error => console.error("Error:", error));
     
     // the terminal chat
     async function startChat() {
