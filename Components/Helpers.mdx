@@ -12,7 +12,7 @@ The **Store Message** helper component stores chat memories as [Data](/Concepts/
 
 This example flow stores and retrieves chat history from an [AstraDBChatMemory](https://devrel.mintlify.app/Components/Memories#astradbchatmemory-component%E2%80%8B) component with **Store Message** and **Chat Memory** components.
 
-![1 Pn](/images/1.png)
+![Helper Components Pn](/images/helper_components.png)
 
 ## **Batch Run**[**​**](https://docs.langflow.org/components-helpers#batch-run)
 
@@ -33,7 +33,7 @@ To use the Batch Run component with a **Parser** component, do the following:
 2. Connect a component that outputs DataFrame, like **File** component, to the **Batch Run** component's **DataFrame** input.
 3. Connect the **Batch Run** component's **Batch Results** output to a **Parser** component's **DataFrame** input. The flow looks like this:
 
-![2 Pn](/images/2.png)
+![Helper Component 2 Pn](/images/helper_component_2.png)
 
 4. In the **Column Name** field of the **Batch Run** component, enter a column name based on the data you're loading from the **File** loader. For example, to process a column of `name`, enter `name`.
 5. Optionally, in the **System Message** field of the **Batch Run** component, enter a **System Message** to instruct the connected LLM on how to process your file. For example, `Create a business card for each name.`
@@ -109,7 +109,7 @@ This component retrieves chat messages from Langflow tables or external memory.
 
 In this example, the **Message Store** component stores the complete chat history in a local Langflow table, which the **Message History** component retrieves as context for the LLM to answer each question.
 
-![3 Pn](/images/3.png)
+![Helper Component 3 Pn](/images/helper_component_3.png)
 
 For more information on configuring memory in LLMControls.
 
@@ -141,7 +141,7 @@ This component stores chat messages or text in LLMControls tables or external me
 
 In this example, the **Message Store** component stores the complete chat history in a local LLMControls table, which the **Message History** component retrieves as context for the LLM to answer each question.
 
-![4 Pn](/images/4.png)
+![Helper Component 4 Pn](/images/helper_component_4.png)
 
 For more information on configuring memory in LLMControls .
 
@@ -169,7 +169,7 @@ This component transforms LLM responses into structured data formats.
 
 In this example from the **Financial Report Parser** template, the **Structured Output** component transforms unstructured financial reports into structured data.
 
-![5 Pn](/images/5.png)
+![Helper Component 5 Pn](/images/helper_component_5.png)
 
 The connected LLM model is prompted by the **Structured Output** component's `Format Instructions` parameter to extract structured output from the unstructured text. `Format Instructions` is utilized as the system prompt for the **Structured Output** component.
 
