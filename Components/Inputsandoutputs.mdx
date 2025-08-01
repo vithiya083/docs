@@ -127,12 +127,13 @@ For this example, connect a **Chat Input** component to an **OpenAI** model 
 
 The flow looks like this:
 
-![1 Pn](/images/1.png)
+![Input Output 1 Pn](/images/input_output_1.png)
 
 3. To send a message to your flow, open the **Playground**, and then enter a message. The **OpenAI** model component responds. Optionally, in the **OpenAI** model component, enter a **System Message** to control the model's response.
 4. In the LLMControls UI, click your flow name, and then click **Logs**. The **Logs** pane opens. Here, you can inspect your component logs.
 
-![2 Pn](/images/2.png)
+   ![Input Output 2 Pn](/images/input_output_2.png)
+
 
 5. Your first message was sent by the **Chat Input** component to the **OpenAI** model component. Click **Outputs** to view the sent message:
 6. Your second message was sent by the **OpenAI** model component to the **Chat Output** component. This is the raw text output of the model's response. The **Chat Output** component accepts this text as input and presents it as a formatted message. Click **Outputs** to view the sent message:
@@ -152,7 +153,7 @@ The **Chat Input** component is often the entry point for passing messages to 
 3. Modify `input_value` so it contains the question, `What's the recommended way to install Docker on Mac M1?`.
 
    Note the `output_type` and `input_type` parameters that are passed with the message. The `chat` type provides additional configuration options, and the messages appear in the **Playground**. The `text` type returns only text strings, and does not appear in the **Playground**.
-4.  Add a custom `session_id` to the message's `data` object.
+4. Add a custom `session_id` to the message's `data` object.
 
 The custom `session_id` value starts a new chat session between your client and the LLMControls server, and can be useful in keeping conversations and AI context separate.
 
