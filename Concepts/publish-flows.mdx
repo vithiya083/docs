@@ -2,11 +2,13 @@
 title: "Publish flows"
 ---
 
-LLMControls provides flexible ways to publish your flows and integrate them into external applications. Whether you want to expose your flow as a secure API, embed it on a website, or share it with your team or organization, this guide walks you through all options. 
+LLMControls provides flexible ways to publish your flows and integrate them into external applications. Whether you want to expose your flow as a secure API, embed it on a website, or share it with your team or organization, this guide walks you through all options.
 
 ### **API Access**
 
- You can access your flow programmatically using REST API calls. LLMControls supports integration using Python, JavaScript (fetch), and cURL.
+You can access your flow programmatically using REST API calls. LLMControls supports integration using Python, JavaScript (fetch), and cURL.
+
+![Publish Flow Pn](/images/Publish_flow.png)
 
 ### **Generating Your API Key**
 
@@ -26,11 +28,11 @@ To authenticate API requests, you need a valid LLMControls API key. Follow the s
 
 ### How to Use the API
 
-Depending on your preferred language, follow the steps below to post a query to your LLMControls flow and retrieve a response.
+Depending on your preferred language, follow the below example 
 
 <Tabs>
   <Tab title="Python">
-    ```
+    ```python
     import requests
     import os
     import json
@@ -69,7 +71,7 @@ Depending on your preferred language, follow the steps below to post a query to 
     ```
   </Tab>
   <Tab title="Javascript">
-    ```
+    ```javascript
      // Get API key from environment variable
     const apiKey = process.env.LLMC_API_KEY;
     if (!apiKey) {
@@ -103,12 +105,7 @@ Depending on your preferred language, follow the steps below to post a query to 
     ```
   </Tab>
   <Tab title="curl">
-    ```
-    bash
-    # Get API key from environment variable
-    if [ -z "$LLMC_API_KEY" ]; then
-      echo "Error: LLMC_API_KEY environment variable not found. Please set your API key in the environment variables."
-    fi
+    ```bash
     curl --request POST \
       --url 'https://api.llmcontrols.ai/api/v1/run/9a453fad-2bb2-474f-a541-78dad816d45f?stream=false' \
       --header 'Content-Type: application/json' \
@@ -122,3 +119,112 @@ Depending on your preferred language, follow the steps below to post a query to 
     ```
   </Tab>
 </Tabs>
+
+## Temporary Overrides
+
+Each flow has customizable input parameters that you can override:
+
+- These input fields are part of the payload (e.g. input_value)
+- You can override them via the API or directly through the UI
+- To add more override options, add input boxes in the UI and connect them to relevant components
+
+Overrides are not persistent, but they are applied to that particular API run.
+
+## **Execution Modes: Static vs. Polling**
+
+LLMControls lets you run flows in two modes based on your needs: **Static (synchronous)** or **Polling (asynchronous)**. You can control this using the sync query parameter in the URL.
+
+### **Overview**
+
+| **Mode**    | **Query Param** | **Use Case**                         | **Simplicity** | **Suitable For Long Workflow** |
+| :---------- | :-------------- | :----------------------------------- | :------------- | :----------------------------- |
+| **Static**  | stream=false    | Short flows, real-time responses     | ✅ Yes          | ❌ No                           |
+| **Polling** | sync=false      | Long-running flows, background tasks | ❌ No           | ✅ Yes                          |
+
+### **Static Mode (stream=false)**
+
+In static mode, the API **waits for the full result** before returning the response.
+
+**When to use:**
+
+- Short or fast-executing flows
+- Real-time user interaction (e.g. chat widgets)
+
+**Example Request:**
+
+**Http code : **
+
+```
+
+POST https://api.llmcontrols.ai/api/v1/run/YOUR_FLOW_ID
+```
+
+**Example Response:**
+
+**Json code : **
+
+```
+{
+  "status": "COMPLETED",
+  "result": {
+    "output": "Here's something interesting..."
+  }
+}
+```
+
+### **Polling Mode (sync=false)**
+
+In polling mode, the API returns immediately with a task_id and task_url. You must poll this URL to retrieve the final result once it's ready.
+
+**When to use:**
+
+- Long-running flows
+- Flows that perform multi-step background operations
+- When using external data sources or embeddings
+
+**Example Request:**
+
+**Json code:**
+
+```
+{
+  "task_id": "abc123",
+  "message": "Task started. Check task_url for updates.",
+  "task_url": "https://api.llmcontrols.ai/api/v1/task/abc123"
+}
+```
+
+### **Best Practices**
+
+- Use **static mode** for user-facing interactions.
+- Use **polling mode** when a flow takes more than 10 seconds.
+
+Always check status in polling responses (PENDING, RUNNING, COMPLETED, FAILED).\
+\
+💬 Embed into Site
+
+You can embed your flow as a chat widget or a full-screen application.
+
+#### Features:
+
+- Supports two-way communication between frontend and backend
+- Can be embedded in HTML, React, or other frontend frameworks
+- Full control over the input/output elements
+- Styling customization available (light/dark themes, widget position)
+
+#### Usage Example:
+
+```
+<script
+  src="https://cdn.jsdelivr.net/gh/logspace-ai/llmc-embedded-chat@v1.0.7/dist/build/static/js/bundle.min.js">
+</script>
+  <llmc-chat
+    window_title="Customer Service - Advanced (2)"
+    flow_id="9a453fad-2bb2-474f-a541-78dad816d45f"
+    host_url="https://app.llmcontrols.ai"
+    api_key="...">
+</llmc-chat>
+
+```
+
+#### 
