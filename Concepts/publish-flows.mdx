@@ -2,67 +2,123 @@
 title: "Publish flows"
 ---
 
-LLMControls provides several ways to publish and integrate your flows into external applications. Whether you want to expose your flow as an API endpoint, embed it as a chat widget in your website, or share it as a public playground, this guide covers the options available for making your flows accessible to users.
+LLMControls provides flexible ways to publish your flows and integrate them into external applications. Whether you want to expose your flow as a secure API, embed it on a website, or share it with your team or organization, this guide walks you through all options. 
 
-## **API access**[**​**](https://docs.langflow.org/concepts-publish#api-access)
+### **API Access**
 
-The **API access** pane presents code templates for integrating your flow into external applications.
+ You can access your flow programmatically using REST API calls. LLMControls supports integration using Python, JavaScript (fetch), and cURL.
 
-![1 Pn](/images/1.png)
+### **Generating Your API Key**
+
+To authenticate API requests, you need a valid LLMControls API key. Follow the steps below to create one:
+
+1. Go to the **Settings** panel in your LLMControls dashboard.
+2. In the left sidebar, click on **“LLM Controls API Keys”**.
+3. Click the **“\+ Add New”** button in the top-right corner.
+4. Give your key a name (e.g., my_project_key) and save it.
+5. Your new API key will appear in the list. Make sure to **copy it immediately** — this is the only time it will be fully visible.
+
+<Note>
+  **Important**
+
+  Keep your API key secure. Do not expose it in frontend code or share it publicly. Use environment variables or server-side storage to manage keys safely. Once created, you can use this key in your API requests by setting it as the x-api-key header.
+</Note>
+
+### How to Use the API
+
+Depending on your preferred language, follow the steps below to post a query to your LLMControls flow and retrieve a response.
 
 <Tabs>
   <Tab title="Python">
-    The **Python** tab displays code to interact with your flow using the Python `requests` library.
-
-    1. Copy and paste the code into a Python script.
-    2. Run the script.
-
     ```
+    import requests
+    import os
+    import json
     
-    python3 python-test-script.py --message="tell me about something interesting"
+    # Get API key from environment variable
+    api_key = os.getenv("LLMC_API_KEY")
+    if not api_key:
+        raise ValueError("LLMC_API_KEY environment variable not found. Please set your API key in the environment variables.")
+    
+    url = "https://api.llmcontrols.ai/api/v1/run/9a453fad-2bb2-474f-a541-78dad816d45f?stream=false"
+    headers = {
+        "Content-Type": "application/json",
+        "x-api-key": os.environ["LLMC_API_KEY"]  # Authentication key from environment variable
+    }
+        
+    payload = {
+      "input_value": "hello world!",
+      "output_type": "chat",
+      "input_type": "chat"
+    }
+    
+    try:
+        # Make the API request
+        response = requests.post(url, json=payload, headers=headers)
+        response.raise_for_status()  # Raise an exception for HTTP errors
+        
+        # Process the response
+        data = response.json()
+        print("Initial response:", json.dumps(data, indent=2))
+        
+    except requests.exceptions.RequestException as e:
+        print("Error making request:", e)
+    except json.JSONDecodeError as e:
+        print("Error decoding response:", e)
     
     ```
   </Tab>
-  <Tab title="JavaScript">
-    The **JavaScript API** tab displays code to interact with your flow in JavaScript.
-
-    1. Copy and paste the code into a JavaScript file.
-    2. Run the script.
-
+  <Tab title="Javascript">
     ```
+     // Get API key from environment variable
+    const apiKey = process.env.LLMC_API_KEY;
+    if (!apiKey) {
+      throw new Error("LLMC_API_KEY environment variable not found. Please set your API key in the environment variables.");
+    }
     
-    node test-script.js "tell me about something interesting"
+    const url = "https://api.llmcontrols.ai/api/v1/run/9a453fad-2bb2-474f-a541-78dad816d45f?stream=false";
+    const headers = {
+      "Content-Type": "application/json",
+      "x-api-key": process.env.LLMC_API_KEY  // Authentication key from environment variable
+    };
+    
+    const payload = {
+      "input_value": "hello world!",
+      "output_type": "chat",
+      "input_type": "chat"
+    };
+    
+    fetch(url, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(payload)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Initial response:", data);
+      })
+      .catch(error => console.error("Error:", error));
     
     
     ```
   </Tab>
   <Tab title="curl">
-    The **cURL** tab displays sample code for posting a query to your flow.
-
-    Copy the code and run it to post a query to your flow and get the result.
+    ```
+    bash
+    # Get API key from environment variable
+    if [ -z "$LLMC_API_KEY" ]; then
+      echo "Error: LLMC_API_KEY environment variable not found. Please set your API key in the environment variables."
+    fi
+    curl --request POST \
+      --url 'https://api.llmcontrols.ai/api/v1/run/9a453fad-2bb2-474f-a541-78dad816d45f?stream=false' \
+      --header 'Content-Type: application/json' \
+      --header "x-api-key: $LLMC_API_KEY" \
+      --data '{
+      "input_value": "hello world!",
+      "output_type": "chat",
+      "input_type": "chat"
+    }'
+    
+    ```
   </Tab>
 </Tabs>
-
-The response content depends on your flow. Make sure the endpoint returns a successful response.
-
-## **Temporary overrides**[**​**](https://docs.langflow.org/concepts-publish#temporary-overrides)
-
-The **Temporary overrides** tab displays the available parameters for your flow. Modifying the parameters changes the code parameters across all windows. For example, changing the **Chat Input** component's `input_value` changes that value across all API calls to the `/run` endpoint of this flow.
-
-### **Send files to your flow with the API**[**​**](https://docs.langflow.org/concepts-publish#send-files-to-your-flow-with-the-api)
-
-For information on sending files to the LLMControls API.
-
-## **Shareable playground**[**​**](https://docs.langflow.org/concepts-publish#shareable-playground)
-
-The **Shareable playground** exposes your LLMControls application's **Playground** at the `/public_flow/$FLOW_ID` endpoint.
-
-You can share this endpoint publicly using a sharing platform like [Ngrok](https://ngrok.com/docs/getting-started/?os=macos) or [zrok](https://docs.zrok.io/docs/getting-started).
-
-If you're using **Datastax Langflow**, you can share the URL with any users within your **Organization**.
-
-## **Embed into site**[**​**](https://docs.langflow.org/concepts-publish#embed-into-site)
-
-The **Embed into site** tab displays code that can be inserted in the `<body>` of your HTML to interact with your flow.
-
-For more information, see [Embedded chat widget](/Concepts/embedded-chat-widget).
