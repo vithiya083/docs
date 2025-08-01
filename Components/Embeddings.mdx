@@ -12,7 +12,7 @@ In this example of a document ingestion pipeline, the **OpenAI** embeddings mode
 
 This embeddings component uses an OpenAI API key for authentication. Refer to your specific embeddings component's documentation for more information on authentication.
 
-![1 Pn](/images/1.png)
+![Embeddings Models Pn](/images/Embeddings_models.png)
 
 ## **AI/ML**
 
@@ -260,7 +260,7 @@ To use IBM [**watsonx.ai**](http://watsonx.ai) embeddings components, replace an
 
 An example document processing flow looks like the following:
 
-![2 Pn](/images/2.png)
+![Embeddings Models 2 Pn](/images/Embeddings_models_2.png)
 
 This flow loads a PDF file from local storage and splits the text into chunks.
 
@@ -376,7 +376,7 @@ To use this component in a flow, connect LLMControls to your locally running Oll
 3. In the **Ollama Model** field, select an embeddings model. This example uses `all-minilm:latest`.
 4. Connect the **Ollama** embeddings component to a flow. For example, this flow connects a local Ollama server running a `all-minilm:latest` embeddings model to a [Chroma DB](https://devrel.mintlify.app/Components/Vectorstores#chroma-db) vector store to generate embeddings for split text.
 
-![3 Pn](/images/3.png)
+![Embeddings Models 3 Pn](/images/Embeddings_models_3.png)
 
 For more information, see the [Ollama documentation](https://ollama.com/).
 
