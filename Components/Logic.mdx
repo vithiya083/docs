@@ -14,7 +14,7 @@ The **File** component loads text files from your local machine, and then the **
 
 When the **Loop** component runs out of `Data`, the **Done** loop activates, which counts the number of pages and summarizes their tone with another **Prompt**. This is represented in LLMControls by connecting the Parser component's **Data List** output to the Loop component's `Data` loop input.
 
-![1 Pn](/images/1.png)
+![Loop 1 Pn](/images/loop_1.png)
 
 ## **Conditional router (If-Else component)**
 
@@ -36,7 +36,7 @@ To use the **Conditional router** component to check incoming messages with rege
 
 The flow looks like this:
 
-![2 Pn](/images/2.png)
+![Logic Components Ifelse Pn](/images/logic_components_ifelse.png)
 
 5. Add your **OpenAI API key** to both **OpenAI** components.
 6. In both **Prompt** components, enter the behavior you want each route to take. When a match is found:
@@ -118,7 +118,7 @@ Think of it this way: the **Item** port forms the "main" loop that repeats unt
 
 Once all items are processed, the action connected to the **Done** port is performed. In this example, the data is loaded into **Chroma DB**.
 
-![3 Pn](/images/3.png)
+![Logic Component Loop Pn](/images/logic_component_loop.png)
 
 Follow along with this step-by-step video guide for creating this flow and adding agentic RAG: [Mastering the Loop Component & Agentic RAG in Langflow](https://www.youtube.com/watch?v=9Wx7WODSKTo).
 
@@ -191,7 +191,7 @@ To use the Run Flow component as a tool, do the following:
 3. On the **Run Flow** component, enable **Tool Mode**.
 4. Connect the **Run Flow** component to the **Toolset** input of the Agent. Your flow should now look like this:
 
-   ![4 Pn](/images/4.png)
+   ![Simple Agent(1) Pn](/images/simple_agent\(1\).png)
 5. Run the flow. The Agent uses the Run Flow component as a tool to run the selected sub-flow.
 
 <Accordion title="Parameters">
@@ -209,59 +209,6 @@ To use the Run Flow component as a tool, do the following:
   | :---------- | :-------------------------------------------------- | :----------------------------------------------- |
   | run_outputs | A `List` of types `Data`, `Message,` or `DataFrame` | All outputs are generated from running the flow. |
 </Accordion>
-
-## **Legacy components**[**​**](https://docs.langflow.org/components-logic#legacy-components)
-
-**Legacy** components are available for use but are no longer supported.
-
-### **Data Conditional Router**[**​**](https://docs.langflow.org/components-logic#data-conditional-router)
-
-<Note>
-  **important**
-
-  This component is in **Legacy**, which means it is no longer in active development as of LLMControls version 1.3.
-</Note>
-
-This component routes `Data` objects based on a condition applied to a specified key, including boolean validation. It can process either a single Data object or a list of Data objects.
-
-This component is particularly useful in workflows that require conditional routing of complex data structures, enabling dynamic decision-making based on data content.
-
-#### **Inputs**[**​**](https://docs.langflow.org/components-logic#inputs)
-
-| **Name**      | **Type** | **Description**                                                                                                                         |
-| :------------ | :------- | :-------------------------------------------------------------------------------------------------------------------------------------- |
-| data_input    | Data     | The Data object or list of Data objects to process. This input can handle both single items and lists.                                  |
-| key_name      | String   | The name of the key in the Data object to check.                                                                                        |
-| operator      | Dropdown | The operator to apply. Options: "equals", "not equals", "contains", "starts with", "ends with", "boolean validator". Default: "equals". |
-| compare_value | String   | The value to compare against. Not shown/used when operator is "boolean validator".                                                      |
-
-#### **Outputs**[**​**](https://docs.langflow.org/components-logic#outputs)
-
-| **Name**     | **Type**  | **Description**                       |
-| :----------- | :-------- | :------------------------------------ |
-| true_output  | Data/List | Output when the condition is met.     |
-| false_output | Data/List | Output when the condition is not met. |
-
-#### **Operator behavior**[**​**](https://docs.langflow.org/components-logic#operator-behavior-1)
-
-- **equals**: Exact match comparison between the key's value and compare_value.
-- **not equals**: Inverse of exact match.
-- **contains**: Checks if compare_value is found within the key's value.
-- **starts with**: Checks if the key's value begins with compare_value.
-- **ends with**: Checks if the key's value ends with compare_value.
-- **boolean validator**: Treats the key's value as a boolean. The following values are considered true:
-  - Boolean `true`.
-  - Strings: "true", "1", "yes", "y", "on" (case-insensitive).
-  - Any other value is converted using Python's `bool()` function.
-
-#### **List processing**[**​**](https://docs.langflow.org/components-logic#list-processing)
-
-The following actions occur when processing a list of Data objects:
-
-- Each object in the list is evaluated individually
-- Objects meeting the condition go to true_output
-- Objects not meeting the condition go to false_output
-- If all objects go to one output, the other output is empty
 
 ## **Deprecated components**[**​**](https://docs.langflow.org/components-logic#deprecated-components)
 
