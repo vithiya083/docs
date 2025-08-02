@@ -42,11 +42,13 @@ If you want to learn how LLMControls integrates into external applications, read
 
 LLMControls is an application development platform , but it's also a runtime you can call through an API with Python, JavaScript, or HTTP.
 
-LLMControls provides code snippets to help you get started with the LLMcontrols API.
+LLMControls provides code snippets to help you get started with the LLMcontrols API
 
-1. To open the **API access pane**, in the **Playground**, click **Share**, and then click **API access**.
+1. To access API code for any flow in LLMC, open the desired flow and click on the **"Publish"** button located at the top-right corner of the screen. A dropdown will appear with three options: **API access**, **Embed into site**, and **Shareable Playground**. Click on **API access** to open a code snippet window that provides you with ready-to-use code in multiple languages (Python, JavaScript, cURL). The default code in the API access pane constructs a request with the LLMControls server url, headers, and a payload of request data.
 
-   The default code in the API access pane constructs a request with the LLMControls server `url`, `headers`, and a `payload` of request data. The code snippets automatically include the `LANGFLOW_SERVER_ADDRESS` and `FLOW_ID` values for the flow. Replace these values if you're using the code for a different server or flow. The default LLMControls server address is `http://localhost:7860`
+   \
+   The code snippets automatically include the LLMC_SERVER_ADDRESS and FLOW_ID values for the flow.\
+   If you're using the cloud version, make sure to create an API key in your **Settings \> Langflow API** tab and set it as an environment variable (LLMC_API_KEY) in your development environment before making requests.
 
 <Tabs>
   <Tab title="Python">
