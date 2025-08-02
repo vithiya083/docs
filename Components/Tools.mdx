@@ -14,7 +14,7 @@ Tools are typically connected to agent components at the **Tools** port.
 
 The [simple agent starter project](/Templates/Simpleagent) uses URL and Calculator tools connected to an [agent component](https://devrel.mintlify.app/Components/Agents#agent-component%E2%80%8B) to answer a user's questions. The OpenAI LLM acts as a brain for the agent to decide which tool to use.
 
-![1 Pn](/images/1.png)
+![Simple Agent(1) Pn](/images/simple_agent\(1\).png)
 
 To make a component into a tool that an agent can use, enable **Tool Mode** in the component. Enabling tool mode modifies a component input to accept calls from an agent. If the component you want to connect to an agent doesn't have a **Tool Mode** option, you can modify the component's inputs to become a tool.
 
@@ -44,7 +44,7 @@ This component allows agents to query data from Astra DB collections.
 
 To use this tool in a flow, connect it to an **Agent** component. The flow looks like this:
 
-![2 Pn](/images/2.png)
+![Tool Astral DB Pn](/images/Tool_Astral_DB.png)
 
 The **Tool Name** and **Tool Description** fields are required for the Agent to decide when to use the tool. **Tool Name** cannot contain spaces.
 
