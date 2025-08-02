@@ -28,7 +28,7 @@ To authenticate API requests, you need a valid LLMControls API key. Follow the s
 
 ### How to Use the API
 
-Depending on your preferred language, follow the below example 
+Depending on your preferred language, follow the below example
 
 <Tabs>
   <Tab title="Python">
@@ -136,10 +136,10 @@ LLMControls lets you run flows in two modes based on your needs: **Static (synch
 
 ### **Overview**
 
-| **Mode**    | **Query Param** | **Use Case**                         | **Simplicity** | **Suitable For Long Workflow** |
-| :---------- | :-------------- | :----------------------------------- | :------------- | :----------------------------- |
-| **Static**  | stream=false    | Short flows, real-time responses     | ✅ Yes          | ❌ No                           |
-| **Polling** | sync=false      | Long-running flows, background tasks | ❌ No           | ✅ Yes                          |
+| **Mode**    | **Query Param** | **Use Case**                         | **Simplicity** | **Suitable For Complex Workflow** |
+| :---------- | :-------------- | :----------------------------------- | :------------- | :-------------------------------- |
+| **Static**  | stream=false    | Short flows, real-time responses     | ✅ Yes          | ❌ No                              |
+| **Polling** | sync=false      | Long-running flows, background tasks | ❌ No           | ✅ Yes                             |
 
 ### **Static Mode (stream=false)**
 
@@ -152,7 +152,7 @@ In static mode, the API **waits for the full result** before returning the respo
 
 **Example Request:**
 
-**Http code : **
+**Http code **: 
 
 ```
 
@@ -198,10 +198,9 @@ In polling mode, the API returns immediately with a task_id and task_url. You mu
 
 - Use **static mode** for user-facing interactions.
 - Use **polling mode** when a flow takes more than 10 seconds.
+- Always check status in polling responses (PENDING, RUNNING, COMPLETED, FAILED).
 
-Always check status in polling responses (PENDING, RUNNING, COMPLETED, FAILED).\
-\
-💬 Embed into Site
+### Embed into Site
 
 You can embed your flow as a chat widget or a full-screen application.
 
@@ -224,7 +223,4 @@ You can embed your flow as a chat widget or a full-screen application.
     host_url="https://app.llmcontrols.ai"
     api_key="...">
 </llmc-chat>
-
 ```
-
-#### 
