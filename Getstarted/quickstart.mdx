@@ -44,11 +44,7 @@ LLMControls is an application development platform , but it's also a runtime you
 
 LLMControls provides code snippets to help you get started with the LLMcontrols API
 
-1. To access API code for any flow in LLMC, open the desired flow and click on the **"Publish"** button located at the top-right corner of the screen. A dropdown will appear with three options: **API access**, **Embed into site**, and **Shareable Playground**. Click on **API access** to open a code snippet window that provides you with ready-to-use code in multiple languages (Python, JavaScript, cURL). The default code in the API access pane constructs a request with the LLMControls server url, headers, and a payload of request data.
-
-   \
-   The code snippets automatically include the LLMC_SERVER_ADDRESS and FLOW_ID values for the flow.\
-   If you're using the cloud version, make sure to create an API key in your **Settings \> Langflow API** tab and set it as an environment variable (LLMC_API_KEY) in your development environment before making requests.
+1. To access API code for any flow in LLMC, open the desired flow and click on the **"Publish"** button located at the top-right corner of the screen. A dropdown will appear with three options: **API access**, **Embed into site**, and **Shareable Playground**. 
 
 <Tabs>
   <Tab title="Python">
@@ -145,9 +141,10 @@ LLMControls provides code snippets to help you get started with the LLMcontrols 
   </Tab>
 </Tabs>
 
-_2_**_._** Copy the snippet, paste it in a script file, and then run the script to send the request. If you are using the curl snippet, you can run the command directly in your terminal.
+2. Click on **API access** to open a code snippet window that provides you with ready-to-use code in multiple languages (Python, JavaScript, cURL). The default code in the API access pane constructs a request with the LLMControls server url, headers, and a payload of request data.The code snippets automatically include the LLMC_SERVER_ADDRESS and FLOW_ID values for the flow.
 
-If the request is successful, the response includes many details about the flow run, including the session ID, inputs, outputs, components, durations, and more. The following is an example of a response from running the **Simple Agent** template flow:
+
+3. If you're using the cloud version, make sure to create an API key in your **Settings \> Langflow API** tab and set it as an environment variable (LLMC_API_KEY) in your development environment before making requests.
 
 <Accordion title="Response">
   
