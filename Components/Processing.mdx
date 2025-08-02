@@ -10,7 +10,7 @@ The **Split Text** processing component in this flow splits the incoming [Data](
 
 The component offers control over chunk size, overlap, and separator, which affect context and granularity in vector store retrieval results.
 
-![1 Pn](/images/1.png)
+![Processing 1 Pn](/images/processing_1.png)
 
 ## **DataFrame operations**
 
@@ -20,7 +20,7 @@ To use this component in a flow, connect a component that outputs [DataFrame](ht
 
 This example fetches JSON data from an API. The **Smart function** component extracts and flattens the results into a tabular DataFrame. The **DataFrame Operations** component can then work with the retrieved data.
 
-![2 Pn](/images/2.png)
+![Processing 2 Pn](/images/processing_2.png)
 
 1. The **API Request** component retrieves data with only `source` and `result` fields. For this example, the desired data is nested within the `result` field.
 2. Connect a **Smart function** to the API request component, and a **Language model** to the **Smart function**. This example connects a **Groq** model component.
@@ -88,7 +88,8 @@ This component performs operations on [Data](https://devrel.mintlify.app/Concept
 2. In the **Operations** field, select the operation you want to perform. For example, send this request to the **Webhook** component. Replace `YOUR_FLOW_ID` with your flow ID.
 3. In the **Data Operations** component, select the **Select Keys** operation to extract specific user information. To add additional keys, click **Add More**.
 
-![3 Pn](/images/3.png)
+   ![Processing 3 Pn](/images/processing_3.png)
+
 
 4. Filter by `name`, `username`, and `email` to select the values from the request.
 
@@ -135,7 +136,8 @@ This component converts one or multiple [Data](https://devrel.mintlify.app/Conce
 1. To use this component in a flow, connect a component that outputs [Data](https://devrel.mintlify.app/Concepts/LLMCobjects#data-object%E2%80%8B) to the **Data to Dataframe** component's input. This example connects a **Webhook** component to convert `text` and `data` into a DataFrame.
 2. To view the flow's output, connect a **Chat Output** component to the **Data to Dataframe** component.
 
-![4 Pn](/images/4.png)
+   ![Processing 4 Pn](/images/processing_4.png)
+
 
 3. Send a POST request to the **Webhook** containing your JSON data. Replace `YOUR_FLOW_ID` with your flow ID. This example uses the default LLMControls server address.
 4. In the **Playground**, view the output of your flow. The **Data to DataFrame** component converts the webhook request into a `DataFrame`, with `text` and `data` fields as columns.
@@ -212,7 +214,7 @@ To use the **Parser** component with a **Structured Output** component, do the f
 
 The flow looks like this:
 
-![5 Pn](/images/5.png)
+![Processing 5 Pn](/images/processing_5.png)
 
 4. In the **Structured Output** component, click **Open Table**. This opens a pane for structuring your table. The table contains the rows **Name**, **Description**, **Type**, and **Multiple**.
 5. Create a table that maps to the data you're loading from the **File** loader. For example, to create a table for employees, you might have the rows `id`, `name`, and `email`, all of type `string`.
@@ -353,7 +355,8 @@ The **Split Text** component outputs **Chunks** or **DataFrame**. The **Chunks**
 
 1. To use this component in a flow, connect a component that outputs [Data or DataFrame](/Concepts/LLMCobjects) to the **Split Text** component's **Data** port. This example uses the **URL** component, which is fetching JSON placeholder data.
 
-![9 Pn](/images/9.png)
+   ![Processing 9 Pn](/images/processing_9.png)
+
 
 2. In the **Split Text** component, define your data splitting parameters.
 
