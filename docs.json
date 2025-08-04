@@ -99,8 +99,7 @@
               {
                 "group": "Notion",
                 "pages": [
-                  "Integrations/Notion/notion-setup",
-                  "Integrations/Notion/notion-conversational-agent"
+                  "Integrations/Notion/notion-setup"
                        ]
               },
               {
