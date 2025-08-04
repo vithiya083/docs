@@ -3,7 +3,9 @@
   "theme": "mint",
   "name": "LLMC DOCS",
   "colors": {
-    "primary": "#1A73E8"
+    "primary": "#000000",
+    "light": "#000000",
+    "dark": "#FFFFFF"
   },
   "favicon": "/logo/Favicon.png",
   "logo": {
@@ -100,7 +102,7 @@
                 "group": "Notion",
                 "pages": [
                   "Integrations/Notion/notion-setup"
-                       ]
+                ]
               },
               {
                 "group": "NVIDIA",
@@ -118,3 +120,5 @@
     "global": {}
   }
 }
+
+
