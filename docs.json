@@ -83,7 +83,6 @@
               "Integrations/Apify",
               "Integrations/AssemblyAI",
               "Integrations/AstraDBMCPserver",
-              "Integrations/Cleanlab",
               "Integrations/Composition",
               {
                 "group": "Google",
