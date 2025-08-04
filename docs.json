@@ -100,9 +100,8 @@
                 "group": "Notion",
                 "pages": [
                   "Integrations/Notion/notion-setup",
-                  "Integrations/Notion/notion-conversational-agent",
-                  "Integrations/Notion/notion-meeting-notes-agent"
-                ]
+                  "Integrations/Notion/notion-conversational-agent"
+                       ]
               },
               {
                 "group": "NVIDIA",
