@@ -152,23 +152,31 @@ In static mode, the API **waits for the full result** before returning the respo
 
 **Example Request:**
 
-**HTTP**:
-
 ```
 
-POST https://api.llmcontrols.ai/api/v1/run/YOUR_FLOW_ID
+POST https://api.llmcontrols.ai/api/v1/run/YOUR_FLOW_ID?stream=false
+Content-Type: application/json
+x-api-key: YOUR_API_KEY
+
+{
+  "input_value": "your message",   // For chat inputs
+  "input_type": "chat",            // or "text" based on input type
+  "output_type": "chat",           // or "text" based on output type
+  "tweaks": {                      // Optional tweaks object
+    "component_id": {
+      "parameter": "value"
+    }
+  }
+}
 ```
 
 **Example Response:**
 
-**Json response** : 
-
 ```
+
 {
-  "status": "COMPLETED",
-  "result": {
-    "output": "Here's something interesting..."
-  }
+  "result": "Here's the response...",
+  // Additional response data based on your flow's output
 }
 ```
 
@@ -182,15 +190,54 @@ In polling mode, the API returns immediately with a task_id and task_url. You mu
 - Flows that perform multi-step background operations
 - When using external data sources or embeddings
 
-**Example Request:**
-
-**Json response:**
+**Initial Request:**
 
 ```
+
+POST https://api.llmcontrols.ai/api/v1/run/YOUR_FLOW_ID?sync=false
+Content-Type: application/json
+x-api-key: YOUR_API_KEY
+
+{
+  "input_value": "your message",   // For chat inputs
+  "input_type": "chat",            // or "text" based on input type
+  "output_type": "chat",           // or "text" based on output type
+  "tweaks": {                      // Optional tweaks object
+    "component_id": {
+      "parameter": "value"
+    }
+  }
+}
+```
+
+**Initial Response:**
+
+```
+
 {
   "task_id": "abc123",
   "message": "Task started. Check task_url for updates.",
   "task_url": "https://api.llmcontrols.ai/api/v1/task/abc123"
+}
+```
+
+**Polling Request:**
+
+```
+
+GET https://api.llmcontrols.ai/api/v1/task/abc123
+x-api-key: YOUR_API_KEY
+```
+
+**Polling Response:**
+
+```
+
+{
+  "status": "COMPLETED",  // or "PENDING", "FAILED"
+  "result": {
+    // Flow output data
+  }
 }
 ```
 
