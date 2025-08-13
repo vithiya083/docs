@@ -12,7 +12,7 @@ Get started with LLMControls by loading a template flow, running it, and then se
 
 1. In LLMControls, click **New Flow**, and then select the **Simple Agent** template.
 
-![Quickstart1below Pn](/images/quickstart1below.png)
+   ![Simple Agent(2) Pn](/images/simple_agent\(2\).png)
 
 The Simple Agent flow consists of an Agent component connected to [Chat I/O components](/Components/Inputsandoutputs), a [Calculator component](https://devrel.mintlify.app/Components/Tools#calculator-tool), and a [URL component](https://devrel.mintlify.app/Components/Data#url). When you run this flow, you submit a query to the agent through the Chat Input component, the agent uses the Calculator and URL tools to generate a response, and then returns the response through the Chat Output component.
 
@@ -44,7 +44,7 @@ LLMControls is an application development platform , but it's also a runtime you
 
 LLMControls provides code snippets to help you get started with the LLMcontrols API
 
-1. To access API code for any flow in LLMC, open the desired flow and click on the **"Publish"** button located at the top-right corner of the screen. A dropdown will appear with three options: **API access**, **Embed into site**, and **Shareable Playground**. 
+1. To access API code for any flow in LLMC, open the desired flow and click on the **"Publish"** button located at the top-right corner of the screen. A dropdown will appear with three options: **API access**, **Embed into site**, and **Shareable Playground**.
 
 <Tabs>
   <Tab title="Python">
@@ -142,8 +142,6 @@ LLMControls provides code snippets to help you get started with the LLMcontrols 
 </Tabs>
 
 2. Click on **API access** to open a code snippet window that provides you with ready-to-use code in multiple languages (Python, JavaScript, cURL). The default code in the API access pane constructs a request with the LLMControls server url, headers, and a payload of request data.The code snippets automatically include the LLMC_SERVER_ADDRESS and FLOW_ID values for the flow.
-
-
 3. If you're using the cloud version, make sure to create an API key in your **Settings \> Langflow API** tab and set it as an environment variable (LLMC_API_KEY) in your development environment before making requests.
 
 <Accordion title="Response">
