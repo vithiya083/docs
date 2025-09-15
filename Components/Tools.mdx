@@ -66,7 +66,7 @@ These filters become available as parameters that the LLM can use when calling t
 - Name: `customer_id`
 - Attribute Name: Leave empty if the attribute matches the field name in the database.
 - Description: `"The unique identifier of the customer to filter by"`.
-- Is Metadata: `False` unless the value stored in the metadata field.
+- Is Metadata: `False` unless the value is stored in the metadata field.
 - Is Mandatory: `True` to require this filter.
 - Is Timestamp: `False` since the value is an ID, not a timestamp.
 - Operator: `$eq` to look for an exact match.
@@ -279,7 +279,7 @@ This component allows you to call the Serper.dev Google Search API.
 
 ## **MCP connection**
 
-The **MCP connection** component exposes Model Context Protocol (MCP) servers, including your other flows, as tools for Langflow agents. For information about this component .
+The **MCP connection** component exposes Model Context Protocol (MCP) servers, including your other flows, as tools for LLMControls agents. For information about this component.
 
 ### **MCP Tools (deprecated)**
 

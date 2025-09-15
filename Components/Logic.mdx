@@ -73,12 +73,12 @@ The **If-else** component includes a comparison operator to compare the values
 
 All options respect the `case_sensitive` setting except **regex**.
 
-- **equals**: Exact match comparison.
-- **not equals**: Inverse of exact match.
+- **Equals**: Exact match comparison.
+- **Not equals**: Inverse of exact match.
 - **contains**: Checks if match_text is found within input_text.
 - **starts with**: Checks if input_text begins with match_text.
-- **ends with**: Checks if input_text ends with match_text.
-- **regex**: Performs regular expression matching. It is always case sensitive and ignores the case_sensitive setting.
+- **Ends with**: Checks if input_text ends with match_text.
+- **Regex**: Performs regular expression matching. It is always case sensitive and ignores the case_sensitive setting.
 
 ## **Listen**[**​**](https://docs.langflow.org/components-logic#listen)
 
@@ -112,8 +112,8 @@ In this example, the **Loop** component iterates over a CSV file through the 
 
 Think of it this way: the **Item** port forms the "main" loop that repeats until a "complete" condition is reached.
 
-1. The **Loop** component accepts **Data** from the **Load CSV** component, and outputs the data from the **Item** port.
-2. Each CSV row is converted to a **Message** and processed into structured data with the **Structured Output** component. The dotted line connected from the **Structured Output** component's **Looping** port tells you where the loop begins again.
+1. The **Loop** component accepts **Data** from the **Load CSV** component and outputs the data from the **Item** port.
+2. Each CSV row is converted to a **Message** and processed into structured data with the **StructureOpenAId Output** component. The dotted line connected from the **Structured Output** component's **Looping** port tells you where the loop begins again.
 3. The **Loop** component repeatedly extracts rows by **Text Key** until there are no more rows to extract.
 
 Once all items are processed, the action connected to the **Done** port is performed. In this example, the data is loaded into **Chroma DB**.
@@ -214,7 +214,7 @@ To use the Run Flow component as a tool, do the following:
 
 Deprecated components have been replaced by newer alternatives and should not be used in new projects.
 
-### **Flow as tool**[**​**](https://docs.langflow.org/components-logic#flow-as-tool)
+### **Flow as a tool**[**​**](https://docs.langflow.org/components-logic#flow-as-tool)
 
 <Note>
   **important**
