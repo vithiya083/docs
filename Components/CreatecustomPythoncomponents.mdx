@@ -34,7 +34,7 @@ Define these attributes to control a custom component's appearance and behavior:
 <Tip>
   **ICON USAGE**
 
-  Langflow uses [<u>Lucide</u>](https://lucide.dev/icons) for icons. To assign an icon to your component, set the icon attribute to the name of a Lucide icon as a string, such as `icon = "file-text"`. LLMControls renders icons from the Lucide library automatically.
+  LLMControls uses [<u>Lucide</u>](https://lucide.dev/icons) for icons. To assign an icon to your component, set the icon attribute to the name of a Lucide icon as a string, such as `icon = "file-text"`. LLMControls renders icons from the Lucide library automatically.
 </Tip>
 
 ### **Structure of a custom component**
@@ -208,7 +208,7 @@ In this example, the `DataToDataFrame` component defines its output using the ou
 
 You can configure a Custom Component to work as a **Tool** by setting the parameter `tool_mode=True`. This allows the component to be used in LLMControls' Tool Mode workflows, such as by Agent components.
 
-Langflow currently supports the following input types for Tool Mode:
+LLMControls currently supports the following input types for Tool Mode:
 
 - `DataInput`
 - `DataFrameInput`
