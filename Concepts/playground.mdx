@@ -8,23 +8,23 @@ As long as you have an [Input or Output](/Components/Inputsandoutputs) component
 
 ![Playground Pn](/images/playground.png)
 
-## **Run a flow in the playgound**[**​**](https://docs.langflow.org/concepts-playground#run-a-flow-in-the-playgound)
+## **Run a flow in the playground.**[**​**](https://docs.langflow.org/concepts-playground#run-a-flow-in-the-playgound)
 
-When you run a flow in the **Playground**, LLMControls calls the endpoint . This call retrieves the flow data, builds a graph, and executes the graph. As each component (or node) is executed, the build_vertex  function calls build and run , which may call the individual components' `def_build` method, if it exists. If a component doesn't have a `def_build` function, the build still returns a component.
+When you run a flow in the **Playground**, LLMControls calls the endpoint. This call retrieves the flow data, builds a graph, and executes the graph. As each component (or node) is executed, the build_vertex  function calls build and run, which may call the individual components' `def_build` method, if it exists. If a component doesn't have a `def_build` function, the build still returns a component.
 
 The build function allows components to execute logic at runtime. When text needs to be processed, the parent class's build method is called, which creates a `RecursiveCharacterTextSplitter` object and uses it to split the text according to the defined parameters. The split text is then passed on to the next component. This all occurs when the component is built.
 
-## **View playground messages by session ID**[**​**](https://docs.langflow.org/concepts-playground#view-playground-messages-by-session-id)
+## **View playground messages by session ID.**[**​**](https://docs.langflow.org/concepts-playground#view-playground-messages-by-session-id)
 
 When you send a message from the **Playground** interface, the interactions are stored in the **Message Logs** by `session_id`. A single flow can have multiple chats, and different flows can share the same chat. Each chat will have a different `session_id`.
 
-To view messages by `session_id` within the Playground, click the menu of any chat session, and then select **Message Logs**.
+To view messages by `session_id` within the Playground, click the menu of any chat session and then select **Message Logs**.
 
 ![Playground 2 Pn](/images/playground_2.png)
 
-Individual messages in chat memory can be edited or deleted. Modifying these memories influences the behavior of the chatbot responses.
+Individual messages in chat memory can be edited or deleted. Modifying these memories influences the behavior of the chatbots. Responses.
 
-To learn more about chat memories in Langflow, see [Memory components](/Components/Memories).
+To learn more about chat memories in LLMControls, see [Memory components](/Components/Memories).
 
 ## **Use custom Session IDs for multiple user interactions**[**​**](https://docs.langflow.org/concepts-playground#use-custom-session-ids-for-multiple-user-interactions)
 
@@ -38,7 +38,7 @@ To post a message to a flow with a specific Session ID with curl, enter the foll
 
 Check your flow's **Playground**. In addition to the messages stored for the Default Session, a new session is started with your custom Session ID.
 
-## **Work with images in the Playground**[**​**](https://docs.langflow.org/concepts-playground#work-with-images-in-the-playground)
+## **Work with images in the Playground.**[**​**](https://docs.langflow.org/concepts-playground#work-with-images-in-the-playground)
 
 The Playground supports handling images in base64 format, allowing you to work with image data directly in your flows.
 
