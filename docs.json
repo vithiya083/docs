@@ -88,8 +88,7 @@
                 "group": "Google",
                 "pages": [
                   "Integrations/Google/google-oauth-llmc",
-                  "Integrations/Google/google-vertex-ai-llmc",
-                  "Integrations/Google/google-bigquery-llmc"
+                  "Integrations/Google/google-vertex-ai-llmc"
                 ]
               },
               {
