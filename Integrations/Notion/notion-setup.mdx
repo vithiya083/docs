@@ -38,13 +38,13 @@ After creating the integration, you need to configure its capabilities to define
 
 To authenticate your integration with Notion, you need to obtain an integration token.
 
-1. In the integration settings page, go to the "Secrets" tab.
+1. In the integration settings page, go to the "Secrets" tab. outputs
 2. Copy the "Internal Integration Token" value. This token will be used to authenticate your integration with Notion.
 
 <Warning>
   **warning**
 
-  Your integration token is a sensitive piece of information. Make sure to keep it secure and never share it publicly. Store it safely in your Langflow configuration or environment variables.
+  Your integration token is a sensitive piece of information. Make sure to keep it secure and never share it publicly. Store it safely in your LLMControls configuration or environment variables.
 </Warning>
 
 ## **Grant Integration Access to Notion Databases**
@@ -95,7 +95,7 @@ LLMControls provides the following Notion components:
 - **List Pages**: Queries a Notion database with filtering and sorting options.
 - **Page Content Viewer**: Retrieves the content of a Notion page as plain text.
 
-Each of these components output both "Data" and "Tool":
+Each of these components outputs both "Data" and "Tool":
 
 - The "Data" output can be used directly in your LLMControls for further processing or display.
 - The "Tool" output can be utilized in LLMControls Agents, allowing them to interact with Notion programmatically.
