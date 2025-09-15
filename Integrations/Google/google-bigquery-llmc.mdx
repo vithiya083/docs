@@ -17,7 +17,7 @@ LLMControls integrates with [Google BigQuery](https://cloud.google.com/bigquery)
 3. Assign the **BigQuery Job User** role to your new account. This role allows LLMControls to access BigQuery resources with the service account. You may also need to allow access to your BigQuery dataset. For more information, see [BigQuery access control with IAM](https://cloud.google.com/bigquery/docs/access-control).
 4. To generate a new JSON key for the service account, navigate to your service account.
 5. Click **Add Key**, and then click **Create new key**.
-6. Under **Key type**, select **JSON**, and then click **Create**. A JSON private key file is downloaded to your machine. Now that you have a service account and a JSON private key, you need to configure the credentials in the Langflow BigQuery component.
+6. Under **Key type**, select **JSON**, and then click **Create**. A JSON private key file is downloaded to your machine. Now that you have a service account and a JSON private key, you need to configure the credentials in the LLMControls BigQuery component.
 
 ## **Configure credentials in the LLMControls component**
 
@@ -44,7 +44,7 @@ With your component credentials configured, query your BigQuery datasets and tab
   <Tab title="SQL query">
     ```
     SELECT film, category, year_film
-    FROM `big-query-langflow-project.the_oscar_award.oscar_winners`
+    FROM `big-query-llmc-project.the_oscar_award.oscar_winners`
     WHERE winner = TRUE
     LIMIT 10
     
