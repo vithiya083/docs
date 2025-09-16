@@ -21,7 +21,7 @@ Many components can be tools for agents, including **MCP** The agent decides whi
 2. In the **Agent** component's settings, in the **OpenAI API Key** field, enter your OpenAI API key. This guide uses an OpenAI model for demonstration purposes. If you want to use a different provider, change the **Model Provider** field, and then provide credentials for your selected provider.
 
    Optionally, you can click  **Globe** to store the key in a LLMControls global variable.
-3. To run the flow, click **Playground**..
+3. To run the flow, click **Playground**.
 4. To test the Calculator tool, ask the agent a simple math question, such as `I want to add 4 and 4.` To help you test and evaluate your flows, the Playground shows the agent's reasoning process as it analyzes the prompt, selects a tool, and then uses the tool to generate a response. In this case, a math question causes the agent to select the Calculator tool and use an action like `evaluate_expression`.
 
    ![Quickstart4below Pn](/images/quickstart4below.png)
@@ -49,7 +49,6 @@ LLMControls provides code snippets to help you get started with the LLMControls 
 <Tabs>
   <Tab title="Python">
     ```
-    
     import requests
     import os
     import json
@@ -84,12 +83,11 @@ LLMControls provides code snippets to help you get started with the LLMControls 
         print("Error making request:", e)
     except json.JSONDecodeError as e:
         print("Error decoding response:", e)
-    
     ```
   </Tab>
   <Tab title="JavaScript">
     ```
-      // Get API key from environment variable
+    // Get API key from environment variable
     const apiKey = process.env.LLMC_API_KEY;
     if (!apiKey) {
       throw new Error("LLMC_API_KEY environment variable not found. Please set your API key in the environment variables.");
@@ -117,12 +115,10 @@ LLMControls provides code snippets to help you get started with the LLMControls 
         console.log("Initial response:", data);
       })
       .catch(error => console.error("Error:", error));
-    
     ```
   </Tab>
   <Tab title="curl">
     ```
-    
     # Get API key from environment variable
     if [ -z "$LLMC_API_KEY" ]; then
       echo "Error: LLMC_API_KEY environment variable not found. Please set your API key in the environment variables."
@@ -136,7 +132,6 @@ LLMControls provides code snippets to help you get started with the LLMControls 
       "output_type": "chat",
       "input_type": "chat"
     }'
-    
     ```
   </Tab>
 </Tabs>
@@ -146,75 +141,40 @@ LLMControls provides code snippets to help you get started with the LLMControls 
 
 <Accordion title="Response">
   {
-
     "outputs": [
-
       {
-
         "inputs": {
-
           "input_value": "I want to add 4 and 4"
-
         },
-
         "outputs": [
-
           {
-
             "results": {
-
               "message": {
-
                 "text_key": "text",
-
                 "data": {
-
                   "text": "I'll help you add 4 and 4. Let me use the calculator tool to perform this calculation.\\n\\n\*Using Calculator tool\*\\n\\nThe result of 4 + 4 is 8."
-
                 },
-
                 "timestamp": "2024-01-15T10:30:45.123Z",
-
                 "flow_id": "9a453fad-2bb2-474f-a541-78dad816d45f",
-
                 "session_id": "session_123",
-
                 "sender": "AI",
-
                 "sender_name": "Assistant"
-
               }
-
             },
-
             "artifacts": {},
-
             "outputs": {},
-
             "logs": {},
-
             "messages": [],
-
             "timedelta": 2.45,
-
             "duration": "2.45s",
-
             "component_display_name": "Chat Output",
-
             "component_id": "ChatOutput-xyz123",
-
             "used_frozen_result": false
-
           }
-
         ]
-
       }
-
     ],
-
     "session_id": "session_123"
-
   }
 </Accordion>
 
@@ -229,7 +189,6 @@ The following example builds on the API pane's example code to create a question
 <Tabs>
   <Tab title="Python">
     ```
-    
     import requests
     import os
     import json
@@ -295,13 +254,11 @@ The following example builds on the API pane's example code to create a question
         print(f"\nAgent's answer: {result}")
         # Store the answer for comparison
         previous_answer = result
-    
     ```
   </Tab>
   <Tab title="JavaScript">
     ```
-    
-      // Get API key from environment variable
+    // Get API key from environment variable
     const apiKey = process.env.LLMC_API_KEY;
     if (!apiKey) {
       throw new Error("LLMC_API_KEY environment variable not found. Please set your API key in the environment variables.");
@@ -363,7 +320,6 @@ The following example builds on the API pane's example code to create a question
     }
     
     startChat();
-    
     ```
   </Tab>
 </Tabs>
@@ -378,4 +334,4 @@ Polling is added to the `/run` endpoint's `payload`. To assist with formatting, 
 
 1. To open the **Input Schema** pane, from the **API access** pane, click **Input Schema**.
 2. In the **Input Schema** pane, select the parameter you want to modify in your next request. Enabling parameters in the **Input Schema** pane does not **allow** modifications to the listed parameters. It only adds them to the example code.
-3. For example, to change the LLMControls provider from OpenAI to Groq, and include your Groq API key with the request, select the values **Model Providers**, **Model**, and **Groq API Key**. LLMControls updates the polling object in the code snippets based on your input parameters, and includes default values to guide you. Use the updated code snippets in your script to run your flow with your overrides.
+3. For example, to change the LLMControls provider from OpenAI to Groq, and include your Groq API key with the request, select
