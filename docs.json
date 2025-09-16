@@ -104,7 +104,6 @@
               {
                 "group": "NVIDIA",
                 "pages": [
-                  "Integrations/NVIDIA/NVIDIAIngest",
                   "Integrations/NVIDIA/NVIDIANIMonWSL2",
                   "Integrations/NVIDIA/NVIDIAG-Assist"
                 ]
