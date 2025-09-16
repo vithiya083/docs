@@ -140,6 +140,44 @@ LLMControls provides code snippets to help you get started with the LLMControls 
 3. If you're using the cloud version, make sure to create an API key in your **Settings \> LLMControls API** tab and set it as an environment variable (LLMC_API_KEY) in your development environment before making requests.
 
 <Accordion title="Response">
+  ```
+  {
+    "outputs": [
+      {
+        "inputs": {
+          "input_value": "I want to add 4 and 4"
+        },
+        "outputs": [
+          {
+            "results": {
+              "message": {
+                "text_key": "text",
+                "data": {
+                  "text": "I'll help you add 4 and 4. Let me use the calculator tool to perform this calculation.\n\nUsing Calculator tool\n\nThe result of 4 + 4 is 8."
+                },
+                "timestamp": "2024-01-15T10:30:45.123Z",
+                "flow_id": "9a453fad-2bb2-474f-a541-78dad816d45f",
+                "session_id": "session_123",
+                "sender": "AI",
+                "sender_name": "Assistant"
+              }
+            },
+            "artifacts": {},
+            "outputs": {},
+            "logs": {},
+            "messages": [],
+            "timedelta": 2.45,
+            "duration": "2.45s",
+            "component_display_name": "Chat Output",
+            "component_id": "ChatOutput-xyz123",
+            "used_frozen_result": false
+          }
+        ]
+      }
+    ],
+    "session_id": "session_123"
+  }
+  ```
 </Accordion>
 
 In a production application, you probably want to select parts of this response to return to the user, store in logs, and so on. The next steps demonstrate how you can extract data from an LLMControls API response to use in your application.
@@ -294,7 +332,7 @@ The following example builds on the API pane's example code to create a question
 
 You can include polling with your requests to temporarily modify flow parameters. Polling is added to the API request, and temporarily changes component parameters within your flow. Polling overrides the flow's components' settings for a single run only. They don't modify the underlying flow configuration or persist between runs.
 
-Polling is added to the `/run` endpoint's `payload`. To assist with formatting, you can define polling in LLMControlMCP.an's **Input Schema** pane before copying the code snippet.
+Polling is added to the `/run` endpoint's `payload`. To assist with formatting, you can define polling in the LLMControls MCP **Input Schema** pane before copying the code snippet.
 
 1. To open the **Input Schema** pane, from the **API access** pane, click **Input Schema**.
 2. In the **Input Schema** pane, select the parameter you want to modify in your next request. Enabling parameters in the **Input Schema** pane does not **allow** modifications to the listed parameters. It only adds them to the example code.
