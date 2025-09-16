@@ -26,16 +26,16 @@ This flow adds a **Message history** component to the Basic Prompting flow. This
 
 To examine the template, click the **Template** field in the **Prompt** component. The **Prompt** tells the **OpenAI model** component how to respond to input.
 
-The `{memory}` code in the prompt creates a new input port in the component called **memory**. The **Message history** component is connected to this port to store chat messages from the **Playground**, and provide the **OpenAI** component with a memory of previous chat messages.
+The `{memory}` code in the prompt creates a new input port in the component called **memory**. The **Message history** component is connected to this port to store chat messages from the **Playground** and provide the **OpenAI** component with a memory of previous chat messages.
 
 ## **Run the memory chatbot flow**[**​**](https://docs.langflow.org/memory-chatbot#run-the-memory-chatbot-flow)
 
 1. Open the **Playground**.
 2. Enter multiple questions. For example, try entering this conversation:
 
-The chatbot remembers your name and previous questions.
+       The chatbot remembers your name and previous questions.
 
-3. To view the **Message Logs** pane, click , and then click **Message Logs**. The **Message Logs** pane displays all previous messages, with each conversation sorted by `session_id`.
+3. To view the **Message Logs** pane, click, and then click **Message Logs**. The **Message Logs** pane displays all previous messages, with each conversation sorted by `session_id`.
 
 ![Run Pn](/images/run.png)
 
