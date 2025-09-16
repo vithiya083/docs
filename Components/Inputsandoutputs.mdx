@@ -150,11 +150,8 @@ The **Chat Input** component is often the entry point for passing messages to 
 2. Copy the command from the **cURL** tab, and then paste it in your terminal. It looks similar to this:
 3. Modify `input_value` so it contains the question, `What's the recommended way to install Docker on Mac M1?`.
 
-   Note the `output_type` and `input_type` parameters that are passed with the message. The `chat` type provides additional configuration options, and the messages appear in the **Playground**. The `text` type returns only text strings, and does not appear in the **Playground**.
-4. Add a custom `session_id` to the message's `data` object.
-
-The custom `session_id` value starts a new chat session between your client and the LLMControls server, and can be useful in keeping conversations and AI context separate.
-
+   Note the `output_type` and `input_type` parameters that are passed with the message. The `chat` type provides additional configuration options, and the messages appear in the **Playground**. The `text` type returns only text strings and does not appear in the **Playground**.
+4. Add a custom `session_id` to the message's `data` object.  The custom `session_id` value starts a new chat session between your client and the LLMControls server, and can be useful in keeping conversations and AI context separate.
 5. Send the POST request. Your request is answered.
 6. Navigate to the **Playground**. A new chat session called `docker-question-on-m1` has appeared, using your unique `session_id`.
 7. To modify additional parameters with **Tweaks** for your **Chat Input** and **Chat Output** components, click **Publish**, and then click **API access**.
