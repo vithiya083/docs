@@ -1,37 +1,57 @@
 /* Purple scrollbar styling using brand color #C82AEF */
 
+/* Purple scrollbar styling with hover effects */
+
 /* For Webkit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
   width: 8px; /* Width of the scrollbar */
 }
 
 ::-webkit-scrollbar-track {
-  background: #C82AEF; /* Track color now purple instead of gray */
+  background: #f8f9fa; /* Mild light gray background */
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C82AEF; /* Your brand purple */
+  background: transparent; /* Invisible by default */
   border-radius: 4px;
+  transition: background 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #D946EF; /* Lighter purple on hover */
+  background: #C82AEF; /* Your brand purple on hover */
+}
+
+/* Show scrollbar thumb on track hover */
+::-webkit-scrollbar:hover ::-webkit-scrollbar-thumb {
+  background: rgba(200, 42, 239, 0.3); /* Semi-transparent purple */
+}
+
+::-webkit-scrollbar:hover ::-webkit-scrollbar-thumb:hover {
+  background: #C82AEF; /* Full purple on direct hover */
 }
 
 /* For Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #C82AEF #C82AEF; /* thumb color, track color - both purple now */
+  scrollbar-color: transparent #f8f9fa; /* Invisible thumb, mild track */
+}
+
+*:hover {
+  scrollbar-color: #C82AEF #f8f9fa; /* Purple thumb on hover */
 }
 
 /* Dark theme scrollbar */
 [data-theme="dark"] ::-webkit-scrollbar-track {
-  background: #C82AEF; /* Purple track for dark theme too */
+  background: #2d2d2d; /* Mild dark gray for dark theme */
 }
 
 [data-theme="dark"] * {
-  scrollbar-color: #C82AEF #C82AEF; /* Both purple for dark theme */
+  scrollbar-color: transparent #2d2d2d; /* Invisible thumb, dark track */
+}
+
+[data-theme="dark"] *:hover {
+  scrollbar-color: #C82AEF #2d2d2d; /* Purple thumb on hover */
 }
 
 /* Purple sidebar styling using brand color (if you want the sidebar purple too) */
