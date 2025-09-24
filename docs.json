@@ -5,10 +5,10 @@
   "colors": {
     "primary": "#C82AEF"
   },
-  "favicon": "/logo/Favicon.png",
+  "favicon": "/logo/favicon.svg",
   "logo": {
-    "light": "/logo/now2.png",
-    "dark": "/logo/now1.png"
+    "light": "/logo/LLM_Logo1.svg",
+    "dark": "/logo/LLM_Logo1.svg"
   },
   "navbar": {
     "primary": {
