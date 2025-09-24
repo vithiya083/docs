@@ -14,7 +14,8 @@
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.langflow.org"
+      "href": "https://dashboard.langflow.org",
+      "color": "primary"
     }
   },
   "footer": {},
@@ -97,9 +98,7 @@
               },
               {
                 "group": "Notion",
-                "pages": [
-                  "Integrations/Notion/notion-setup"
-                       ]
+                "pages": ["Integrations/Notion/notion-setup"]
               },
               {
                 "group": "NVIDIA",
@@ -116,5 +115,3 @@
     "global": {}
   }
 }
-
-
