@@ -8,7 +8,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f8f9fa; /* Mild light gray background */
+  background: #F3E8FF; /* Mild purple background */
   border-radius: 4px;
 }
 
@@ -34,24 +34,24 @@
 /* For Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: transparent #f8f9fa; /* Invisible thumb, mild track */
+  scrollbar-color: transparent #F3E8FF; /* Invisible thumb, mild purple track */
 }
 
 *:hover {
-  scrollbar-color: #C82AEF #f8f9fa; /* Purple thumb on hover */
+  scrollbar-color: #C82AEF #F3E8FF; /* Purple thumb on hover, mild purple track */
 }
 
 /* Dark theme scrollbar */
 [data-theme="dark"] ::-webkit-scrollbar-track {
-  background: #2d2d2d; /* Mild dark gray for dark theme */
+  background: #4C1D95; /* Mild dark purple for dark theme */
 }
 
 [data-theme="dark"] * {
-  scrollbar-color: transparent #2d2d2d; /* Invisible thumb, dark track */
+  scrollbar-color: transparent #4C1D95; /* Invisible thumb, mild dark purple track */
 }
 
 [data-theme="dark"] *:hover {
-  scrollbar-color: #C82AEF #2d2d2d; /* Purple thumb on hover */
+  scrollbar-color: #C82AEF #4C1D95; /* Purple thumb on hover, mild dark purple track */
 }
 
 /* Purple sidebar styling using brand color (if you want the sidebar purple too) */
