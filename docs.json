@@ -3,7 +3,9 @@
   "theme": "mint",
   "name": "LLMC DOCS",
   "colors": {
-    "primary": "#C82AEF"
+    "primary": "#C82AEF",
+    "light": "#C82AEF",
+    "dark": "#C82AEF"
   },
   "favicon": "/logo/favicon.svg",
   "logo": {
