@@ -19,7 +19,7 @@
       "href": "https://dashboard.langflow.org"
     }
   },
-  "customCss": "/styles/custom.css",
+  "customCss": "/style/style.css",
   "footer": {},
   "navigation": {
     "tabs": [

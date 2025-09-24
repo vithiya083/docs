@@ -1,0 +1,75 @@
+/* Purple scrollbar styling using brand color #C82AEF */
+
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color (background) */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C82AEF; /* Your brand purple */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D946EF; /* Lighter purple on hover */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #C82AEF #f1f1f1; /* thumb color, track color */
+}
+
+/* Dark theme scrollbar */
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+[data-theme="dark"] * {
+  scrollbar-color: #C82AEF #2d2d2d;
+}
+
+/* Purple sidebar styling using brand color (if you want the sidebar purple too) */
+.sidebar {
+  background-color: #C82AEF !important;
+}
+
+/* Alternative selectors for Mintlify sidebar */
+[data-theme] .sidebar,
+.navigation-sidebar,
+.docs-sidebar,
+nav[role="navigation"] {
+  background-color: #C82AEF !important;
+}
+
+/* Sidebar text colors */
+.sidebar a,
+.sidebar .nav-link,
+.sidebar .navigation-item {
+  color: #FFFFFF !important;
+}
+
+/* Hover effects for sidebar items */
+.sidebar a:hover,
+.sidebar .nav-link:hover,
+.sidebar .navigation-item:hover {
+  background-color: #D946EF !important;
+  color: #FFFFFF !important;
+}
+
+/* Active/current page styling */
+.sidebar .active,
+.sidebar .current {
+  background-color: #E879F9 !important;
+  color: #FFFFFF !important;
+}
+
+/* For dark theme compatibility */
+[data-theme="dark"] .sidebar {
+  background-color: #A21CAF !important;
+}
