@@ -6,7 +6,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Track color (background) */
+  background: #C82AEF; /* Track color now purple instead of gray */
   border-radius: 4px;
 }
 
@@ -22,16 +22,16 @@
 /* For Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #C82AEF #f1f1f1; /* thumb color, track color */
+  scrollbar-color: #C82AEF #C82AEF; /* thumb color, track color - both purple now */
 }
 
 /* Dark theme scrollbar */
 [data-theme="dark"] ::-webkit-scrollbar-track {
-  background: #2d2d2d;
+  background: #C82AEF; /* Purple track for dark theme too */
 }
 
 [data-theme="dark"] * {
-  scrollbar-color: #C82AEF #2d2d2d;
+  scrollbar-color: #C82AEF #C82AEF; /* Both purple for dark theme */
 }
 
 /* Purple sidebar styling using brand color (if you want the sidebar purple too) */
