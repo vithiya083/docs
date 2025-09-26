@@ -32,7 +32,7 @@
           },
           {
             "group": "Get started",
-            "pages": ["Get started/quickstart"]
+            "pages": ["Getstarted/quickstart"]
           },
           {
             "group": "Templates",
