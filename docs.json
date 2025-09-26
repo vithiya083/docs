@@ -31,8 +31,8 @@
             "pages": ["welcome"]
           },
           {
-            "group": "Getstarted",
-            "pages": ["Getstarted/quickstart"]
+            "group": "Get started",
+            "pages": ["Get started/quickstart"]
           },
           {
             "group": "Templates",
