@@ -10,7 +10,7 @@ As long as you have an [Input or Output](/Components/Inputsandoutputs) component
 
 ## **Run a flow in the playground.**[**​**](https://docs.langflow.org/concepts-playground#run-a-flow-in-the-playgound)
 
-When you run a flow in the **Playground**, LLMControls calls the endpoint. This call retrieves the flow data, builds a graph, and executes the graph. As each component (or node) is executed, the build_vertex  function calls build and run, which may call the individual components' `def_build` method, if it exists. If a component doesn't have a `def_build` function, the build still returns a component.
+When you run a flow in the **Playground**, LLM Controls calls the endpoint. This call retrieves the flow data, builds a graph, and executes the graph. As each component (or node) is executed, the build_vertex  function calls build and run, which may call the individual components' `def_build` method, if it exists. If a component doesn't have a `def_build` function, the build still returns a component.
 
 The build function allows components to execute logic at runtime. When text needs to be processed, the parent class's build method is called, which creates a `RecursiveCharacterTextSplitter` object and uses it to split the text according to the defined parameters. The split text is then passed on to the next component. This all occurs when the component is built.
 
@@ -24,7 +24,7 @@ To view messages by `session_id` within the Playground, click the menu of any ch
 
 Individual messages in chat memory can be edited or deleted. Modifying these memories influences the behavior of the chatbots. Responses.
 
-To learn more about chat memories in LLMControls, see [Memory components](/Components/Memories).
+To learn more about chat memories in LLM Controls, see [Memory components](/Components/Memories).
 
 ## **Use custom Session IDs for multiple user interactions**[**​**](https://docs.langflow.org/concepts-playground#use-custom-session-ids-for-multiple-user-interactions)
 
