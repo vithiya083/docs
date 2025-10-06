@@ -1,8 +1,8 @@
 ---
-title: "Connect an Astra DB MCP server to LLMControls"
+title: "Connect an Astra DB MCP server to LLM Controls"
 ---
 
-Use the [MCP connection component](https://docs.langflow.org/mcp-client) to connect LLMControls to a [Datastax Astra DB MCP server](https://github.com/datastax/astra-db-mcp).
+Use the [MCP connection component](https://docs.langflow.org/mcp-client) to connect LLM Controls to a [Datastax Astra DB MCP server](https://github.com/datastax/astra-db-mcp).
 
 1. Install an LTS release of [Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 2. Create an [OpenAI](https://platform.openai.com/) API key.
@@ -14,17 +14,16 @@ Use the [MCP connection component](https://docs.langflow.org/mcp-client) to conn
 ![Db Pn](/images/db.png)
 
 7. In the **MCP connection** component, in the **MCP server** field, add the following code to connect to an Astra DB MCP server:
-
 8. In the **MCP connection** component, in the **Env** fields, add variables for `ASTRA_DB_APPLICATION_TOKEN` and `ASTRA_DB_API_ENDPOINT` with the values from your Astra database.
 
 <Note>
   **important**
 
-  LLMControls passes environment variables from the `.env` file to MCP, but not global variables declared in the UI. To add the values for `ASTRA_DB_APPLICATION_TOKEN` and `ASTRA_DB_API_ENDPOINT` as global variables, add them to LLMControls' `.env` file at startup. For more information.
+  LLM Controls passes environment variables from the `.env` file to MCP, but not global variables declared in the UI. To add the values for `ASTRA_DB_APPLICATION_TOKEN` and `ASTRA_DB_API_ENDPOINT` as global variables, add them to LLM Controls' `.env` file at startup. For more information.
 </Note>
 
  9. To add another variable, click **Add More**.
 10. In the **Agent** component, add your **OpenAI API key**.
 11. Open the **Playground**, and then ask the agent, `What collections are available?`
 
-Since LLMControls is connected to your Astra DB database through the MCP, the agent chooses the correct tool and connects to your database to retrieve the answer.
+Since LLM Controls is connected to your Astra DB database through the MCP, the agent chooses the correct tool and connects to your database to retrieve the answer.
