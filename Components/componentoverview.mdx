@@ -7,9 +7,9 @@ Components are the building blocks of your flows. Like classes in an application
 <Tip>
   **tip**
 
-  LLMControls provides keyboard shortcuts for the **Workspace**.
+  LLM Controls provides keyboard shortcuts for the **Workspace**.
 
-  In the LLMControls header, click your profile icon, select **Settings**, and then click **Shortcuts** to view the available shortcuts.
+  In the LLM Controls header, click your profile icon, select **Settings**, and then click **Shortcuts** to view the available shortcuts.
 </Tip>
 
 ## **Add a component to a flow**
@@ -18,7 +18,7 @@ To add a component to a flow, drag the component from the **Components** menu to
 
 The **Components** menu is organized by component type, and some components are hidden by default
 
-- **Beta components**: These are LLMControls core components. They are grouped by purpose, such as **Inputs** or **Data**. Be aware that these components are in beta and not suitable for production workloads.
+- **Beta components**: These are LLM Controls' core components. They are grouped by purpose, such as **Inputs** or **Data**. Be aware that these components are in beta and not suitable for production workloads.
 - **Bundles**: These components support specific integrations, and they are grouped by provider.
 
 ### **Configure a component**
@@ -101,14 +101,14 @@ The following table lists the component port colors and their corresponding inpu
 
 All components have underlying code that determines how you configure them and what actions they can perform. In the context of creating and running flows, component code does the following:
 
-- Determines what configuration options to show in the LLMControls UI.
+- Determines what configuration options to show in the LLM Controls UI.
 - Validates inputs based on the component's defined input types.
 - Processes data using the configured parameters, methods, and functions.
 - Passes results to the next component in the flow.
 
 All components inherit from a base `Component` class that defines the component's interface and behavior. For example, the [Recursive character text splitter](https://github.com/langflow-ai/langflow/blob/main/src/backend/base/langflow/components/langchain_utilities/recursive_character.py) is a child of the [LCTextSplitterComponent](https://github.com/langflow-ai/langflow/blob/main/src/backend/base/langflow/base/textsplitters/model.py) class.
 
-Each component's code includes definitions for inputs and outputs, which are represented in the **Workspace** as [component ports](https://devrel.mintlify.app/Components/componentoverview#component-ports). For example, the `RecursiveCharacterTextSplitter` has four inputs. Each input definition specifies the input type, such as `IntInput`, as well as the encoded name, display name, description, and other parameters for that specific input. These values determine the component settings, such as display names and tooltips in the LLMControls UI.
+Each component's code includes definitions for inputs and outputs, which are represented in the **Workspace** as [component ports](https://devrel.mintlify.app/Components/componentoverview#component-ports). For example, the `RecursiveCharacterTextSplitter` has four inputs. Each input definition specifies the input type, such as `IntInput`, as well as the encoded name, display name, description, and other parameters for that specific input. These values determine the component settings, such as display names and tooltips in the LLM Controls UI.
 
 Additionally, components have methods or functions that handle their functionality. For example, the `RecursiveCharacterTextSplitter` has two methods:
 
@@ -116,13 +116,13 @@ The `get_data_input` method retrieves the text data to be split from the compone
 
 ## **Component versions**
 
-Component versions and states are stored in an internal LLMControls database. When you add a component to a flow, you create a detached copy of the component based on the information in the LLMControls database. These copies are detached from the primary LLMControls database, and they don't synchronize with any updates that can occur when you upgrade your LLMControls version.
+Component versions and states are stored in an internal LLM Controls database. When you add a component to a flow, you create a detached copy of the component based on the information in the LLM Controls database. These copies are detached from the primary LLM Controls database, and they don't synchronize with any updates that can occur when you upgrade your LLM Controls version.
 
 In other words, an individual instance of a component retains the version number and state from the moment you add it to a specific flow. For example, if a component is at version 1.0 when you add it to a flow, it remains at version 1.0 in that flow unless you update it.
 
 ### **Update component versions**
 
-When editing a flow in the **Workspace**, LLMControls notifies you if a component's workspace version is behind the database version so you can update the component's workspace version:
+When editing a flow in the **Workspace**, LLM Controls notifies you if a component's workspace version is behind the database version, so you can update the component's workspace version:
 
 - **Update ready**: This notification means the component update contains no breaking changes.
 - **Update available**: This notification means the component update might contain breaking changes.
@@ -138,14 +138,14 @@ There are two ways to update components:
 
   To update specific components, select the components you want to update, and then click **Update Components**.
 
-Components are updated to the latest available version, based on the version of LLMControls you are running.
+Components are updated to the latest available version, based on the version of LLM Controls you are running.
 
 ## **Group components**
 
 Multiple components can be grouped into a single component for reuse. This is useful for organizing large flows by combining related components together, such as a RAG **Agent** component and an associated vector database component.
 
 1. Hold Shift, and then click and drag to highlight all components you want to merge. Components must be completely within the selection area to be merged.
-2. Release the mouse and keyboard, and then click **Group** to merge the components into a single, group component.
+2. Release the mouse and keyboard, and then click **Group** to merge the components into a single group component.
 
 Grouped components are configured and managed as a single component, including the component name, code, and settings.
 
