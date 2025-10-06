@@ -2,7 +2,7 @@
 title: "Quickstart"
 ---
 
-Get started with LLMControls by loading a template flow, running it, and then serving it at the /run API endpoint.
+Get started with LLM Controls by loading a template flow, running it, and then serving it at the /run API endpoint.
 
 ## **Prerequisites**[**​**](https://docs.langflow.org/get-started-quickstart#prerequisites)
 
@@ -10,17 +10,16 @@ Get started with LLMControls by loading a template flow, running it, and then se
 
 ## **Run the Simple Agent template flow**[**​**](https://docs.langflow.org/get-started-quickstart#run-the-simple-agent-template-flow)
 
-1. In LLMControls, click **New Flow**, and then select the **Simple Agent** template.
+1. In LLM Controls, click **New Flow**, and then select the **Simple Agent** template.
 
    ![Simple Agent(2) Pn](/images/simple_agent\(2\).png)
 
-       The Simple Agent flow consists of an Agent component connected to [Chat I/O components](/Components/Inputsandoutputs), a            [Calculator component](https://devrel.mintlify.app/Components/Tools#calculator-tool), and a [URL component](https://devrel.mintlify.app/Components/Data#url). When you run this flow, you submit a query to            the agent through the Chat Input component, the agent uses the Calculator and URL tools to              generate a response, and then returns the response through the Chat Output component.
+   The Simple Agent flow consists of an Agent component connected to [Chat I/O components](/Components/Inputsandoutputs), a     [Calculator component](https://devrel.mintlify.app/Components/Tools#calculator-tool), and a [URL component](https://devrel.mintlify.app/Components/Data#url). When you run this flow, you submit a query to the agent through the Chat Input component, the agent uses the Calculator and URL tools to generate a response, and then returns the response through the Chat Output component.
 
-        Many components can be tools for agents, including **MCP** The agent decides which tools to               call based on the context of a given query.
-
+   Many components can be tools for agents, including **MCP.** The agent decides which tools to call based on the context of a given query.
 2. In the **Agent** component's settings, in the **OpenAI API Key** field, enter your OpenAI API key. This guide uses an OpenAI model for demonstration purposes. If you want to use a different provider, change the **Model Provider** field, and then provide credentials for your selected provider.
 
-   Optionally, you can click  **Globe** to store the key in a LLMControls global variable.
+   Optionally, you can click  **Globe** to store the key in an LLM Controls global variable.
 3. To run the flow, click **Playground**.
 4. To test the Calculator tool, ask the agent a simple math question, such as `I want to add 4 and 4.` To help you test and evaluate your flows, the Playground shows the agent's reasoning process as it analyzes the prompt, selects a tool, and then uses the tool to generate a response. In this case, a math question causes the agent to select the Calculator tool and use an action like `evaluate_expression`.
 
@@ -34,17 +33,17 @@ Now that you've run your first flow, try these next steps:
 - Build your own flows from scratch or by modifying other template flows.
 - Integrate flows into your applications, as explained in [Run your flows from external applications](https://devrel.mintlify.app/Getstarted/quickstart#run-your-flows-from-external-applications%E2%80%8B).
 
-Optionally, stop here if you just want to create more flows within LLMControls.
+Optionally, stop here if you just want to create more flows within LLM Controls.
 
-If you want to learn how LLMControls integrates into external applications, read on.
+If you want to learn how LLM Controls integrates into external applications, read on.
 
 ## **Run your flows from external applications**[**​**](https://docs.langflow.org/get-started-quickstart#run-your-flows-from-external-applications)
 
-LLMControls is an application development platform, but it's also a runtime you can call through an API with Python, JavaScript, or HTTP.
+LLM Controls is an application development platform, but it's also a runtime you can call through an API with Python, JavaScript, or HTTP.
 
-LLMControls provides code snippets to help you get started with the LLMControls API
+LLM Controls provides code snippets to help you get started with the LLM Controls API
 
-1. To access API code for any flow in LLMControls, open the desired flow and click on the **"Publish"** button located at the top-right corner of the screen. A dropdown will appear with three options: **API access**, **Embed into site**, and **Shareable Playground**.
+1. To access the API code for any flow in LLM Controls, open the desired flow and click on the **"Publish"** button located at the top-right corner of the screen. A dropdown will appear with three options: **API access**, **Embed into site**, and **Shareable Playground**.
 
 <Tabs>
   <Tab title="Python">
@@ -136,8 +135,8 @@ LLMControls provides code snippets to help you get started with the LLMControls 
   </Tab>
 </Tabs>
 
-2. Click on **API access** to open a code snippet window that provides you with ready-to-use code in multiple languages (Python, JavaScript, cURL). The default code in the API access pane constructs a request with the LLMControls server URL, headers, and a payload of request data. The code snippets automatically include the LLMC_SERVER_ADDRESS and FLOW_ID values for the flow.
-3. If you're using the cloud version, make sure to create an API key in your **Settings \> LLMControls API** tab and set it as an environment variable (LLMC_API_KEY) in your development environment before making requests.
+2. Click on **API access** to open a code snippet window that provides you with ready-to-use code in multiple languages (Python, JavaScript, cURL). The default code in the API access pane constructs a request with the LLM Controls server URL, headers, and a payload of request data. The code snippets automatically include the LLMC_SERVER_ADDRESS and FLOW_ID values for the flow.
+3. If you're using the cloud version, make sure to create an API key in your **Settings \> LLM Controls API** tab and set it as an environment variable (LLMC_API_KEY) in your development environment before making requests.
 
 <Accordion title="Response">
   ```
@@ -180,7 +179,7 @@ LLMControls provides code snippets to help you get started with the LLMControls 
   ```
 </Accordion>
 
-In a production application, you probably want to select parts of this response to return to the user, store in logs, and so on. The next steps demonstrate how you can extract data from an LLMControls API response to use in your application.
+In a production application, you probably want to select parts of this response to return to the user, store in logs, and so on. The next steps demonstrate how you can extract data from an LLM Controls API response to use in your application.
 
 ### **Extract data from the response**[**​**](https://docs.langflow.org/get-started-quickstart#extract-data-from-the-response)
 
@@ -332,8 +331,8 @@ The following example builds on the API pane's example code to create a question
 
 You can include polling with your requests to temporarily modify flow parameters. Polling is added to the API request, and temporarily changes component parameters within your flow. Polling overrides the flow's components' settings for a single run only. They don't modify the underlying flow configuration or persist between runs.
 
-Polling is added to the `/run` endpoint's `payload`. To assist with formatting, you can define polling in the LLMControls MCP **Input Schema** pane before copying the code snippet.
+Polling is added to the `/run` endpoint's `payload`. To assist with formatting, you can define polling in the LLM Controls MCP **Input Schema** pane before copying the code snippet.
 
 1. To open the **Input Schema** pane, from the **API access** pane, click **Input Schema**.
 2. In the **Input Schema** pane, select the parameter you want to modify in your next request. Enabling parameters in the **Input Schema** pane does not **allow** modifications to the listed parameters. It only adds them to the example code.
-3. For example, to change the LLMControls provider from OpenAI to Groq, and include your Groq API key with the request, select
+3. For example, to change the LLM Controls provider from OpenAI to Groq, and include your Groq API key with the request, select
