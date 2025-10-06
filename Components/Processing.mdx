@@ -89,8 +89,6 @@ This component performs operations on [Data](https://devrel.mintlify.app/Concept
 3. In the **Data Operations** component, select the **Select Keys** operation to extract specific user information. To add additional keys, click **Add More**.
 
    ![Processing 3 Pn](/images/processing_3.png)
-
-
 4. Filter by `name`, `username`, and `email` to select the values from the request.
 
 ### **Operations**
@@ -137,9 +135,7 @@ This component converts one or multiple [Data](https://devrel.mintlify.app/Conce
 2. To view the flow's output, connect a **Chat Output** component to the **Data to Dataframe** component.
 
    ![Processing 4 Pn](/images/processing_4.png)
-
-
-3. Send a POST request to the **Webhook** containing your JSON data. Replace `YOUR_FLOW_ID` with your flow ID. This example uses the default LLMControls server address.
+3. Send a POST request to the **Webhook** containing your JSON data. Replace `YOUR_FLOW_ID` with your flow ID. This example uses the default LLM Controls server address.
 4. In the **Playground**, view the output of your flow. The **Data to DataFrame** component converts the webhook request into a `DataFrame`, with `text` and `data` fields as columns.
 5. Send another employee data object.
 6. In the **Playground**, this request is also converted to `DataFrame`.
@@ -267,7 +263,7 @@ This component saves [DataFrames, Data, or Messages](/Concepts/LLMCobjects) to v
 
 2. In the **Save to File** component's **Input Type** field, select the expected input type. This example expects **Data** from the **Webhook**.
 3. In the **File Format** field, select the file type for your saved file. This example uses `.md` in one **Save to File** component, and `.xlsx` in another.
-4. In the **File Path** field, enter the path for your saved file. This example uses `./output/employees.xlsx` and `./output/employees.md` to save the files in a directory relative to where LLMControls is running. The component accepts both relative and absolute paths, and creates any necessary directories if they don't exist.
+4. In the **File Path** field, enter the path for your saved file. This example uses `./output/employees.xlsx` and `./output/employees.md` to save the files in a directory relative to where LLM Controls is running. The component accepts both relative and absolute paths, and creates any necessary directories if they don't exist.
 
 <Tip>
   **tip**
@@ -275,7 +271,7 @@ This component saves [DataFrames, Data, or Messages](/Concepts/LLMCobjects) to v
   If you enter a format in the `file_path` that is not accepted, the component appends the proper format to the file. For example, if the selected `file_format` is `csv`, and you enter `file_path` as `./output/test.txt`, the file is saved as `./output/test.txt.csv` so the file is not corrupted.
 </Tip>
 
-5. Send a POST request to the **Webhook** containing your JSON data. Replace `YOUR_FLOW_ID` with your flow ID. This example uses the default LLMControls server address.
+5. Send a POST request to the **Webhook** containing your JSON data. Replace `YOUR_FLOW_ID` with your flow ID. This example uses the default LLM Controls server address.
 6. In your local filesystem, open the `outputs` directory. You should see two files created from the data you've sent: one in `.xlsx` for structured spreadsheets, and one in Markdown.
 
 ### **File input format options**
@@ -356,8 +352,6 @@ The **Split Text** component outputs **Chunks** or **DataFrame**. The **Chunks**
 1. To use this component in a flow, connect a component that outputs [Data or DataFrame](/Concepts/LLMCobjects) to the **Split Text** component's **Data** port. This example uses the **URL** component, which is fetching JSON placeholder data.
 
    ![Processing 9 Pn](/images/processing_9.png)
-
-
 2. In the **Split Text** component, define your data splitting parameters.
 
 This example splits incoming JSON data at the separator `},`, so each chunk contains one JSON object.
