@@ -1,5 +1,5 @@
 ---
-title: "Model components in LLMControls"
+title: "Model components in LLM Controls"
 ---
 
 Model components generate text using large language models.
@@ -225,8 +225,6 @@ This component generates text using Groq's language models.
 1. To use this component in a flow, connect it as a **Model** in a flow like the [Basic prompting flow](/Templates/Basicprompting), or select it as the **Model Provider** if you're using an **Agent** component.
 
    ![Model 3 Pn](/images/model_3.png)
-
-
 2. In the **Groq API Key** field, paste your Groq API key. The Groq model component automatically retrieves a list of the latest models. To refresh your list of models, click **Refresh**.
 3. In the **Model** field, select the model you want to use for your LLM. This example uses [llama-3.1-8b-instant](https://console.groq.com/docs/model/llama-3.1-8b-instant), which Groq recommends for real-time conversational interfaces.
 4. In the **Prompt** component, enter:
@@ -501,7 +499,7 @@ For more information, see [NVIDIA AI documentation](https://developer.nvidia.com
 
 This component generates text using Ollama's language models.
 
-To use this component in a flow, connect LLMControls to your locally running Ollama server and select a model.
+To use this component in a flow, connect LLM Controls to your locally running Ollama server and select a model.
 
 1. In the Ollama component, in the **Base URL** field, enter the address for your locally running Ollama server. This value is set as the `OLLAMA_HOST` environment variable in Ollama. The default base URL is `http://localhost:11434`.
 2. To refresh the server's list of models, click **Refresh**.
