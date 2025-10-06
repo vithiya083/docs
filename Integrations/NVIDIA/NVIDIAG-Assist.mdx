@@ -1,11 +1,11 @@
 ---
-title: "Integrate NVIDIA G-Assist with LLMControls"
+title: "Integrate NVIDIA G-Assist with LLM Controls"
 ---
 
 <Note>
   **important**
 
-  This component is available only for LLMControls users with NVIDIA GPUs on Windows systems.
+  This component is available only for LLM Controls users with NVIDIA GPUs on Windows systems.
 </Note>
 
 The **NVIDIA G-Assist** component enables interaction with NVIDIA GPU drivers through natural language prompts.
@@ -18,7 +18,7 @@ For more information, see the [NVIDIA G-assist project repository](https://githu
 
 - Windows operating system
 - NVIDIA GPU
-- `gassist.rise` package installed. This package is already installed with LLMControls.
+- `gassist.rise` package installed. This package is already installed with LLM Controls.
 
 ## Use the G-Assist component in a flow
 
@@ -37,4 +37,4 @@ The **NVIDIA G-Assist** component accepts a single input:
 The **NVIDIA G-Assist** component outputs a [Message](https://devrel.mintlify.app/Concepts/LLMCobjects#message-object%E2%80%8B) object that contains:
 
 - `text`: The response from NVIDIA G-Assist containing the completed operation result.
-- The NVIDIA G-Assist message response is wrapped in a LLMControls [Message](https://devrel.mintlify.app/Concepts/LLMCobjects#message-object%E2%80%8B) object.
+- The NVIDIA G-Assist message response is wrapped in an LLM Controls [Message](https://devrel.mintlify.app/Concepts/LLMCobjects#message-object%E2%80%8B) object.
