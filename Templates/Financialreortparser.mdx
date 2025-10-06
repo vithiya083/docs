@@ -22,7 +22,22 @@ The **Financial Report Parser** flow is created.
 ## **Run the memory chatbot flow**[**​**](https://docs.langflow.org/financial-report-parser#run-the-memory-chatbot-flow)
 
 1. Add your OpenAI API key to the OpenAI model.
-2. Click the **Playground** button, and then click **Send**. The **Chat Input** component is pre-loaded with a sample financial report for demonstration purposes. The chat returns a structured response:
+2. Click the **Playground** button, and then click **Send**. The **Chat Input** component is pre-loaded with a sample financial report for demonstration purposes. 
+
+   ```
+   
+   SAMPLE: In 2025, the company demonstrated strong financial performance, reporting a gross profit of $1.2 billion, reflecting stable revenue generation and effective cost management. 
+   The EBITDA stood at $900 million, highlighting the company’s solid operational efficiency and profitability before interest, taxes, depreciation, and amortization.
+   Despite a slight increase in operating expenses compared to 2021, the company maintained a healthy bottom line, achieving a net income of $500 million. 
+   This growth underscores the company’s ability to navigate economic challenges while sustaining profitability, reinforcing its financial stability and competitive position in the market.
+   ```
+
+   |The chat returns a structured response:
+
+   ```
+   
+   EBITIDA: 900 million, Net Income: 500 million, GROSS_PROFIT: 1.2 billion 
+   ```
 
 Inspect the flow to understand how this information was extracted.
 
