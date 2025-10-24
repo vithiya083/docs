@@ -16,7 +16,7 @@
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.langflow.org"
+      "href": "https://app.llmcontrols.ai"
     }
   },
   "customCss": "/style/style.css",
