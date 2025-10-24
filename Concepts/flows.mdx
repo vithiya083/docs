@@ -24,7 +24,7 @@ The option to export a flow is available in the same menu as shown above. Once e
 
 ## **LLM Controls JSON file contents**[**​**](https://docs.langflow.org/concepts-flows#langflow-json-file-contents)
 
-LLM Controls JSON files contain [nodes](https://devrel.mintlify.app/Concepts/flows#nodes%E2%80%8B) and [edges](https://devrel.mintlify.app/Concepts/flows#edges%E2%80%8B) that describe components and connections, and [additional metadata](https://devrel.mintlify.app/Concepts/flows#additional-metadata-and-project-informatio%E2%80%8B) that describes the flow.
+LLM Controls JSON files contain [nodes](https://docs.llmcontrols.ai/Concepts/flows#nodes%E2%80%8B) and [edges](https://docs.llmcontrols.ai/Concepts/flows#edges%E2%80%8B) that describe components and connections, and [additional metadata](https://docs.llmcontrols.ai/Concepts/flows#additional-metadata-and-project-informatio%E2%80%8B) that describes the flow.
 
 For example, the LLM Controls JSON file, examine the [Basic Prompting.json](https://github.com/langflow-ai/langflow/blob/main/src/backend/base/langflow/initial_setup/starter_projects/Basic%20Prompting.json) file in the LLM Controls repository.
 
@@ -48,7 +48,7 @@ This edge shows that the `ChatInput` component outputs a `Message` type to the `
 
 Additional information about the flow is stored in the root `data` object.
 
-- Metadata and project information including the name, description, and `last_tested_version` of the flow.
-- Visual information about the flow defining the initial position of the flow in the workspace.
+- Metadata and project information, including the name, description, and `last_tested_version` of the flow.
+- Visual information about the flow defines the initial position of the flow in the workspace.
 
 **Notes** are like comments to help you understand the flow within the workspace. They may contain links, code snippets, and other information. Notes are written in Markdown and stored as `node` objects.
