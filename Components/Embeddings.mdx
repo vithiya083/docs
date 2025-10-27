@@ -59,12 +59,12 @@ This component is used to load embedding models from [Amazon Bedrock](https://aw
 <Note>
   **important**
 
-  This component is deprecated as of LLM Controls version 1.1.2. Instead, use the [<u>Astra DB vector store component</u>](https://devrel.mintlify.app/Components/Vectorstores#astra-db-vector-store).
+  This component is deprecated as of LLM Controls version 1.1.2. Instead, use the [<u>Astra DB vector store component</u>](https://docs.llmcontrols.ai/Components/Vectorstores#astra-db-vector-store).
 </Note>
 
-Connect this component to the **Embeddings** port of the [Astra DB vector store component](https://devrel.mintlify.app/Components/Vectorstores#astra-db-vector-store) to generate embeddings.
+Connect this component to the **Embeddings** port of the [Astra DB vector store component](https://docs.llmcontrols.ai/Components/Vectorstores#astra-db-vector-store) to generate embeddings.
 
-This component requires that your Astra DB database has a collection that uses a vectorize embedding provider integration. For more information and instructions, see [Embedding Generation](https://docs.datastax.com/en/astra-db-serverless/databases/embedding-generation.html).
+This component requires that your Astra DB database has a collection that uses a vectorized embedding provider integration. For more information and instructions, see [Embedding Generation](https://docs.datastax.com/en/astra-db-serverless/databases/embedding-generation.html).
 
 <Accordion title="Parameters">
   **Inputs**
@@ -193,7 +193,7 @@ This component connects to Google's generative AI embedding service using the Go
 <Note>
   **note**
 
-  This component is deprecated as of LLM Controls version 1.0.18. Instead, use the [<u>Hugging Face Embeddings Inference component</u>](https://devrel.mintlify.app/Components/Embeddings#hugging-face-embeddings-inference).
+  This component is deprecated as of LLM Controls version 1.0.18. Instead, use the [<u>Hugging Face Embeddings Inference component</u>](https://docs.llmcontrols.ai/Components/Embeddings#hugging-face-embeddings-inference).
 </Note>
 
 This component loads embedding models from HuggingFace.
@@ -374,7 +374,7 @@ To use this component in a flow, connect LLM Controls to your locally running Ol
 1. In the Ollama component, in the **Ollama Base URL** field, enter the address for your locally running Ollama server. This value is set as the `OLLAMA_HOST` environment variable in Ollama. The default base URL is `http://localhost:11434`.
 2. To refresh the server's list of models, click **Refresh**.
 3. In the **Ollama Model** field, select an embedding model. This example uses `all-minilm:latest`.
-4. Connect the **Ollama** embeddings component to a flow. For example, this flow connects a local Ollama server running a `all-minilm:latest` embeddings model to a [Chroma DB](https://devrel.mintlify.app/Components/Vectorstores#chroma-db) vector store to generate embeddings for split text.
+4. Connect the **Ollama** embeddings component to a flow. For example, this flow connects a local Ollama server running a `all-minilm:latest` embeddings model to a [Chroma DB](https://docs.llmcontrols.ai/Components/Vectorstores#chroma-db) vector store to generate embeddings for split text.
 
 ![Embeddings Models 3 Pn](/images/Embeddings_models_3.png)
 
