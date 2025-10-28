@@ -1,44 +1,92 @@
 ---
-title: "Travel planning agent"
+title: "Summarization & Aggregation "
 ---
 
-Build a **Travel Planning Agent** flow for an agentic application using the multiple Tool-calling agents.
+The Summarization and Aggregation template enhances the basic summarization workflow by integrating Prompt Optimization and LLMC Executor capabilities.
 
-An **agent** uses an LLM as its "brain" to select among the connected tools and complete its tasks.
+\
+This template enables you to upload documents, generate summaries, automatically optimize prompts, and evaluate the best-performing versions, all within one seamless LLM Controls workflow.
 
-In this flow, multiple **Tool-calling agents** reason using an **OpenAI** LLM to plan a travel journey. Each agent is given a different responsibility defined by its **System Prompt** field.
+## Prerequisites
 
-The **Chat input** defines where the user wants to go, and passes the result to the **City Selection** agent. The **Local Expert** agent then adds information based on the selected cities, and the **Travel Concierge** assembles a seven-day travel plan in Markdown.
+- An OpenAI API Key
+-  A structured document (PDF) for upload
+-  Basic familiarity with LLM Controls Flows
 
-All agents have access to the **Search API** and **URL Content Fetcher** components, while only the Travel Concierge can use the **Calculator** for computing the trip costs.
+## Create the Advanced Summarization Flow
 
-## **Prerequisites**[**​**](https://docs.langflow.org/travel-planning-agent#prerequisites)
+### 1. Upload a File
 
-- [An OpenAI API key](https://platform.openai.com/)
-- [A Search API key](https://www.searchapi.io/)
+From the File component:
 
-## **Open LLM Controls and start a new flow**[**​**](https://docs.langflow.org/travel-planning-agent#open-langflow-and-start-a-new-flow)
+- Upload your document (PDF format supported)
+- This component outputs both raw and parsed data
+- Output is automatically passed to the Parser component
 
-Click **New Flow**, and then select the **Travel Planning Agent** flow.
+### 2. Parse the Document
 
-This opens a starter flow with the necessary components to run an agentic application using multiple Tool-calling agents.
+The Parser component converts uploaded content into plain text.
 
-## **Create the travel planning agent flow**
+- Mode: Parser
+- Template: Define how content is extracted (e.g., Text: {text})\
+   This ensures your data is clean and ready for prompting
 
-![Travel Pn](/images/travel.png)
+### 3. Optimize the Summarization Prompt
 
-The **Travel Planning Agent** flow consists of these components:
+Use the Prompt Optimizer Flow to automatically refine your prompt.
 
-- Multiple **Tool calling agent** components that use the connected LLM to reason through the user's input and select among the connected tools to complete their tasks.
-- The **Calculator** component performs basic arithmetic operations.
-- The **URL Content Fetcher** component scrapes content from a given URL.
-- The **Chat Input** component accepts user input to the chat.
-- The **Chat Output** component prints the flow's output to the chat.
-- The **OpenAI** model component sends the user input and prompt to the OpenAI API and receives a response.
+- Input a summarization task, such as:\
+   **“Summarize uploaded documents into concise, professional summaries.”**
+- The optimizer generates **multiple prompt variations, test cases, and evaluation metrics.**
+- Outputs include ranked prompts based on clarity, effectiveness, and consistency.
 
-## **Run the travel planning agent flow**[**​**](https://docs.langflow.org/travel-planning-agent#run-the-travel-planning-agent-flow)
+Click the Prompt Optimizer Flow node in the workspace to open and run this optimization process.
 
-1. Add your credentials to the Open AI and Search API components.
-2. Click **Playground** to start a chat session. You should receive a detailed, helpful answer to the journey defined in the **Chat input** component.
+### 4. Execute with LLMC Executor
 
-Now that your query has completed the journey from **Chat input** to **Chat output**, you have completed the **Travel Planning Agent** flow.
+\
+The LLMC Executor allows you to run the best-performing prompts with a chosen AI model.
+
+- **Model Selection**: Choose from GPT models (e.g., gpt-4o)
+- **Prompt Selection:** Pick from optimized prompts generated earlier
+- **API Key:** Enter your valid OpenAI key in the custom_api_key field
+
+Then click Run to execute and generate the summarized output.
+
+### 5. View the Summary Output
+
+The Summary Output component displays the final, aggregated summary in a clean text format.\
+ You can review, copy, or export it directly from the Playground.
+
+## Modify or Extend
+
+- To change the summarization style, open the Prompt template and adjust the tone or persona **(e.g., “Write an executive summary” or “Summarize in bullet points”).**
+- You can chain additional evaluation nodes for advanced comparison of results.
+- Use the **Results leaderboard** in the **optimizer **to monitor which prompt performs best.
+
+## Configuration Checklist
+
+| Setting               | Description                                       |
+| :-------------------- | :------------------------------------------------ |
+| OpenAI API Key        | Required to connect to GPT models                 |
+| File Upload           | Input document (PDF)                              |
+| Parser Template       | Controls how text is extracted                    |
+| Prompt Optimizer Flow | Generates, evaluates, and ranks prompt variations |
+| LLMC Executor         | Runs prompts with the chosen model                |
+| Summary Output        | Displays the final summarized result              |
+
+##   Use Cases
+
+- Generate executive summaries from lengthy reports
+- Compare and benchmark multiple summarization prompts
+- Automate evaluation of summarization quality
+- Build adaptive summarization pipelines for research or business data
+
+## Built With 
+
+- LLM Controls Framework
+- Prompt Optimizer Flow
+- LLMC Executor
+- OpenAI GPT Models
+
+Streamline your summarization process with intelligent optimization and automated evaluation.
