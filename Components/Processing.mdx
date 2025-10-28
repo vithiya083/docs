@@ -16,7 +16,7 @@ The component offers control over chunk size, overlap, and separator, which affe
 
 This component performs operations on [DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) rows and columns.
 
-To use this component in a flow, connect a component that outputs [DataFrame](https://devrel.mintlify.app/Concepts/LLMCobjects#dataframe-object%E2%80%8B) to the **DataFrame Operations** component.
+To use this component in a flow, connect a component that outputs [DataFrame](https://docs.llmcontrols.ai/Concepts/LLMCobjects#dataframe-object%E2%80%8B) to the **DataFrame Operations** component.
 
 This example fetches JSON data from an API. The **Smart function** component extracts and flattens the results into a tabular DataFrame. The **DataFrame Operations** component can then work with the retrieved data.
 
@@ -25,7 +25,7 @@ This example fetches JSON data from an API. The **Smart function** component ext
 1. The **API Request** component retrieves data with only `source` and `result` fields. For this example, the desired data is nested within the `result` field.
 2. Connect a **Smart function** to the API request component, and a **Language model** to the **Smart function**. This example connects a **Groq** model component.
 3. In the **Groq** model component, add your **Groq** API key.
-4. To filter the data, in the **Smart function** component, in the **Instructions** field, use natural language to describe how the data should be filtered. 
+4. To filter the data, in the **Smart function** component, in the **Instructions** field, use natural language to describe how the data should be filtered.
 
 <Tip>
   TIP
@@ -82,9 +82,9 @@ This component can perform the following operations on Pandas [DataFrame](https:
 
 ## **Data operations**
 
-This component performs operations on [Data](https://devrel.mintlify.app/Concepts/LLMCobjects#data-object%E2%80%8B) objects, including selecting keys, evaluating literals, combining data, filtering values, appending/updating data, removing keys, and renaming keys.
+This component performs operations on [Data](https://docs.llmcontrols.ai/Concepts/LLMCobjects#data-object%E2%80%8B) objects, including selecting keys, evaluating literals, combining data, filtering values, appending/updating data, removing keys, and renaming keys.
 
-1. To use this component in a flow, connect a component that outputs [Data](https://devrel.mintlify.app/Concepts/LLMCobjects#data-object%E2%80%8B) to the **Data Operations** component's input. All operations in the component require at least one [Data](https://devrel.mintlify.app/Concepts/LLMCobjects#data-object%E2%80%8B) input.
+1. To use this component in a flow, connect a component that outputs [Data](https://docs.llmcotrols.ai/Concepts/LLMCobjects#data-object%E2%80%8B) to the **Data Operations** component's input. All operations in the component require at least one [Data](https://docs.llmcontrols.ai/Concepts/LLMCobjects#data-object%E2%80%8B) input.
 2. In the **Operations** field, select the operation you want to perform. For example, send this request to the **Webhook** component. Replace `YOUR_FLOW_ID` with your flow ID.
 3. In the **Data Operations** component, select the **Select Keys** operation to extract specific user information. To add additional keys, click **Add More**.
 
@@ -93,7 +93,7 @@ This component performs operations on [Data](https://devrel.mintlify.app/Concept
 
 ### **Operations**
 
-The component supports the following operations. All operations in the **Data operations** component require at least one [Data](https://devrel.mintlify.app/Concepts/LLMCobjects#data-object%E2%80%8B) input.
+The component supports the following operations. All operations in the **Data operations** component require at least one [Data](https://docs.llmcontrols.ai/Concepts/LLMCobjects#data-object%E2%80%8B) input.
 
 | **Operation**    | **Required Inputs**                       | **Info**                                    |
 | :--------------- | :---------------------------------------- | :------------------------------------------ |
@@ -129,9 +129,9 @@ The component supports the following operations. All operations in the **Data op
 
 ## **Data to DataFrame**
 
-This component converts one or multiple [Data](https://devrel.mintlify.app/Concepts/LLMCobjects#data-object%E2%80%8B) objects into a [DataFrame](https://devrel.mintlify.app/Concepts/LLMCobjects#dataframe-object%E2%80%8B). Each Data object corresponds to one row in the resulting DataFrame. Fields from the `.data` attribute become columns, and the `.text` field (if present) is placed in a 'text' column.
+This component converts one or multiple [Data](https://docs.llmcontrols.ai/Concepts/LLMCobjects#data-object%E2%80%8B) objects into a [DataFrame](https://devrel.mintlify.app/Concepts/LLMCobjects#dataframe-object%E2%80%8B). Each Data object corresponds to one row in the resulting DataFrame. Fields from the `.data` attribute become columns, and the `.text` field (if present) is placed in a 'text' column.
 
-1. To use this component in a flow, connect a component that outputs [Data](https://devrel.mintlify.app/Concepts/LLMCobjects#data-object%E2%80%8B) to the **Data to Dataframe** component's input. This example connects a **Webhook** component to convert `text` and `data` into a DataFrame.
+1. To use this component in a flow, connect a component that outputs [Data](https://docs.llmcontrols.ai/Concepts/LLMCobjects#data-object%E2%80%8B) to the **Data to Dataframe** component's input. This example connects a **Webhook** component to convert `text` and `data` into a DataFrame.
 2. To view the flow's output, connect a **Chat Output** component to the **Data to Dataframe** component.
 
    ![Processing 4 Pn](/images/processing_4.png)
@@ -178,7 +178,7 @@ This component routes requests to the most appropriate LLM based on OpenRouter m
 
 ## **Message to data**
 
-This component converts [Message](https://devrel.mintlify.app/Concepts/LLMCobjects#message-object%E2%80%8B) objects to [Data](https://devrel.mintlify.app/Concepts/LLMCobjects#data-object%E2%80%8B) objects.
+This component converts [Message](https://docs.llmcontrols.ai/Concepts/LLMCobjects#message-object%E2%80%8B) objects to [Data](https://docs.llmcontrols.ai/Concepts/LLMCobjects#data-object%E2%80%8B) objects.
 
 <Accordion title="Parameters">
   **Inputs**
@@ -318,7 +318,7 @@ For `Message` inputs, the component can create:
 
 This component uses an LLM to generate a Lambda function for filtering or transforming structured data.
 
-To use the **Smart function** component, you must connect it to a [Language Model](https://devrel.mintlify.app/Components/Models#language-model) component, which the component uses to generate a function based on the natural language instructions in the **Instructions** field.
+To use the **Smart function** component, you must connect it to a [Language Model](https://docs.llmcontrols.ai/Components/Models#language-model) component, which the component uses to generate a function based on the natural language instructions in the **Instructions** field.
 
 This example gets JSON data from the `https://jsonplaceholder.typicode.com/users` API endpoint. The **Instructions** field in the **Smart function** component specifies the task `extract emails`. The connected LLM creates a filter based on the instructions, and successfully extracts a list of email addresses from the JSON data.
 
@@ -347,7 +347,7 @@ This example gets JSON data from the `https://jsonplaceholder.typicode.com/users
 
 This component splits text into chunks based on specified criteria. It's ideal for chunking data to be tokenized and embedded into vector databases.
 
-The **Split Text** component outputs **Chunks** or **DataFrame**. The **Chunks** output returns a list of individual text chunks. The **DataFrame** output returns a structured data format, with additional `text` and `metadata` columns applied.
+The **Split Text** component outputs **Chunks** or **DataFrame**. The **Chunks** output returns a list of individual text chunks. The **DataFrame** output returns a structured data format, with additional `text` and `metadata` columns the applied.
 
 1. To use this component in a flow, connect a component that outputs [Data or DataFrame](/Concepts/LLMCobjects) to the **Split Text** component's **Data** port. This example uses the **URL** component, which is fetching JSON placeholder data.
 
