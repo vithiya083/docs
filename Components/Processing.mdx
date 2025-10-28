@@ -129,7 +129,7 @@ The component supports the following operations. All operations in the **Data op
 
 ## **Data to DataFrame**
 
-This component converts one or multiple [Data](https://docs.llmcontrols.ai/Concepts/LLMCobjects#data-object%E2%80%8B) objects into a [DataFrame](https://devrel.mintlify.app/Concepts/LLMCobjects#dataframe-object%E2%80%8B). Each Data object corresponds to one row in the resulting DataFrame. Fields from the `.data` attribute become columns, and the `.text` field (if present) is placed in a 'text' column.
+This component converts one or multiple [Data](https://docs.llmcontrols.ai/Concepts/LLMCobjects#data-object%E2%80%8B) objects into a [DataFrame](https://docs.llmcontrols.ai/Concepts/LLMCobjects#dataframe-object%E2%80%8B). Each Data object corresponds to one row in the resulting DataFrame. Fields from the `.data` attribute become columns, and the `.text` field (if present) is placed in a 'text' column.
 
 1. To use this component in a flow, connect a component that outputs [Data](https://docs.llmcontrols.ai/Concepts/LLMCobjects#data-object%E2%80%8B) to the **Data to Dataframe** component's input. This example connects a **Webhook** component to convert `text` and `data` into a DataFrame.
 2. To view the flow's output, connect a **Chat Output** component to the **Data to Dataframe** component.
