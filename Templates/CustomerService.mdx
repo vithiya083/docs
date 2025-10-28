@@ -2,48 +2,93 @@
 title: "Customer Service "
 ---
 
-<Info>
-  **info**
+This advanced LLM Controls template provides an AI-powered customer support system that uses your uploaded company documents to deliver personalized, context-aware responses to user queries.
 
-  The **Chat memory** component is also known as the **Message history** component.
-</Info>
-
-This flow extends the [basic prompting flow](/Templates/Basicprompting) with a **Message history** component that stores up to 100 previous chat messages and uses them to provide context for the current conversation.
+\
+ It integrates Prompt Optimization, Vector Search, and LLMC Executor to create a fully automated support flow.
 
 ## **Prerequisites**
 
-- [An OpenAI API key](https://platform.openai.com/)
+- An active OpenAI API key
+- Access to the LLM Controls dashboard
+- At least one support document (PDF, TXT, or website URL) for data ingestion
 
-## **Create the memory chatbot flow**[**​**](https://docs.langflow.org/memory-chatbot#create-the-memory-chatbot-flow)
+## **Create the Customer Service Flow**
 
-1. From the LLM Controls dashboard, click **New Flow**.
-2. Select **Memory Chatbot**.
-3. The **Memory Chatbot** flow is created.
+From the LLM Controls dashboard, click **New Flow → Select Customer Service – Advanced.**\
+ The flow includes three main sections:
 
-![Memorychatbot3below Pn](/images/memorychatbot3below.png)
+### **1. Prompt Optimizer Flow**
 
-This flow adds a **Message history** component to the Basic Prompting flow. This component retrieves previous messages and sends them to the **Prompt** component to fill a part of the **Template** with context.
+Automatically generate, evaluate, and rank optimized prompts to ensure your model responds effectively to customer questions.
 
-To examine the template, click the **Template** field in the **Prompt** component. The **Prompt** tells the **OpenAI model** component how to respond to input.
+#### **Flow Components**
 
-The `{memory}` code in the prompt creates a new input port in the component called **memory**. The **Message history** component is connected to this port to store chat messages from the **Playground** and provide the **OpenAI** component with a memory of previous chat messages.
+1. **User Task** – Define the type of prompt you want to optimize.
+2. **Prompt Optimization Engine** – Generates variations, criteria, and scoring to identify the best prompt.
+3. **Results **– Displays ranked performance and top prompt outputs**.**
 
-## **Run the memory chatbot flow**[**​**](https://docs.langflow.org/memory-chatbot#run-the-memory-chatbot-flow)
+#### **Run It**
 
-1. Open the **Playground**.
-2. Enter multiple questions. For example, try entering this conversation:
+- Start from the **User Task node**, input your optimization goal.
+- Click **Run **on the Results node to execute the optimizer.
+- Review the leaderboard to see the top-performing prompt.
 
-   The chatbot remembers your name and previous questions.
-3. To view the **Message Logs** pane, click, and then click **Message Logs**. The **Message Logs** pane displays all previous messages, with each conversation sorted by `session_id`.
+### **2. Load Data Flow**
 
-![Run Pn](/images/run.png)
+Prepare your knowledge base for AI retrieval. This step embeds your support documents into a Vector DB.
 
-## **Use Session ID with the memory chatbot flow**[**​**](https://docs.langflow.org/memory-chatbot#use-session-id-with-the-memory-chatbot-flow)
+#### **Steps**
 
-`session_id` is a unique identifier in LLM Controls that stores conversation sessions between the AI and a user. A `session_id` is created when a conversation is initiated, and then associated with all subsequent messages during that session.
+1. **Upload Files** or URLs – Add your customer support guides, FAQs, or product documentation.
+2. **Split Text** – Breaks content into smaller chunks.
+3. **Embed Text** – Uses OpenAI Embeddings to create vector representations.
+4. **Store Data** – Saves all embeddings to the LLMC Vector DB.
 
-In the **Memory Chatbot** flow you created, the **Message history** component references past interactions by **Session ID**. You can demonstrate this by modifying the **Session ID** value to switch between conversation histories.
+   <Info>
+     Make sure your OpenAI API key is configured in the embedding component.
+   </Info>
 
-1. In the **Session ID** field of the **Message history** and **Chat Input** components, add a **Session ID** value like `MySessionID`.
-2. Now, once you send a new message to the **Playground**, you should have a new memory created in the **Message Logs** pane.
-3. Notice how your conversation is being stored in different memory sessions.
+### **3. Retriever Flow**
+
+**Handles real customer queries using RAG (Retrieval-Augmented Generation).**
+
+#### **How It Works**
+
+1. The **Chat Input** collects a user question.
+2. The **Vector DB **retrieves relevant support content.
+3. The **Prompt injects** that context into the model request.
+4. The **LLMC Executor** generates the final AI-powered response.
+
+#### **Example**
+
+**Input**: “Why was my refund delayed?”\
+**Output**: “Your refund was delayed due to a pending bank verification step, as stated in our policy.”
+
+### **4. LLMC Executor**
+
+Executes optimized prompts using selected models (like GPT-4o).
+
+#### **Usage Steps**
+
+1. Select your Prompt and Model.
+2. Ensure your API Key is active.
+3. Enter the user query and click  Play.
+4. View the generated response in the Output section.
+
+## **Run the Full Customer Support Flow**
+
+1. Load and embed your company data via the Load Data Flow.
+2. Optimize prompts with the Prompt Optimizer Flow.
+3. Connect the Retriever Flow for live Q&A.
+4. Test everything in the Playground to verify responses.
+
+   <Tip>
+     You can further fine-tune prompts or connect different model endpoints for performance testing.
+   </Tip>
+
+## **Modify and Extend**
+
+- Add custom prompt templates for tone or brand voice.
+- Integrate additional embedding sources (e.g., Notion, Confluence).
+- Chain multiple LLMC Executors for tiered reasoning.
