@@ -37,12 +37,12 @@
           {
             "group": "Templates",
             "pages": [
-              "Templates/Email Lead",
-              "Templates/Resume Extraction",
-              "Templates/Targeted FAQ",
-              "Templates/Customer Service",
-              "Templates/Smart Spreadsheet",
-              "Templates/Summarization & Aggregation"
+              "Templates/EmailLead",
+              "Templates/ResumeExtraction",
+              "Templates/TargetedFAQ",
+              "Templates/CustomerService",
+              "Templates/SmartSpreadsheet",
+              "Templates/SummarizationAggregation"
             ]
           },
           {
