@@ -1,27 +1,106 @@
 ---
-title: "Document QA"
+title: "Email Lead Flow "
 ---
 
-Build a question-and-answer chatbot with a document loaded from local memory.
+This automation flow extracts business or sales leads directly from a Gmail inbox, analyzes email content using an LLM (Language Model), categorizes and enriches the leads, and exports the structured data to a Google Sheet with performance tracking via an Analytics Dashboard.
 
-## **Prerequisites**[**​**](https://docs.langflow.org/document-qa#prerequisites)
+## **Workflow Steps & Components**
 
-- [An OpenAI API key](https://platform.openai.com/)
+### **1. Gmail Manager**
 
-## **Create the document QA flow**[**​**](https://docs.langflow.org/document-qa#create-the-document-qa-flow)
+**Component: **Gmail Manager**\
+ Purpose: **Connects to Gmail and fetches emails from a specific label (e.g., “Inbound Leads”).\
+**User Configurations:** 
 
-1. From the LLM Controls dashboard, click **New Flow**.
-2. Select **Document QA**.
-3. The **Document QA** flow is created.
+- Gmail Credentials JSON
+- Target Label (e.g., Leads)
+- Max Emails to Fetch
+- Apply Label after Processing (e.g., Processed)
+- Optional: Extract Attachments
 
-![Document QA Pn](/images/documentQA.png)
+**Output: **Email subjects, senders, message bodies, and attachments (if any).
 
-This flow is composed of a chatbot with the **Chat Input**, **Prompt**, **OpenAI**, and **Chat Output** components, but also incorporates a **File** component, which loads a file from your local machine. The **Parser** component converts the data from the **File** component into the **Prompt** component as `{Document}`.
+### **2. AI Lead Categorizer**
 
-The **Prompt** component is instructed to answer questions based on the contents of `{Document}`. This gives the **OpenAI** component context it would not otherwise have access to.
+**Component: **AI Lead Categorizer**\
+Purpose: **Uses an LLM to analyze email content and identify:
 
-### **Run the document QA flow**[**​**](https://docs.langflow.org/document-qa#run-the-document-qa-flow)
+- **Lead type (**Sales, Business Development, Partnership, etc**.)**
+- **Key contact info (**Name, Email, Company**)**
+- **Message intent (**Inquiry, Demo Request, Proposal, etc.**)**
 
-1. Add your **OpenAI API key** to the **Open AI** model component.
-2. To select a document to load, in the **File** component, click the **Select files** button. Select a local file or a file loaded with [File management](/Concepts/manage-files), and then click **Select file**. The file name appears in the component.
-3. Click the **Playground** button. Enter a question about the loaded document's content. You should receive a contextual response indicating that the AI has read your document.
+**Inputs:**
+
+- Email body (from Gmail Manager)
+- Job/Industry context prompt
+
+### **3.  Language Model (LLM Processor)**
+
+**Component: **Language Model**\
+ Purpose: **Provides context-aware understanding to classify emails more precisely and extract meaningful fields.
+
+**Connected To:**
+
+- AI Lead Categorizer for enrichment
+- Email Auto-Reply System for crafting response messages
+
+### **4. Email Auto-Reply System**
+
+**Component: **Email Auto-Reply System**\
+ Purpose: **Automatically drafts personalized replies using extracted lead details and your preferred tone.**\
+ Example Outputs:**
+
+- “Thank you for your interest in our services. Our business development team will reach out shortly.”
+- “Appreciate your inquiry. Here’s a link to schedule a meeting.”
+
+**Inputs:**
+
+- Extracted lead details
+- LLM-generated message tone (formal/friendly)
+- Predefined templates
+
+### 5.**Google Sheets Integration** 
+
+**Component: Google Sheets Writer\
+ Purpose: **Appends structured lead data into a centralized Google Sheet.**\
+ Typical Columns:**\
+ | Date | Name | Email | Company | Lead Type | Message Summary | Follow-up Status |
+
+**Required Config:**
+
+- Spreadsheet ID
+- Target Sheet Name
+
+### **6. Analytics Dashboard**
+
+**Component: **Analytics Dashboard**\
+ Purpose: **Provides a visual summary of lead statistics, such as:
+
+- Number of leads processed
+- Lead sources (email domains)
+- Category breakdown (Partnerships, Sales, etc.)
+- Performance metrics (response rate, follow-up progress)
+
+### **7. Final Output**
+
+**Component: **Text Output**\
+ Purpose: **Displays a summary message in Playground view 
+
+**e.g., “10 new leads extracted and appended to Google Sheet successfully.”** 
+
+## **End-to-End Flow Summary**
+
+| **Stage**       | **Action**                    | **Output**            |
+| :-------------- | :---------------------------- | :-------------------- |
+| **Gmail Fetch** | **Retrieve new lead emails**  | **Raw messages**      |
+| **Categorize**  | **Use LLM to extract fields** | **Name, Email, Type** |
+| **Reply**       | **Auto-generate response**    | **Draft email text**  |
+| **Export**      | **Save to Google Sheets**     | **Structured data**   |
+| **Analyze**     | **Dashboard metrics**         | **Lead performance**  |
+
+## **Highlights** 
+
+- Works automatically on labeled inboxes.
+- Uses LLMs for accurate intent and field extraction
+- Creates and sends contextually personalized replies.
+- Tracks processed leads in real-time via Google Sheets + Dashboard.****
