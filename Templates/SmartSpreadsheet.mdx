@@ -1,40 +1,92 @@
 ---
-title: "Simple agent"
+title: "Smart Spreadsheet Assistant "
 ---
 
-Build a **Simple Agent** flow for an agentic application using the agent component.
+The Smart Spreadsheet Assistant template lets you interact with your spreadsheet data using natural language.
 
-An **agent** uses an LLM as its "brain" to select among the connected tools and complete its tasks.
+\
+ Upload Excel or CSV files, query data, apply filters, and generate instant summaries or insights, all powered by LLMs.
 
-In this flow, the **Tool-calling agent** reasons using an **OpenAI** LLM. The agent selects the **Calculator** tool for simple math problems and the **URL** tool to search a URL for content.
+This advanced version also includes a Prompt Optimizer Flow, enabling automated prompt refinement for better query accuracy and analysis quality.
 
-## **Prerequisites**[**​**](https://docs.langflow.org/simple-agent#prerequisites)
+## **Prerequisites**
 
-- [An OpenAI API key](https://platform.openai.com/)
+- A valid Anthropic API Key
+- Spreadsheet file (Excel or CSV format)
+- Access to the Prompt Optimizer Flow (optional but recommended)
 
-## **Open LLM Controls and start a new flow**[**​**](https://docs.langflow.org/simple-agent#open-langflow-and-start-a-new-flow)
+## **Key Features**
 
-Click **New Flow**, and then select the **Simple Agent** flow.
+- Upload spreadsheets (Excel/CSV) for real-time querying.
+- Use natural language or SQL queries to explore data.
+- Connect to Anthropic’s Claude models for reasoning and summarization.
+- Automatically optimize and test prompt variations for accuracy.
+- Ideal for data exploration, reporting, and analytics.
 
-This opens a starter flow with the necessary components to run an agentic application using the Tool-calling agent.
+## **1. Prompt Optimizer Flow** 
 
-## **Simple Agent flow**
+Purpose: Enhance your spreadsheet interaction by fine-tuning natural language prompts for clarity and precision.
 
-![Simpleagent Pn](/images/simpleagent.png)
+### **Flow Overview**
 
-The **Simple Agent** flow consists of these components:
+1. **User Task** – Define the data query or analysis you want to improve (e.g., “Show me the top 10 customers by sales”).
+2. **Prompt Optimization Engine** – Generates, tests, and scores variations of your prompt.
+3. **Results** – Displays performance rankings of each optimized prompt.
 
-- The **Tool calling agent** component uses the connected LLM to reason through the user's input and select among the connected tools to complete its task.
-- The **URL** tool component searches a list of URLs for content.
-- The **Calculator** component performs basic arithmetic operations.
-- The **Chat Input** component accepts user input to the chat.
-- The **Chat Output** component prints the flow's output to the chat.
+**Usage:**
 
-## **Run the Simple Agent flow**[**​**](https://docs.langflow.org/simple-agent#run-the-simple-agent-flow)
+- Start from the User Task node.
+- Run the Results component to evaluate performance.
+- Apply the top-performing prompt to your data analysis workflow.
 
-1. Add your credentials to the **Agent** component.
-2. Click **Playground** to start a chat session.
-3. To confirm the tools are connected, ask the agent, `What tools are available to you?` The response is similar to the following:
-4. Ask the agent a question. For example, ask it to create a tabletop character using your favorite rules set. The agent tells you when it's using the `URL-fetch_content_text` tool to search for rules information, and when it's using `CalculatorComponent-evaluate_expression` to generate attributes with dice rolls. The final output should be similar to this:
+## **2. Load Spreadsheet**
 
-Now that your query has completed the journey from **Chat input** to **Chat output**, you have completed the **Simple Agent** flow.
+Use the Load Spreadsheet component to import and prepare your data.
+
+### **Steps**
+
+1. Click Select Files to upload your spreadsheet (Excel or CSV).
+2. Configure the sheet name, chunk size, and indexing options.
+3. Enable caching for large files (optional).
+4. Output is automatically converted into a searchable DataFrame.
+
+## **3. Spreadsheet Query Tool**
+
+Search, filter, or aggregate your uploaded spreadsheet data.
+
+### **Supports:**
+
+- Natural language queries (e.g., “Find all orders above \$500”)
+- SQL queries (SELECT \* FROM sales WHERE amount \> 500)
+- Custom filters and sorting options
+
+**Outputs**: Clean, query-ready data for the LLM to interpret.
+
+## **4. Agent (Claude Integration)**
+
+Connects your query logic to Anthropic’s Claude Sonnet model for intelligent reasoning and conversational analysis.
+
+### **Setup**
+
+- Choose Model Provider: **Anthropic**
+- Select Model Name: **claude-sonnet-4-20250514**
+- Add your **Anthropic API Key**
+- Enter short Agent Instructions (e.g., “You are a helpful data analysis assistant that answers questions about spreadsheets.”)
+
+## **5. Chat Interface**
+
+Use the Chat Input and Chat Output components to ask questions directly and view responses in real time.
+
+### **Example**
+
+**User**: “Which region had the highest revenue last quarter?”\
+**Assistant**: “The West region recorded the highest total revenue of \$120K between April and June.”
+
+## **Example Use Cases** 
+
+- **Sales reporting** (“Summarize total sales per month.”)
+- **Expense analysis** (“Find top 5 expense categories.”)
+- **Research data filtering** (“Show all entries with missing values.”)
+- **Trend summaries** (“Compare Q1 and Q2 growth rates.”)
+
+## 
