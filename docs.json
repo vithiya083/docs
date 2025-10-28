@@ -37,15 +37,12 @@
           {
             "group": "Templates",
             "pages": [
-              "Templates/Basicprompting",
-              "Templates/Simpleagent",
-              "Templates/Blogwriter",
-              "Templates/DocumentQA",
-              "Templates/Memorychatbot",
-              "Templates/VectorstoreRAG",
-              "Templates/Financialreportparser",
-              "Templates/Sequentialtasksagent",
-              "Templates/Travelplanningagent"
+              "Templates/Email Lead",
+              "Templates/Resume Extraction",
+              "Templates/Targeted FAQ",
+              "Templates/Customer Service",
+              "Templates/Smart Spreadsheet",
+              "Templates/Summarization & Aggregation"
             ]
           },
           {
