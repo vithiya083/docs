@@ -35,7 +35,7 @@
             "pages": ["Getstarted/quickstart"]
           },
           {
-            "group": "templates",
+            "group": "Templates",
             "pages": [
               "Templates/EmailLead",
               "Templates/ResumeExtraction",
