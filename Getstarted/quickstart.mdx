@@ -327,12 +327,12 @@ The following example builds on the API pane's example code to create a question
 
 2. To view the Agent's previous answer, type `compare`. To close the terminal chat, type `exit`.
 
-### **Use polling to apply temporary overrides to a flow run**[**​**](https://docs.langflow.org/get-started-quickstart#use-tweaks-to-apply-temporary-overrides-to-a-flow-run)
+### Use tweaks to apply temporary overrides to a flow run​
 
-You can include polling with your requests to temporarily modify flow parameters. Polling is added to the API request, and temporarily changes component parameters within your flow. Polling overrides the flow's components' settings for a single run only. They don't modify the underlying flow configuration or persist between runs.
+You can include tweaks with your requests to temporarily modify flow parameters. Tweaks are added to the API request and temporarily change component parameters within your flow. Tweaks override the flow's components' settings for a single run only. They don't modify the underlying flow configuration or persist between runs.
 
-Polling is added to the `/run` endpoint's `payload`. To assist with formatting, you can define polling in the LLM Controls MCP **Input Schema** pane before copying the code snippet.
+Tweaks are added to the /run endpoint's payload. To assist with formatting, you can define tweaks in the LLM Controls Tweaks pane before copying the code snippet.
 
-1. To open the **Input Schema** pane, from the **API access** pane, click **Input Schema**.
-2. In the **Input Schema** pane, select the parameter you want to modify in your next request. Enabling parameters in the **Input Schema** pane does not **allow** modifications to the listed parameters. It only adds them to the example code.
-3. For example, to change the LLM Controls provider from OpenAI to Groq, and include your Groq API key with the request, select
+1. To open the Tweaks pane, from the API access pane, click Tweaks.
+2. In the Tweaks pane, select the parameter you want to modify in your next request. Enabling parameters in the Tweaks pane adds them to the example code snippet.
+3. For example, to change the model provider from OpenAI to Groq and include your Groq API key with the request, select the relevant parameters in the Tweaks pane, and the code snippet will be automatically updated.
