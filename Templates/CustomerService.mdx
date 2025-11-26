@@ -57,10 +57,12 @@ Handles real customer queries using RAG (Retrieval-Augmented Generation).
 
 #### **How It Works**
 
-1. The **Chat Input** collects a user question.
-2. The **Vector DB** retrieves relevant support content.
-3. The **Prompt injects** that context into the model request.
-4. The **LLMC Executor** generates the final AI-powered response.
+1. The Customer Query Input collects a user question.
+2. The LLMC Vector DB retrieves relevant support content.
+3. The Parser formats the retrieved content.
+4. The Prompt injects that context into the model request.
+5. The LLMC Executor generates the final AI-powered response.
+6. The Support Chat Output displays the answer.
 
 #### **Example**
 
