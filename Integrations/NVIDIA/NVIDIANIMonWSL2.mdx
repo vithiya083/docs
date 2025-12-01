@@ -19,7 +19,7 @@ For more information on NVIDIA NIM, see the [NVIDIA documentation](https://docs.
 
 To connect the NIM you've deployed with LLM Controls, add the **NVIDIA** model component to a flow.
 
-1. Create a [basic prompting flow](/Templates/Basicprompting).
+1. Create a [basic prompting flow](https://docs.llmcontrols.ai/Components/Models#use-a-model-component-in-a-flow).
 2. Replace the **OpenAI** model component with the **NVIDIA** component.
 3. In the **NVIDIA** component's **Base URL** field, add the URL where your NIM is accessible. If you followed your model's [deployment instructions](https://build.nvidia.com/nv-mistralai/mistral-nemo-12b-instruct/deploy?environment=wsl2.md), the value is `http://localhost:8000/v1`.
 4. In the **NVIDIA** component's **NVIDIA API Key** field, add your NVIDIA API Key.
