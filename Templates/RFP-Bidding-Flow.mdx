@@ -1,3 +1,300 @@
 ---
 title: "RFP Bidding Flow"
 ---
+
+This automation flow processes RFP documents, extracts structured information using AI agents, performs comprehensive analysis across multiple dimensions (domain classification, cost estimation, vendor matching, compliance assessment), and generates a complete bidding proposal with validation.
+
+## Workflow Steps & Components
+
+### 1. Document Loading & Preprocessing
+
+**Component: File**
+
+- **Purpose**: Loads RFP documents (PDF, DOCX, TXT, etc.) for processing
+- **User Configurations**:
+  - File upload or server file path
+  - Processing concurrency settings
+  - File type validation
+- **Output**: Raw document data
+
+**Component: Split Text**
+
+- **Purpose**: Splits large RFP documents into manageable chunks for processing
+- **User Configurations**:
+  - Chunk size (default: configurable)
+  - Chunk overlap
+  - Separator settings
+- **Output**: Document chunks ready for parsing
+
+### 2. Structured Data Extraction
+
+**Component: LLMC Parser**
+
+- **Purpose**: Uses an LLM to extract structured data from RFP document chunks
+- **Inputs**:
+  - Document chunks (from Split Text)
+  - Language Model (for parsing)
+  - Custom extraction prompt
+- **User Configurations**:
+  - Custom prompt for data extraction
+  - Batch size for processing
+  - Language model selection
+- **Output**: Structured JSON data with extracted RFP information
+
+**Component: Language Model**
+
+- **Purpose**: Provides the language model for parsing and analysis
+- **Connected To**:
+  - LLMC Parser for initial extraction
+  - Validation Evaluator for quality checks
+- **User Configurations**:
+  - Model provider (OpenAI, Anthropic, etc.)
+  - API keys
+  - Temperature and other model parameters
+
+**Component: Parser**
+
+- **Purpose**: Formats extracted structured data into readable text format
+- **Inputs**:
+  - Parsed data from LLMC Parser
+  - Template pattern for formatting
+- **User Configurations**:
+  - Template pattern (e.g., "Text: {text}")
+  - Separator for multiple items
+- **Output**: Formatted text ready for agent analysis
+
+### 3. Multi-Agent Analysis Pipeline
+
+The workflow uses five specialized AI agents, each equipped with web search capabilities via Google Serper API:
+
+**Component: Google Serper API**
+
+- **Purpose**: Provides web search functionality to all agents
+- **User Configurations**:
+  - Serper API Key
+  - Number of search results
+- **Output**: Search tool available to agents
+
+**Agent 1: Domain Classification Agent**
+
+- **Component**: Agent
+- **Purpose**: Analyzes and classifies the RFP project domain
+- **Tasks**:
+  - Identifies primary and secondary business domains (Construction, IT Services, Healthcare, etc.)
+  - Calculates capability match percentage based on work requirements
+  - Identifies required competencies and skills
+  - Researches industry-specific requirements via web search
+- **Inputs**:
+  - Parsed RFP data (from Parser)
+  - System prompt for domain classification
+  - Google Serper API tool
+- **Output**: JSON with domain classification, capabilities match, competencies, and research insights
+
+**Agent 2: Cost Estimation Agent**
+
+- **Component**: Agent
+- **Purpose**: Provides detailed cost estimates for the project
+- **Tasks**:
+  - Estimates cost range (low/mid/high scenarios)
+  - Provides detailed cost breakdown by categories (labor, materials, equipment, etc.)
+  - Calculates margin analysis with profit targets
+  - Identifies key cost drivers
+  - Assesses cost-related risks
+  - Researches current market rates via web search
+- **Inputs**:
+  - Parsed RFP data
+  - System prompt for cost estimation
+  - Google Serper API tool
+  - Current date tool
+- **Output**: JSON with cost estimates, breakdowns, margins, and market insights
+
+**Agent 3: Vendor & Subcontractor Matching Agent**
+
+- **Component**: Agent
+- **Purpose**: Identifies necessary vendors and subcontractors
+- **Tasks**:
+  - Identifies required vendor categories based on project scope
+  - Assesses vendor availability in project location
+  - Identifies potential vendor gaps or challenges
+  - Notes geographic and logistical considerations
+  - Provides vendor sourcing recommendations
+  - Researches certified subcontractors and suppliers via web search
+- **Inputs**:
+  - Parsed RFP data
+  - System prompt for vendor matching
+  - Google Serper API tool
+  - Current date tool
+- **Output**: JSON with vendor categories, availability assessment, gaps, and recommendations
+
+**Agent 4: Compliance & Risk Assessment Agent**
+
+- **Component**: Agent
+- **Purpose**: Analyzes regulatory requirements and project risks
+- **Tasks**:
+  - Identifies regulatory and compliance requirements
+  - Assesses compliance complexity and timeline
+  - Identifies and categorizes project risks (technical, financial, operational, regulatory)
+  - Calculates overall risk score
+  - Provides risk mitigation strategies
+  - Researches current regulations and standards via web search
+- **Inputs**:
+  - Parsed RFP data
+  - System prompt for compliance assessment
+  - Google Serper API tool
+  - Current date tool
+- **Output**: JSON with regulatory requirements, compliance assessment, risk analysis, and recommendations
+
+**Agent 5: Final Proposal Agent**
+
+- **Component**: Agent
+- **Purpose**: Combines all analyses into a comprehensive bidding proposal
+- **Inputs**:
+  - Combined outputs from previous agents
+  - System prompt for proposal generation
+- **Output**: Complete bidding proposal document
+
+### 4. Data Aggregation & Validation
+
+**Component: Combine Text**
+
+- **Purpose**: Combines outputs from multiple agents into unified text
+- **User Configurations**:
+  - Multiple text inputs from agents
+  - Separator settings
+- **Output**: Combined analysis text
+
+**Component: Validation Evaluator**
+
+- **Purpose**: Validates extracted summaries against original document chunks
+- **Tasks**:
+  - Compares extracted content with original RFP chunks
+  - Provides correctness and consistency scores
+  - Identifies missing or incorrect information
+  - Generates validation report
+- **Inputs**:
+  - Original document chunks (from Split Text)
+  - Extracted summary (from agents or parser)
+  - Language Model for validation
+  - Validation prompt
+- **User Configurations**:
+  - Batch size for validation processing
+  - Custom validation prompt
+- **Output**: Validation report with scores and issues
+
+```
+Example Output:
+
+Validation Report
+
+Overall Scores
+
+- Correctness Score: 95.4/100
+
+- Consistency Score: 92.6/100
+
+- Validation Status: PASSED
+
+Issues Summary
+
+- Total Issues Found: 8
+
+- High Severity: 0
+
+- Medium Severity: 2
+
+- Low Severity: 6
+
+Issues Details
+```
+
+**Issues Details**
+
+1. [LOW] inconsistent: The 'Report Date' is listed as December 16, 2025, which is 8 months after the 'Proposal Deadline' of April 17, 2025. This appears to be a typo in the report metadata (likely intended to be 2024 or early 2025), though it does not affect the accuracy of the extracted RFP facts.
+2. [LOW] inconsistent: Report Date logic error: Header states 'December 16, 2025', but Executive Summary states the April 17, 2025 deadline is '4 months from current date', implying the report was generated in December 2024. The Report Date year is likely a typo.
+3. [LOW] missing: Core facts (Budget: \$10M, Deadline: April 17, 2025) are included in the report but are not present in the provided RFP text snippet. While likely retrieved via external research (as permitted), they cannot be verified against the provided source text.
+4. [LOW] incorrect: Report Date is listed as 'December 16, 2025', but the Proposal Deadline is 'April 17, 2025'. The report body states the deadline is '4 months from the current date', implying the report date should be December 2024.
+5. [LOW] inconsistent: Report Date is listed as 'December 16, 2025', but the content states the 'April 17, 2025' deadline is '4 months from current date', implying the report was actually generated in December 2024. The year 2025 in the header appears to be a typo.
+6. [MEDIUM] missing: RFP Section F.15 explicitly states that 'Failure to provide the statement on potential conflicts of interest will automatically disqualify the Offeror.' This critical compliance requirement (and its disqualification penalty) is missing from the Compliance & Risk Assessment section.
+7. [MEDIUM] missing: The AI report fails to mention the specific '10-year' insurance tail coverage requirement for construction projects following final acceptance (Original RFP Section c), which is a significant long-term cost/compliance factor.
+
+[LOW] missing: The AI report does not list the specific Point of Contact (Karen M. Hester) or the submission address provided in the Original RFP text (Section h), though it correctly identifies the agency (DC PSC).
+
+### \
+5. Vector Storage (RAG Support)
+
+**Component: OpenAI Embeddings**
+
+- **Purpose**: Creates embeddings from RFP documents for retrieval
+- **User Configurations**:
+  - OpenAI API Key
+  - Model selection
+- **Output**: Document embeddings
+
+**Component: Qdrant Vector Store**
+
+- **Purpose**: Stores document embeddings for retrieval-augmented generation
+- **User Configurations**:
+  - Qdrant connection settings
+  - Collection name
+- **Output**: Vector database ready for RAG queries
+
+**Component: Split Text (Secondary)**
+
+- **Purpose**: Additional text splitting for vector storage
+- **Output**: Chunks ready for embedding
+
+**Component: File (Secondary)**
+
+- **Purpose**: Additional file loading for reference documents
+- **Output**: Reference document data
+
+### 6. Final Output
+
+**Component: Markdown to Text**
+
+- **Purpose**: Converts the final comprehensive bidding proposal from markdown format to plain text
+- **Inputs**:
+  - Final proposal output (from Final Proposal Agent or Validation Evaluator)
+- **User Configurations**:
+  - Markdown formatted text input
+- **Output**: Plain text version of the complete RFP analysis including:
+  - Domain classification and capabilities match
+  - Detailed cost estimates and breakdowns
+  - Vendor and subcontractor recommendations
+  - Compliance requirements and risk assessment
+  - Overall project feasibility analysis
+
+## End-to-End Flow Summary
+
+| **Stage**               | **Action**                        | **Output**                  |
+| :---------------------- | :-------------------------------- | :-------------------------- |
+| **Document Load**       | Load RFP file                     | Raw document data           |
+| **Preprocessing**       | Split into chunks                 | Document chunks             |
+| **Extraction**          | Parse with LLM                    | Structured RFP data         |
+| **Formatting**          | Format parsed data                | Readable text               |
+| **Domain Analysis**     | Classify domain & capabilities    | Domain classification JSON  |
+| **Cost Analysis**       | Estimate costs & margins          | Cost estimation JSON        |
+| **Vendor Analysis**     | Identify vendors & subcontractors | Vendor matching JSON        |
+| **Risk Analysis**       | Assess compliance & risks         | Compliance & risk JSON      |
+| **Proposal Generation** | Combine all analyses              | Complete proposal           |
+| **Validation**          | Validate against original         | Validation report           |
+| **Format Conversion**   | Convert markdown to plain text    | Plain text bidding document |
+
+## Highlights
+
+- **Automated RFP Processing**: Automatically extracts and structures information from RFP documents
+- **Multi-Dimensional Analysis**: Uses specialized AI agents for domain, cost, vendor, and risk analysis
+- **Web-Enhanced Research**: All agents use Google Serper API for real-time market research and validation
+- **Quality Assurance**: Validation Evaluator ensures extracted information matches original documents
+- **Structured Output**: All analyses return structured JSON for easy integration and reporting
+- **RAG Support**: Vector storage enables retrieval-augmented generation for enhanced context
+- **Comprehensive Proposal**: Generates complete bidding proposals with all critical information
+
+## Key Features
+
+- **Intelligent Domain Classification**: Automatically identifies project type and required competencies
+- **Accurate Cost Estimation**: Provides detailed cost breakdowns with market research integration
+- **Vendor Discovery**: Identifies required vendors and assesses availability
+- **Risk Assessment**: Comprehensive compliance and risk analysis with mitigation strategies
+- **Document Validation**: Ensures accuracy through automated validation against source documents
+- **Real-Time Research**: Web search integration provides current market data and regulations
