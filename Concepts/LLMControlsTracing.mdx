@@ -6,6 +6,8 @@ title: "LLM Controls Tracing"
 
 LLMC tracing automatically captures and logs everything that happens when your LLMC flows execute. This helps you debug issues, understand performance, and track costs.
 
+![Tracing](/images/tracing.png)
+
 ## What Gets Traced Automatically
 
 - **Flow Executions**: Complete flow runs with start/end times
@@ -196,3 +198,98 @@ Click on any trace row to open the detail view with three panels:
 - Navigate through pages using Previous/Next buttons
 - Page numbers show current position
 - Shows total number of traces
+
+## Implementing LLMC Tracing in Custom Components
+
+If you're building a custom component and want it to appear in LLMC traces, wrap your component execution with**mlflow_component_span:** 
+
+**from llmc.utils.mlflow_tracing import mlflow_component_span**
+
+```
+class MyComponent(Component):
+
+    def execute(self):
+
+        component_id = getattr(self, "_id", None)
+
+        metadata = {
+
+            "flow_id": str(self.graph.flow_id) if self.graph else None
+
+        }
+
+        with mlflow_component_span(
+
+            component_name=self.display_name or "MyComponent",
+
+            component_id=component_id,
+
+            inputs={"input_value": self.input_value},
+
+            metadata=metadata,
+
+        ) as span:
+
+            # Your component logic here
+
+            result = self.process(self.input_value)
+
+            # Log outputs for tracing
+
+            if span:
+
+                span.set_outputs({
+
+                    "output_length": len(result),
+
+                    "output_data": result[:1000]  # Limit size for large outputs
+
+                })
+
+            return result
+```
+
+\
+Span Methods
+
+- **span.set_inputs(inputs)**: Log component inputs (dict)
+- **span.set_outputs(outputs)**: Log component outputs (dict)
+- Errors are automatically captured if they occur within the span
+
+## Common Use Cases
+
+### Finding Slow Components
+
+1. Sort traces by Execution Time (descending)
+2. Open a slow trace
+3. Navigate through the component tree
+4. Check the Latency in the metadata panel for each component
+5. Identify bottlenecks
+
+### Tracking Token Usage and Costs
+
+1. View the Tokens column in the main table
+2. Click on a trace to see detailed token breakdown
+3. Check the Attributes tab for LLM spans to see:
+   - Input tokens
+   - Output tokens
+   - Total tokens
+   - Estimated cost
+
+### Debugging Failed Flows
+
+1. Filter by State = ERROR
+2. Open the failed trace
+3. Navigate to the component with error status
+4. Check Inputs/Outputs tab to see what went wrong
+5. Review error messages in the Attributes tab
+
+### Comparing Flow Runs
+
+1. Use filters to find multiple traces of the same flow
+2. Open traces side-by-side (in different browser tabs)
+3. Compare:
+   - Execution times
+   - Token usage
+   - Component outputs
+   - Error patterns
