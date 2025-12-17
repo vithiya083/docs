@@ -55,7 +55,7 @@
               "Concepts/LLMCobjects",
               "Concepts/publish-flows",
               "Concepts/embedded-chat-widget",
-              "Concepts/LLM Controls Tracing",
+              "Concepts/LLMControlsTracing",
               "Concepts/manage-files"
             ]
           },
