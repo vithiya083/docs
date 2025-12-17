@@ -4,11 +4,11 @@ title: "Create custom Python components"
 
 Custom components extend LLM Controls' functionality through Python classes that inherit from `Component`. This enables integration of new features, data manipulation, external services, and specialized tools.
 
-In LLM Controls' node-based environment, each node is a "component" that performs discrete functions. Custom components are Python classes which define:
+In LLM Controls' node-based environment, each node is a "component" that performs discrete functions. Custom components are Python classes that define:
 
-- **Inputs** — Data or parameters your component requires.
-- **Outputs** — Data your component provides to downstream nodes.
-- **Logic** — How you process inputs to produce outputs.
+- **Inputs**: Data or parameters your component requires.
+- **Outputs**: Data your component provides to downstream nodes.
+- **Logic**: How you process inputs to produce outputs.
 
 The benefits of creating custom components include unlimited extensibility, reusability, automatic UI field generation based on inputs, and type-safe connections between nodes.
 
@@ -305,7 +305,7 @@ In LLM Controls, robust error handling ensures that your components behave predi
 
 ### **Improve debugging and flow management**
 
-Use `self.status`: Each component has a status field where you can store short messages about the execution result—such as success summaries, partial progress, or error notifications. These appear directly in the UI, making troubleshooting easier for users.
+Use `self.status`: Each component has a status field where you can store short messages about the execution result , such as success summaries, partial progress, or error notifications. These appear directly in the UI, making troubleshooting easier for users.
 
 Stop specific outputs with `self.stop(...)`: You can halt individual output paths when certain conditions fail, without affecting the entire component. This is especially useful when working with components that have multiple output branches.
 
