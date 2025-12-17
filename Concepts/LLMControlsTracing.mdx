@@ -1,3 +1,198 @@
 ---
 title: "LLM Controls Tracing"
 ---
+
+## What is LLMC Tracing?
+
+LLMC tracing automatically captures and logs everything that happens when your LLMC flows execute. This helps you debug issues, understand performance, and track costs.
+
+## What Gets Traced Automatically
+
+- **Flow Executions**: Complete flow runs with start/end times
+- **Component Executions**: Each component's inputs, outputs, and execution time
+- **LLM API Calls**: OpenAI, Anthropic, Gemini, LangChain, DSPy calls with:
+  - Full request/response content
+  - Token usage (input, output, total)
+  - Cost per call
+  - Latency
+- **Errors**: Any exceptions or failures during execution
+
+## What You Can See
+
+- **Trace List**: Table view of all flow executions
+- **Component Tree**: Hierarchical view showing component execution order
+- **Component Details**: Inputs, outputs, and execution time for each component
+- **Token Usage**: Total tokens used per flow
+- **Execution Metrics**: Latency, duration, and status for each trace
+- **Chat Messages**: Full conversation history for LLM calls
+- **Events**: Agent actions, tool calls, and streaming events
+
+## How LLMC Tracing Works
+
+### Flow-Level Tracing
+
+Every time a flow runs, LLMC creates a trace that contains:
+
+- Flow name and ID
+- User and session information
+- Start and end timestamps
+- All component executions as nested spans
+- Flow-level metrics (total tokens, cost, duration)
+
+### Component-Level Tracing
+
+Each component execution becomes a span within the trace showing:
+
+- Component name and ID
+- Input values passed to the component
+- Output values produced by the component
+- Execution duration
+- Any errors that occurred
+
+### Automatic LLM Tracking
+
+When components call LLM APIs (OpenAI, Anthropic, etc.), LLMC automatically logs:
+
+- Model name and parameters
+- Full prompt/messages sent
+- Generated response
+- Token counts (input/output/total)
+- Estimated cost
+- Request latency
+
+## Using the Tracing UI for Debugging
+
+### Accessing the Tracing Page
+
+Navigate to the Tracing tab in LLMC to view all your flow executions.
+
+### Main Table View
+
+The tracing page shows a table with all traces containing:
+
+- **Trace ID**: Unique identifier for the trace
+- **Trace Name**: Name of the flow that was executed
+- **Session**: Session ID associated with the trace
+- **Tokens**: Total tokens used in the flow
+- **Execution Time**: How long the flow took to execute
+- **Request Time**: When the flow was executed
+- **State**: Status of the execution (e.g., OK, ERROR)
+
+### Filtering Traces
+
+**Time Range Filter:**
+
+- Select from preset ranges: Last hour, Last 24 hours, Last 7 days, Last 30 days, Last year, or All
+- Use Custom to pick specific start and end dates
+
+**Advanced Filters:**
+
+- Click Filters to add filter rules
+- Filter by: Trace ID, Trace name, Session, Tokens, Execution time, or State
+- Use operators: Equals, Not equals, Greater than, Less than, etc.
+- Add multiple filters to narrow down results
+
+**Sorting:**
+
+- Click Sort to change sort order
+- Sort by: Request time, Execution time, Tokens, Trace name, or State
+- Toggle ascending/descending order
+
+**Column Visibility:**
+
+- Click Columns to show/hide specific columns
+- Customize which information is displayed in the table
+
+### Viewing Trace Details
+
+Click on any trace row to open the detail view with three panels:
+
+**Left Panel - Trace Breakdown:**
+
+- Tree view of all component spans
+- Icons indicate span types:
+  - Chat Model (LLM calls)
+  - Tool (tool/function calls)
+  - Chain (LangChain chains)
+  - Component (other components)
+- Expand/collapse spans to see nested components
+- Click on any span to view its details
+
+**Middle Panel - Details Tabs:**
+
+**Inputs / Outputs Tab:**
+
+- Expandable sections for inputs and outputs
+- Each field shows the actual data passed to/from the component
+- Chat history formatted as "Role: message"
+- Copy button to copy JSON data
+- "See more" for truncated content
+
+**Chat Tab:**
+
+- Shows conversation messages for LLM spans
+- Displays User and Assistant messages
+- Full message content with markdown rendering
+
+**Attributes Tab:**
+
+- All metadata and attributes for the selected span
+- Includes LLMC-specific attributes
+- Expandable sections for each attribute
+- Copy functionality for values
+
+**Events Tab:**
+
+- Shows events like agent actions, tool calls, streaming tokens
+- Special handling for agent_action events showing:
+  - Tool name
+  - Tool input
+  - Log output
+  - Token streaming events
+  - Chunk events
+
+**Right Panel - Metadata:**
+
+- Start Time: When the trace started
+- End Time: When the trace completed
+- Status: Execution status
+- Latency: Total execution duration
+- Type: Span type (CHAT_MODEL, TOOL, CHAIN, etc.)
+
+## Debugging Component Issues
+
+1. Find the failing component: Look for error status in the State column
+2. Open the trace: Click on the trace to view details
+3. Navigate the component tree: Use the left panel to find the problematic component
+4. Click on the component span: View its inputs and outputs
+5. Check the Inputs/Outputs tab: See what data was passed and what was returned
+6. Review execution time: Check latency in the metadata panel
+
+## Debugging LLM Calls
+
+1. Find LLM spans: Look for Chat Model icons in the trace breakdown
+2. Click on the LLM span: Select it in the left panel
+3. View Chat tab: See the full conversation including prompts and responses
+4. Check Inputs/Outputs tab: See raw request/response data
+5. Review token usage: Check the token count in the trace header
+6. Check Attributes tab: See model parameters, token counts, and cost information
+
+## Managing Traces
+
+**Delete Traces:**
+
+- Select traces using checkboxes in the table
+- Click Delete button
+- Confirm deletion in the modal
+- Multiple traces can be deleted at once
+
+**Refresh:**
+
+- Click the refresh icon to reload traces
+- Resets time range to "Last 7 days"
+
+**Pagination:**
+
+- Navigate through pages using Previous/Next buttons
+- Page numbers show current position
+- Shows total number of traces
