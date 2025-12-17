@@ -42,6 +42,7 @@
               "Templates/TargetedFAQ",
               "Templates/CustomerService",
               "Templates/SmartSpreadsheet",
+              "Template/RFP Bidding Flow",
               "Templates/SummarizationAggregation"
             ]
           },
@@ -54,6 +55,7 @@
               "Concepts/LLMCobjects",
               "Concepts/publish-flows",
               "Concepts/embedded-chat-widget",
+              "Concepts/LLM Controls Tracing",
               "Concepts/manage-files"
             ]
           },
