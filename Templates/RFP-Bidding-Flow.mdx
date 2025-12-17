@@ -4,6 +4,8 @@ title: "RFP Bidding Flow"
 
 This automation flow processes RFP documents, extracts structured information using AI agents, performs comprehensive analysis across multiple dimensions (domain classification, cost estimation, vendor matching, compliance assessment), and generates a complete bidding proposal with validation.
 
+![RFP](/images/RFP.png)
+
 ## Workflow Steps & Components
 
 ### 1. Document Loading & Preprocessing
@@ -59,7 +61,7 @@ This automation flow processes RFP documents, extracts structured information us
   - Parsed data from LLMC Parser
   - Template pattern for formatting
 - **User Configurations**:
-  - Template pattern (e.g., "Text: {text}")
+  - Template pattern (e.g., "Text: text")
   - Separator for multiple items
 - **Output**: Formatted text ready for agent analysis
 
@@ -219,8 +221,7 @@ Issues Details
 
 [LOW] missing: The AI report does not list the specific Point of Contact (Karen M. Hester) or the submission address provided in the Original RFP text (Section h), though it correctly identifies the agency (DC PSC).
 
-### \
-5. Vector Storage (RAG Support)
+### 5. Vector Storage (RAG Support)
 
 **Component: OpenAI Embeddings**
 
