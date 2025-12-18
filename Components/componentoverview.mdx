@@ -118,7 +118,9 @@ The `get_data_input` method retrieves the text data to be split from the compone
 
 Component versions and states are stored in an internal LLM Controls database. When you add a component to a flow, you create a detached copy of the component based on the information in the LLM Controls database. These copies are detached from the primary LLM Controls database, and they don't synchronize with any updates that can occur when you upgrade your LLM Controls version.
 
-In other words, an individual instance of a component retains the version number and state from the moment you add it to a specific flow. For example, if a component is at version 1.0 when you add it to a flow, it remains at version 1.0 in that flow unless you update it.
+In other words, an individual instance of a component retains the version number and state from the moment you add it to a specific flow. 
+
+**For example**, if a component is at version 1.0 when you add it to a flow, it remains at version 1.0 in that flow unless you update it.
 
 ### **Update component versions**
 
@@ -129,7 +131,7 @@ When editing a flow in the **Workspace**, LLM Controls notifies you if a compone
 
   Breaking changes modify component inputs and outputs, causing the components to be disconnected and break the flow. After updating the component, you might need to edit the component settings or reconnect component ports.
 
-There are two ways to update components:
+**There are two ways to update components:**
 
 - Click **Update** to update a single component. This is recommended for updates without breaking changes.
 - Click **Review** to view all available updates and create a snapshot before updating. This is recommended for updates with breaking changes.
@@ -138,7 +140,9 @@ There are two ways to update components:
 
   To update specific components, select the components you want to update, and then click **Update Components**.
 
-Components are updated to the latest available version, based on the version of LLM Controls you are running.
+<Note>
+  Components are updated to the latest available version, based on the version of LLM Controls you are running.
+</Note>
 
 ## **Group components**
 
