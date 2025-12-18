@@ -38,6 +38,27 @@ To have more than one session in a single flow, pass a specific session ID to a 
 
 To post a message to a flow with a specific Session ID with curl, enter the following command:
 
+```
+
+if [ -z "$LLMC_API_KEY" ]; then
+ echo "Error: LLMC_API_KEY environment variable not found. Please set your API key in the environment variables."
+fi
+curl --request POST \
+ --url 'https://dev-api.llmcontrols.ai/api/v1/run/7694bf91-14e9-4399-b5fb-01b02889a2eb?stream=false' \
+ --header 'Content-Type: application/json' \
+ --header "x-api-key: $LLMC_API_KEY" \
+ --data '{
+ "input_value": "hello world!",
+ "output_type": "chat",
+ "input_type": "chat",
+ "File-vQH9U": {
+   "file_paths": [],
+   "input_type": "file",
+   "output_type": "file"
+ }
+}'
+```
+
 Check your flow's **Playground**. In addition to the messages stored for the Default Session, a new session is started with your custom Session ID.
 
 ## **Work with images in the Playground.**[**​**](https://docs.langflow.org/concepts-playground#work-with-images-in-the-playground)
@@ -59,5 +80,13 @@ You can work with base64 images in the Playground in several ways:
 - **Programmatic Input**: Send base64-encoded images through the API.
 
 This example sends a base64-encoded image to the Playground using curl:
+
+```
+
+curl -X POST "https://dev-api.llmcontrols.ai/api/v2/files/bulk" \
+    --header "x-api-key: $LLMC_API_KEY" \
+    -F "files=@file1.pdf" \
+    -F "files=@file2.pdf"
+```
 
 The image is displayed in the chat interface and can be processed by your flow components.
