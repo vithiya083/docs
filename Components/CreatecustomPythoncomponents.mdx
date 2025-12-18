@@ -202,6 +202,51 @@ The method must exist in the class, and it is recommended to annotate its return
 - `DataFrame`: Pandas-based tables (`llmc.schema.DataFrame`).
 - **Primitive types**: `str`, `int`, `bool` (not recommended if you need type/color consistency).
 
+```
+
+from llmc.custom import Component
+from llmc.io import DataInput, Output
+from llmc.schema import Data, DataFrame
+
+class DataToDataFrameComponent(Component):
+    display_name = "Data → DataFrame"
+    
+    inputs = [
+        DataInput(
+            name="data_list",
+            display_name="Data or Data List",
+            info="One or multiple Data objects to transform into a DataFrame.",
+            is_list=True,
+        ),
+    ]
+
+    outputs = [
+        Output(
+            display_name="DataFrame",
+            name="dataframe",
+            method="build_dataframe",
+            info="A DataFrame built from each Data object's fields plus a 'text' column.",
+        ),
+    ]
+
+    def build_dataframe(self) -> DataFrame:
+        """Builds a DataFrame from Data objects by combining their fields."""
+        data_input = self.data_list
+        
+        if not isinstance(data_input, list):
+            data_input = [data_input]
+        
+        rows = []
+        for item in data_input:
+            row_dict = dict(item.data) if item.data else {}
+            text_val = item.get_text()
+            if text_val:
+                row_dict["text"] = text_val
+            rows.append(row_dict)
+        
+        return DataFrame(rows)
+```
+
 In this example, the `DataToDataFrame` component defines its output using the outputs list. The `df_out` output is linked to the `build_df` method, so when connected in the UI, LLM Controls calls this method and passes its returned DataFrame to the next node. This demonstrates how each output maps to a method that generates the actual output data.
 
 ### **Tool mode**[**​**](https://docs.langflow.org/components-custom-components#tool-mode)
@@ -266,6 +311,65 @@ When using typed annotations, consider the following best practices:
 ## **Enable dynamic fields**[**​**](https://docs.langflow.org/components-custom-components#enable-dynamic-fields)
 
 In **LLM Controls**, dynamic fields allow inputs to change or appear based on user interactions. You can make an input dynamic by setting `dynamic=True`. Optionally, setting `real_time_refresh=True` triggers the `update_build_config` method to adjust the input's visibility or properties in real time, creating a contextual UI that only displays relevant fields based on the user's choices.
+
+```
+
+from llmc.custom import Component
+from llmc.io import DropdownInput, MessageTextInput, Output
+from llmc.schema.message import Message
+
+class ConditionalRouterComponent(Component):
+    display_name = "If-Else"
+    
+    inputs = [
+        MessageTextInput(
+            name="input_text",
+            display_name="Text Input",
+            info="The primary text input for the operation.",
+            required=True,
+        ),
+        MessageTextInput(
+            name="match_text",
+            display_name="Match Text",
+            info="The text input to compare against.",
+            required=True,
+        ),
+        DropdownInput(
+            name="operator",
+            display_name="Operator",
+            options=["equals", "not equals", "contains", "regex"],
+            info="The operator to apply for comparing the texts.",
+            value="equals",
+            real_time_refresh=True,  # Triggers update_build_config
+        ),
+        MessageTextInput(
+            name="regex_pattern",
+            display_name="Regex Pattern",
+            info="The regex pattern to match (only shown when operator is 'regex').",
+            dynamic=True,  # Field visibility controlled dynamically
+        ),
+    ]
+
+    outputs = [
+        Output(display_name="Result", name="result", method="process"),
+    ]
+
+    def update_build_config(self, build_config: dict, field_value: str, field_name: str | None = None) -> dict:
+        if field_name == "operator":
+            if field_value == "regex":
+                # Show regex_pattern field when operator is "regex"
+                build_config["regex_pattern"]["show"] = True
+            else:
+                # Hide regex_pattern field for other operators
+                build_config["regex_pattern"]["show"] = False
+        return build_config
+
+    def process(self) -> Message:
+        # Component logic here
+        return Message(text="Result")
+
+
+```
 
 In this example, the operator field triggers updates via `real_time_refresh=True`. The `regex_pattern` field is initially hidden and controlled via `dynamic=True`.
 
