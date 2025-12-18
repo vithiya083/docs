@@ -8,9 +8,49 @@ Refer to your specific component's documentation for more information on paramet
 
 ## **Use an embeddings model component in a flow**[**​**](https://docs.langflow.org/components-embedding-models#use-an-embeddings-model-component-in-a-flow)
 
-In this example of a document ingestion pipeline, the **OpenAI** embeddings model is connected to a vector database. The component converts the text chunks into vectors and stores them in the vector database. The vectorized data can be used to inform AI workloads like chatbots, similarity searches, and agents.
+```
 
-This embeddings component uses an OpenAI API key for authentication. Refer to your specific embeddings component's documentation for more information on authentication.
+from llmc.components.data import FileComponent
+from llmc.components.embeddings import OpenAIEmbeddingsComponent
+from llmc.components.processing.split_text import SplitTextComponent
+from llmc.components.vectorstores import AstraDBVectorStoreComponent
+from llmc.graph import Graph
+
+def ingestion_graph():
+    # Document ingestion pipeline
+    file_component = FileComponent()
+    
+    # Split documents into chunks
+    text_splitter = SplitTextComponent()
+    text_splitter.set(data_inputs=file_component.load_files)
+    
+    # Initialize OpenAI embeddings model
+    openai_embeddings = OpenAIEmbeddingsComponent()
+    # Set your OpenAI API key in the component's openai_api_key field
+    
+    # Connect embeddings to vector database
+    vector_store = AstraDBVectorStoreComponent()
+    vector_store.set(
+        embedding_model=openai_embeddings.build_embeddings,
+        ingest_data=text_splitter.split_text,
+    )
+    
+    return Graph(file_component, vector_store)
+```
+
+**In this example :**
+
+ FileComponent loads documents from a local machine
+
+- SplitTextComponent chunks the documents into smaller pieces
+
+
+- OpenAIEmbeddingsComponent converts text chunks into numerical vectors
+
+
+- AstraDBVectorStoreComponent stores the vectorized data in the vector database
+
+The stored vectors can then be retrieved for similarity searches, RAG applications, and agent-based workflows.
 
 ![Embeddings Models Pn](/images/Embeddings_models.png)
 
