@@ -10,8 +10,8 @@ This automation flow extracts business or sales leads directly from a Gmail inbo
 
 ### **1. Gmail Manager**
 
-Component: Gmail Manager\
-Purpose: Connects to Gmail and fetches emails from a specific label (e.g., “Inbound Leads”).\
+**Component**: Gmail Manager\
+**Purpose**: Connects to Gmail and fetches emails from a specific label (e.g., “Inbound Leads”).\
 **User Configurations:**
 
 - Gmail Credentials JSON
@@ -20,16 +20,16 @@ Purpose: Connects to Gmail and fetches emails from a specific label (e.g., “In
 - Apply Label after Processing (e.g., Processed)
 - Optional: Extract Attachments
 
-Output: Email subjects, senders, message bodies, and attachments (if any).
+**Output**: Email subjects, senders, message bodies, and attachments (if any).
 
 ### **2. AI Lead Categorizer**
 
-Component: AI Lead Categorizer\
-Purpose: Uses an LLM to analyze email content and identify:
+**Component**: AI Lead Categorizer\
+**Purpose**: Uses an LLM to analyze email content and identify:
 
-- ****Lead type (Sales, Business Development, Partnership, etc.)****
-- ****Key contact info (Name, Email, Company)****
-- ****Message intent (Inquiry, Demo Request, Proposal, etc.)****
+- Lead type (Sales, Business Development, Partnership, etc.)
+- Key contact info (Name, Email, Company)
+- Message intent (Inquiry, Demo Request, Proposal, etc.)
 
 **Inputs:**
 
@@ -38,8 +38,8 @@ Purpose: Uses an LLM to analyze email content and identify:
 
 ### **3.  Language Model (LLM Processor)**
 
-Component: **Language Model**\
-Purpose: Provides context-aware understanding to classify emails more precisely and extract meaningful fields.
+**Componen**t: Language Model\
+**Purpose**: Provides context-aware understanding to classify emails more precisely and extract meaningful fields.
 
 **Connected To:**
 
@@ -48,11 +48,11 @@ Purpose: Provides context-aware understanding to classify emails more precisely 
 
 ### **4. Email Auto-Reply System**
 
-Component: Email Auto-Reply System
+**Component: **Email Auto-Reply System
 
-Purpose: Automatically drafts personalized replies using extracted lead details and your preferred tone.
+**Purpose**: Automatically drafts personalized replies using extracted lead details and your preferred tone.
 
-Example Outputs:
+**Example Outputs:**
 
 - “Thank you for your interest in our services. Our business development team will reach out shortly.”
 - “Appreciate your inquiry. Here’s a link to schedule a meeting.”
@@ -65,11 +65,11 @@ Example Outputs:
 
 ### **5**.**Google Sheets Integration**
 
-Component: Google Sheets Writer
+**Component**: Google Sheets Writer
 
-Purpose: Appends structured lead data into a centralized Google Sheet.
+**Purpose:** Appends structured lead data into a centralized Google Sheet.
 
-Typical Columns:\
+**Typical Columns:**\
 | Date | Name | Email | Company | Lead Type | Message Summary | Follow-up Status |
 
 **Required Config:**
@@ -79,8 +79,8 @@ Typical Columns:\
 
 ### **6. Analytics Dashboard**
 
-Component: Analytics Dashboard\
-Purpose: Provides a visual summary of lead statistics, such as:
+**Component**: Analytics Dashboard\
+**Purpose**: Provides a visual summary of lead statistics, such as:
 
 - Number of leads processed
 - Lead sources (email domains)
@@ -89,8 +89,8 @@ Purpose: Provides a visual summary of lead statistics, such as:
 
 ### **7. Final Output**
 
-Component: Text Output\
-Purpose: Displays a summary message in Playground view
+**Component**: Text Output\
+**Purpose**: Displays a summary message in Playground view
 
 **e.g., “10 new leads extracted and appended to Google Sheet successfully.”**
 
