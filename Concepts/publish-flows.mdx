@@ -128,7 +128,9 @@ Each flow has customizable input parameters that you can override:
 - You can override them via the API or directly through the UI
 - To add more override options, add input boxes in the UI and connect them to relevant components
 
-Overrides are not persistent, but they are applied to that particular API run.
+<Note>
+  Overrides are not persistent, but they are applied to that particular API run.
+</Note>
 
 ## **Execution Modes: Static vs. Polling**
 
@@ -138,8 +140,8 @@ LLM Controls lets you run flows in two modes based on your needs: **Static (sync
 
 | **Mode**    | **Query Param** | **Use Case**                         | **Simplicity** | **Suitable For Complex Workflow** |
 | :---------- | :-------------- | :----------------------------------- | :------------- | :-------------------------------- |
-| **Static**  | stream=false    | Short flows, real-time responses     | ✅ Yes          | ❌ No                              |
-| **Polling** | sync=false      | Long-running flows, background tasks | ❌ No           | ✅ Yes                             |
+| **Static**  | stream=false    | Short flows, real-time responses     | Yes            | No                                |
+| **Polling** | sync=false      | Long-running flows, background tasks | No             | Yes                               |
 
 ### **Static Mode (stream=false)**
 
