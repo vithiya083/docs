@@ -12,7 +12,7 @@ To use Notion components in LLM Controls, you first need to create a Notion inte
 ## **Create a Notion Integration**[**​**](https://docs.langflow.org/integrations/notion/setup#create-a-notion-integration)
 
 1. Go to the [Notion Integrations](https://www.notion.com/my-integrations) page.
-2. Click on the "New integration" button.
+2. Click on the "**New integration**" button.
 3. Give your integration a name and select the workspace where you want to use it.
 4. Click "Submit" to create the integration.
 
@@ -38,8 +38,8 @@ After creating the integration, you need to configure its capabilities to define
 
 To authenticate your integration with Notion, you need to obtain an integration token.
 
-1. In the integration settings page, go to the "Secrets" tab. outputs
-2. Copy the "Internal Integration Token" value. This token will be used to authenticate your integration with Notion.
+1. In the integration settings page, go to the "**Secrets**" tab. outputs
+2. Copy the "**Internal Integration Token**" value. This token will be used to authenticate your integration with Notion.
 
 <Warning>
   **warning**
@@ -77,43 +77,10 @@ LLM Controls provides the following Notion components:
 - **List Pages**: Queries a Notion database with filtering and sorting options.
 - **Page Content Viewer**: Retrieves the content of a Notion page as plain text.
 
-Each of these components output both "Data" and "Tool":
+Each of these components output both "**Data**" and "**Tool**":
 
-- The "Data" output can be used directly in your LLM Controls for further processing or display.
-- The "Tool" output can be utilized in LLM Controls Agents, allowing them to interact with Notion programmatically.
-
-Once you have set up your Notion integration and granted it access to the required databases, you can start using the Notion components in LLM Controls.
-
-LLM Controls provides the following Notion components:
-
-- **Search**: Searches all pages and databases that have been shared with the integration. You can filter results to either pages or databases and specify the sort direction.
-- **List Users**: Retrieves a list of users from the Notion workspace.
-- **List Database Properties**: Retrieves the properties of a specified Notion database.
-- **Create Page**: Creates a new page in a specified Notion database with the provided properties.
-- **Update Page Property**: Updates the properties of an existing Notion page.
-- **Add Content to Page**: Converts markdown text to Notion blocks and appends them to a specified Notion page.
-- **List Pages**: Queries a Notion database with filtering and sorting options.
-- **Page Content Viewer**: Retrieves the content of a Notion page as plain text.
-
-Each of these components outputs both "Data" and "Tool":
-
-- The "Data" output can be used directly in your LLM Controls for further processing or display.
-- The "Tool" output can be utilized in LLM Controls Agents, allowing them to interact with Notion programmatically.
-- Once you have set up your Notion integration and granted it access to the required databases, you can start using the Notion components in LLM Controls.
-
-  LLM Controls provides the following Notion components:
-  - **Search**: Searches all pages and databases that have been shared with the integration. You can filter results to either pages or databases and specify the sort direction.
-  - **List Users**: Retrieves a list of users from the Notion workspace.
-  - **List Database Properties**: Retrieves the properties of a specified Notion database.
-  - **Create Page**: Creates a new page in a specified Notion database with the provided properties.
-  - **Update Page Property**: Updates the properties of an existing Notion page.
-  - **Add Content to Page**: Converts markdown text to Notion blocks and appends them to a specified Notion page.
-  - **List Pages**: Queries a Notion database with filtering and sorting options.
-  - **Page Content Viewer**: Retrieves the content of a Notion page as plain text.
-
-  Each of these components outputs both "Data" and "Tool":
-  - The "Data" output can be used directly in your LLM Controls for further processing or display.
-  - The "Tool" output can be utilized in LLM Controls Agents, allowing them to interact with Notion programmatically.
+- The "**Data**" output can be used directly in your LLM Controls for further processing or display.
+- The "**Tool**" output can be utilized in LLM Controls Agents, allowing them to interact with Notion programmatically.
 
 ## **Additional Resources**
 
