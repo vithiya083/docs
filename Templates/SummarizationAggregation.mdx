@@ -6,8 +6,9 @@ title: "Summarization & Aggregation "
 
 The Summarization and Aggregation template enhances the basic summarization workflow by integrating Prompt Optimization and LLMC Executor capabilities.
 
-\
-This template enables you to upload documents, generate summaries, automatically optimize prompts, and evaluate the best-performing versions, all within one seamless LLM Controls workflow.
+<Note>
+  This template enables you to upload documents, generate summaries, automatically optimize prompts, and evaluate the best-performing versions, all within one seamless LLM Controls workflow.
+</Note>
 
 ## Prerequisites
 
@@ -29,8 +30,8 @@ From the File component:
 
 The Parser component converts uploaded content into plain text.
 
-- Mode: Parser
-- Template: Define how content is extracted (e.g., Text: text)\
+- **Mode**: Parser
+- **Template**: Define how content is extracted (e.g., Text: text)\
   This ensures your data is clean and ready for prompting
 
 ### 3. Optimize the Summarization Prompt
@@ -42,7 +43,9 @@ Use the Prompt Optimizer Flow to automatically refine your prompt.
 - The optimizer generates **multiple prompt variations, test cases, and evaluation metrics.**
 - Outputs include ranked prompts based on clarity, effectiveness, and consistency.
 
-Click the Prompt Optimizer Flow node in the workspace to open and run this optimization process.
+<Note>
+  Click the Prompt Optimizer Flow node in the workspace to open and run this optimization process.
+</Note>
 
 ### 4. Execute with LLMC Executor
 
@@ -53,7 +56,7 @@ The LLMC Executor allows you to run the best-performing prompts with a chosen AI
 - **Prompt Selection:** Pick from optimized prompts generated earlier
 - **API Key:** Enter your valid OpenAI key in the custom_api_key field
 
-Then click Run to execute and generate the summarized output.
+Then click **Run **to execute and generate the summarized output.
 
 ### 5. View the Summary Output
 
