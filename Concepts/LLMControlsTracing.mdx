@@ -201,7 +201,7 @@ Click on any trace row to open the detail view with three panels:
 
 ## Implementing LLMC Tracing in Custom Components
 
-If you're building a custom component and want it to appear in LLMC traces, wrap your component execution with**mlflow_component_span:**
+If you're building a custom component and want it to appear in LLMC traces, wrap your component execution with **mlflow_component_span:**
 
 **from llmc.utils.mlflow_tracing import mlflow_component_span**
 
@@ -249,8 +249,7 @@ class MyComponent(Component):
             return result
 ```
 
-**\
-Span Methods**
+**Span Methods**
 
 - **span.set_inputs(inputs)**: Log component inputs (dict)
 - **span.set_outputs(outputs)**: Log component outputs (dict)
