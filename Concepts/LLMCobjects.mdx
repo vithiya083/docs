@@ -86,4 +86,49 @@ A `DataFrame` object accepts various input formats, including lists of `Data` ob
 
 You can create a DataFrame object using different data formats
 
-To use DataFrame objects in a component input, use the DataFrameInput input type.
+```
+from langflow.schema import Data
+from langflow.schema.data import DataFrame
+# From a list of Data objects
+data_list = [Data(data={"name": "John"}), Data(data={"name": "Jane"})]
+df = DataFrame(data_list)
+# From a list of dictionaries
+dict_list = [{"name": "John"}, {"name": "Jane"}]
+df = DataFrame(dict_list)
+# From a dictionary of lists
+data_dict = {"name": ["John", "Jane"], "age": [30, 25]}
+df = DataFrame(data_dict)
+```
+
+### Key Methods
+
+- to_data_list(): Converts the DataFrame back to a list of Data objects.
+
+
+- add_row(data): Adds a single row (either a Data object or a dictionary) to the DataFrame.
+
+
+- add_rows(data): Adds multiple rows (list of Data objects or dictionaries) to the DataFrame.
+
+### Usage Example
+
+```
+# Create a DataFrame
+df = DataFrame([Data(data={"name": "John"}), Data(data={"name": "Jane"})])
+# Add a new row
+df = df.add_row({"name": "Alice"})
+# Convert back to a list of Data objects
+data_list = df.to_data_list()
+# Use pandas functionality
+filtered_df = df[df["name"].str.startswith("J")]
+```
+
+### To use DataFrame objects in a component input, use the DataFrameInput input type:
+
+```
+DataFrameInput(
+    name="dataframe_input", 
+    display_name="DataFrame Input", 
+    info="Input for DataFrame objects.", 
+    tool_mode=True
+```
