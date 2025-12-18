@@ -18,7 +18,7 @@ Before you begin, make sure you have:
 ## **Create the Resume Extraction Flow**
 
 1. From the LLM Controls dashboard, click **New Flow.**
-2. Select Resume Extraction.
+2. Select **Resume Extraction.**
 
    The flow will appear with pre-connected components for Gmail, Google Drive, and LLM-based resume parsing.
 
@@ -26,9 +26,9 @@ Before you begin, make sure you have:
 
 ### **1. Gmail Manager (Trigger & Setup)**
 
-- Component: Gmail Manager
-- Purpose: Monitors a labeled Gmail inbox, downloads resume attachments, and applies post-processing labels.
-- User Configuration:
+- **Component**: Gmail Manager
+- **Purpose:** Monitors a labeled Gmail inbox, downloads resume attachments, and applies post-processing labels.
+- **User Configuration:**
   - **Gmail Credentials JSON:** Upload your credentials file from Google Cloud.
   - **Target Label:** Gmail label to fetch (e.g., Job-Applications).
   - **Maximum Emails to Fetch:** Number of emails to process per batch.
@@ -37,13 +37,13 @@ Before you begin, make sure you have:
 
 ### **2. File Handling and Processing**
 
-- Component: File Extract and Process
-- Purpose: Extracts resume PDFs from Gmail attachments and prepares them for batch LLM processing.
+- **Component:** File Extract and Process
+- **Purpose:** Extracts resume PDFs from Gmail attachments and prepares them for batch LLM processing.
 
 ### **3. HR Analyst Description**
 
-- Component: User Input
-- Purpose: Defines how the LLM should interpret and analyze resumes.
+- **Componen**t: User Input
+- **Purpose**: Defines how the LLM should interpret and analyze resumes.
 - **Action:**\
   Paste your custom analysis prompt here, ideally, one optimized using the Prompt Optimizer Flow. **This prompt guides the model in extracting structured details such as:**
   - Candidate Name
@@ -56,36 +56,36 @@ Before you begin, make sure you have:
 
 #### **a. Job Description**
 
-- Component: Job Description
-- Purpose: Provide the target job role or requirements to guide candidate-fit analysis.
+- **Component**: Job Description
+- **Purpose**: Provide the target job role or requirements to guide candidate-fit analysis.
 
 #### **b. Prompt Configuration**
 
-- Component: Prompt
-- Purpose: Combines the job description, analyst instruction, and resume text into a formatted LLM input.
+- **Component**: Prompt
+- **Purpose**: Combines the job description, analyst instruction, and resume text into a formatted LLM input.
 
 ### **5. Batch Resume Processing**
 
-- Component: Batch Run
-- Purpose: Manages multiple resume analyses at once using the defined prompt template.
-- Input: Combined text from the resume file, job description, and HR prompt.
+- **Component**: Batch Run
+- **Purpose**: Manages multiple resume analyses at once using the defined prompt template.
+- **Input**: Combined text from the resume file, job description, and HR prompt.
 
 ### **6.  LLM Execution**
 
-- Component: Language Model (LLM)
-- Purpose: Runs the structured extraction using the configured prompt.
-- Tip: You can select models like gpt-4o or your custom LLM Executor for faster batch inference.
+- **Component**: Language Model (LLM)
+- **Purpose**: Runs the structured extraction using the configured prompt.
+- **Tip**: You can select models like gpt-4o or your custom LLM Executor for faster batch inference.
 
 ### **7. Resume Classification and Scoring**
 
-- Component: Resume Classifier
-- Purpose: Assigns a classification (e.g., Junior, Mid-level, Senior) and generates a match score based on the job description.
-- Custom Setting: Adjust the Resume Classification Score threshold to control fit categorization.
+- **Component**: Resume Classifier
+- **Purpose**: Assigns a classification (e.g., Junior, Mid-level, Senior) and generates a match score based on the job description.
+- **Custom Setting:** Adjust the Resume Classification Score threshold to control fit categorization.
 
 ### **8.  Resume Results Formatter**
 
-- Component: Results Formatter
-- Purpose: Cleans up and standardizes the LLM’s output.
+- **Component**: Results Formatter
+- **Purpose**: Cleans up and standardizes the LLM’s output.
 - **Output Fields:**
   - Candidate Name
   - Email Address
@@ -95,8 +95,8 @@ Before you begin, make sure you have:
 
 ### **9.  Google Sheets Writer**
 
-- Component: Google Sheets
-- Purpose: Writes structured data to a predefined Google Sheet.
+- **Component:** Google Sheets
+- **Purpose**: Writes structured data to a predefined Google Sheet.
 - **Configuration Required:**
   - Spreadsheet ID – Your Google Sheet identifier.
   - Sheet Name –The target tab name for data insertion.
@@ -104,14 +104,14 @@ Before you begin, make sure you have:
 
 ### **10.  Final Output: Sheet Link Display**
 
-- Component: URL Output
-- Purpose: Displays a clickable Google Sheet link for quick access to processed data.
+- **Component**: URL Output
+- **Purpose**: Displays a clickable Google Sheet link for quick access to processed data.
 
 ## **Run the Resume Extraction Flow**
 
 1. Click **Playground.**
 2. Ensure your Gmail credentials and Google Drive folder are correctly configured.
-3. Press Run to start fetching and processing resumes.
+3. Press **Run **to start fetching and processing resumes.
 4. **Once complete:**
    - Resume PDFs appear in your Google Drive.
    - Candidate data is added as new rows in your Google Sheet.
