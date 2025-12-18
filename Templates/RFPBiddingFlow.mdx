@@ -10,7 +10,7 @@ This automation flow processes RFP documents, extracts structured information us
 
 ### 1. Document Loading & Preprocessing
 
-**Component: File**
+**Component: **File
 
 - **Purpose**: Loads RFP documents (PDF, DOCX, TXT, etc.) for processing
 - **User Configurations**:
@@ -19,7 +19,7 @@ This automation flow processes RFP documents, extracts structured information us
   - File type validation
 - **Output**: Raw document data
 
-**Component: Split Text**
+**Component: **Split Text
 
 - **Purpose**: Splits large RFP documents into manageable chunks for processing
 - **User Configurations**:
@@ -30,7 +30,7 @@ This automation flow processes RFP documents, extracts structured information us
 
 ### 2. Structured Data Extraction
 
-**Component: LLMC Parser**
+**Component: **LLMC Parser
 
 - **Purpose**: Uses an LLM to extract structured data from RFP document chunks
 - **Inputs**:
@@ -43,7 +43,7 @@ This automation flow processes RFP documents, extracts structured information us
   - Language model selection
 - **Output**: Structured JSON data with extracted RFP information
 
-**Component: Language Model**
+**Component: **Language Model
 
 - **Purpose**: Provides the language model for parsing and analysis
 - **Connected To**:
@@ -54,9 +54,9 @@ This automation flow processes RFP documents, extracts structured information us
   - API keys
   - Temperature and other model parameters
 
-**Component: Parser**
+**Component:** Parser
 
-- **Purpose**: Formats extracted structured data into readable text format
+- **Purpose**: Formats extracted structured data into a readable text format
 - **Inputs**:
   - Parsed data from LLMC Parser
   - Template pattern for formatting
@@ -69,7 +69,7 @@ This automation flow processes RFP documents, extracts structured information us
 
 The workflow uses five specialized AI agents, each equipped with web search capabilities via Google Serper API:
 
-**Component: Google Serper API**
+**Component: **Google Serper API
 
 - **Purpose**: Provides web search functionality to all agents
 - **User Configurations**:
@@ -157,7 +157,7 @@ The workflow uses five specialized AI agents, each equipped with web search capa
 
 ### 4. Data Aggregation & Validation
 
-**Component: Combine Text**
+**Component:** Combine Text
 
 - **Purpose**: Combines outputs from multiple agents into unified text
 - **User Configurations**:
@@ -165,7 +165,7 @@ The workflow uses five specialized AI agents, each equipped with web search capa
   - Separator settings
 - **Output**: Combined analysis text
 
-**Component: Validation Evaluator**
+**Component: **Validation Evaluator
 
 - **Purpose**: Validates extracted summaries against original document chunks
 - **Tasks**:
@@ -237,7 +237,7 @@ Issues Details :
 
 ### 5. Vector Storage (RAG Support)
 
-**Component: OpenAI Embeddings**
+**Component: **OpenAI Embeddings
 
 - **Purpose**: Creates embeddings from RFP documents for retrieval
 - **User Configurations**:
@@ -245,7 +245,7 @@ Issues Details :
   - Model selection
 - **Output**: Document embeddings
 
-**Component: Qdrant Vector Store**
+**Component: **Qdrant Vector Store
 
 - **Purpose**: Stores document embeddings for retrieval-augmented generation
 - **User Configurations**:
@@ -253,19 +253,19 @@ Issues Details :
   - Collection name
 - **Output**: Vector database ready for RAG queries
 
-**Component: Split Text (Secondary)**
+**Component: **Split Text (Secondary)
 
 - **Purpose**: Additional text splitting for vector storage
 - **Output**: Chunks ready for embedding
 
-**Component: File (Secondary)**
+**Component: **File (Secondary)
 
 - **Purpose**: Additional file loading for reference documents
 - **Output**: Reference document data
 
 ### 6. Final Output
 
-**Component: Markdown to Text**
+**Component: **Markdown to Text
 
 - **Purpose**: Converts the final comprehensive bidding proposal from markdown format to plain text
 - **Inputs**:
