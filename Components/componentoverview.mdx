@@ -112,13 +112,15 @@ Each component's code includes definitions for inputs and outputs, which are rep
 
 Additionally, components have methods or functions that handle their functionality. For example, the `RecursiveCharacterTextSplitter` has two methods:
 
-The `get_data_input` method retrieves the text data to be split from the component's input, which makes the data available to the class. The `build_text_splitter` method creates a `RecursiveCharacterTextSplitter` object by calling its parent class's `build` method. Then, the text is split with the created splitter and passed to the next component.
+The `get_data_input` method retrieves the text data to be split from the component's input, which makes the data available to the class. 
+
+The `build_text_splitter` method creates a `RecursiveCharacterTextSplitter` object by calling its parent class's `build` method. Then, the text is split with the created splitter and passed to the next component.
 
 ## **Component versions**
 
 Component versions and states are stored in an internal LLM Controls database. When you add a component to a flow, you create a detached copy of the component based on the information in the LLM Controls database. These copies are detached from the primary LLM Controls database, and they don't synchronize with any updates that can occur when you upgrade your LLM Controls version.
 
-In other words, an individual instance of a component retains the version number and state from the moment you add it to a specific flow. 
+In other words, an individual instance of a component retains the version number and state from the moment you add it to a specific flow.
 
 **For example**, if a component is at version 1.0 when you add it to a flow, it remains at version 1.0 in that flow unless you update it.
 
