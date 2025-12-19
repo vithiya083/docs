@@ -50,7 +50,7 @@ A basic component:
 
 ### A minimal custom component skeleton contains the following:
 
-### **Internal Lifecycle and Execution Flow**
+### **1. Internal Lifecycle and Execution Flow**
 
 LLM Controls' engine manages:
 
@@ -64,7 +64,7 @@ LLM Controls' engine manages:
 - `initialize_data` or `_pre_run_setup` can run setup logic before the component's main execution.
 - `__call__`, `run()`, or `_run()` can be overridden to customize how the component is called or to define custom execution logic.
 
-### **Inputs and outputs**[**​**](https://docs.langflow.org/components-custom-components#inputs-and-outputs)
+### **2. Inputs and outputs**[**​**](https://docs.langflow.org/components-custom-components#inputs-and-outputs)
 
 Custom component inputs are defined with properties like:
 
@@ -84,7 +84,7 @@ Custom component `Output` properties define:
 
 For more information, see [Custom component inputs and outputs](https://docs.llmcontrols.ai/Components/CreatecustomPythoncomponents#custom-component-inputs-and-outputs).
 
-### **Associated Methods**[**​**](https://docs.langflow.org/components-custom-components#associated-methods)
+### **3. Associated Methods**[**​**](https://docs.langflow.org/components-custom-components#associated-methods)
 
 Each output is linked to a method:
 
@@ -92,25 +92,136 @@ Each output is linked to a method:
 - The method typically returns objects like Message, Data, or DataFrame.
 - The method can use inputs with `self.<input_name>`.
 
-For example:
+**For example:**
+
+```
+
+from llmc.custom import Component
+from llmc.io import MessageTextInput, Output
+from llmc.schema.message import Message
+class ExampleComponent(Component):
+    inputs = [
+        MessageTextInput(name="input_text", display_name="Input Text"),
+    ]
+    
+    outputs = [
+        Output(display_name="Result", name="result", method="process_text"),
+    ]
+    
+    def process_text(self) -> Message:
+        # Method name matches the output's method attribute
+        processed = self.input_text.upper()
+        return Message(text=processed)
+```
 
 ### **Components with multiple outputs**
 
-A component can define multiple outputs. Each output can have a different corresponding method. For example:
+A component can define multiple outputs. Each output can have a different corresponding method.
+
+**For example:** 
+
+```
+
+from llmc.custom import Component
+from llmc.io import MessageTextInput, IntInput, Output
+from llmc.schema.message import Message
+class MultipleOutputsComponent(Component):
+    inputs = [
+        MessageTextInput(name="input", display_name="Input"),
+        IntInput(name="number", display_name="Number"),
+    ]
+    
+    outputs = [
+        Output(display_name="Text Output", name="text_output", method="text_output"),
+        Output(display_name="Number Output", name="number_output", method="number_output"),
+    ]
+    
+    def text_output(self) -> str:
+        return f"Input text: {self.input}"
+    
+    def number_output(self) -> int:
+        return self.number * 2
+```
 
 ### **Common internal patterns**[**​**](https://docs.langflow.org/components-custom-components#common-internal-patterns)
 
 #### `_pre_run_setup()`[**​**](https://docs.langflow.org/components-custom-components#_pre_run_setup)
 
-To initialize a custom component with counters set:
+To initialize a custom component with counters or state variables :
+
+```
+
+class ConditionalRouterComponent(Component):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__iteration_updated = False
+    
+    def _pre_run_setup(self):
+        # Reset state before each run
+        self.__iteration_updated = False
+```
 
 #### Override `run`or  `_run`
 
 You can override `async def _run(self): ...` to define custom execution logic, although the default behavior from the base class usually covers most cases.
 
+```
+
+async def _run(self):
+    # Custom execution logic here
+    result = await self.custom_processing()
+    return result
+```
+
 #### Store data in `self.ctx`
 
 Use `self.ctx` as a shared storage for data or counters across the component's execution flow:
+
+```
+
+from llmc.custom import Component
+from llmc.io import MessageTextInput, Output
+from llmc.schema.message import Message
+class ComponentWithContext(Component):
+    inputs = [
+        MessageTextInput(name="input_text", display_name="Input Text"),
+    ]
+    
+    outputs = [
+        Output(display_name="Result", name="result", method="process_with_context"),
+    ]
+    
+    def process_with_context(self) -> Message:
+        # Initialize context if needed
+        if "counter" not in self.ctx:
+            self.update_ctx({"counter": 0})
+        
+        # Access context data
+        counter = self.ctx.get("counter", 0)
+        
+        # Update context
+        self.update_ctx({"counter": counter + 1, "last_input": self.input_text})
+        
+        # Use context in processing
+        result = f"Processed {counter + 1} times: {self.input_text}"
+        return Message(text=result)
+```
+
+### **Alternative**
+
+Using add_to_ctx()You can also add individual values to the context:
+
+```
+
+# Add a single value to context
+self.add_to_ctx("user_preference", "dark_mode")
+# Access it later
+preference = self.ctx.get("user_preference", "light_mode")
+```
+
+<Note>
+  The context (self.ctx) is shared across all components in the same flow execution, allowing you to pass data between components without explicit connections.
+</Note>
 
 ## **Directory structure requirements**
 
@@ -367,7 +478,6 @@ class ConditionalRouterComponent(Component):
     def process(self) -> Message:
         # Component logic here
         return Message(text="Result")
-
 
 ```
 
