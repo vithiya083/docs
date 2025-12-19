@@ -45,6 +45,13 @@ With your OAuth application configured and your credentials JSON file created, f
 
 For a pre-built JSON file of a flow that uses the Google Drive loader component, download the [Google Drive Document Translation Example Flow JSON](https://docs.langflow.org/files/Google_Drive_Docs_Translations_Example.json) to your local machine.
 
+**Example flow structure:**
+
+```
+
+Google OAuth Token → Parse Data → JSON Cleaner → Google Drive Loader → Prompt → OpenAI Model → Chat Output
+```
+
 In this example, the **Google Drive loader** component loads a text file hosted on Google Drive, translates the text to Spanish, and returns it to a chat output.
 
 1. Download the [Google Drive Document Translation Example Flow JSON](https://docs.langflow.org/files/Google_Drive_Docs_Translations_Example.json) to your local machine.
