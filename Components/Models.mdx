@@ -260,13 +260,49 @@ This component sends requests to the Hugging Face API to generate text using the
 
 The Hugging Face API is a hosted inference API for models hosted on Hugging Face, and requires a [Hugging Face API token](https://huggingface.co/docs/hub/security-tokens) to authenticate.
 
+```
+
+from llmc.components.inputs import ChatInput
+from llmc.components.models import HuggingFaceEndpointsComponent
+from llmc.components.outputs import ChatOutput
+from llmc.components.prompts import PromptComponent
+from llmc.graph import Graph
+
+def basic_prompting_with_huggingface():
+    # Create chat input
+    chat_input = ChatInput()
+    
+    # Create prompt component
+    prompt_component = PromptComponent()
+    prompt_component.set(
+        template="Answer the user as if you were a GenAI expert.\n\nUser: {user_input}\n\nAnswer:",
+        user_input=chat_input.message_response,
+    )
+    
+    # Replace OpenAI with Hugging Face API model
+    huggingface_component = HuggingFaceEndpointsComponent()
+    # Set your Hugging Face API token in the huggingfacehub_api_token field
+    # Select a model from the Model ID dropdown (e.g., "meta-llama/Llama-3.3-70B-Instruct")
+    huggingface_component.set(input_value=prompt_component.build_prompt)
+    
+    # Create chat output
+    chat_output = ChatOutput()
+    chat_output.set(input_value=huggingface_component.text_response)
+    
+    graph = Graph(start=chat_input, end=chat_output)
+    return graph
+```
+
 In this example based on the [Basic prompting flow](/Templates/Basicprompting), the **Hugging Face API** model component replaces the **Open AI** model. By selecting different hosted models, you can see how different models return different results.
 
-1. Create a [Basic prompting flow](/Templates/Basicprompting).
-2. Replace the **OpenAI** model component with a **Hugging Face API** model component.
-3. In the **Hugging Face API** component, add your Hugging Face API token to the **API Token** field.
-4. Open the **Playground** and ask a question to the model, and see how it responds.
-5. Try different models, and see how they perform differently.
+### Steps to use Hugging Face API in Basic prompting flow:
+
+1. Create a Basic prompting flow.
+2. Replace the OpenAI model component with a Hugging Face API model component.
+3. In the Hugging Face API component, add your Hugging Face API token to the API Token field.
+4. Select a model from the Model ID dropdown (**e.g.,** meta-llama/Llama-3.3-70B-Instruct).
+5. Open the Playground and ask a question to the model, and see how it responds.
+6. Try different models, and see how they perform differently.
 
 For more information, see the [Hugging Face documentation](https://huggingface.co/).
 
