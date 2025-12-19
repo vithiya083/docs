@@ -30,13 +30,56 @@ Instead of juggling multiple integrations and components in your flow, connect t
 
 3. In the **OpenAI API Key** field of the **Agent** component, paste your OpenAI API key. Alternatively, add the key as a global variable.
 4. To open the **Playground** pane, click **Playground**.
-5. Ask your AI:
+5. **Ask your AI:**
 
-The response should be similar to:
+   What tools are available to you?
+
+    **The response should be similar to:**  
+
+**GMAIL_CREATE_EMAIL_DRAFT**: This tool allows me to create a draft email using Gmail's API. I can specify the recipient's email address, subject, body content, and whether the body content is HTML.
+
+**CurrentDate-get_current_date**: This tool retrieves the current date and time in a specified timezone.
 
 This confirms your **Agent** and **Composio** are communicating.
 
-6. Tell your AI to write a draft email.
+6. **Tell your AI to write a draft email.**
+
+   Create a draft email with the subject line "Greetings from Composio"
+
+   **Recipient**: "[your.email@address.com](mailto:your.email@address.com)"
+
+   **Body content**: "Hello from composio!"
+
+   Inspect the response to see how the agent used the attached tool to write an email. This example response is abbreviated.
+
+   The draft email with the subject "Greetings from Composio" and body "Hello from composio!" has been **successfully created.**
+
+   ```
+   {
+     "recipient_email": "your.email@address.com",
+     "subject": "Greetings from Composio",
+     "body": "Hello from composio!",
+     "is_html": false
+   }
+   {
+     "data": {
+       "response_data": {
+         "id": "r-237981011463568567",
+         "message": {
+           "id": "195dd80528171132",
+           "threadId": "195dd80528171132",
+           "labelIds": [
+             "DRAFT"
+           ]
+         }
+       }
+     },
+     "error": null,
+     "successfull": true,
+     "successful": true
+   }
+   
+   ```
 
 Inspect the response to see how the agent used the attached tool to write an email. This example response is abbreviated.
 
