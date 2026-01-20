@@ -2,6 +2,10 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "LLMC DOCS",
+  "seo": {
+    "noindex": false,
+    "nofollow": false
+  },
   "colors": {
     "primary": "#C82AEF",
     "light": "#C82AEF",
