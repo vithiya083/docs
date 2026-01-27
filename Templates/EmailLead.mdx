@@ -14,11 +14,11 @@ This automation flow extracts business or sales leads directly from a Gmail inbo
 **Purpose**: Connects to Gmail and fetches emails from a specific label (e.g., “Inbound Leads”).\
 **User Configurations:**
 
-- Gmail Credentials JSON
-- Target Label (e.g., Leads)
-- Max Emails to Fetch
-- Apply Label after Processing (e.g., Processed)
-- Optional: Extract Attachments
+1. Gmail Credentials JSON
+2. Target Label (e.g., Leads)
+3. Max Emails to Fetch
+4. Apply Label after Processing (e.g., Processed)
+5. Optional: Extract Attachments
 
 **Output**: Email subjects, senders, message bodies, and attachments (if any).
 
@@ -27,14 +27,14 @@ This automation flow extracts business or sales leads directly from a Gmail inbo
 **Component**: AI Lead Categorizer\
 **Purpose**: Uses an LLM to analyze email content and identify:
 
-- Lead type (Sales, Business Development, Partnership, etc.)
-- Key contact info (Name, Email, Company)
-- Message intent (Inquiry, Demo Request, Proposal, etc.)
+1. Lead type (Sales, Business Development, Partnership, etc.)
+2. Key contact info (Name, Email, Company)
+3. Message intent (Inquiry, Demo Request, Proposal, etc.)
 
 **Inputs:**
 
-- Email body (from Gmail Manager)
-- Job/Industry context prompt
+1. Email body (from Gmail Manager)
+2. Job/Industry context prompt
 
 ### **3.  Language Model (LLM Processor)**
 
@@ -43,8 +43,8 @@ This automation flow extracts business or sales leads directly from a Gmail inbo
 
 **Connected To:**
 
-- AI Lead Categorizer for enrichment
-- Email Auto-Reply System for crafting response messages
+1. AI Lead Categorizer for enrichment
+2. Email Auto-Reply System for crafting response messages
 
 ### **4. Email Auto-Reply System**
 
@@ -54,14 +54,14 @@ This automation flow extracts business or sales leads directly from a Gmail inbo
 
 **Example Outputs:**
 
-- “Thank you for your interest in our services. Our business development team will reach out shortly.”
-- “Appreciate your inquiry. Here’s a link to schedule a meeting.”
+1. “Thank you for your interest in our services. Our business development team will reach out shortly.”
+2. “Appreciate your inquiry. Here’s a link to schedule a meeting.”
 
 **Inputs:**
 
-- Extracted lead details
-- LLM-generated message tone (formal/friendly)
-- Predefined templates
+1. Extracted lead details
+2. LLM-generated message tone (formal/friendly)
+3. Predefined templates
 
 ### **5**.**Google Sheets Integration**
 
@@ -74,18 +74,18 @@ This automation flow extracts business or sales leads directly from a Gmail inbo
 
 **Required Config:**
 
-- Spreadsheet ID
-- Target Sheet Name
+1. Spreadsheet ID
+2. Target Sheet Name
 
 ### **6. Analytics Dashboard**
 
 **Component**: Analytics Dashboard\
 **Purpose**: Provides a visual summary of lead statistics, such as:
 
-- Number of leads processed
-- Lead sources (email domains)
-- Category breakdown (Partnerships, Sales, etc.)
-- Performance metrics (response rate, follow-up progress)
+1. Number of leads processed
+2. Lead sources (email domains)
+3. Category breakdown (Partnerships, Sales, etc.)
+4. Performance metrics (response rate, follow-up progress)
 
 ### **7. Final Output**
 
@@ -106,7 +106,7 @@ This automation flow extracts business or sales leads directly from a Gmail inbo
 
 ## **Highlights**
 
-- Works automatically on labeled inboxes.
-- Uses LLMs for accurate intent and field extraction
-- Creates and sends contextually personalized replies.
-- Tracks processed leads in real-time via Google Sheets + Dashboard.
+1. Works automatically on labeled inboxes.
+2. Uses LLMs for accurate intent and field extraction
+3. Creates and sends contextually personalized replies.
+4. Tracks processed leads in real-time via Google Sheets + Dashboard.

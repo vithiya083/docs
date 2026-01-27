@@ -6,64 +6,84 @@ This automation flow processes RFP documents, extracts structured information us
 
 ![RFP Bidding](/images/RFPBidding.jpg)
 
-## Workflow Steps & Components
+# Workflow Steps & Components
 
-### 1. Document Loading & Preprocessing
+## 1. Document Loading & Preprocessing
 
-**Component**: File
+### **Component**: File
 
-- **Purpose**: Loads RFP documents (PDF, DOCX, TXT, etc.) for processing
-- **User Configurations**:
-  - File upload or server file path
-  - Processing concurrency settings
-  - File type validation
-- **Output**: Raw document data
+**Purpose**: Loads RFP documents (PDF, DOCX, TXT, etc.) for processing
 
-**Component**: Split Text
+**User Configurations**:
 
-- **Purpose**: Splits large RFP documents into manageable chunks for processing
-- **User Configurations**:
-  - Chunk size (default: configurable)
-  - Chunk overlap
-  - Separator settings
-- **Output**: Document chunks ready for parsing
+1. File upload or server file path
+2. Processing concurrency settings
+3. File type validation
 
-### 2. Structured Data Extraction
+**Output**: Raw document data
 
-**Component**: LLMC Parser
+### **Component**: Split Text
 
-- **Purpose**: Uses an LLM to extract structured data from RFP document chunks
-- **Inputs**:
-  - Document chunks (from Split Text)
-  - Language Model (for parsing)
-  - Custom extraction prompt
-- **User Configurations**:
-  - Custom prompt for data extraction
-  - Batch size for processing
-  - Language model selection
-- **Output**: Structured JSON data with extracted RFP information
+**Purpose**: Splits large RFP documents into manageable chunks for processing
+
+**User Configurations**:
+
+1. Chunk size (default: configurable)
+2. Chunk overlap
+3. Separator settings
+
+**Output**: Document chunks ready for parsing
+
+## 2. Structured Data Extraction
+
+### **Component**: LLMC Parser
+
+**Purpose**: Uses an LLM to extract structured data from RFP document chunks
+
+**Inputs**:
+
+1. Document chunks (from Split Text)
+2. Language Model (for parsing)
+3. Custom extraction prompt
+
+**User Configurations**:
+
+1. Custom prompt for data extraction
+2. Batch size for processing
+3. Language model selection
+
+**Output**: Structured JSON data with extracted RFP information
 
 **Component**: Language Model
 
-- **Purpose**: Provides the language model for parsing and analysis
-- **Connected To**:
-  - LLMC Parser for initial extraction
-  - Validation Evaluator for quality checks
-- **User Configurations**:
-  - Model provider (OpenAI, Anthropic, etc.)
-  - API keys
-  - Temperature and other model parameters
+**Purpose**: Provides the language model for parsing and analysis
+
+**Connected To**:
+
+1. LLMC Parser for initial extraction
+2. Validation Evaluator for quality checks
+
+**User Configurations**:
+
+1. Model provider (OpenAI, Anthropic, etc.)
+2. API keys
+3. Temperature and other model parameters
 
 **Component:** Parser
 
-- **Purpose**: Formats extracted structured data into a readable text format
-- **Inputs**:
-  - Parsed data from LLMC Parser
-  - Template pattern for formatting
-- **User Configurations**:
-  - Template pattern (e.g., "Text: text")
-  - Separator for multiple items
-- **Output**: Formatted text ready for agent analysis
+**Purpose**: Formats extracted structured data into a readable text format
+
+**Inputs**:
+
+1. Parsed data from LLMC Parser
+2. Template pattern for formatting
+
+**User Configurations**:
+
+1. Template pattern (e.g., "Text: text")
+2. Separator for multiple items
+
+**Output**: Formatted text ready for agent analysis
 
 ### 3. Multi-Agent Analysis Pipeline
 
@@ -71,117 +91,161 @@ The workflow uses five specialized AI agents, each equipped with web search capa
 
 **Component**: Google Serper API
 
-- **Purpose**: Provides web search functionality to all agents
-- **User Configurations**:
-  - Serper API Key
-  - Number of search results
-- **Output**: Search tool available to agents
+**Purpose**: Provides web search functionality to all agents
+
+**User Configurations**:
+
+1. Serper API Key
+2. Number of search results
+
+**Output**: Search tool available to agents
 
 **Agent 1: Domain Classification Agent**
 
-- **Component**: Agent
-- **Purpose**: Analyzes and classifies the RFP project domain
-- **Tasks**:
-  - Identifies primary and secondary business domains (Construction, IT Services, Healthcare, etc.)
-  - Calculates capability match percentage based on work requirements
-  - Identifies required competencies and skills
-  - Researches industry-specific requirements via web search
-- **Inputs**:
-  - Parsed RFP data (from Parser)
-  - System prompt for domain classification
-  - Google Serper API tool
-- **Output**: JSON with domain classification, capabilities match, competencies, and research insights
+**Component**: Agent
+
+**Purpose**: Analyzes and classifies the RFP project domain
+
+**Tasks**:
+
+1. Identifies primary and secondary business domains (Construction, IT Services, Healthcare, etc.)
+2. Calculates capability match percentage based on work requirements
+3. Identifies required competencies and skills
+
+Researches industry-specific requirements via web search
+
+**Inputs**:
+
+1. Parsed RFP data (from Parser)
+2. System prompt for domain classification
+3. Google Serper API tool
+
+
+1. **Output**: JSON with domain classification, capabilities match, competencies, and research insights
 
 **Agent 2: Cost Estimation Agent**
 
-- **Component**: Agent
-- **Purpose**: Provides detailed cost estimates for the project
-- **Tasks**:
-  - Estimates cost range (low/mid/high scenarios)
-  - Provides detailed cost breakdown by categories (labor, materials, equipment, etc.)
-  - Calculates margin analysis with profit targets
-  - Identifies key cost drivers
-  - Assesses cost-related risks
-  - Researches current market rates via web search
-- **Inputs**:
-  - Parsed RFP data
-  - System prompt for cost estimation
-  - Google Serper API tool
-  - Current date tool
-- **Output**: JSON with cost estimates, breakdowns, margins, and market insights
+**Component**: Agent
+
+**Purpose**: Provides detailed cost estimates for the project
+
+**Tasks**:
+
+1. Estimates cost range (low/mid/high scenarios)
+2. Provides detailed cost breakdown by categories (labor, materials, equipment, etc.)
+3. Calculates margin analysis with profit targets
+4. Identifies key cost drivers
+5. Assesses cost-related risks
+6. Researches current market rates via web search
+
+**Inputs**:
+
+- Parsed RFP data
+- System prompt for cost estimation
+- Google Serper API tool
+- Current date tool
+
+**Output**: JSON with cost estimates, breakdowns, margins, and market insights
 
 **Agent 3: Vendor & Subcontractor Matching Agent**
 
-- **Component**: Agent
-- **Purpose**: Identifies necessary vendors and subcontractors
-- **Tasks**:
-  - Identifies required vendor categories based on project scope
-  - Assesses vendor availability in project location
-  - Identifies potential vendor gaps or challenges
-  - Notes geographic and logistical considerations
-  - Provides vendor sourcing recommendations
-  - Researches certified subcontractors and suppliers via web search
-- **Inputs**:
-  - Parsed RFP data
-  - System prompt for vendor matching
-  - Google Serper API tool
-  - Current date tool
-- **Output**: JSON with vendor categories, availability assessment, gaps, and recommendations
+**Component**: Agent
+
+**Purpose**: Identifies necessary vendors and subcontractors
+
+**Tasks**:
+
+1. Identifies required vendor categories based on project scope
+2. Assesses vendor availability in project location
+3. Identifies potential vendor gaps or challenges
+4. Notes geographic and logistical considerations
+5. Provides vendor sourcing recommendations
+6. Research certified subcontractors and suppliers via web search
+
+**Inputs**:
+
+1. Parsed RFP data
+2. System prompt for vendor matching
+3. Google Serper API tool
+4. Current date tool
+
+**Output**: JSON with vendor categories, availability assessment, gaps, and recommendations
 
 **Agent 4: Compliance & Risk Assessment Agent**
 
-- **Component**: Agent
-- **Purpose**: Analyzes regulatory requirements and project risks
-- **Tasks**:
-  - Identifies regulatory and compliance requirements
-  - Assesses compliance complexity and timeline
-  - Identifies and categorizes project risks (technical, financial, operational, regulatory)
-  - Calculates overall risk score
-  - Provides risk mitigation strategies
-  - Researches current regulations and standards via web search
-- **Inputs**:
-  - Parsed RFP data
-  - System prompt for compliance assessment
-  - Google Serper API tool
-  - Current date tool
-- **Output**: JSON with regulatory requirements, compliance assessment, risk analysis, and recommendations
+**Component**: Agent
+
+**Purpose**: Analyzes regulatory requirements and project risks
+
+**Tasks**:
+
+1. Identifies regulatory and compliance requirements
+2. Assesses compliance complexity and timeline
+3. Identifies and categorizes project risks (technical, financial, operational, regulatory)
+4. Calculates overall risk score
+5. Provides risk mitigation strategies
+6. Researches current regulations and standards via web search
+
+**Inputs**:
+
+Parsed RFP data
+
+1. System prompt for compliance assessment
+2. Google Serper API tool
+3. Current date tool
+
+**Output**: JSON with regulatory requirements, compliance assessment, risk analysis, and recommendations
 
 **Agent 5: Final Proposal Agent**
 
-- **Component**: Agent
-- **Purpose**: Combines all analyses into a comprehensive bidding proposal
-- **Inputs**:
-  - Combined outputs from previous agents
-  - System prompt for proposal generation
-- **Output**: Complete bidding proposal document
+**Component**: Agent
+
+**Purpose**: Combines all analyses into a comprehensive bidding proposal
+
+**Inputs**:
+
+1. Combined outputs from previous agents
+2. System prompt for proposal generation
+
+**Output**: Complete bidding proposal document
 
 ### 4. Data Aggregation & Validation
 
 **Component:** Combine Text
 
-- **Purpose**: Combines outputs from multiple agents into unified text
-- **User Configurations**:
-  - Multiple text inputs from agents
-  - Separator settings
-- **Output**: Combined analysis text
+**Purpose**: Combines outputs from multiple agents into unified text
+
+**User Configurations**:
+
+1. Multiple text inputs from agents
+2. Separator settings
+
+**Output**: Combined analysis text
 
 **Component**: Validation Evaluator
 
-- **Purpose**: Validates extracted summaries against original document chunks
-- **Tasks**:
-  - Compares extracted content with original RFP chunks
-  - Provides correctness and consistency scores
-  - Identifies missing or incorrect information
-  - Generates validation report
-- **Inputs**:
-  - Original document chunks (from Split Text)
-  - Extracted summary (from agents or parser)
-  - Language Model for validation
-  - Validation prompt
-- **User Configurations**:
-  - Batch size for validation processing
-  - Custom validation prompt
-- **Output**: Validation report with scores and issues
+**Purpose**: Validates extracted summaries against original document chunks
+
+**Tasks**:
+
+1. Compares extracted content with original RFP chunks
+2. Provides correctness and consistency scores
+3. Identifies missing or incorrect information
+4. Generates validation report
+
+**Inputs**:
+
+1. Original document chunks (from Split Text)
+2. Extracted summary (from agents or parser)
+3. Language Model for validation
+4. Validation prompt
+
+**User Configurations**:
+
+1. Batch size for validation processing
+2. Custom validation prompt
+
+**Output**: Validation report with scores and issues
 
 **Example Output:**
 
@@ -239,24 +303,31 @@ Issues Details :
 
 **Component**: OpenAI Embeddings
 
-- **Purpose**: Creates embeddings from RFP documents for retrieval
-- **User Configurations**:
-  - OpenAI API Key
-  - Model selection
-- **Output**: Document embeddings
+**Purpose**: Creates embeddings from RFP documents for retrieval
+
+**User Configurations**:
+
+1. OpenAI API Key
+2. Model selection
+
+**Output**: Document embeddings
 
 **Component**: Qdrant Vector Store
 
-- **Purpose**: Stores document embeddings for retrieval-augmented generation
-- **User Configurations**:
-  - Qdrant connection settings
-  - Collection name
-- **Output**: Vector database ready for RAG queries
+**Purpose**: Stores document embeddings for retrieval-augmented generation
+
+**User Configurations**:
+
+1. Qdrant connection settings
+2. Collection name
+
+**Output**: Vector database ready for RAG queries
 
 **Component**: Split Text (Secondary)
 
-- **Purpose**: Additional text splitting for vector storage
-- **Output**: Chunks ready for embedding
+**Purpose**: Additional text splitting for vector storage
+
+**Output**: Chunks ready for embedding
 
 **Component**:  File (Secondary)
 
@@ -267,17 +338,22 @@ Issues Details :
 
 **Component**: Markdown to Text
 
-- **Purpose**: Converts the final comprehensive bidding proposal from markdown format to plain text
-- **Inputs**:
-  - Final proposal output (from Final Proposal Agent or Validation Evaluator)
-- **User Configurations**:
-  - Markdown formatted text input
-- **Output**: Plain text version of the complete RFP analysis including:
-  - Domain classification and capabilities match
-  - Detailed cost estimates and breakdowns
-  - Vendor and subcontractor recommendations
-  - Compliance requirements and risk assessment
-  - Overall project feasibility analysis
+**Purpose**: Converts the final comprehensive bidding proposal from markdown format to plain text
+
+**Inputs**:
+
+1. Final proposal output (from Final Proposal Agent or Validation Evaluator)
+
+**User Configurations**:
+
+1. Markdown formatted text input
+
+   **Output**: Plain text version of the complete RFP analysis including:
+   1. Domain classification and capabilities match
+   2. Detailed cost estimates and breakdowns
+   3. Vendor and subcontractor recommendations
+   4. Compliance requirements and risk assessment
+   5. Overall project feasibility analysis
 
 ## End-to-End Flow Summary
 
@@ -297,19 +373,19 @@ Issues Details :
 
 ## Highlights
 
-- **Automated RFP Processing**: Automatically extracts and structures information from RFP documents
-- **Multi-Dimensional Analysis**: Uses specialized AI agents for domain, cost, vendor, and risk analysis
-- **Web-Enhanced Research**: All agents use Google Serper API for real-time market research and validation
-- **Quality Assurance**: Validation Evaluator ensures extracted information matches original documents
-- **Structured Output**: All analyses return structured JSON for easy integration and reporting
-- **RAG Support**: Vector storage enables retrieval-augmented generation for enhanced context
-- **Comprehensive Proposal**: Generates complete bidding proposals with all critical information
+1. **Automated RFP Processing**: Automatically extracts and structures information from RFP documents
+2. **Multi-Dimensional Analysis**: Uses specialized AI agents for domain, cost, vendor, and risk analysis
+3. **Web-Enhanced Research**: All agents use Google Serper API for real-time market research and validation
+4. **Quality Assurance**: Validation Evaluator ensures extracted information matches original documents
+5. **Structured Output**: All analyses return structured JSON for easy integration and reporting
+6. **RAG Support**: Vector storage enables retrieval-augmented generation for enhanced context
+7. **Comprehensive Proposal**: Generates complete bidding proposals with all critical information
 
 ## Key Features
 
-- **Intelligent Domain Classification**: Automatically identifies project type and required competencies
-- **Accurate Cost Estimation**: Provides detailed cost breakdowns with market research integration
-- **Vendor Discovery**: Identifies required vendors and assesses availability
-- **Risk Assessment**: Comprehensive compliance and risk analysis with mitigation strategies
-- **Document Validation**: Ensures accuracy through automated validation against source documents
-- **Real-Time Research**: Web search integration provides current market data and regulations.
+1. **Intelligent Domain Classification**: Automatically identifies project type and required competencies
+2. **Accurate Cost Estimation**: Provides detailed cost breakdowns with market research integration
+3. **Vendor Discovery**: Identifies required vendors and assesses availability
+4. **Risk Assessment**: Comprehensive compliance and risk analysis with mitigation strategies
+5. **Document Validation**: Ensures accuracy through automated validation against source documents
+6. **Real-Time Research**: Web search integration provides current market data and regulations.

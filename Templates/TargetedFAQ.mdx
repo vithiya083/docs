@@ -9,9 +9,9 @@ This advanced setup combines **vector-based knowledge retrieval** with **prompt 
 
 ## **Prerequisites**
 
-- **OpenAI API Key** (required for both embeddings and model)
-- A structured FAQ or document file (PDF, TXT)
-- Basic familiarity with **LLMC components**
+1. **OpenAI API Key** (required for both embeddings and model)
+2. A structured FAQ or document file (PDF, TXT)
+3. Basic familiarity with **LLMC components**
 
 ## Create the Targeted FAQ Flow
 
@@ -37,12 +37,12 @@ Once your data is embedded, switch to the Retriever Flow (middle section).
 
 **Components:**
 
-- **User Input** – Enter persona or audience (e.g., "environment enthusiast").
-- **LLM Vector DB** – Retrieves relevant FAQ chunks based on audience and query.
-- **OpenAI Embeddings** – Matches the same embedding model used in the loader flow.
-- **Parser** – Formats and cleans retrieved content for the LLM.
-- **Prompt** – Generates a question-aware, persona-specific FAQ response.
-- **Chat Output** – Displays the final answer directly in the playground.
+1. **User Input** – Enter persona or audience (e.g., "environment enthusiast").
+2. **LLM Vector DB** – Retrieves relevant FAQ chunks based on audience and query.
+3. **OpenAI Embeddings** – Matches the same embedding model used in the loader flow.
+4. **Parser** – Formats and cleans retrieved content for the LLM.
+5. **Prompt** – Generates a question-aware, persona-specific FAQ response.
+6. **Chat Output** – Displays the final answer directly in the playground.
 
 <Note>
   Try modifying the persona field to see how answers adapt to different users.
@@ -54,9 +54,9 @@ Use the **Prompt Optimizer Flow** to refine your prompt instructions and improve
 
 **How it works:**
 
-- Automatically generates prompt variations and test cases.
-- Scores and ranks are prompted by relevance, accuracy, and tone consistency.
-- Displays a **leaderboard** of best-performing prompts.
+1. Automatically generates prompt variations and test cases.
+2. Scores and ranks are prompted by relevance, accuracy, and tone consistency.
+3. Displays a **leaderboard** of best-performing prompts.
 
 **To run it:**
 
@@ -70,17 +70,17 @@ Once optimized prompts are ready, use the **LLMC Executor** to run them.
 
 **In the LLMC Executor:**
 
-- Select your optimized **Prompt** and preferred **Model** (gpt-4o, claude-4-sonnet, etc.).
-- Paste your **OpenAI API Key** if not already configured.
-- Click **Play** to execute the query.
-- The **Output** displays your final, persona-tailored FAQ answer.
+1. Select your optimized **Prompt** and preferred **Model** (gpt-4o, claude-4-sonnet, etc.).
+2. Paste your **OpenAI API Key** if not already configured.
+3. Click **Play** to execute the query.
+4. The **Output** displays your final, persona-tailored FAQ answer.
 
 ## **Modify or Extend**
 
-- **Change the persona tone** in the Prompt to match the brand voice or audience type.
-- **Swap models** in LLMC Executor to test performance differences.
-- **Adjust chunk size** and **overlap** in Split Text for better retrieval precision.
-- Use **Results Leaderboard** to continuously improve FAQ quality over time.
+1. **Change the persona tone** in the Prompt to match the brand voice or audience type.
+2. **Swap models** in LLMC Executor to test performance differences.
+3. **Adjust chunk size** and **overlap** in Split Text for better retrieval precision.
+4. Use **Results Leaderboard** to continuously improve FAQ quality over time.
 
 ## **Configuration Checklist**
 
@@ -100,11 +100,11 @@ Once optimized prompts are ready, use the **LLMC Executor** to run them.
 
 ## **Built With**
 
-- **LLMC Framework**
-- **Prompt Optimizer Flow**
-- **LLMC Executor**
-- **RAG Architecture (Vector Retrieval + Prompting)**
-- **OpenAI GPT Models**
+1. **LLMC Framework**
+2. **Prompt Optimizer Flow**
+3. **LLMC Executor**
+4. **RAG Architecture (Vector Retrieval + Prompting)**
+5. **OpenAI GPT Models**
 
 <Note>
   Deliver precise, audience-tailored FAQ responses with automation, retrieval intelligence, and optimized prompting. 

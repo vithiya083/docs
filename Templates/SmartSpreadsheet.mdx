@@ -15,17 +15,17 @@ Upload Excel or CSV files, query data, apply filters, and generate instant summa
 
 ## **Prerequisites**
 
-- A valid Anthropic API Key
-- Spreadsheet file (Excel or CSV format)
-- Access to the Prompt Optimizer Flow (optional but recommended)
+1. A valid Anthropic API Key
+2. Spreadsheet file (Excel or CSV format)
+3. Access to the Prompt Optimizer Flow (optional but recommended)
 
 ## **Key Features**
 
-- Upload spreadsheets (Excel/CSV) for real-time querying.
-- Use natural language or SQL queries to explore data.
-- Connect to Anthropic’s Claude models for reasoning and summarization.
-- Automatically optimize and test prompt variations for accuracy.
-- Ideal for data exploration, reporting, and analytics.
+1. Upload spreadsheets (Excel/CSV) for real-time querying.
+2. Use natural language or SQL queries to explore data.
+3. Connect to Anthropic’s Claude models for reasoning and summarization.
+4. Automatically optimize and test prompt variations for accuracy.
+5. Ideal for data exploration, reporting, and analytics.
 
 ## **1. Prompt Optimizer Flow** 
 
@@ -33,15 +33,17 @@ Upload Excel or CSV files, query data, apply filters, and generate instant summa
 
 ### **Flow Overview**
 
-1. **User Task** – Define the data query or analysis you want to improve (e.g., “Show me the top 10 customers by sales”).
-2. **Enhanced Prompt Optimizer** – Generates, tests, and scores variations of your prompt.
-3. **Results** – Displays performance rankings of each optimized prompt.
+**User Task** – Define the data query or analysis you want to improve (e.g., “Show me the top 10 customers by sales”).
+
+**Enhanced Prompt Optimizer** – Generates, tests, and scores variations of your prompt.
+
+**Results** – Displays performance rankings of each optimized prompt.
 
 **Usage:**
 
-- Start from the User Task node.
-- Run the Results component to evaluate performance.
-- Apply the top-performing prompt to your data analysis workflow.
+1. Start from the User Task node.
+2. Run the Results component to evaluate performance.
+3. Apply the top-performing prompt to your data analysis workflow.
 
 ## **2. Load Spreadsheet**
 
@@ -60,9 +62,9 @@ Upload Excel or CSV files, query data, apply filters, and generate instant summa
 
 ### **Supports:**
 
-- Natural language queries (e.g., “Find all orders above \$500”)
-- SQL queries (SELECT \* FROM sales WHERE amount \> 500)
-- Custom filters and sorting options
+1. Natural language queries (e.g., “Find all orders above \$500”)
+2. SQL queries (SELECT \* FROM sales WHERE amount \> 500)
+3. Custom filters and sorting options
 
 **Outputs**: Clean, query-ready data for the LLM to interpret.
 
@@ -72,10 +74,10 @@ Upload Excel or CSV files, query data, apply filters, and generate instant summa
 
 ### **Setup**
 
-- Choose Model Provider: **Anthropic**
-- Select Model Name: **claude-sonnet-4-20250514**
-- Add your **Anthropic API Key**
-- Enter short Agent Instructions (**e.g**., “You are a helpful data analysis assistant that answers questions about spreadsheets.”)
+1. Choose Model Provider: **Anthropic**
+2. Select Model Name: **claude-sonnet-4-20250514**
+3. Add your **Anthropic API Key**
+4. Enter short Agent Instructions (**e.g**., “You are a helpful data analysis assistant that answers questions about spreadsheets.”)
 
 ## **5. Chat Interface**
 
@@ -88,7 +90,7 @@ Upload Excel or CSV files, query data, apply filters, and generate instant summa
 
 ## **Example Use Cases** 
 
-- **Sales reporting** (“Summarize total sales per month.”)
-- **Expense analysis** (“Find top 5 expense categories.”)
-- **Research data filtering** (“Show all entries with missing values.”)
-- **Trend summaries** (“Compare Q1 and Q2 growth rates.”)
+1. **Sales reporting** (“Summarize total sales per month.”)
+2. **Expense analysis** (“Find top 5 expense categories.”)
+3. **Research data filtering** (“Show all entries with missing values.”)
+4. **Trend summaries** (“Compare Q1 and Q2 growth rates.”)
