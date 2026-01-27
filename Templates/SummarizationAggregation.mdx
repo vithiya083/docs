@@ -12,9 +12,9 @@ The Summarization and Aggregation template enhances the basic summarization work
 
 ## Prerequisites
 
-- An OpenAI API Key
--  A structured document (PDF) for upload
--  Basic familiarity with LLM Controls Flows
+1. An OpenAI API Key
+2.  A structured document (PDF) for upload
+3.  Basic familiarity with LLM Controls Flows
 
 ## Create the Advanced Summarization Flow
 
@@ -22,26 +22,27 @@ The Summarization and Aggregation template enhances the basic summarization work
 
 From the File component:
 
-- Upload your document (PDF format supported)
-- This component outputs both raw and parsed data
-- Output is automatically passed to the Parser component
+1. Upload your document (PDF format supported)
+2. This component outputs both raw and parsed data
+3. Output is automatically passed to the Parser component
 
 ### 2. Parse the Document
 
 The Parser component converts uploaded content into plain text.
 
-- **Mode**: Parser
-- **Template**: Define how content is extracted (e.g., Text: text)\
-  This ensures your data is clean and ready for prompting
+**Mode**: Parser
 
-### 3. Optimize the Summarization Prompt
+**Template**: Define how content is extracted (e.g., Text: text)\
+This ensures your data is clean and ready for prompting
+
+**Optimize the Summarization Prompt**
 
 Use the Prompt Optimizer Flow to automatically refine your prompt.
 
-- Input a summarization task, such as:\
-  **“Summarize uploaded documents into concise, professional summaries.”**
-- The optimizer generates **multiple prompt variations, test cases, and evaluation metrics.**
-- Outputs include ranked prompts based on clarity, effectiveness, and consistency.
+1. Input a summarization task, such as:\
+   **“Summarize uploaded documents into concise, professional summaries.”**
+2. The optimizer generates **multiple prompt variations, test cases, and evaluation metrics.**
+3. Outputs include ranked prompts based on clarity, effectiveness, and consistency.
 
 <Note>
   Click the Prompt Optimizer Flow node in the workspace to open and run this optimization process.
@@ -52,9 +53,9 @@ Use the Prompt Optimizer Flow to automatically refine your prompt.
 \
 The LLMC Executor allows you to run the best-performing prompts with a chosen AI model.
 
-- **Model Selection**: Choose from GPT models (e.g., gpt-4o)
-- **Prompt Selection:** Pick from optimized prompts generated earlier
-- **API Key:** Enter your valid OpenAI key in the custom_api_key field
+1. **Model Selection**: Choose from GPT models (e.g., gpt-4o)
+2. **Prompt Selection:** Pick from optimized prompts generated earlier
+3. **API Key:** Enter your valid OpenAI key in the custom_api_key field
 
 Then click Run to execute and generate the summarized output.
 
@@ -65,9 +66,9 @@ You can review, copy, or export it directly from the Playground.
 
 ## Modify or Extend
 
-- To change the summarization style, open the Prompt template and adjust the tone or persona **(e.g., “Write an executive summary” or “Summarize in bullet points”).**
-- You can chain additional evaluation nodes for advanced comparison of results.
-- Use the **Results leaderboard** in the optimizer to monitor which prompt performs best.
+1. To change the summarization style, open the Prompt template and adjust the tone or persona **(e.g., “Write an executive summary” or “Summarize in bullet points”).**
+2. You can chain additional evaluation nodes for advanced comparison of results.
+3. Use the **Results leaderboard** in the optimizer to monitor which prompt performs best.
 
 ## Configuration Checklist
 
@@ -82,16 +83,16 @@ You can review, copy, or export it directly from the Playground.
 
 ##   Use Cases
 
-- Generate executive summaries from lengthy reports
-- Compare and benchmark multiple summarization prompts
-- Automate evaluation of summarization quality
-- Build adaptive summarization pipelines for research or business data
+1. Generate executive summaries from lengthy reports
+2. Compare and benchmark multiple summarization prompts
+3. Automate evaluation of summarization quality
+4. Build adaptive summarization pipelines for research or business data
 
 ## Built With
 
-- LLM Controls Framework
-- Prompt Optimizer Flow
-- LLMC Executor
-- OpenAI GPT Models
+1. LLM Controls Framework
+2. Prompt Optimizer Flow
+3. LLMC Executor
+4. OpenAI GPT Models
 
 Streamline your summarization process with intelligent optimization and automated evaluation..
