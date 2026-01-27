@@ -54,7 +54,7 @@ This automation flow processes RFP documents, extracts structured information us
 
 **Output**: Structured JSON data with extracted RFP information
 
-**Component**: Language Model
+### **Component**: Language Model
 
 **Purpose**: Provides the language model for parsing and analysis
 
@@ -69,7 +69,7 @@ This automation flow processes RFP documents, extracts structured information us
 2. API keys
 3. Temperature and other model parameters
 
-**Component:** Parser
+### **Component:** Parser
 
 **Purpose**: Formats extracted structured data into a readable text format
 
@@ -89,7 +89,7 @@ This automation flow processes RFP documents, extracts structured information us
 
 The workflow uses five specialized AI agents, each equipped with web search capabilities via Google Serper API:
 
-**Component**: Google Serper API
+### **Component**: Google Serper API
 
 **Purpose**: Provides web search functionality to all agents
 
@@ -100,9 +100,9 @@ The workflow uses five specialized AI agents, each equipped with web search capa
 
 **Output**: Search tool available to agents
 
-**Agent 1: Domain Classification Agent**
+### **Agent 1: Domain Classification Agent**
 
-**Component**: Agent
+### **Component**: Agent
 
 **Purpose**: Analyzes and classifies the RFP project domain
 
@@ -119,13 +119,11 @@ Researches industry-specific requirements via web search
 1. Parsed RFP data (from Parser)
 2. System prompt for domain classification
 3. Google Serper API tool
-
-
 1. **Output**: JSON with domain classification, capabilities match, competencies, and research insights
 
-**Agent 2: Cost Estimation Agent**
+### **Agent 2: Cost Estimation Agent**
 
-**Component**: Agent
+### **Component**: Agent
 
 **Purpose**: Provides detailed cost estimates for the project
 
@@ -147,9 +145,9 @@ Researches industry-specific requirements via web search
 
 **Output**: JSON with cost estimates, breakdowns, margins, and market insights
 
-**Agent 3: Vendor & Subcontractor Matching Agent**
+### **Agent 3: Vendor & Subcontractor Matching Agent**
 
-**Component**: Agent
+### **Component**: Agent
 
 **Purpose**: Identifies necessary vendors and subcontractors
 
@@ -171,9 +169,9 @@ Researches industry-specific requirements via web search
 
 **Output**: JSON with vendor categories, availability assessment, gaps, and recommendations
 
-**Agent 4: Compliance & Risk Assessment Agent**
+### **Agent 4: Compliance & Risk Assessment Agent**
 
-**Component**: Agent
+### **Component**: Agent
 
 **Purpose**: Analyzes regulatory requirements and project risks
 
@@ -196,9 +194,9 @@ Parsed RFP data
 
 **Output**: JSON with regulatory requirements, compliance assessment, risk analysis, and recommendations
 
-**Agent 5: Final Proposal Agent**
+### **Agent 5: Final Proposal Agent**
 
-**Component**: Agent
+### **Component**: Agent
 
 **Purpose**: Combines all analyses into a comprehensive bidding proposal
 
@@ -209,9 +207,9 @@ Parsed RFP data
 
 **Output**: Complete bidding proposal document
 
-### 4. Data Aggregation & Validation
+## 4. Data Aggregation & Validation
 
-**Component:** Combine Text
+### **Component:** Combine Text
 
 **Purpose**: Combines outputs from multiple agents into unified text
 
@@ -222,7 +220,7 @@ Parsed RFP data
 
 **Output**: Combined analysis text
 
-**Component**: Validation Evaluator
+### **Component**: Validation Evaluator
 
 **Purpose**: Validates extracted summaries against original document chunks
 
@@ -299,9 +297,9 @@ Issues Details :
 8. [LOW] missing: The AI report does not list the specific Point of Contact (Karen M. Hester) or the submission address provided in the Original RFP text (Section h), though it correctly identifies the agency (DC PSC).
 ```
 
-### 5. Vector Storage (RAG Support)
+## 5. Vector Storage (RAG Support)
 
-**Component**: OpenAI Embeddings
+### **Component**: OpenAI Embeddings
 
 **Purpose**: Creates embeddings from RFP documents for retrieval
 
@@ -312,7 +310,7 @@ Issues Details :
 
 **Output**: Document embeddings
 
-**Component**: Qdrant Vector Store
+### **Component**: Qdrant Vector Store
 
 **Purpose**: Stores document embeddings for retrieval-augmented generation
 
@@ -323,20 +321,20 @@ Issues Details :
 
 **Output**: Vector database ready for RAG queries
 
-**Component**: Split Text (Secondary)
+### **Component**: Split Text (Secondary)
 
 **Purpose**: Additional text splitting for vector storage
 
 **Output**: Chunks ready for embedding
 
-**Component**:  File (Secondary)
+### **Component**:  File (Secondary)
 
 - **Purpose**: Additional file loading for reference documents
 - **Output**: Reference document data
 
-### 6. Final Output
+## 6. Final Output
 
-**Component**: Markdown to Text
+### **Component**: Markdown to Text
 
 **Purpose**: Converts the final comprehensive bidding proposal from markdown format to plain text
 
