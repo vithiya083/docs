@@ -2,9 +2,16 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "LLMC DOCS",
+
   "seo": {
     "noindex": false,
-    "nofollow": false
+    "nofollow": false,
+    "meta": [
+      {
+        "name": "msvalidate.01",
+        "content": "2F45F572FB74F26F2942B69049DEDFF6"
+      }
+    ]
   },
   "colors": {
     "primary": "#C82AEF",
