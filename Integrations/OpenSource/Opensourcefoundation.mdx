@@ -1,4 +1,126 @@
 ---
-title: 'Open Source Foundation'
+title: "LLMControls Open Source Foundation, Tools, and Models"
 ---
 
+This page outlines the open-source foundation behind LLMControls, including the core architecture it is built on, the backend and frontend technology stack, and the open-source model runtimes it supports.
+
+## **Built on Langflow (Open Source)**
+
+LLMControls is an MIT-licensed open-source platform built on top of the Langflow architecture.
+
+It inherits Langflow’s core design patterns, including:
+
+- Flow-based orchestration for building AI applications
+- Component-driven execution through connected workflow nodes
+- A built-in API server for running flows as endpoints
+
+Several internal modules within LLMControls retain Langflow conventions such as:
+
+- Naming structures
+- Service layouts
+- Flow scheduling mechanisms
+
+This foundation provides the workflow engine that powers LLMControls’ flow creation and execution.
+
+## **Open-Source Tools & Libraries (Backend)**
+
+The LLMControls backend is Python-first and composes a broad open-source ecosystem for orchestration, retrieval, observability, and infrastructure.
+
+### **Orchestration & LLM Integration**
+
+LLMControls integrates:
+
+- LangChain and a broad set of LangChain provider packages to connect with multiple LLM vendors and tooling backends
+- LiteLLM for unified LLM API routing across providers
+- MCP for tool and agent interoperability with external tool servers
+
+This enables flexible model usage and seamless tool integration across workflows.
+
+### **Retrieval & Vector Databases**
+
+For vector storage and retrieval, LLMControls supports:
+
+- ChromaDB
+- Qdrant
+- Weaviate
+-  FAISS
+
+**Additional integrations include:**
+
+- pgvector for PostgreSQL-based vector search
+- OpenSearch and Elasticsearch for search-grade indexing
+-  Milvus support through pymilvus
+
+This allows teams to select storage solutions based on performance, scalability, and deployment needs.
+
+### **Observability, Tracing, and Evaluation**
+
+LLMControls integrates open-source observability and evaluation tooling, including:
+
+- MLflow for experiment tracking and monitoring
+- Langfuse, LangSmith, LangWatch, and Opik for LLM tracing, evaluation, and prompt analytics
+- OpenInference instrumentation for standardized tracing
+
+These tools provide deep visibility into workflow behavior and AI performance.
+
+### **Data Ingestion & Utilities**
+
+For structured data ingestion and processing, LLMControls uses:
+
+- BeautifulSoup for web scraping
+- DuckDuckGo Search
+- Wikipedia and YouTube transcript APIs
+- pytube for video ingestion
+
+For NLP and data processing:
+
+- NLTK
+- tiktoken
+- pandas
+- pyarrow
+
+This supports efficient handling of text, documents, and structured datasets.
+
+### **Infrastructure & Platform**
+
+Core infrastructure components include:
+
+- SQLAlchemy and psycopg for database management
+- Redis for caching and state handling
+- Kubernetes for orchestration and deployment
+- boto3 for cloud infrastructure integration
+
+This ensures scalability, reliability, and production readiness.
+
+## **Open-Source Tools & Libraries (Frontend)**
+
+The LLMControls frontend is built using a modern open-source React stack.
+
+### **Core Framework**
+
+- React for user interface development
+- React Router for navigation
+- Vite for fast build and runtime performance
+
+### **UI Components & Layout**
+
+- Radix UI and Chakra UI as component foundations
+- Tailwind CSS for utility-based styling and layout
+- Framer Motion for animations and interactions
+- React Flow for node-based visual flow building
+
+This stack provides an intuitive and responsive workflow-building experience.
+
+## **Open-Source Models & Local Runtimes**
+
+LLMControls does not ship model weights.
+
+Instead, it supports a range of open-source and local model runtimes and embedding stacks, including:
+
+- llama.cpp (via llama-cpp-python)
+- sentence-transformers
+- ctransformers
+- Ollama integration
+- Hugging Face Hub for open-source model access
+
+This architecture allows users to switch between hosted LLM APIs and local open-source models without changing flow logic.
