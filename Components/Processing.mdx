@@ -108,17 +108,17 @@ The component supports the following operations. All operations in the **Data op
 <Accordion title="Parameters">
   **Inputs**
 
-  | **Name**           | **Display Name**    | **Info**                                                                                        |
-  | :----------------- | :------------------ | :---------------------------------------------------------------------------------------------- |
-  | data               | Data                | The [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) object to operate on. |
-  | operations         | Operations          | The operation to perform on the data.                                                           |
-  | select_keys_input  | Select Keys         | A list of keys to select from the data.                                                         |
-  | filter_key         | Filter Key          | The key to filter by.                                                                           |
-  | operator           | Comparison Operator | The operator to apply for comparing values.                                                     |
-  | filter_values      | Filter Values       | A list of values to filter by.                                                                  |
-  | append_update_data | Append or Update    | The data to append or update the existing data with.                                            |
-  | remove_keys_input  | Remove Keys         | A list of keys to remove from the data.                                                         |
-  | rename_keys_input  | Rename Keys         | A list of keys to rename in the data.                                                           |
+  | **Name**           | **Display Name**    | **Info**                                             |
+  | :----------------- | :------------------ | :--------------------------------------------------- |
+  | data               | Data                | The <u>Data</u> object to operate on.                |
+  | operations         | Operations          | The operation to perform on the data.                |
+  | select_keys_input  | Select Keys         | A list of keys to select from the data.              |
+  | filter_key         | Filter Key          | The key to filter by.                                |
+  | operator           | Comparison Operator | The operator to apply for comparing values.          |
+  | filter_values      | Filter Values       | A list of values to filter by.                       |
+  | append_update_data | Append or Update    | The data to append or update the existing data with. |
+  | remove_keys_input  | Remove Keys         | A list of keys to remove from the data.              |
+  | rename_keys_input  | Rename Keys         | A list of keys to rename in the data.                |
 
   **Outputs**
 
@@ -234,9 +234,9 @@ For an additional example of using the **Parser** component to format a DataFram
 
   **Outputs**
 
-  | **Name**    | **Display Name** | **Info**                                                                                                              |
-  | :---------- | :--------------- | :-------------------------------------------------------------------------------------------------------------------- |
-  | parsed_text | Parsed Text      | The resulting formatted text as a [<u>Message</u>](https://docs.langflow.org/concepts-objects#message-object) object. |
+  | **Name**    | **Display Name** | **Info**                                                 |
+  | :---------- | :--------------- | :------------------------------------------------------- |
+  | parsed_text | Parsed Text      | The resulting formatted text as a <u>Message</u> object. |
 
   ## 
 </Accordion>
@@ -330,17 +330,17 @@ This example gets JSON data from the `https://jsonplaceholder.typicode.com/users
   | **Name**           | **Display Name** | **Info**                                                                                                                                                                           |
   | :----------------- | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
   | data               | Data             | The structured data to filter or transform using a Lambda function.                                                                                                                |
-  | llm                | Language Model   | The connection port for a [<u>Model</u>](https://docs.langflow.org/components-models) component.                                                                                   |
+  | llm                | Language Model   | The connection port for a <u>Model</u> component.                                                                                                                                  |
   | filter_instruction | Instructions     | The natural language instructions for how to filter or transform the data using a Lambda function, such as `Filter the data to only include items where the 'status' is 'active'`. |
   | sample_size        | Sample Size      | For large datasets, the number of characters to sample from the dataset head and tail.                                                                                             |
   | max_size           | Max Size         | The number of characters for the data to be considered "large", which triggers sampling by the `sample_size` value.                                                                |
 
   **Outputs**
 
-  | **Name**      | **Display Name** | **Info**                                                                                                  |
-  | :------------ | :--------------- | :-------------------------------------------------------------------------------------------------------- |
-  | filtered_data | Filtered Data    | The filtered or transformed [<u>Data object</u>](https://docs.langflow.org/concepts-objects#data-object). |
-  | dataframe     | DataFrame        | The filtered data as a [<u>DataFrame</u>](https://docs.langflow.org/concepts-objects#dataframe-object).   |
+  | **Name**      | **Display Name** | **Info**                                        |
+  | :------------ | :--------------- | :---------------------------------------------- |
+  | filtered_data | Filtered Data    | The filtered or transformed <u>Data object</u>. |
+  | dataframe     | DataFrame        | The filtered data as a <u>DataFrame</u>.        |
 </Accordion>
 
 ## **Split text**
@@ -367,20 +367,20 @@ After `chunk_size`, **Chunk Overlap** is applied between chunks to maintain cont
 <Accordion title="Parameters">
   ## **Inputs**
 
-  | **Name**      | **Display Name** | **Info**                                                                                                                                                                                                   |
-  | :------------ | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | data_inputs   | Input Documents  | The data to split. The component accepts [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) or [<u>DataFrame</u>](https://docs.langflow.org/concepts-objects#dataframe-object) objects. |
-  | chunk_overlap | Chunk Overlap    | The number of characters to overlap between chunks. Default: `200`.                                                                                                                                        |
-  | chunk_size    | Chunk Size       | The maximum number of characters in each chunk. Default: `1000`.                                                                                                                                           |
-  | separator     | Separator        | The character to split on. Default: `newline`.                                                                                                                                                             |
-  | text_key      | Text Key         | The key to use for the text column. Default: `text`.                                                                                                                                                       |
+  | **Name**      | **Display Name** | **Info**                                                                          |
+  | :------------ | :--------------- | :-------------------------------------------------------------------------------- |
+  | data_inputs   | Input Documents  | The data to split. The component accepts <u>Data</u> or <u>DataFrame</u> objects. |
+  | chunk_overlap | Chunk Overlap    | The number of characters to overlap between chunks. Default: `200`.               |
+  | chunk_size    | Chunk Size       | The maximum number of characters in each chunk. Default: `1000`.                  |
+  | separator     | Separator        | The character to split on. Default: `newline`.                                    |
+  | text_key      | Text Key         | The key to use for the text column. Default: `text`.                              |
 
   **Outputs**
 
-  | **Name**  | **Display Name** | **Info**                                                                                                                |
-  | :-------- | :--------------- | :---------------------------------------------------------------------------------------------------------------------- |
-  | chunks    | Chunks           | A list of split text chunks as [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects.           |
-  | dataframe | DataFrame        | A list of split text chunks as [<u>DataFrame</u>](https://docs.langflow.org/concepts-objects#dataframe-object) objects. |
+  | **Name**  | **Display Name** | **Info**                                                 |
+  | :-------- | :--------------- | :------------------------------------------------------- |
+  | chunks    | Chunks           | A list of split text chunks as <u>Data</u> objects.      |
+  | dataframe | DataFrame        | A list of split text chunks as <u>DataFrame</u> objects. |
 
   ## 
 </Accordion>
