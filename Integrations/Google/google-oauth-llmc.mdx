@@ -43,7 +43,7 @@ With your OAuth application configured and your credentials JSON file created, f
 
 ## **Create a flow with Google Drive loader**
 
-For a pre-built JSON file of a flow that uses the Google Drive loader component, download the [Google Drive Document Translation Example Flow JSON](https://docs.langflow.org/files/Google_Drive_Docs_Translations_Example.json) to your local machine.
+For a pre-built JSON file of a flow that uses the Google Drive loader component, download the Google Drive Document Translation Example Flow JSON to your local machine.
 
 **Example flow structure:**
 
@@ -54,7 +54,7 @@ Google OAuth Token → Parse Data → JSON Cleaner → Google Drive Loader → P
 
 In this example, the **Google Drive loader** component loads a text file hosted on Google Drive, translates the text to Spanish, and returns it to a chat output.
 
-1. Download the [Google Drive Document Translation Example Flow JSON](https://docs.langflow.org/files/Google_Drive_Docs_Translations_Example.json) to your local machine.
+1. Download the Google Drive Document Translation Example Flow JSON to your local machine.
 2. To import the downloaded JSON to LLM Controls, click **Options**, and then select **Import**.
 3. In the **Credentials File** field of the Google OAuth Token component, enter the path to your **Credentials File**, the JSON file containing the Client ID credentials you downloaded from Google in the previous steps.
 4. In the **Scopes** field of the Google Oauth Token component, enter the scope required to access your resources. For example, to allow your LLM Controls application to access a user's Google Drive, the scope is `https://www.googleapis.com/auth/drive`. For more information, see the [Google documentation](https://developers.google.com/identity/protocols/oauth2/scopes). The example flow includes a **Parse data** component to convert the `data` output of the Google OAuth Token component to the `text` input of the JSON Cleaner component.
