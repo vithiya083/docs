@@ -118,7 +118,14 @@
                   "Integrations/NVIDIA/NVIDIANIMonWSL2",
                   "Integrations/NVIDIA/NVIDIAG-Assist"
                 ]
-              }
+              },
+              {
+  "group": "Open Source",
+  "pages": [
+    "open-source-foundation"
+  ]
+}
+
             ]
           }
         ]
