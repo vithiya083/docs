@@ -73,10 +73,10 @@ For more information, see the [DataStax documentation](https://docs.datastax.com
 
   **Outputs**
 
-  | **Name**       | **Display Name** | **Info**                                                                                                                         |
-  | :------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | Vector Store     | The Astra DB vector store instance configured with the specified parameters.                                                     |
-  | search_results | Search Results   | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Display Name** | **Info**                                                                     |
+  | :------------- | :--------------- | :--------------------------------------------------------------------------- |
+  | vector_store   | Vector Store     | The Astra DB vector store instance configured with the specified parameters. |
+  | search_results | Search Results   | The results of the similarity search as a list of <u>Data</u> objects.       |
 
   ### 
 </Accordion>
@@ -160,10 +160,10 @@ This component implements a Vector Store using AstraDB with graph capabilities. 
 
   **Outputs**
 
-  | **Name**       | **Display Name** | **Info**                                                                                                                         |
-  | :------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | Vector Store     | The Graph RAG vector store instance configured with the specified parameters.                                                    |
-  | search_results | Search Results   | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Display Name** | **Info**                                                                      |
+  | :------------- | :--------------- | :---------------------------------------------------------------------------- |
+  | vector_store   | Vector Store     | The Graph RAG vector store instance configured with the specified parameters. |
+  | search_results | Search Results   | The results of the similarity search as a list of <u>Data</u> objects.        |
 </Accordion>
 
 ## **Cassandra**
@@ -231,10 +231,10 @@ This component implements a Cassandra Graph Vector Store with search capabilitie
 
   **Outputs**
 
-  | **Name**       | **Display Name** | **Info**                                                                                                                         |
-  | :------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | Vector Store     | The Cassandra Graph vector store instance configured with the specified parameters.                                              |
-  | search_results | Search Results   | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Display Name** | **Info**                                                                            |
+  | :------------- | :--------------- | :---------------------------------------------------------------------------------- |
+  | vector_store   | Vector Store     | The Cassandra Graph vector store instance configured with the specified parameters. |
+  | search_results | Search Results   | The results of the similarity search as a list of <u>Data</u> objects.              |
 
   ## 
 </Accordion>
@@ -285,10 +285,10 @@ For more information, see the [Chroma documentation](https://docs.trychroma.com/
 
   **Outputs**
 
-  | **Name**       | **Type**   | **Description**                                                                                                                  |
-  | :------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | Chroma     | The Chroma vector store instance.                                                                                                |
-  | search_results | List[Data] | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Type**   | **Description**                                                        |
+  | :------------- | :--------- | :--------------------------------------------------------------------- |
+  | vector_store   | Chroma     | The Chroma vector store instance.                                      |
+  | search_results | List[Data] | The results of the similarity search as a list of <u>Data</u> objects. |
 </Accordion>
 
 ## **Clickhouse**
@@ -389,10 +389,10 @@ For more information, see the [Chroma documentation](https://docs.trychroma.com/
 
   **Outputs**
 
-  | **Name**       | **Type**                                                                  | **Description**                                                                                                                  |
-  | :------------- | :------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | Chroma                                                                    | A local Chroma vector store instance configured with the specified parameters.                                                   |
-  | search_results | List[<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Type**                                                                  | **Description**                                                                |
+  | :------------- | :------------------------------------------------------------------------ | :----------------------------------------------------------------------------- |
+  | vector_store   | Chroma                                                                    | A local Chroma vector store instance configured with the specified parameters. |
+  | search_results | List[<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) | The results of the similarity search as a list of <u>Data</u> objects.         |
 </Accordion>
 
 ## **Elasticsearch**
@@ -417,10 +417,10 @@ This component creates an Elasticsearch Vector Store with search capabilities. F
 
   **Outputs**
 
-  | **Name**       | **Type**           | **Description**                                                                                                                  |
-  | :------------- | :----------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | ElasticsearchStore | The Elasticsearch vector store instance.                                                                                         |
-  | search_results | List[Data]         | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Type**           | **Description**                                                        |
+  | :------------- | :----------------- | :--------------------------------------------------------------------- |
+  | vector_store   | ElasticsearchStore | The Elasticsearch vector store instance.                               |
+  | search_results | List[Data]         | The results of the similarity search as a list of <u>Data</u> objects. |
 
   ## 
 </Accordion>
@@ -444,10 +444,10 @@ This component creates a FAISS Vector Store with search capabilities. For more i
 
   **Outputs**
 
-  | **Name**       | **Display Name** | **Info**                                                                                                                         |
-  | :------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | Vector Store     | The FAISS vector store instance configured with the specified parameters.                                                        |
-  | search_results | Search Results   | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Display Name** | **Info**                                                                  |
+  | :------------- | :--------------- | :------------------------------------------------------------------------ |
+  | vector_store   | Vector Store     | The FAISS vector store instance configured with the specified parameters. |
+  | search_results | Search Results   | The results of the similarity search as a list of <u>Data</u> objects.    |
 
   ## 
 </Accordion>
@@ -472,9 +472,9 @@ For an example flow, see the **Graph RAG** template.
 
   **Outputs**
 
-  | **Name**       | **Type**   | **Description**                                                                                                                           |
-  | :------------- | :--------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
-  | search_results | List[Data] | Results of the graph-based document retrieval as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Type**   | **Description**                                                                 |
+  | :------------- | :--------- | :------------------------------------------------------------------------------ |
+  | search_results | List[Data] | Results of the graph-based document retrieval as a list of <u>Data</u> objects. |
 </Accordion>
 
 ## **Hyper-Converged Database (HCD)**
@@ -520,10 +520,10 @@ To use the HCD vector store for embeddings ingestion, connect it to an embedding
 
   **Outputs**
 
-  | **Name**       | **Type**                          | **Description**                                                                                                                  |
-  | :------------- | :-------------------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | HyperConvergedDatabaseVectorStore | The HCD vector store instance.                                                                                                   |
-  | search_results | List[Data]                        | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Type**                          | **Description**                                                        |
+  | :------------- | :-------------------------------- | :--------------------------------------------------------------------- |
+  | vector_store   | HyperConvergedDatabaseVectorStore | The HCD vector store instance.                                         |
+  | search_results | List[Data]                        | The results of the similarity search as a list of <u>Data</u> objects. |
 </Accordion>
 
 ## **Milvus**
@@ -585,10 +585,10 @@ This component creates a MongoDB Atlas Vector Store with search capabilities. Fo
 
   **Outputs**
 
-  | **Name**       | **Type**                 | **Description**                                                                                                                  |
-  | :------------- | :----------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | MongoDBAtlasVectorSearch | The MongoDB Atlas vector store instance.                                                                                         |
-  | search_results | List[Data]               | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Type**                 | **Description**                                                        |
+  | :------------- | :----------------------- | :--------------------------------------------------------------------- |
+  | vector_store   | MongoDBAtlasVectorSearch | The MongoDB Atlas vector store instance.                               |
+  | search_results | List[Data]               | The results of the similarity search as a list of <u>Data</u> objects. |
 
   ## 
 </Accordion>
@@ -618,10 +618,10 @@ This component creates an Opensearch vector store with search capabilities For m
 
   **Outputs**
 
-  | **Name**       | **Type**               | **Description**                                                                                                                  |
-  | :------------- | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | OpenSearchVectorSearch | OpenSearch vector store instance                                                                                                 |
-  | search_results | List[Data]             | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Type**               | **Description**                                                        |
+  | :------------- | :--------------------- | :--------------------------------------------------------------------- |
+  | vector_store   | OpenSearchVectorSearch | OpenSearch vector store instance                                       |
+  | search_results | List[Data]             | The results of the similarity search as a list of <u>Data</u> objects. |
 
   ## 
 </Accordion>
@@ -644,10 +644,10 @@ This component creates a PGVector Vector Store with search capabilities. For mor
 
   **Outputs**
 
-  | **Name**       | **Display Name** | **Info**                                                                                                                         |
-  | :------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | Vector Store     | The PGVector vector store instance configured with the specified parameters.                                                     |
-  | search_results | Search Results   | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Display Name** | **Info**                                                                     |
+  | :------------- | :--------------- | :--------------------------------------------------------------------------- |
+  | vector_store   | Vector Store     | The PGVector vector store instance configured with the specified parameters. |
+  | search_results | Search Results   | The results of the similarity search as a list of <u>Data</u> objects.       |
 
   ## 
 </Accordion>
@@ -673,10 +673,10 @@ This component creates a Pinecone Vector Store with search capabilities. For mor
 
   **Outputs**
 
-  | **Name**       | **Display Name** | **Info**                                                                                                                         |
-  | :------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | Vector Store     | The Pinecone vector store instance configured with the specified parameters.                                                     |
-  | search_results | Search Results   | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Display Name** | **Info**                                                                     |
+  | :------------- | :--------------- | :--------------------------------------------------------------------------- |
+  | vector_store   | Vector Store     | The Pinecone vector store instance configured with the specified parameters. |
+  | search_results | Search Results   | The results of the similarity search as a list of <u>Data</u> objects.       |
 </Accordion>
 
 ## **Qdrant**
@@ -707,10 +707,10 @@ This component creates a Qdrant Vector Store with search capabilities. For more 
 
   **Outputs**
 
-  | **Name**       | **Type**   | **Description**                                                                                                                  |
-  | :------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | Qdrant     | A Qdrant vector store instance.                                                                                                  |
-  | search_results | List[Data] | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Type**   | **Description**                                                        |
+  | :------------- | :--------- | :--------------------------------------------------------------------- |
+  | vector_store   | Qdrant     | A Qdrant vector store instance.                                        |
+  | search_results | List[Data] | The results of the similarity search as a list of <u>Data</u> objects. |
 </Accordion>
 
 ## **Redis**
@@ -733,10 +733,10 @@ This component creates a Redis Vector Store with search capabilities. For more i
 
   **Outputs**
 
-  | **Name**       | **Type**   | **Description**                                                                                                                  |
-  | :------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | Redis      | Redis vector store instance                                                                                                      |
-  | search_results | List[Data] | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Type**   | **Description**                                                        |
+  | :------------- | :--------- | :--------------------------------------------------------------------- |
+  | vector_store   | Redis      | Redis vector store instance                                            |
+  | search_results | List[Data] | The results of the similarity search as a list of <u>Data</u> objects. |
 
   ## 
 </Accordion>
@@ -761,10 +761,10 @@ This component creates a connection to a Supabase Vector Store with search capab
 
   **Outputs**
 
-  | **Name**       | **Type**            | **Description**                                                                                                                  |
-  | :------------- | :------------------ | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | SupabaseVectorStore | A Supabase vector store instance.                                                                                                |
-  | search_results | List[Data]          | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Type**            | **Description**                                                        |
+  | :------------- | :------------------ | :--------------------------------------------------------------------- |
+  | vector_store   | SupabaseVectorStore | A Supabase vector store instance.                                      |
+  | search_results | List[Data]          | The results of the similarity search as a list of <u>Data</u> objects. |
 
   ## 
 </Accordion>
@@ -790,10 +790,10 @@ This component creates an Upstash Vector Store with search capabilities. For mor
 
   **Outputs**
 
-  | **Name**       | **Type**           | **Description**                                                                                                                  |
-  | :------------- | :----------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | UpstashVectorStore | An Upstash vector store instance.                                                                                                |
-  | search_results | List[Data]         | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Type**           | **Description**                                                        |
+  | :------------- | :----------------- | :--------------------------------------------------------------------- |
+  | vector_store   | UpstashVectorStore | An Upstash vector store instance.                                      |
+  | search_results | List[Data]         | The results of the similarity search as a list of <u>Data</u> objects. |
 </Accordion>
 
 ## **Vectara**
@@ -815,10 +815,10 @@ This component creates a Vectara Vector Store with search capabilities. For more
 
   **Outputs**
 
-  | **Name**       | **Type**           | **Description**                                                                                                                  |
-  | :------------- | :----------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | vector_store   | VectaraVectorStore | Vectara vector store instance.                                                                                                   |
-  | search_results | List[Data]         | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Type**           | **Description**                                                        |
+  | :------------- | :----------------- | :--------------------------------------------------------------------- |
+  | vector_store   | VectaraVectorStore | Vectara vector store instance.                                         |
+  | search_results | List[Data]         | The results of the similarity search as a list of <u>Data</u> objects. |
 
   ## 
 </Accordion>
@@ -841,9 +841,9 @@ This component searches a Vectara Vector Store for documents based on the provid
 
   **Outputs**
 
-  | **Name**       | **Type**   | **Description**                                                                                                                  |
-  | :------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | search_results | List[Data] | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Type**   | **Description**                                                        |
+  | :------------- | :--------- | :--------------------------------------------------------------------- |
+  | search_results | List[Data] | The results of the similarity search as a list of <u>Data</u> objects. |
 </Accordion>
 
 ## **Weaviate**
@@ -892,7 +892,7 @@ This component searches a Weaviate Vector Store for documents similar to the inp
 
   **Outputs**
 
-  | **Name**       | **Type**   | **Description**                                                                                                                  |
-  | :------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------- |
-  | search_results | List[Data] | The results of the similarity search as a list of [<u>Data</u>](https://docs.langflow.org/concepts-objects#data-object) objects. |
+  | **Name**       | **Type**   | **Description**                                                        |
+  | :------------- | :--------- | :--------------------------------------------------------------------- |
+  | search_results | List[Data] | The results of the similarity search as a list of <u>Data</u> objects. |
 </Accordion>
