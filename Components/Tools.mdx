@@ -326,7 +326,131 @@ This component is an agent designed to utilize various tools seamlessly within w
 <Accordion title="Parameters" icon="">
   **Inputs**
 
-  <table><thead><tr><th>Name</th><th>Display Name</th><th>Info</th></tr></thead><tbody><tr><td>tools</td><td>Tools</td><td>These are the tools that the agent can use to help with tasks.</td></tr><tr><td>input_value</td><td>Input</td><td>The input provided by the user for the agent to process.</td></tr><tr><td>handle_parsing_errors</td><td>Handle Parse Errors</td><td>Should the Agent fix errors when reading user input for better processing?</td></tr><tr><td>verbose</td><td>Verbose</td><td></td></tr><tr><td>max_iterations</td><td>Max Iterations</td><td>The maximum number of attempts the agent can make to complete its task before it stops.</td></tr><tr><td>agent_description</td><td>Agent Description [Deprecated]</td><td>The description of the agent. This is only used when in Tool Mode. Defaults to 'A helpful assistant with access to the following tools:' and tools are added dynamically. This feature is deprecated and will be removed in future versions.</td></tr><tr><td>llm</td><td>Language Model</td><td>Language model that the agent utilizes to perform tasks effectively.</td></tr><tr><td>system_prompt</td><td>System Prompt</td><td>System prompt to guide the agent's behavior.</td></tr><tr><td>chat_history</td><td>Chat Memory</td><td>This input stores the chat history, allowing the agent to remember previous conversations.</td></tr></tbody></table>
+  <table>
+  <thead>
+  <tr>
+  <th>
+  Name</th>
+
+   <th>
+  Display Name</th>
+
+   <th>
+  Info</th>
+
+  </tr>
+
+  </thead>
+
+  <tbody>
+  <tr>
+  <td>
+  tools</td>
+
+   <td>
+  Tools</td>
+
+   <td>
+  These are the tools that the agent can use to help with tasks.</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  input_value</td>
+
+   <td>
+  Input</td>
+
+   <td>
+  The input provided by the user for the agent to process.</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  handle_parsing_errors</td>
+
+   <td>
+  Handle Parse Errors</td>
+
+   <td>
+  Should the Agent fix errors when reading user input for better processing?</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  verbose</td>
+
+   <td>
+  Verbose</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  max_iterations</td>
+
+   <td>
+  Max Iterations</td>
+
+   <td>
+  The maximum number of attempts the agent can make to complete its task before it stops.</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  agent_description</td>
+
+   <td>
+  Agent Description [Deprecated]</td>
+
+   <td>
+  The description of the agent. This is only used when in Tool Mode. Defaults to 'A helpful assistant with access to the following tools:' and tools are added dynamically. This feature is deprecated and will be removed in future versions.</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  llm</td>
+
+   <td>
+  Language Model</td>
+
+   <td>
+  Language model that the agent utilizes to perform tasks effectively.</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  system_prompt</td>
+
+   <td>
+  System Prompt</td>
+
+   <td>
+  System prompt to guide the agent's behavior.</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  chat_history</td>
+
+   <td>
+  Chat Memory</td>
+
+   <td>
+  This input stores the chat history, allowing the agent to remember previous conversations.</td>
+
+  </tr>
+
+  </tbody>
+
+  </table>
 
   #### Outputs
 
@@ -380,7 +504,83 @@ This component calls the searchapi.io API with result limiting. It returns organ
 <Accordion title="Parameters" icon="">
   **Inputs**
 
-  <table><thead><tr><th>Name</th><th>Display Name</th><th>Info</th></tr></thead><tbody><tr><td>engine</td><td>Engine</td><td>Options: google, bing, duckduckgo.</td></tr><tr><td>api_key</td><td>SearchAPI API Key</td><td></td></tr><tr><td>input_value</td><td>Input</td><td></td></tr><tr><td>search_params</td><td>Search parameters</td><td></td></tr><tr><td>max_results</td><td>Max Results</td><td></td></tr><tr><td>max_snippet_length</td><td>Max Snippet Length</td><td></td></tr></tbody></table>
+  <table>
+  <thead>
+  <tr>
+  <th>
+  Name</th>
+
+   <th>
+  Display Name</th>
+
+   <th>
+  Info</th>
+
+  </tr>
+
+  </thead>
+
+  <tbody>
+  <tr>
+  <td>
+  engine</td>
+
+   <td>
+  Engine</td>
+
+   <td>
+  Options: google, bing, duckduckgo.</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  api_key</td>
+
+   <td>
+  SearchAPI API Key</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  input_value</td>
+
+   <td>
+  Input</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  search_params</td>
+
+   <td>
+  Search parameters</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  max_results</td>
+
+   <td>
+  Max Results</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  max_snippet_length</td>
+
+   <td>
+  Max Snippet Length</td>
+
+  </tr>
+
+  </tbody>
+
+  </table>
 
   #### Outputs
 
@@ -398,7 +598,71 @@ This component calls the Serp Search API with result limiting. It returns organi
 <Accordion title="Paramaters" icon="">
   **Inputs**
 
-  <table><thead><tr><th>Name</th><th>Display Name</th><th>Info</th></tr></thead><tbody><tr><td>serpapi_api_key</td><td>SerpAPI API Key</td><td></td></tr><tr><td>input_value</td><td>Input</td><td></td></tr><tr><td>search_params</td><td>Parameters</td><td></td></tr><tr><td>max_results</td><td>Max Results</td><td></td></tr><tr><td>max_snippet_length</td><td>Max Snippet Length</td><td></td></tr></tbody></table>
+  <table>
+  <thead>
+  <tr>
+  <th>
+  Name</th>
+
+   <th>
+  Display Name</th>
+
+   <th>
+  Info</th>
+
+  </tr>
+
+  </thead>
+
+  <tbody>
+  <tr>
+  <td>
+  serpapi_api_key</td>
+
+   <td>
+  SerpAPI API Key</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  input_value</td>
+
+   <td>
+  Input</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  search_params</td>
+
+   <td>
+  Parameters</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  max_results</td>
+
+   <td>
+  Max Results</td>
+
+  </tr>
+
+  <tr>
+  <td>
+  max_snippet_length</td>
+
+   <td>
+  Max Snippet Length</td>
+
+  </tr>
+
+  </tbody>
+
+  </table>
 
   #### Outputs
 
@@ -406,4 +670,86 @@ This component calls the Serp Search API with result limiting. It returns organi
   | :--- | :----------- | :---------------------------------------------------------------------------- |
   | data | Data         | Search results as a list of Data objects containing title, link, and snippet. |
   | text | Text         | Search results as concatenated text in a Message object.                      |
+</Accordion>
+
+## **Tavily AI Search**
+
+This component is a search engine optimized for LLMs and RAG, aimed at efficient, quick, and persistent search results. It supports configurable search depth, topic filtering, time ranges, and can include images and short answers.
+
+<Accordion title="Parameters" icon="">
+  #### Inputs
+
+  | Name           | Display Name   | Info                                                                                                         |
+  | :------------- | :------------- | :----------------------------------------------------------------------------------------------------------- |
+  | api_key        | Tavily API Key | Your Tavily API Key.                                                                                         |
+  | query          | Search Query   | The search query you want to execute with Tavily.                                                            |
+  | search_depth   | Search Depth   | The depth of the search. Options: basic, advanced.                                                           |
+  | topic          | Search Topic   | The category of the search. Options: general, news.                                                          |
+  | time_range     | Time Range     | The time range back from the current date to include in the search results. Options: day, week, month, year. |
+  | max_results    | Max Results    | The maximum number of search results to return.                                                              |
+  | include_images | Include Images | Include a list of query-related images in the response.                                                      |
+  | include_answer | Include Answer | Include a short answer to original query.                                                                    |
+
+  #### Outputs
+
+  | Name | Display Name | Info                                                                                |
+  | :--- | :----------- | :---------------------------------------------------------------------------------- |
+  | data | Data         | Search results as a list of Data objects containing title, URL, content, and score. |
+  | text | Text         | Search results as concatenated text in a Message object.                            |
+</Accordion>
+
+## **Wikipedia**
+
+This component calls the Wikipedia API to search and retrieve article content.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  <table style="min-width: 75px"><colgroup><col style="min-width: 25px"><col style="min-width: 25px"><col style="min-width: 25px"></colgroup><tbody><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Name</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Display Name</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Info</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>input_value</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Input</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>lang</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Language</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>k</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Number of results</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>load_all_available_meta</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Load all available meta</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>doc_content_chars_max</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Document content characters max</p></td></tr></tbody></table>
+
+  #### Outputs
+
+  | Name      | Display Name | Info                                                 |
+  | :-------- | :----------- | :--------------------------------------------------- |
+  | data      | Data         | Wikipedia article content as a list of Data objects. |
+  | dataframe | DataFrame    | Wikipedia article content as a DataFrame object.     |
+</Accordion>
+
+## **WolframAlpha API**
+
+This component enables queries to Wolfram Alpha for computational data, facts, and calculations across various topics, delivering structured responses.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  <table style="min-width: 75px"><colgroup><col style="min-width: 25px"><col style="min-width: 25px"><col style="min-width: 25px"></colgroup><tbody><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Name</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Display Name</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Info</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>input_value</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Input Query</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Example query: 'What is the population of France?'</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>app_id</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>App ID</p></td></tr></tbody></table>
+
+  #### Outputs
+
+  | Name      | Display Name | Info                                              |
+  | :-------- | :----------- | :------------------------------------------------ |
+  | data      | Data         | The Wolfram Alpha response as a Data object.      |
+  | dataframe | DataFrame    | The Wolfram Alpha response as a DataFrame object. |
+</Accordion>
+
+## **Yahoo Finance**
+
+This component uses yfinance (unofficial package) to access financial data and market information from Yahoo Finance. It supports multiple data retrieval methods including stock info, news, balance sheets, earnings, and more.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name     | Display Name   | Info                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+  | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | symbol   | Stock Symbol   | The stock symbol to retrieve data for (e.g., AAPL, GOOG).                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+  | method   | Data Method    | The type of data to retrieve. Options: get_info, get_news, get_actions, get_analysis, get_balance_sheet, get_calendar, get_cashflow, get_institutional_holders, get_recommendations, get_sustainability, get_major_holders, get_mutualfund_holders, get_insider_purchases, get_insider_transactions, get_insider_roster_holders, get_dividends, get_capital_gains, get_splits, get_shares, get_fast_info, get_sec_filings, get_recommendations_summary, get_upgrades_downgrades, get_earnings, get_income_stmt. |
+  | num_news | Number of News | The number of news articles to retrieve (only applicable for get_news).                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+
+  #### Outputs
+
+  | Name      | Display Name | Info                                                         |
+  | :-------- | :----------- | :----------------------------------------------------------- |
+  | data      | Data         | The retrieved financial data as a list of Data objects.      |
+  | text      | Text         | The financial data as concatenated text in a Message object. |
+  | dataframe | DataFrame    | The financial data as a DataFrame object.                    |
 </Accordion>
