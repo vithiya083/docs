@@ -336,59 +336,7 @@ This component reranks documents using the Cohere API. It takes search results a
 <Accordion title="Parameters">
   **Inputs**
 
-  <table>
-  <thead>
-  <tr>
-  <th>Name</th>
-
-  <th>Display Name</th>
-
-  <th>Info</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <tr>
-  <td>search_query</td>
-
-  <td>Search Query</td>
-
-  <td>(inherited from base)</td>
-  </tr>
-
-  <tr>
-  <td>search_results</td>
-
-  <td>Search Results</td>
-
-  <td>Search Results from a Vector Store.</td>
-  </tr>
-
-  <tr>
-  <td>top_n</td>
-
-  <td>Top N</td>
-
-  <td>(inherited from base, default: 3)</td>
-  </tr>
-
-  <tr>
-  <td>api_key</td>
-
-  <td>Cohere API Key</td>
-
-  <td></td>
-  </tr>
-
-  <tr>
-  <td>model</td>
-
-  <td>Model</td>
-
-  <td>Options: rerank-english-v3.0, rerank-multilingual-v3.0, rerank-english-v2.0, rerank-multilingual-v2.0.</td>
-  </tr>
-  </tbody>
-  </table>
+  <table><thead><tr><th>Name</th><th>Display Name</th><th>Info</th></tr></thead><tbody><tr><td>search_query</td><td>Search Query</td><td>(inherited from base)</td></tr><tr><td>search_results</td><td>Search Results</td><td>Search Results from a Vector Store.</td></tr><tr><td>top_n</td><td>Top N</td><td>(inherited from base, default: 3)</td></tr><tr><td>api_key</td><td>Cohere API Key</td><td></td></tr><tr><td>model</td><td>Model</td><td>Options: rerank-english-v3.0, rerank-multilingual-v3.0, rerank-english-v2.0, rerank-multilingual-v2.0.</td></tr></tbody></table>
 
   **Outputs**
 
@@ -559,4 +507,239 @@ This component analyzes a Git repository and returns file contents, directory st
   | repository_info          | Repository Info          | Repository metadata (name, URL, default branch, last commit, branches) as a list of Data objects.      |
   | statistics               | Statistics               | Repository statistics (total files, size, lines, binary files, directories) as a list of Data objects. |
   | files_content            | Files Content            | Individual file contents with path and size as a list of Data objects.                                 |
+</Accordion>
+
+### **Confluence**
+
+This component loads documents from a Confluence wiki collaboration platform using the Confluence API.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  <table><thead><tr><td>Name</td><td>Display Name</td><td>Info</td></tr></thead><tbody><tr><td>url</td><td>Site URL</td><td>The base URL of the Confluence Space. Example: https://&lt;company&gt;.atlassian.net/wiki.</td></tr><tr><td>username</td><td>Username</td><td>Atlassian User E-mail. Example: <a target="_blank" rel="noopener noreferrer nofollow" href="mailto:email@example.com">email@example.com</a></td></tr><tr><td>api_key</td><td>API Key</td><td>Atlassian Key. Create at: <a target="_blank" rel="noopener noreferrer nofollow" href="https://id.atlassian.com/manage-profile/security/api-tokens"><u>https://id.atlassian.com/manage-profile/security/api-tokens</u></a></td></tr><tr><td>space_key</td><td>Space Key</td><td></td></tr><tr><td>cloud</td><td>Use Cloud?</td><td></td></tr><tr><td>content_format</td><td>Content Format</td><td>Specify content format. Options: editor, export_view, anonymous_export_view, storage, view. Defaults to storage.</td></tr><tr><td>max_pages</td><td>Max Pages</td><td>Maximum number of pages to retrieve in total, defaults 1000.</td></tr></tbody></table>
+
+  Outputs
+
+  | Name | Display Name | Info                                               |
+  | :--- | :----------- | :------------------------------------------------- |
+  | data | Data         | Confluence page content as a list of Data objects. |
+</Accordion>
+
+### **YouTube**
+
+The YouTube section contains 7 components for interacting with YouTube data.
+
+**YouTube Channel**
+
+This component retrieves detailed information and statistics about YouTube channels as a DataFrame.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name               | Display Name       | Info                                                     |
+  | :----------------- | :----------------- | :------------------------------------------------------- |
+  | channel_url        | Channel URL or ID  | The URL or ID of the YouTube channel.                    |
+  | api_key            | YouTube API Key    | Your YouTube Data API key.                               |
+  | include_statistics | Include Statistics | Include channel statistics (views, subscribers, videos). |
+  | include_branding   | Include Branding   | Include channel branding settings (banner, thumbnails).  |
+  | include_playlists  | Include Playlists  | Include channel's public playlists.                      |
+
+  Outputs
+
+  | Name       | Display Name | Info                                |
+  | :--------- | :----------- | :---------------------------------- |
+  | channel_df | Channel Info | Channel information as a DataFrame. |
+</Accordion>
+
+**YouTube Comments**
+
+This component retrieves and analyzes comments from YouTube videos.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name            | Display Name    | Info                                                          |
+  | :-------------- | :-------------- | :------------------------------------------------------------ |
+  | video_url       | Video URL       | The URL of the YouTube video to get comments from.            |
+  | api_key         | YouTube API Key | Your YouTube Data API key.                                    |
+  | max_results     | Max Results     | The maximum number of comments to return.                     |
+  | sort_by         | Sort By         | Sort comments by time or relevance. Options: time, relevance. |
+  | include_replies | Include Replies | Whether to include replies to comments.                       |
+  | include_metrics | Include Metrics | Include metrics like like count and reply count.              |
+
+  Outputs
+
+  | Name     | Display Name | Info                           |
+  | :------- | :----------- | :----------------------------- |
+  | comments | Comments     | Video comments as a DataFrame. |
+</Accordion>
+
+**YouTube Playlist**
+
+This component extracts all video URLs from a YouTube playlist.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name         | Display Name | Info                         |
+  | :----------- | :----------- | :--------------------------- |
+  | playlist_url | Playlist URL | URL of the YouTube playlist. |
+
+  Outputs
+
+  | Name       | Display Name | Info                                |
+  | :--------- | :----------- | :---------------------------------- |
+  | video_urls | Video URLs   | Playlist video URLs as a DataFrame. |
+</Accordion>
+
+**YouTube Search**
+
+This component searches YouTube videos based on a query.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name             | Display Name     | Info                                                                                   |
+  | :--------------- | :--------------- | :------------------------------------------------------------------------------------- |
+  | query            | Search Query     | The search query to look for on YouTube.                                               |
+  | api_key          | YouTube API Key  | Your YouTube Data API key.                                                             |
+  | max_results      | Max Results      | The maximum number of results to return.                                               |
+  | order            | Sort Order       | Sort order for the search results. Options: relevance, date, rating, title, viewCount. |
+  | include_metadata | Include Metadata | Include video metadata like description and statistics.                                |
+
+  Outputs
+
+  | Name    | Display Name   | Info                                                                           |
+  | :------ | :------------- | :----------------------------------------------------------------------------- |
+  | results | Search Results | Search results as a DataFrame.YouTube TrendingYouTube TrendingYouTube Trending |
+</Accordion>
+
+**YouTube Trending**
+
+This component retrieves trending videos from YouTube with filtering options by region and category.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name                    | Display Name            | Info                                                                                                                                                                                                                                                          |
+  | :---------------------- | :---------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | api_key                 | YouTube API Key         | Your YouTube Data API key.                                                                                                                                                                                                                                    |
+  | region                  | Region                  | The region to get trending videos from. Options: Global, United States, Brazil, United Kingdom, India, Japan, South Korea, Germany, France, Canada, Australia, Spain, Italy, Mexico, Russia, Netherlands, Poland, Argentina.                                  |
+  | category                | Category                | The category of videos to retrieve. Options: All, Film & Animation, Autos & Vehicles, Music, Pets & Animals, Sports, Travel & Events, Gaming, People & Blogs, Comedy, Entertainment, News & Politics, Education, Science & Technology, Nonprofits & Activism. |
+  | max_results             | Max Results             | Maximum number of trending videos to return (1-50).                                                                                                                                                                                                           |
+  | include_statistics      | Include Statistics      | Include video statistics (views, likes, comments).                                                                                                                                                                                                            |
+  | include_content_details | Include Content Details | Include video duration and quality info.                                                                                                                                                                                                                      |
+  | include_thumbnails      | Include Thumbnails      | Include video thumbnail URLs.                                                                                                                                                                                                                                 |
+
+  Outputs
+
+  | Name            | Display Name    | Info                            |
+  | :-------------- | :-------------- | :------------------------------ |
+  | trending_videos | Trending Videos | Trending videos as a DataFrame. |
+</Accordion>
+
+**YouTube Video Details**
+
+This component retrieves detailed information and statistics about YouTube videos.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name                    | Display Name            | Info                                                       |
+  | :---------------------- | :---------------------- | :--------------------------------------------------------- |
+  | video_url               | Video URL               | The URL of the YouTube video.                              |
+  | api_key                 | YouTube API Key         | Your YouTube Data API key.                                 |
+  | include_statistics      | Include Statistics      | Include video statistics (views, likes, comments).         |
+  | include_content_details | Include Content Details | Include video duration, quality, and age restriction info. |
+  | include_tags            | Include Tags            | Include video tags and keywords.                           |
+  | include_thumbnails      | Include Thumbnails      | Include video thumbnail URLs in different resolutions.     |
+
+  Outputs
+
+  | Name       | Display Name | Info                          |
+  | :--------- | :----------- | :---------------------------- |
+  | video_data | Video Data   | Video details as a DataFrame. |
+</Accordion>
+
+**YouTube Transcripts**
+
+This component extracts spoken content from YouTube videos with multiple output options.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name               | Display Name         | Info                                                                                                                                                   |
+  | :----------------- | :------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | url                | Video URL            | Enter the YouTube video URL to get transcripts from.                                                                                                   |
+  | chunk_size_seconds | Chunk Size (seconds) | The size of each transcript chunk in seconds.                                                                                                          |
+  | translation        | Translation Language | Translate the transcripts to the specified language. Options: (empty), en, es, fr, de, it, pt, ru, ja, ko, hi, ar, id. Leave empty for no translation. |
+
+  Outputs
+
+  | Name        | Display Name        | Info                                                      |
+  | :---------- | :------------------ | :-------------------------------------------------------- |
+  | dataframe   | Chunks              | Transcript chunks with timestamps as a DataFrame.         |
+  | message     | Transcript          | Full transcript as continuous text in a Message object.   |
+  | data_output | Transcript + Source | Transcript text with video URL metadata as a Data object. |
+</Accordion>
+
+### **ScrapeGraph AI**
+
+ScrapeGraph AI is a suite of 3 components for web scraping and search using the ScrapeGraph API.
+
+**ScrapeGraph Markdownify API**\
+This component converts a web page into Markdown content using the ScrapeGraph Markdownify API.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name    | Display Name        | Info                                |
+  | :------ | :------------------ | :---------------------------------- |
+  | api_key | ScrapeGraph API Key | The API key to use ScrapeGraph API. |
+  | url     | URL                 | The URL to markdownify.             |
+
+  Outputs
+
+  | Name | Display Name | Info                                    |
+  | :--- | :----------- | :-------------------------------------- |
+  | data | Data         | Markdownified content as a Data object. |
+</Accordion>
+
+**ScrapeGraph Search API**
+
+This component performs search queries using ScrapeGraph's search functionality and returns structured search results.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name        | Display Name        | Info                                |
+  | :---------- | :------------------ | :---------------------------------- |
+  | api_key     | ScrapeGraph API Key | The API key to use ScrapeGraph API. |
+  | user_prompt | Search Prompt       | The search prompt to use.           |
+
+  Outputs
+
+  | Name | Display Name | Info                             |
+  | :--- | :----------- | :------------------------------- |
+  | data | Data         | Search results as a Data object. |
+</Accordion>
+
+**ScrapeGraph Smart Scraper API**
+
+This component scrapes a website and returns structured data using ScrapeGraph's AI-powered Smart Scraper.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name    | Display Name        | Info                                     |
+  | :------ | :------------------ | :--------------------------------------- |
+  | api_key | ScrapeGraph API Key | The API key to use ScrapeGraph API.      |
+  | url     | URL                 | The URL to scrape.                       |
+  | prompt  | Prompt              | The prompt to use for the smart scraper. |
+
+  Outputs
+
+  | Name | Display Name | Info                                     |
+  | :--- | :----------- | :--------------------------------------- |
+  | data | Data         | Structured scraped data as a Data object |
 </Accordion>
