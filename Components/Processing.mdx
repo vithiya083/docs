@@ -192,8 +192,6 @@ This component converts [Message](https://docs.llmcontrols.ai/Concepts/LLMCobjec
   | **Name** | **Display Name** | **Info**                   |
   | :------- | :--------------- | :------------------------- |
   | data     | Data             | The converted Data object. |
-
-  ## 
 </Accordion>
 
 ## **Parser**
@@ -237,8 +235,6 @@ For an additional example of using the **Parser** component to format a DataFram
   | **Name**    | **Display Name** | **Info**                                                 |
   | :---------- | :--------------- | :------------------------------------------------------- |
   | parsed_text | Parsed Text      | The resulting formatted text as a <u>Message</u> object. |
-
-  ## 
 </Accordion>
 
 ## **Regex extractor**
@@ -381,8 +377,6 @@ After `chunk_size`, **Chunk Overlap** is applied between chunks to maintain cont
   | :-------- | :--------------- | :------------------------------------------------------- |
   | chunks    | Chunks           | A list of split text chunks as <u>Data</u> objects.      |
   | dataframe | DataFrame        | A list of split text chunks as <u>DataFrame</u> objects. |
-
-  ## 
 </Accordion>
 
 ## **Update data**
@@ -404,4 +398,137 @@ This component dynamically updates or appends data with specified fields.
   | **Name** | **Display Name** | **Info**                  |
   | :------- | :--------------- | :------------------------ |
   | data     | Data             | The updated Data objects. |
+</Accordion>
+
+## Text Input
+
+This component gets text inputs from the Playground and passes them as a Message to downstream components.
+
+### To Use Text Input
+
+1. Add the component to your flow
+2. Enter text in the Text field or connect it to the Playground input
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name        | Display Name | Info                        |
+  | :---------- | :----------- | :-------------------------- |
+  | input_value | Text         | Text to be passed as input. |
+
+  #### Outputs
+
+  | Name | Display Name | Info                                |
+  | :--- | :----------- | :---------------------------------- |
+  | text | Message      | The input text as a Message object. |
+</Accordion>
+
+## Filter Data
+
+This component filters a Data object based on a list of keys, returning a new Data object containing only the matching key-value pairs.
+
+### To Filter Data
+
+1. Connect a Data object from an upstream component
+2. Specify one or more keys in the Filter Criteria list to keep
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name            | Display Name    | Info                       |
+  | :-------------- | :-------------- | :------------------------- |
+  | data            | Data            | Data object to filter.     |
+  | filter_criteria | Filter Criteria | List of keys to filter by. |
+
+  #### Outputs
+
+  | Name          | Display Name  | Info                                                            |
+  | :------------ | :------------ | :-------------------------------------------------------------- |
+  | filtered_data | Filtered Data | A new Data object containing only the filtered key-value pairs. |
+</Accordion>
+
+## Filter Values
+
+This component filters a list of data items based on a specified key, filter value, and comparison operator. Check the advanced options to select match comparison.
+
+### To Filter Values
+
+1. Connect a list of Data items from an upstream component
+2. Set the Filter Key (e.g., 'route') and Filter Value (e.g., 'CMIP')
+3. Optionally change the Comparison Operator in the advanced options
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name         | Display Name        | Info                                                                                                           |
+  | :----------- | :------------------ | :------------------------------------------------------------------------------------------------------------- |
+  | input_data   | Input Data          | The list of data items to filter.                                                                              |
+  | filter_key   | Filter Key          | The key to filter on (e.g., 'route').                                                                          |
+  | filter_value | Filter Value        | The value to filter by (e.g., 'CMIP').                                                                         |
+  | operator     | Comparison Operator | The operator to apply for comparing the values. Options: equals, not equals, contains, starts with, ends with. |
+
+  #### Outputs
+
+  | Name          | Display Name  | Info                                                   |
+  | :------------ | :------------ | :----------------------------------------------------- |
+  | filtered_data | Filtered Data | The filtered list of Data items matching the criteria. |
+</Accordion>
+
+## Lambda Filter
+
+This component uses an LLM to generate a lambda function for filtering or transforming structured data. Provide natural language instructions, and the component will create and apply a Python lambda function to your data.
+
+### To Use Lambda Filter
+
+1. Connect structured Data from an upstream component
+2. Connect a Language Model output from an LLM component
+3. Write natural language Instructions describing how to filter or transform the data
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name               | Display Name   | Info                                                                                                                                                                          |
+  | :----------------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | data               | Data           | The structured data to filter or transform using a lambda function.                                                                                                           |
+  | llm                | Language Model | Connect the 'Language Model' output from your LLM component here.                                                                                                             |
+  | filter_instruction | Instructions   | Natural language instructions for how to filter or transform the data using a lambda function. Example: Filter the data to only include items where the 'status' is 'active'. |
+  | sample_size        | Sample Size    | For large datasets, number of items to sample from head/tail.                                                                                                                 |
+  | max_size           | Max Size       | Number of characters for the data to be considered large.                                                                                                                     |
+
+  #### Outputs
+
+  | Name          | Display Name  | Info                                                        |
+  | :------------ | :------------ | :---------------------------------------------------------- |
+  | filtered_data | Filtered Data | The filtered or transformed data as a list of Data objects. |
+  | dataframe     | DataFrame     | The filtered data as a DataFrame object.                    |
+</Accordion>
+
+## LLMC Parser
+
+This component batch processes document chunks to extract structured information using LLM with custom prompts. It processes chunks in configurable batches, extracts JSON from LLM responses, and merges results across batches.
+
+### To Use LLMC Parser
+
+1. Connect Document Chunks from a Split Text component (accepts list or single input)
+2. Connect a Language Model from an LLM component
+3. Write a Custom Prompt defining what information to extract and the JSON structure
+4. Optionally adjust Batch Size and Max Tokens in advanced options
+
+<Accordion title="Parameters" icon="">
+  **Inputs **
+
+  | Name          | Display Name    | Info                                                                                                                                   |
+  | :------------ | :-------------- | :------------------------------------------------------------------------------------------------------------------------------------- |
+  | document_text | Document Chunks | Chunked document data from Split Text component (accepts list or single input)                                                         |
+  | llm           | Language Model  | LLM for intelligent extraction.                                                                                                        |
+  | custom_prompt | Custom Prompt   | Custom prompt for extraction. Define what information to extract and the JSON structure.                                               |
+  | batch_size    | Batch Size      | Number of chunks to process per LLM call (default: 15)                                                                                 |
+  | max_tokens    | Max Tokens      | Maximum tokens for LLM response. Set to 0 to use LLM component's default. Recommended: 16384 for large JSON responses (default: 16384) |
+
+  #### Outputs
+
+  | Name     | Display Name  | Info                                                                                        |
+  | :------- | :------------ | :------------------------------------------------------------------------------------------ |
+  | output   | Parsed Output | The extracted structured information as a Data object with merged results from all batches. |
+  | raw_json | Raw JSON      | The parsed output as a formatted JSON string wrapped in a Data object.                      |
 </Accordion>
