@@ -292,3 +292,44 @@ For more information about creating a service account JSON, see [Service Account
   | doc_titles | List[str] | The titles of the found documents.                   |
   | Data       | Data      | The document titles and URLs in a structured format. |
 </Accordion>
+
+### Directory
+
+This component recursively loads files from a directory and converts the content into Data objects. It supports filtering by file type, depth control, and optional multithreading for parallel processing.
+
+**To Load a Directory**
+
+1. Enter the directory path or use the default current directory
+2. Optionally select specific file types to filter
+3. Set the search depth and enable recursive mode if needed
+
+### Load Spreadsheet
+
+This component loads and parses spreadsheet files (.xlsx, .xls) and converts the content into a searchable data format for analysis. It supports sheet selection, row limits, caching, and optimized loading for large files.
+
+**To Load a Spreadsheet**
+
+1. Click the Select files button and upload an .xlsx or .xls file
+2. Optionally specify a sheet name (defaults to the first sheet)
+3. Configure row limits and caching as needed
+
+### Recursive URL Crawler
+
+This component loads and parses child links from a root URL recursively. It crawls web pages up to a specified depth and extracts content in text or HTML format.
+
+**To Crawl URLs**
+
+1. Enter one or more URLs by clicking the + button
+2. Set the Max Depth to control how many link levels to crawl
+3. Configure output format (Text or HTML)
+
+### S3 Bucket Uploader
+
+This component uploads files to an Amazon S3 bucket. It supports two upload strategies: storing parsed data or uploading the original file as-is, with options for path prefixing and stripping.
+
+**To Upload Files to S3**
+
+1. Provide your AWS Access Key ID and AWS Secret Key
+2. Enter the Bucket Name
+3. Connect Data inputs from upstream components
+4. Choose an upload strategy
