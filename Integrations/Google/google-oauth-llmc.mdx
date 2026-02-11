@@ -48,7 +48,6 @@ For a pre-built JSON file of a flow that uses the Google Drive loader component,
 **Example flow structure:**
 
 ```
-
 Google OAuth Token → Parse Data → JSON Cleaner → Google Drive Loader → Prompt → OpenAI Model → Chat Output
 ```
 
@@ -68,3 +67,190 @@ In this example, the **Google Drive loader** component loads a text file hosted 
 
 6. In the Google Drive loader component, in the **Document ID** field, paste the document URL.
 7. To view the translated document, open the **Playground**.
+
+## **Google Sheets**
+
+This component creates, reads, and writes Google Sheets using credentials from Google Authenticator. It supports operations including create, read, write, append, clear, and listing sheets, with automatic spreadsheet creation for write/append when no spreadsheet ID is provided.
+
+### **Prerequisites**
+
+- Google Credentials JSON (from Gmail Setup Script or Google Universal Authenticator)
+
+### **To Use Google Sheets**
+
+1. Paste your Google Credentials JSON (from Gmail Setup Script or Universal Authenticator)
+2. Select an Operation (create, read, write, append, clear, or list_sheets)
+3. For read/write/append/clear/list_sheets: Provide a Spreadsheet ID or URL
+4. For write/append: Provide data via Input Data connection or Data to Write (JSON)
+5. Optionally configure Range, Include Headers, and Value Input Option
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name                | Display Name                                | Info                                                                                                                                 |
+  | :------------------ | :------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------- |
+  | credentials_json    | Google Credentials JSON (Paste JSON Object) | Paste the credentials JSON object (not a string, not escaped quotes) from Gmail Setup Script or Universal Authenticator.             |
+  | input_data          | Input Data (from Component)                 | Connect data from other components (like Resume Results Formatter) to write to Google Sheets                                         |
+  | spreadsheet_id      | Spreadsheet ID or URL                       | Google Sheets spreadsheet ID (found in URL) or full Google Sheets URL (not needed for 'create' operation)                            |
+  | spreadsheet_title   | New Spreadsheet Title                       | Title for new spreadsheet (only used with 'create' operation)                                                                        |
+  | initial_sheet_names | Initial Sheet Names                         | Comma-separated list of sheet names for new spreadsheet (only used with 'create' operation)                                          |
+  | range_name          | Range                                       | Range to read/write (e.g., 'Sheet1!A1:C10', 'Results!A1:Z1000', or 'A:C')                                                            |
+  | operation           | Operation                                   | Operation to perform on the Google Sheet. Options: create, read, write, append, clear, list_sheets.                                  |
+  | data_to_write       | Data to Write (JSON)                        | JSON array of arrays for write/append operations (e.g., [['Name', 'Age'], ['John', 25]]) - not needed if using Input Data connection |
+  | include_headers     | Include Headers                             | Whether to treat the first row as headers when reading                                                                               |
+  | value_input_option  | Value Input Option                          | How input data should be interpreted. Options: RAW, USER_ENTERED.                                                                    |
+
+  **Outputs**
+
+  | Name      | Display Name | Info                                                                                     |
+  | :-------- | :----------- | :--------------------------------------------------------------------------------------- |
+  | data      | Sheet Data   | Operation result as a Data object containing sheet data, operation status, and metadata. |
+  | sheet_url | Sheet URL    | The spreadsheet URL as a Message.                                                        |
+</Accordion>
+
+## **Google Docs**
+
+This component reads Google Docs and extracts text content and metadata using credentials from Google Universal Authenticator. It supports reading document content with optional formatting preservation and retrieving document metadata.
+
+### **Prerequisites**
+
+- Google Credentials JSON (from Google Universal Authenticator with Docs or Drive permissions)
+
+### **To Use Google Docs**
+
+1. Connect Google Credentials JSON from Google Universal Authenticator or paste JSON string
+2. Enter the Document ID (found in the Google Docs URL)
+3. Select an Operation (read or metadata)
+4. Optionally toggle Include Metadata and Preserve Formatting
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name                | Display Name            | Info                                                                                                                                                    |
+  | :------------------ | :---------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | credentials_json    | Google Credentials JSON | Connect from Google Universal Authenticator component output, or paste JSON string containing OAuth 2.0 access token information for Google Docs access |
+  | document_id         | Document ID             | Google Docs document ID (found in the URL)                                                                                                              |
+  | operation           | Operation               | Operation to perform on the Google Doc. Options: read, metadata.                                                                                        |
+  | include_metadata    | Include Metadata        | Whether to include document metadata with content                                                                                                       |
+  | preserve_formatting | Preserve Formatting     | Whether to preserve basic formatting information in the extracted text                                                                                  |
+
+  **Outputs**
+
+  | Name     | Display Name      | Info                                                                                         |
+  | :------- | :---------------- | :------------------------------------------------------------------------------------------- |
+  | data     | Document Data     | Full operation result as a Data object containing text, metadata, and word/character counts. |
+  | text     | Document Text     | Extracted document text as a Data object.                                                    |
+  | metadata | Document Metadata | Document metadata (ID, title, revision, word count, etc.) as a Data object.                  |
+  | result   | Operation Result  | Result of the last operation as a Data object.                                               |
+
+  ---
+</Accordion>
+
+## **Gmail Manager**
+
+This component provides complete Gmail management with email extraction, sending, deletion, label management, attachment processing, and Google Drive integration. It supports duplicate avoidance, search queries, and multiple output formats for downstream processing.
+
+### **Prerequisites**
+
+- Gmail Credentials JSON (from Gmail Setup Script or Google Universal Authenticator)
+
+### **To Use Gmail Manager**
+
+1. Paste your Gmail Credentials JSON
+2. Select an Operation (extract, list, send, delete, mark_read, mark_unread, add_labels, remove_labels, create_label, move, create_and_apply_label, or show_extracted_emails)
+3. For extract: Configure Target Labels, Search Query, and Maximum Emails
+4. For send: Provide To, Subject, and Body in advanced options
+5. Optionally enable Include Attachments, Download Attachments, and Google Drive Upload
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  <table style="min-width: 75px"><colgroup><col style="min-width: 25px"><col style="min-width: 25px"><col style="min-width: 25px"></colgroup><tbody><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Name</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Display Name</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Info</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>credentials_json</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Gmail Credentials JSON</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Paste credentials JSON from Gmail Setup Script or Universal Authenticator.</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>operation</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Operation</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Options: extract, list, send, delete, mark_read, mark_unread, add_labels, remove_labels, create_label, move, create_and_apply_label, show_extracted_emails.</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>target_labels</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Target Labels</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Comma-separated Gmail labels (e.g., INBOX,IMPORTANT)</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>search_query</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Gmail Search Query</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Gmail search operators (e.g., 'from:<a target="_blank" rel="noopener noreferrer nofollow" href="mailto:user@domain.com">user@domain.com</a> has:attachment')</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>max_emails</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Maximum Emails</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>include_attachments</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Include Attachments</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>clean_content</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Clean Email Content</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>download_attachments</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Download Attachments</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>avoid_duplicate_extraction</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Avoid Duplicate Extraction</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Only extract new emails, skip already processed ones</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>processed_label</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Processed Label Name</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Label to mark processed emails</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>days_lookback</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Days Lookback</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>How many days back to check for new emails</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>enable_drive_upload</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Enable Google Drive Upload</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Upload attachments to Google Drive (optimized: ~2-3 seconds per file, provides permanent storage)</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>drive_folder_name</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Drive Folder Name</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Folder name in Google Drive to store attachments</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>create_timestamped_subfolder</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Create Timestamped Subfolder</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>organize_by_email_subject</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Organize by Email Subject</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>email_to</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>To (Recipients)</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>email_cc</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>CC</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>email_subject</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Email Subject</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>email_body</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Email Body</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>message_ids</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Message IDs</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>labels_to_add</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Labels to Add</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>labels_to_remove</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Labels to Remove</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>new_label_name</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>New Label Name</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>destination_label</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Destination Label</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>apply_label_after_extract</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Apply Label After Extract</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>label_name_for_application</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Label Name for Application</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>label_action_type</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Label Action Type</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Options: create_new, use_existing.</p></td></tr></tbody></table>
+
+  **Outputs**
+
+  | Name           | Display Name          | Info                                                                                 |
+  | :------------- | :-------------------- | :----------------------------------------------------------------------------------- |
+  | result         | Operation Result      | The result of the Gmail operation as a Data object.                                  |
+  | count          | Email Count           | Count of extracted emails as a Data object.                                          |
+  | summary        | Summary               | Summary of extracted emails (subjects, senders, attachment counts) as a Data object. |
+  | files          | Downloaded Files      | Downloaded attachment files as a list of Data objects with file paths and metadata.  |
+  | sheet_data     | Email Data for Sheets | Email data formatted for Google Sheets (with headers and rows) as a Data object.     |
+  | file_links     | File Links & IDs      | File links and Google Drive IDs for downloaded attachments as a Data object.         |
+  | email_contents | Email Contents        | Full email contents (subject, from, to, date, body, labels) as a Data object.        |
+  | gmail_links    | Gmail Links           | Direct Gmail links for extracted emails as a Message.                                |
+</Accordion>
+
+## **Gmail Setup Script**
+
+This component authenticates with Gmail, Drive, Sheets, Docs, and Calendar using a client_secret.json file and outputs a credentials JSON for use in LLMC extractors. It uses a two-step OAuth flow: first generating an OAuth URL, then exchanging the authorization code for credentials.
+
+### **Prerequisites**
+
+- A client_secret.json file from Google Cloud Console
+
+### **To Use Gmail Setup Script**
+
+1. Paste the contents of your client_secret\_\*.json file from Google Cloud Console
+2. Run the component to generate an OAuth URL
+3. Visit the OAuth URL in your browser and sign in to your Google account
+4. Copy the authorization code from the browser
+5. Paste the authorization code in the "Authorization Code (Step 2)" field
+6. Run the component again to complete authentication
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name               | Display Name                | Info                                                                                                                                      |
+  | :----------------- | :-------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
+  | client_secret_json | Client Secret JSON Content  | Paste the contents of your client_secret\_\*.json file from Google Cloud Console here                                                     |
+  | custom_scopes      | Custom Scopes (optional)    | Comma-separated or newline-separated list of OAuth scopes. Leave blank to use default: Gmail, Drive, Sheets, Docs, Calendar (full access) |
+  | authorization_code | Authorization Code (Step 2) | After visiting the OAuth URL, paste the authorization code here and run again                                                             |
+  | saved_scopes_json  | Saved Scopes (Internal)     | DO NOT MODIFY - Internal field to persist scopes between OAuth steps                                                                      |
+
+  **Outputs**
+
+  | Name             | Display Name          | Info                                                                                                            |
+  | :--------------- | :-------------------- | :-------------------------------------------------------------------------------------------------------------- |
+  | credentials_json | Credentials JSON      | Generated OAuth credentials as a Data object (contains credentials_for_copy_paste for use in other components). |
+  | auth_status      | Authentication Status | Current authentication status (SUCCESS, ERROR, or PENDING) as a Data object.                                    |
+  | email            | Authenticated Email   | The authenticated Google account email address as a Data object.                                                |
+  | next_steps       | Next Steps            | Instructions for next steps as a Data object.                                                                   |
+</Accordion>
+
+## **Google Universal Authenticator**
+
+This component is a universal Google services authenticator. Select which Google services you need (Gmail, Sheets, Drive, Docs, Calendar, Photos, Contacts, YouTube, etc.) and authenticate once for all selected services. It supports both Desktop and Web application OAuth client types.
+
+### **Prerequisites**
+
+- A client_secret.json file from Google Cloud Console
+- Required APIs enabled in Google Cloud Console for selected services
+
+### **To Use Google Universal Authenticator**
+
+1. Paste the contents of your client_secret\_\*.json file from Google Cloud Console
+2. Enter the services you want to authenticate for in Selected Services (comma-separated)
+3. Run the component — a browser window will open for OAuth authentication
+4. Sign in with your Google account and grant the requested permissions
+5. Copy the generated credentials to use in other Google components (Gmail Manager, Google Sheets, Google Docs, etc.)
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name               | Display Name                | Info                                                                                                                                                                                                                                                                                                                                                      |
+  | :----------------- | :-------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | client_secret_json | Client Secret JSON Content  | Paste the contents of your client_secret\_\*.json file from Google Cloud Console here                                                                                                                                                                                                                                                                     |
+  | selected_services  | Selected Services           | Comma-separated list of services to authenticate for. Available: gmail, gmail_readonly, sheets, sheets_readonly, drive, drive_readonly, drive_file, docs, docs_readonly, calendar, calendar_readonly, calendar_events, photos, photos_readonly, contacts, contacts_readonly, youtube, youtube_readonly, cloud_platform, admin_directory, all_full_access. |
+  | redirect_message   | Authentication Instructions | Instructions that will be shown to the user during OAuth flow                                                                                                                                                                                                                                                                                             |
+  | auto_open_browser  | Auto Open Browser           | Automatically open browser for OAuth authentication (disable if running on server)                                                                                                                                                                                                                                                                        |
+
+  **Outputs**
+
+  | Name               | Display Name            | Info                                                                                                                                        |
+  | :----------------- | :---------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
+  | credentials_json   | Google Credentials JSON | Generated OAuth credentials as a Data object (includes credentials_for_copy_paste, authenticated_email, scopes, and service support flags). |
+  | auth_status        | Authentication Status   | Current authentication status (SUCCESS, ERROR, or PENDING) as a Data object.                                                                |
+  | setup_instructions | Setup Instructions      | Step-by-step setup instructions, security notes, and troubleshooting tips as a Data object.                                                 |
+  | available_services | Available Services      | Information about all available Google services and usage examples as a Data object.                                                        |
+</Accordion>
