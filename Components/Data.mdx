@@ -303,26 +303,6 @@ This component recursively loads files from a directory and converts the content
 2. Optionally select specific file types to filter
 3. Set the search depth and enable recursive mode if needed
 
-#### Inputs
-
-| Name               | Display Name       | Info                                                                                     |
-| :----------------- | :----------------- | :--------------------------------------------------------------------------------------- |
-| path               | Path               | Path to the directory to load files from. Defaults to current directory ('.')            |
-| types              | File Types         | File types to load. Select one or more types or leave empty to load all supported types. |
-| depth              | Depth              | Depth to search for files.                                                               |
-| max_concurrency    | Max Concurrency    | Maximum concurrency for loading files.                                                   |
-| load_hidden        | Load Hidden        | If true, hidden files will be loaded.                                                    |
-| recursive          | Recursive          | If true, the search will be recursive.                                                   |
-| silent_errors      | Silent Errors      | If true, errors will not raise an exception.                                             |
-| use_multithreading | Use Multithreading | If true, multithreading will be used.                                                    |
-
-#### Outputs
-
-| Name      | Display Name | Info                                           |
-| :-------- | :----------- | :--------------------------------------------- |
-| data      | Data         | The loaded files as a list of Data objects.    |
-| dataframe | DataFrame    | The loaded file content as a DataFrame object. |
-
 ### Load Spreadsheet
 
 This component loads and parses spreadsheet files (.xlsx, .xls) and converts the content into a searchable data format for analysis. It supports sheet selection, row limits, caching, and optimized loading for large files.
