@@ -339,79 +339,55 @@ This component reranks documents using the Cohere API. It takes search results a
   <table>
   <thead>
   <tr>
-  <th>
-  Name</th>
+  <th>Name</th>
 
-  <th>
-  Display Name</th>
+  <th>Display Name</th>
 
-  <th>
-  Info</th>
-
+  <th>Info</th>
   </tr>
-
   </thead>
 
   <tbody>
   <tr>
-  <td>
-  search_query</td>
+  <td>search_query</td>
 
-  <td>
-  Search Query</td>
+  <td>Search Query</td>
 
-  <td>
-  (inherited from base)</td>
-
+  <td>(inherited from base)</td>
   </tr>
 
   <tr>
-  <td>
-  search_results</td>
+  <td>search_results</td>
 
-  <td>
-  Search Results</td>
+  <td>Search Results</td>
 
-  <td>
-  Search Results from a Vector Store.</td>
-
+  <td>Search Results from a Vector Store.</td>
   </tr>
 
   <tr>
-  <td>
-  top_n</td>
+  <td>top_n</td>
 
-  <td>
-  Top N</td>
+  <td>Top N</td>
 
-  <td>
-  (inherited from base, default: 3)</td>
-
+  <td>(inherited from base, default: 3)</td>
   </tr>
 
   <tr>
-  <td>
-  api_key</td>
+  <td>api_key</td>
 
-  <td>
-  Cohere API Key</td>
+  <td>Cohere API Key</td>
 
+  <td></td>
   </tr>
 
   <tr>
-  <td>
-  model</td>
+  <td>model</td>
 
-  <td>
-  Model</td>
+  <td>Model</td>
 
-  <td>
-  Options: rerank-english-v3.0, rerank-multilingual-v3.0, rerank-english-v2.0, rerank-multilingual-v2.0.</td>
-
+  <td>Options: rerank-english-v3.0, rerank-multilingual-v3.0, rerank-english-v2.0, rerank-multilingual-v2.0.</td>
   </tr>
-
   </tbody>
-
   </table>
 
   **Outputs**
@@ -492,8 +468,8 @@ This component extracts structured data from web pages using the Firecrawl Extra
 
 This component maps all URLs found on a website using the Firecrawl Map API.
 
-<Accordion title="Parameters" icon="">
-  **Inputs **
+<Accordion title="Parameters">
+  **Inputs**
 
   | Name               | Display Name       | Info                                                                 |
   | :----------------- | :----------------- | :------------------------------------------------------------------- |
@@ -503,7 +479,7 @@ This component maps all URLs found on a website using the Firecrawl Map API.
   | sitemap_only       | Sitemap Only       | When true, only links found in the sitemap will be returned.         |
   | include_subdomains | Include Subdomains | When true, subdomains of the provided URL will also be scanned.      |
 
-  Outputs
+  **Outputs**
 
   | Name | Display Name | Info                                                     |
   | :--- | :----------- | :------------------------------------------------------- |
@@ -514,7 +490,7 @@ This component maps all URLs found on a website using the Firecrawl Map API.
 
 This component uses the Unstructured.io API to extract clean text from raw source documents. It supports a wide range of file types including PDF, DOCX, PPTX, XLSX, HTML, Markdown, images, and many more.
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   **Inputs**
 
   | Name                                | Display Name                                                 | Info                                                                                                                                                                                                                                         |
@@ -531,7 +507,7 @@ This component uses the Unstructured.io API to extract clean text from raw sourc
   | chunking_strategy                   | Chunking Strategy                                            | Chunking strategy to use. Options: (empty), basic, by_title, by_page, by_similarity.                                                                                                                                                         |
   | unstructured_args                   | Additional Arguments                                         | Optional dictionary of additional arguments to the Loader. See [<u>https://docs.unstructured.io/api-reference/api-services/api-parameters</u>](https://docs.unstructured.io/api-reference/api-services/api-parameters) for more information. |
 
-  Outputs
+  **Outputs**
 
   | Name      | Display Name | Info                                                  |
   | :-------- | :----------- | :---------------------------------------------------- |
@@ -544,8 +520,8 @@ This component uses the Unstructured.io API to extract clean text from raw sourc
 
 The Git section contains 2 components: Git (loader) and GitExtractor.
 
-<Accordion title="Parameters" icon="">
-  **Inputs **
+<Accordion title="Parameters">
+  **Inputs**
 
   | Name           | Display Name          | Info                                                                                                                                           |
   | :------------- | :-------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -556,7 +532,7 @@ The Git section contains 2 components: Git (loader) and GitExtractor.
   | file_filter    | File Filter           | Patterns to filter files. For example: Include only .py files: '.py'. Exclude .py files: '!.py'. Multiple patterns can be separated by commas. |
   | content_filter | Content Filter        | A regex pattern to filter files based on their content.                                                                                        |
 
-  Outputs
+  **Outputs**
 
   | Name | Display Name | Info                                        |
   | :--- | :----------- | :------------------------------------------ |
@@ -567,14 +543,14 @@ The Git section contains 2 components: Git (loader) and GitExtractor.
 
 This component analyzes a Git repository and returns file contents, directory structure, repository information, and statistics.
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   **Inputs**
 
   | Name           | Display Name   | Info                                                                                                          |
   | :------------- | :------------- | :------------------------------------------------------------------------------------------------------------ |
   | repository_url | Repository URL | URL of the Git repository (e.g., [<u>https://github.com/username/repo</u>](https://github.com/username/repo)) |
 
-  Outputs
+  **Outputs**
 
   | Name                     | Display Name             | Info                                                                                                   |
   | :----------------------- | :----------------------- | :----------------------------------------------------------------------------------------------------- |
