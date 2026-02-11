@@ -138,8 +138,6 @@ For more information, see the [Azure OpenAI documentation](https://learn.microso
   | **Name** | **Type**      | **Description**                                                      |
   | :------- | :------------ | :------------------------------------------------------------------- |
   | model    | LanguageModel | An instance of AzureOpenAI configured with the specified parameters. |
-
-  ## 
 </Accordion>
 
 ## **Cohere**
@@ -226,7 +224,7 @@ This component generates text using Groq's language models.
 
    ![Model 3 Pn](/images/model_3.png)
 2. In the **Groq API Key** field, paste your Groq API key. The Groq model component automatically retrieves a list of the latest models. To refresh your list of models, click **Refresh**.
-3. In the **Model** field, select the model you want to use for your LLM. 
+3. In the **Model** field, select the model you want to use for your LLM.
 5. Click **Playground** and ask your Groq LLM a question. The responses include a list of sources.
 
 For more information, see the [Groq documentation](https://groq.com/).
@@ -249,8 +247,6 @@ For more information, see the [Groq documentation](https://groq.com/).
   | **Name** | **Type**      | **Description**                                                   |
   | :------- | :------------ | :---------------------------------------------------------------- |
   | model    | LanguageModel | An instance of ChatGroq configured with the specified parameters. |
-
-  ## 
 </Accordion>
 
 ## **Hugging Face API**
@@ -443,8 +439,6 @@ For more information, see [Maritalk documentation](https://www.maritalk.com/).
   | **Name** | **Type**      | **Description**                                                       |
   | :------- | :------------ | :-------------------------------------------------------------------- |
   | model    | LanguageModel | An instance of ChatMaritalk configured with the specified parameters. |
-
-  ## 
 </Accordion>
 
 ## **Mistral**
@@ -526,8 +520,6 @@ For more information, see [NVIDIA AI documentation](https://developer.nvidia.com
   | **Name** | **Type**      | **Description**                                                     |
   | :------- | :------------ | :------------------------------------------------------------------ |
   | model    | LanguageModel | An instance of ChatNVIDIA configured with the specified parameters. |
-
-  ## 
 </Accordion>
 
 ## **Ollama**
@@ -723,4 +715,31 @@ For more information, see the [xAI documentation](https://x.ai/).
   | **Name** | **Type**      | **Description**                                                     |
   | :------- | :------------ | :------------------------------------------------------------------ |
   | model    | LanguageModel | An instance of ChatOpenAI configured with the specified parameters. |
+</Accordion>
+
+## **DALL-E 3**
+
+This component generates images using OpenAI's DALL-E 3 model. It accepts a text prompt and returns the generated image as a URL, base64-encoded data, or a Message with generation details.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name            | Display Name     | Info                                                                                                                                                          |
+  | :-------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | prompt          | Prompt           | A text description of the desired image(s).                                                                                                                   |
+  | model           | Model            | The model to use for image generation.                                                                                                                        |
+  | size            | Size             | The size of the generated images.                                                                                                                             |
+  | quality         | Quality          | The quality of the generated images. 'hd' creates more detailed images but costs more.                                                                        |
+  | style           | Style            | The style of the generated images. 'vivid' favors vibrant colors and high contrast, while 'natural' produces more realistic images with less stylized colors. |
+  | n               | Number of Images | The number of images to generate. Maximum is 1 for DALL-E 3.                                                                                                  |
+  | openai_api_base | OpenAI API Base  | The base URL of the OpenAI API. Defaults to [<u>https://api.openai.com/v1</u>](https://api.openai.com/v1).                                                    |
+  | api_key         | OpenAI API Key   | The OpenAI API Key to use for the OpenAI model.                                                                                                               |
+
+  #### Outputs
+
+  | Name          | Display Name     | Info                                                           |
+  | :------------ | :--------------- | :------------------------------------------------------------- |
+  | image_url     | Image URL        | The URL of the first generated image.                          |
+  | images_base64 | Images as base64 | The generated images as a list of base64-encoded strings.      |
+  | message       | Message          | A Message object containing generation details and image URLs. |
 </Accordion>
