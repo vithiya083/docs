@@ -117,6 +117,29 @@ The output does not appear in the **Playground**.
   | text     | Text             | The resulting text message. |
 </Accordion>
 
+## **Markdown to Text**
+
+This component converts markdown-formatted text to plain text output. It strips markdown syntax, including headers, bold, italic, links, images, code blocks, lists, blockquotes, and strikethrough.
+
+### **To Convert Markdown**
+
+1. Enter or connect markdown-formatted text in the Markdown Text field
+2. The component outputs the stripped plain text as a Message
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name        | Display Name  | Info                                              |
+  | :---------- | :------------ | :------------------------------------------------ |
+  | input_value | Markdown Text | Markdown formatted text to convert to plain text. |
+
+  #### Outputs
+
+  | Name | Display Name | Info                                          |
+  | :--- | :----------- | :-------------------------------------------- |
+  | text | Message      | The converted plain text as a Message object. |
+</Accordion>
+
 ## **Chat components example flow**[**​**](https://docs.langflow.org/components-io#chat-components-example-flow)
 
 1. To use the **Chat Input** and **Chat Output** components in a flow, connect them to components that accept or send the [Message](https://docs.llmcontrols.ai/Concepts/LLMCobjects#message-object%E2%80%8B) type.
