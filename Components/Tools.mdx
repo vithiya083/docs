@@ -156,8 +156,6 @@ This component allows you to call the Bing Search API.
   | :------- | :--------- | :--------------------------------------- |
   | results  | List[Data] | A list of search results.                |
   | tool     | Tool       | A Bing Search tool for use in LangChain. |
-
-  ## 
 </Accordion>
 
 ## **Combinatorial Reasoner**
@@ -181,8 +179,6 @@ This component runs Icosa's Combinatorial Reasoning (CR) pipeline on an input to
   | :--------------- | :----------- | :------------------------------------------------------------------------ |
   | optimized_prompt | Message      | A message object containing the optimized prompt.                         |
   | reasons          | List[String] | A list of the selected reasons that are embedded in the optimized prompt. |
-
-  ## 
 </Accordion>
 
 ## **DuckDuckGo search**
@@ -225,8 +221,6 @@ This component provides an [Exa Search](https://exa.ai/) toolkit for search and 
   | **Name** | **Type**   | **Description**                                 |
   | :------- | :--------- | :---------------------------------------------- |
   | tools    | List[Tool] | A list of search tools provided by the toolkit. |
-
-  ## 
 </Accordion>
 
 ## **Glean Search API**
@@ -250,8 +244,6 @@ This component allows you to call the Glean Search API.
   | :------- | :--------- | :---------------------------------------- |
   | results  | List[Data] | A list of search results.                 |
   | tool     | Tool       | A Glean Search tool for use in LangChain. |
-
-  ## 
 </Accordion>
 
 ## **Google Serper API**
@@ -273,8 +265,6 @@ This component allows you to call the Serper.dev Google Search API.
   | :------- | :--------- | :------------------------------------------------ |
   | results  | List[Data] | A list of search results.                         |
   | tool     | Tool       | A Google Serper search tool for use in LangChain. |
-
-  ## 
 </Accordion>
 
 ## **MCP connection**
@@ -304,4 +294,116 @@ This component performs a search using the Wikidata API.
   | :------- | :--------- | :-------------------------------------------------------------- |
   | data     | List[Data] | The search results from Wikidata API as a list of Data objects. |
   | text     | Message    | The search results formatted as a text message.                 |
+</Accordion>
+
+## **Spreadsheet Query**
+
+This component provides tools for searching through spreadsheet data using SQL queries, natural language, filters, and aggregations. It also supports chart generation (line, scatter, bar, histogram, pie, box plots).
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name               | Display Name         | Info                                                |
+  | :----------------- | :------------------- | :-------------------------------------------------- |
+  | dataframe          | Excel DataFrame      | DataFrame from Excel/CSV file                       |
+  | data_list          | Excel Data           | List of Data objects from Excel file                |
+  | tool_name          | Tool Name            | Name of the tool for the agent                      |
+  | tool_description   | Tool Description     | Description of what this tool does                  |
+  | default_limit      | Default Result Limit | Default maximum number of results to return         |
+  | enable_sql_queries | Enable SQL Queries   | Enable SQL query support for advanced data analysis |
+
+  #### Outputs
+
+  | Name  | Display Name | Info                                                                                                                     |
+  | :---- | :----------- | :----------------------------------------------------------------------------------------------------------------------- |
+  | tools | Tools        | A set of structured tools for SQL queries, natural language queries, filtering, aggregation, charting, and SQL download. |
+</Accordion>
+
+## **Tool Calling Agent**
+
+This component is an agent designed to utilize various tools seamlessly within workflows. It uses a language model to process user input and decide which tools to call.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  <table><thead><tr><th>Name</th><th>Display Name</th><th>Info</th></tr></thead><tbody><tr><td>tools</td><td>Tools</td><td>These are the tools that the agent can use to help with tasks.</td></tr><tr><td>input_value</td><td>Input</td><td>The input provided by the user for the agent to process.</td></tr><tr><td>handle_parsing_errors</td><td>Handle Parse Errors</td><td>Should the Agent fix errors when reading user input for better processing?</td></tr><tr><td>verbose</td><td>Verbose</td><td></td></tr><tr><td>max_iterations</td><td>Max Iterations</td><td>The maximum number of attempts the agent can make to complete its task before it stops.</td></tr><tr><td>agent_description</td><td>Agent Description [Deprecated]</td><td>The description of the agent. This is only used when in Tool Mode. Defaults to 'A helpful assistant with access to the following tools:' and tools are added dynamically. This feature is deprecated and will be removed in future versions.</td></tr><tr><td>llm</td><td>Language Model</td><td>Language model that the agent utilizes to perform tasks effectively.</td></tr><tr><td>system_prompt</td><td>System Prompt</td><td>System prompt to guide the agent's behavior.</td></tr><tr><td>chat_history</td><td>Chat Memory</td><td>This input stores the chat history, allowing the agent to remember previous conversations.</td></tr></tbody></table>
+
+  #### Outputs
+
+  | Name     | Display Name | Info                               |
+  | :------- | :----------- | :--------------------------------- |
+  | agent    | Agent        | The configured agent instance.     |
+  | response | Response     | The agent's response to the input. |
+</Accordion>
+
+## **Calculator**
+
+This component performs basic arithmetic operations on a given expression. It safely evaluates mathematical expressions using Python's AST parser, supporting addition, subtraction, multiplication, division, and exponentiation.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name       | Display Name | Info                                                             |
+  | :--------- | :----------- | :--------------------------------------------------------------- |
+  | expression | Expression   | The arithmetic expression to evaluate (e.g., '44(33/22)+12-20'). |
+
+  #### Outputs
+
+  | Name   | Display Name | Info                                    |
+  | :----- | :----------- | :-------------------------------------- |
+  | result | Data         | The evaluation result as a Data object. |
+</Accordion>
+
+## **Python REPL**
+
+This component is a Python code executor that lets you run Python code with specific imported modules. Remember to always use print() to see your results.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name           | Display Name   | Info                                                                              |
+  | :------------- | :------------- | :-------------------------------------------------------------------------------- |
+  | global_imports | Global Imports | A comma-separated list of modules to import globally, e.g. 'math,numpy,pandas'.   |
+  | python_code    | Python Code    | The Python code to execute. Only modules specified in Global Imports can be used. |
+
+  #### Outputs
+
+  | Name    | Display Name | Info                                   |
+  | :------ | :----------- | :------------------------------------- |
+  | results | Results      | The execution result as a Data object. |
+</Accordion>
+
+## **Search API**
+
+This component calls the searchapi.io API with result limiting. It returns organic search results with title, link, and snippet fields. Supports Google, Bing, and DuckDuckGo engines.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  <table><thead><tr><th>Name</th><th>Display Name</th><th>Info</th></tr></thead><tbody><tr><td>engine</td><td>Engine</td><td>Options: google, bing, duckduckgo.</td></tr><tr><td>api_key</td><td>SearchAPI API Key</td><td></td></tr><tr><td>input_value</td><td>Input</td><td></td></tr><tr><td>search_params</td><td>Search parameters</td><td></td></tr><tr><td>max_results</td><td>Max Results</td><td></td></tr><tr><td>max_snippet_length</td><td>Max Snippet Length</td><td></td></tr></tbody></table>
+
+  #### Outputs
+
+  | Name      | Display Name | Info                                                                          |
+  | :-------- | :----------- | :---------------------------------------------------------------------------- |
+  | data      | Data         | Search results as a list of Data objects containing title, link, and snippet. |
+  | text      | Text         | Search results as concatenated text in a Message object.                      |
+  | dataframe | DataFrame    | Search results as a DataFrame object.                                         |
+</Accordion>
+
+## **Serp Search API**
+
+This component calls the Serp Search API with result limiting. It returns organic search results with title, link, and snippet fields.
+
+<Accordion title="Paramaters" icon="">
+  **Inputs**
+
+  <table><thead><tr><th>Name</th><th>Display Name</th><th>Info</th></tr></thead><tbody><tr><td>serpapi_api_key</td><td>SerpAPI API Key</td><td></td></tr><tr><td>input_value</td><td>Input</td><td></td></tr><tr><td>search_params</td><td>Parameters</td><td></td></tr><tr><td>max_results</td><td>Max Results</td><td></td></tr><tr><td>max_snippet_length</td><td>Max Snippet Length</td><td></td></tr></tbody></table>
+
+  #### Outputs
+
+  | Name | Display Name | Info                                                                          |
+  | :--- | :----------- | :---------------------------------------------------------------------------- |
+  | data | Data         | Search results as a list of Data objects containing title, link, and snippet. |
+  | text | Text         | Search results as concatenated text in a Message object.                      |
 </Accordion>
