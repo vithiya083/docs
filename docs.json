@@ -39,15 +39,22 @@
         "groups": [
           {
             "group": "Welcome",
-            "pages": ["welcome"]
+            "pages": [
+              "welcome"
+            ]
           },
           {
             "group": "Get started",
-            "pages": ["Getstarted/quickstart"]
+            "pages": [
+              "Getstarted/quickstart"
+            ]
           },
           {
             "group": "Templates",
             "pages": [
+              "Templates/AudioVideoTranscription",
+              "Templates/PromptOptimizer",
+              "Templates/VectorStoreRAG",
               "Templates/EmailLead",
               "Templates/ResumeExtraction",
               "Templates/TargetedFAQ",
@@ -106,11 +113,15 @@
               },
               {
                 "group": "Opik",
-                "pages": ["Integrations/Opik/opik"]
+                "pages": [
+                  "Integrations/Opik/opik"
+                ]
               },
               {
                 "group": "Notion",
-                "pages": ["Integrations/Notion/notion-setup"]
+                "pages": [
+                  "Integrations/Notion/notion-setup"
+                ]
               },
               {
                 "group": "NVIDIA",
@@ -122,14 +133,13 @@
               {
                 "group": "OpenSource",
                 "pages": [
-                "Integrations/OpenSource/Opensourcefoundation"
-                         ]
+                  "Integrations/OpenSource/Opensourcefoundation"
+                ]
               }
             ]
           }
         ]
       }
-    ],
-    "global": {}
+    ]
   }
 }
