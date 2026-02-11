@@ -1,3 +1,126 @@
 ---
 title: "Audio,VideoTranscription"
 ---
+
+The Audio/Video Transcription template enables you to transcribe audio and video files using AssemblyAI's advanced speech recognition, generate subtitles, and apply LLM-powered insights to your transcriptions.
+
+This advanced setup supports speaker labels, formatting, punctuation, automatic language detection, and accepts a wide range of file formats, including .mp3, .wav, .mp4, and more.
+
+## Prerequisites
+
+- AssemblyAI API Key (required for all components)
+- An audio or video file (.mp3, .wav, .mp4, .flac, .ogg, .webm, .mov, etc.)
+- Basic familiarity with LLMC components
+
+## Create the Audio/Video Transcription Flow
+
+### 1. Transcribe Your Audio/Video
+
+Start with the AssemblyAI Start Transcript component (left side of the workspace).
+
+This uploads your file and begins the transcription process.
+
+Steps:
+
+- Upload your audio/video file using the Audio File field.
+- Add your AssemblyAI API Key.
+- Optionally enable Speaker Labels to identify different speakers.
+- The component submits the file and outputs a Transcript ID.
+
+The AssemblyAI Poll Transcript component automatically polls for the transcription status until it completes and returns the full result.
+
+Ensure your AssemblyAI API Key is added to both components.
+
+### 2. View Transcription Text
+
+Once the transcription completes, the result flows into the Transcription Flow (top section).
+
+Components:
+
+- Parser - Formats the transcription result into readable text using a template.
+- Text Output - Displays the transcription text in the Playground.
+
+Run the Text Output component to see your transcription text.
+
+### 3. Generate Subtitles
+
+The transcription result also flows into the Subtitles Flow (middle section).
+
+Components:
+
+- AssemblyAI Get Subtitles - Exports your transcript in SRT or VTT format for subtitles and closed captions.
+
+User Configurations:
+
+- Assembly API Key (required)
+- Transcription Result (from Poll Transcript)
+- Subtitle Format (SRT or VTT)
+
+Run the AssemblyAI Get Subtitles component to get your subtitle file.
+
+### 4. Get AI-Powered Insights with LeMUR
+
+Use the LeMUR Flow (bottom section) to apply Large Language Models to your spoken data.
+
+Components:
+
+- Prompt - Define what you want the LLM to do with the transcription (e.g., summarize, extract action items, answer questions).
+- AssemblyAI LeMUR - Applies LLMs to the transcription result using the AssemblyAI LeMUR framework.
+
+User Configurations:
+
+- Assembly API Key (required)
+- Transcription Result (from Poll Transcript)
+- Input Prompt (from Prompt component)
+- Endpoint (task, summary, or question-answer)
+
+Run the AssemblyAI LeMUR component to get your insights and action items.
+
+### 5. View Past Transcriptions
+
+Use the AssemblyAI List Transcripts component (right side, standalone) to retrieve a list of previous transcripts from your AssemblyAI account.
+
+User Configurations:
+
+- Assembly API Key (required)
+- Limit (default: 20)
+- Status Filter (all, queued, processing, completed, error)
+
+## Modify or Extend
+
+- Change the Prompt template to extract different insights (summaries, key points, action items, Q&A).
+- Toggle Speaker Labels to identify who said what in multi-speaker recordings.
+- Switch between SRT and VTT subtitle formats depending on your platform.
+- Adjust the LeMUR endpoint between task, summary, and question-answer modes.
+- Use List Transcripts to revisit and reprocess previous transcriptions.
+
+## Configuration Checklist
+
+| Component                   | Configuration                                  |
+| :-------------------------- | :--------------------------------------------- |
+| AssemblyAI Start Transcript | Upload audio/video file, enable speaker labels |
+| AssemblyAI Poll Transcript  | Polls transcription status until complete      |
+| Parser / Text Output        | Formats and displays transcription text        |
+| AssemblyAI Get Subtitles    | Exports subtitles in SRT or VTT format         |
+| Prompt / AssemblyAI LeMUR   | LLM-powered insights from spoken data          |
+| AssemblyAI List Transcripts | View past transcription history                |
+| API Key                     | AssemblyAI API Key required for all components |
+
+## Example
+
+Input: Upload a meeting recording (.mp3)
+
+Output:
+
+- Full transcription text with speaker labels
+- SRT subtitle file for video embedding
+- AI-generated meeting summary with action items via LeMUR
+
+## Built With
+
+- LLMC Framework
+- AssemblyAI Speech Recognition
+- AssemblyAI LeMUR Framework
+- AssemblyAI Subtitles Export
+
+Transcribe audio and video files with advanced speech recognition, generate subtitles, and extract AI-powered insights - all in one flow.
