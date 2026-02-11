@@ -30,24 +30,24 @@ For more information, see the [CrewAI documentation](https://docs.crewai.com/cor
 <Accordion title="Parameters">
   **Inputs**
 
-  | **Name**             | **Display Name**     | **Info**                                                                        |
+  | **Name** | **Display Name** | **Info** |
   | :------------------- | :------------------- | :------------------------------------------------------------------------------ |
-  | role                 | Role                 | The role of the agent.                                                          |
-  | goal                 | Goal                 | The objective of the agent.                                                     |
-  | backstory            | Backstory            | The backstory of the agent.                                                     |
-  | tools                | Tools                | The tools at the agent's disposal.                                              |
-  | llm                  | Language Model       | The language model that runs the agent.                                         |
-  | memory               | Memory               | This determines whether the agent should have memory or not.                    |
-  | verbose              | Verbose              | This enables verbose output.                                                    |
-  | allow_delegation     | Allow Delegation     | This determines whether the agent is allowed to delegate tasks to other agents. |
-  | allow_code_execution | Allow Code Execution | This determines whether the agent is allowed to execute code.                   |
-  | kwargs               | kwargs               | Additional keyword arguments for the agent.                                     |
+  | role | Role | The role of the agent. |
+  | goal | Goal | The objective of the agent. |
+  | backstory | Backstory | The backstory of the agent. |
+  | tools | Tools | The tools at the agent's disposal. |
+  | llm | Language Model | The language model that runs the agent. |
+  | memory | Memory | This determines whether the agent should have memory or not. |
+  | verbose | Verbose | This enables verbose output. |
+  | allow_delegation | Allow Delegation | This determines whether the agent is allowed to delegate tasks to other agents. |
+  | allow_code_execution | Allow Code Execution | This determines whether the agent is allowed to execute code. |
+  | kwargs | kwargs | Additional keyword arguments for the agent. |
 
   **Outputs**
 
-  | **Name** | **Display Name** | **Info**                             |
+  | **Name** | **Display Name** | **Info** |
   | :------- | :--------------- | :----------------------------------- |
-  | output   | Agent            | The constructed CrewAI Agent object. |
+  | output | Agent | The constructed CrewAI Agent object. |
 </Accordion>
 
 ### **Hierarchical Crew**[**​**](https://docs.langflow.org/components-bundle-components#hierarchical-crew)
@@ -59,24 +59,24 @@ For more information, see the [CrewAI documentation](https://docs.crewai.com/how
 <Accordion title="Parameters">
   **Inputs**
 
-  | **Name**             | **Display Name**     | **Info**                                                                    |
+  | **Name** | **Display Name** | **Info** |
   | :------------------- | :------------------- | :-------------------------------------------------------------------------- |
-  | agents               | Agents               | The list of Agent objects representing the crew members.                    |
-  | tasks                | Tasks                | The list of HierarchicalTask objects representing the tasks to be executed. |
-  | manager_llm          | Manager LLM          | The language model for the manager agent.                                   |
-  | manager_agent        | Manager Agent        | The specific agent to act as the manager.                                   |
-  | verbose              | Verbose              | This enables verbose output for detailed logging.                           |
-  | memory               | Memory               | The memory configuration for the crew.                                      |
-  | use_cache            | Use Cache            | This enables caching of results.                                            |
-  | max_rpm              | Max RPM              | This sets the maximum requests per minute.                                  |
-  | share_crew           | Share Crew           | This determines if the crew information is shared among agents.             |
-  | function_calling_llm | Function Calling LLM | The language model for function calling.                                    |
+  | agents | Agents | The list of Agent objects representing the crew members. |
+  | tasks | Tasks | The list of HierarchicalTask objects representing the tasks to be executed. |
+  | manager_llm | Manager LLM | The language model for the manager agent. |
+  | manager_agent | Manager Agent | The specific agent to act as the manager. |
+  | verbose | Verbose | This enables verbose output for detailed logging. |
+  | memory | Memory | The memory configuration for the crew. |
+  | use_cache | Use Cache | This enables caching of results. |
+  | max_rpm | Max RPM | This sets the maximum requests per minute. |
+  | share_crew | Share Crew | This determines if the crew information is shared among agents. |
+  | function_calling_llm | Function Calling LLM | The language model for function calling. |
 
   **Outputs**
 
-  | **Name** | **Display Name** | **Info**                                                      |
+  | **Name** | **Display Name** | **Info** |
   | :------- | :--------------- | :------------------------------------------------------------ |
-  | crew     | Crew             | The constructed Crew object with hierarchical task execution. |
+  | crew | Crew | The constructed Crew object with hierarchical task execution. |
 </Accordion>
 
 ### **CSV Agent**[**​**](https://docs.langflow.org/components-bundle-components#csv-agent)
@@ -86,17 +86,17 @@ This component creates a CSV agent from a CSV file and an LLM.
 <Accordion title="Parameters">
   **Inputs**
 
-  | **Name**   | **Type**      | **Description**                          |
+  | **Name** | **Type** | **Description** |
   | :--------- | :------------ | :--------------------------------------- |
-  | llm        | LanguageModel | The language model to use for the agent. |
-  | path       | File          | The path to the CSV file.                |
-  | agent_type | String        | The type of agent to create.             |
+  | llm | LanguageModel | The language model to use for the agent. |
+  | path | File | The path to the CSV file. |
+  | agent_type | String | The type of agent to create. |
 
   **Outputs**
 
-  | **Name** | **Type**      | **Description**         |
+  | **Name** | **Type** | **Description** |
   | :------- | :------------ | :---------------------- |
-  | agent    | AgentExecutor | The CSV agent instance. |
+  | agent | AgentExecutor | The CSV agent instance. |
 </Accordion>
 
 ### **OpenAI Tools Agent**[**​**](https://docs.langflow.org/components-bundle-components#openai-tools-agent)
@@ -106,23 +106,23 @@ This component creates an OpenAI Tools Agent.
 <Accordion title="Parameters">
   **Inputs**
 
-  | **Name**              | **Type**      | **Description**                                                      |
+  | **Name** | **Type** | **Description** |
   | :-------------------- | :------------ | :------------------------------------------------------------------- |
-  | llm                   | LanguageModel | The language model to use.                                           |
-  | tools                 | List of Tools | The tools to give the agent access to.                               |
-  | system_prompt         | String        | The system prompt to provide context to the agent.                   |
-  | input_value           | String        | The user's input to the agent.                                       |
-  | memory                | Memory        | The memory for the agent to use for context persistence.             |
-  | max_iterations        | Integer       | The maximum number of iterations to allow the agent to execute.      |
-  | verbose               | Boolean       | This determines whether to print out the agent's intermediate steps. |
-  | handle_parsing_errors | Boolean       | This determines whether to handle parsing errors in the agent.       |
+  | llm | LanguageModel | The language model to use. |
+  | tools | List of Tools | The tools to give the agent access to. |
+  | system_prompt | String | The system prompt to provide context to the agent. |
+  | input_value | String | The user's input to the agent. |
+  | memory | Memory | The memory for the agent to use for context persistence. |
+  | max_iterations | Integer | The maximum number of iterations to allow the agent to execute. |
+  | verbose | Boolean | This determines whether to print out the agent's intermediate steps. |
+  | handle_parsing_errors | Boolean | This determines whether to handle parsing errors in the agent. |
 
   **Outputs**
 
-  | **Name** | **Type**      | **Description**                                   |
+  | **Name** | **Type** | **Description** |
   | :------- | :------------ | :------------------------------------------------ |
-  | agent    | AgentExecutor | The OpenAI Tools agent instance.                  |
-  | output   | String        | The output from executing the agent on the input. |
+  | agent | AgentExecutor | The OpenAI Tools agent instance. |
+  | output | String | The output from executing the agent on the input. |
 </Accordion>
 
 ### **OpenAPI Agent**[**​**](https://docs.langflow.org/components-bundle-components#openapi-agent)
@@ -132,19 +132,19 @@ This component creates an agent for interacting with OpenAPI services.
 <Accordion title="Parameters">
   **Inputs**
 
-  | **Name**              | **Type**      | **Description**                                 |
+  | **Name** | **Type** | **Description** |
   | :-------------------- | :------------ | :---------------------------------------------- |
-  | llm                   | LanguageModel | The language model to use.                      |
-  | openapi_spec          | String        | The OpenAPI specification for the service.      |
-  | base_url              | String        | The base URL for the API.                       |
-  | headers               | Dict          | The optional headers for API requests.          |
-  | agent_executor_kwargs | Dict          | The optional parameters for the agent executor. |
+  | llm | LanguageModel | The language model to use. |
+  | openapi_spec | String | The OpenAPI specification for the service. |
+  | base_url | String | The base URL for the API. |
+  | headers | Dict | The optional headers for API requests. |
+  | agent_executor_kwargs | Dict | The optional parameters for the agent executor. |
 
   **Outputs**
 
-  | **Name** | **Type**      | **Description**             |
+  | **Name** | **Type** | **Description** |
   | :------- | :------------ | :-------------------------- |
-  | agent    | AgentExecutor | The OpenAPI agent instance. |
+  | agent | AgentExecutor | The OpenAPI agent instance. |
 </Accordion>
 
 ### **Sequential Crew**[**​**](https://docs.langflow.org/components-bundle-components#sequential-crew)
@@ -156,21 +156,21 @@ For more information, see the [CrewAI documentation](https://docs.crewai.com/how
 <Accordion title="Parameters">
   **Inputs**
 
-  | **Name**             | **Display Name**     | **Info**                                                                  |
+  | **Name** | **Display Name** | **Info** |
   | :------------------- | :------------------- | :------------------------------------------------------------------------ |
-  | tasks                | Tasks                | The list of SequentialTask objects representing the tasks to be executed. |
-  | verbose              | Verbose              | This enables verbose output for detailed logging.                         |
-  | memory               | Memory               | The memory configuration for the crew.                                    |
-  | use_cache            | Use Cache            | This enables caching of results.                                          |
-  | max_rpm              | Max RPM              | This sets the maximum requests per minute.                                |
-  | share_crew           | Share Crew           | This determines if the crew information is shared among agents.           |
-  | function_calling_llm | Function Calling LLM | The language model for function calling.                                  |
+  | tasks | Tasks | The list of SequentialTask objects representing the tasks to be executed. |
+  | verbose | Verbose | This enables verbose output for detailed logging. |
+  | memory | Memory | The memory configuration for the crew. |
+  | use_cache | Use Cache | This enables caching of results. |
+  | max_rpm | Max RPM | This sets the maximum requests per minute. |
+  | share_crew | Share Crew | This determines if the crew information is shared among agents. |
+  | function_calling_llm | Function Calling LLM | The language model for function calling. |
 
   **Outputs**
 
-  | **Name** | **Display Name** | **Info**                                                    |
+  | **Name** | **Display Name** | **Info** |
   | :------- | :--------------- | :---------------------------------------------------------- |
-  | crew     | Crew             | The constructed Crew object with sequential task execution. |
+  | crew | Crew | The constructed Crew object with sequential task execution. |
 </Accordion>
 
 ### **Sequential task agent**[**​**](https://docs.langflow.org/components-bundle-components#sequential-task-agent)
@@ -182,28 +182,28 @@ For more information, see the [CrewAI documentation](https://docs.crewai.com/how
 <Accordion title="Parameters">
   **Inputs**
 
-  | **Name**             | **Display Name**     | **Info**                                                                        |
+  | **Name** | **Display Name** | **Info** |
   | :------------------- | :------------------- | :------------------------------------------------------------------------------ |
-  | role                 | Role                 | The role of the agent.                                                          |
-  | goal                 | Goal                 | The objective of the agent.                                                     |
-  | backstory            | Backstory            | The backstory of the agent.                                                     |
-  | tools                | Tools                | The tools at the agent's disposal.                                              |
-  | llm                  | Language Model       | The language model that runs the agent.                                         |
-  | memory               | Memory               | This determines whether the agent should have memory or not.                    |
-  | verbose              | Verbose              | This enables verbose output.                                                    |
-  | allow_delegation     | Allow Delegation     | This determines whether the agent is allowed to delegate tasks to other agents. |
-  | allow_code_execution | Allow Code Execution | This determines whether the agent is allowed to execute code.                   |
-  | agent_kwargs         | Agent kwargs         | The additional kwargs for the agent.                                            |
-  | task_description     | Task Description     | The descriptive text detailing the task's purpose and execution.                |
-  | expected_output      | Expected Task Output | The clear definition of the expected task outcome.                              |
-  | async_execution      | Async Execution      | The boolean flag indicating asynchronous task execution.                        |
-  | previous_task        | Previous Task        | The previous task in the sequence for chaining.                                 |
+  | role | Role | The role of the agent. |
+  | goal | Goal | The objective of the agent. |
+  | backstory | Backstory | The backstory of the agent. |
+  | tools | Tools | The tools at the agent's disposal. |
+  | llm | Language Model | The language model that runs the agent. |
+  | memory | Memory | This determines whether the agent should have memory or not. |
+  | verbose | Verbose | This enables verbose output. |
+  | allow_delegation | Allow Delegation | This determines whether the agent is allowed to delegate tasks to other agents. |
+  | allow_code_execution | Allow Code Execution | This determines whether the agent is allowed to execute code. |
+  | agent_kwargs | Agent kwargs | The additional kwargs for the agent. |
+  | task_description | Task Description | The descriptive text detailing the task's purpose and execution. |
+  | expected_output | Expected Task Output | The clear definition of the expected task outcome. |
+  | async_execution | Async Execution | The boolean flag indicating asynchronous task execution. |
+  | previous_task | Previous Task | The previous task in the sequence for chaining. |
 
   **Outputs**
 
-  | **Name**    | **Display Name** | **Info**                                                           |
+  | **Name** | **Display Name** | **Info** |
   | :---------- | :--------------- | :----------------------------------------------------------------- |
-  | task_output | Sequential Task  | The list of SequentialTask objects representing the created tasks. |
+  | task_output | Sequential Task | The list of SequentialTask objects representing the created tasks. |
 </Accordion>
 
 ### **SQL Agent**[**​**](https://docs.langflow.org/components-bundle-components#sql-agent)
@@ -213,23 +213,23 @@ This component creates an agent for interacting with SQL databases.
 <Accordion title="Parameters">
   **Inputs**
 
-  | **Name**                  | **Type**      | **Description**                                                   |
+  | **Name** | **Type** | **Description** |
   | :------------------------ | :------------ | :---------------------------------------------------------------- |
-  | llm                       | LanguageModel | The language model to use.                                        |
-  | database                  | Database      | The SQL database connection.                                      |
-  | top_k                     | Integer       | The number of results to return from a SELECT query.              |
-  | use_tools                 | Boolean       | This determines whether to use tools for query execution.         |
-  | return_intermediate_steps | Boolean       | This determines whether to return the agent's intermediate steps. |
-  | max_iterations            | Integer       | The maximum number of iterations to run the agent.                |
-  | max_execution_time        | Integer       | The maximum execution time in seconds.                            |
-  | early_stopping_method     | String        | The method to use for early stopping.                             |
-  | verbose                   | Boolean       | This determines whether to print the agent's thoughts.            |
+  | llm | LanguageModel | The language model to use. |
+  | database | Database | The SQL database connection. |
+  | top_k | Integer | The number of results to return from a SELECT query. |
+  | use_tools | Boolean | This determines whether to use tools for query execution. |
+  | return_intermediate_steps | Boolean | This determines whether to return the agent's intermediate steps. |
+  | max_iterations | Integer | The maximum number of iterations to run the agent. |
+  | max_execution_time | Integer | The maximum execution time in seconds. |
+  | early_stopping_method | String | The method to use for early stopping. |
+  | verbose | Boolean | This determines whether to print the agent's thoughts. |
 
   **Outputs**
 
-  | **Name** | **Type**      | **Description**         |
+  | **Name** | **Type** | **Description** |
   | :------- | :------------ | :---------------------- |
-  | agent    | AgentExecutor | The SQL agent instance. |
+  | agent | AgentExecutor | The SQL agent instance. |
 </Accordion>
 
 ### **Tool Calling Agent**[**​**](https://docs.langflow.org/components-bundle-components#tool-calling-agent)
@@ -239,22 +239,22 @@ This component creates an agent for structured tool calling with various languag
 <Accordion title="Parameters">
   **Inputs**
 
-  | **Name**                  | **Type**      | **Description**                                                   |
+  | **Name** | **Type** | **Description** |
   | :------------------------ | :------------ | :---------------------------------------------------------------- |
-  | llm                       | LanguageModel | The language model to use.                                        |
-  | tools                     | List[Tool]    | The list of tools available to the agent.                         |
-  | system_message            | String        | The system message to use for the agent.                          |
-  | return_intermediate_steps | Boolean       | This determines whether to return the agent's intermediate steps. |
-  | max_iterations            | Integer       | The maximum number of iterations to run the agent.                |
-  | max_execution_time        | Integer       | The maximum execution time in seconds.                            |
-  | early_stopping_method     | String        | The method to use for early stopping.                             |
-  | verbose                   | Boolean       | This determines whether to print the agent's thoughts.            |
+  | llm | LanguageModel | The language model to use. |
+  | tools | List[Tool] | The list of tools available to the agent. |
+  | system_message | String | The system message to use for the agent. |
+  | return_intermediate_steps | Boolean | This determines whether to return the agent's intermediate steps. |
+  | max_iterations | Integer | The maximum number of iterations to run the agent. |
+  | max_execution_time | Integer | The maximum execution time in seconds. |
+  | early_stopping_method | String | The method to use for early stopping. |
+  | verbose | Boolean | This determines whether to print the agent's thoughts. |
 
   **Outputs**
 
-  | **Name** | **Type**      | **Description**                 |
+  | **Name** | **Type** | **Description** |
   | :------- | :------------ | :------------------------------ |
-  | agent    | AgentExecutor | The tool calling agent instance |
+  | agent | AgentExecutor | The tool calling agent instance |
 </Accordion>
 
 ### **XML Agent**[**​**](https://docs.langflow.org/components-bundle-components#xml-agent)
@@ -266,17 +266,17 @@ The agent uses XML formatting for tool instructions to the Language Model.
 <Accordion title="Parameters">
   **Inputs**
 
-  | **Name**    | **Type**      | **Description**                                                            |
+  | **Name** | **Type** | **Description** |
   | :---------- | :------------ | :------------------------------------------------------------------------- |
-  | llm         | LanguageModel | The language model to use for the agent.                                   |
-  | user_prompt | String        | The custom prompt template for the agent with XML formatting instructions. |
-  | tools       | List[Tool]    | The list of tools available to the agent.                                  |
+  | llm | LanguageModel | The language model to use for the agent. |
+  | user_prompt | String | The custom prompt template for the agent with XML formatting instructions. |
+  | tools | List[Tool] | The list of tools available to the agent. |
 
   **Outputs**
 
-  | **Name** | **Type**      | **Description**         |
+  | **Name** | **Type** | **Description** |
   | :------- | :------------ | :---------------------- |
-  | agent    | AgentExecutor | The XML Agent instance. |
+  | agent | AgentExecutor | The XML Agent instance. |
 </Accordion>
 
 ### **Agent QL (Extract Web Data)**
@@ -284,26 +284,26 @@ The agent uses XML formatting for tool instructions to the Language Model.
 This component extracts structured data from a web page using an AgentQL query or a Natural Language description. It supports configurable request modes, stealth mode, scrolling, and screenshots.
 
 <Accordion title="Parameters" icon="">
-  **Inputs **
+  **Inputs**
 
-  | Name                        | Display Name               | Info                                                                                                                                                 |
+  | Name | Display Name | Info |
   | :-------------------------- | :------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | api_key                     | API Key                    | Your AgentQL API key from [dev.agentql.com](http://dev.agentql.com)                                                                                  |
-  | url                         | URL                        | The URL of the public web page you want to extract data from.                                                                                        |
-  | query                       | AgentQL Query              | The AgentQL query to execute. Learn more at [<u>https://docs.agentql.com/agentql-query</u>](https://docs.agentql.com/agentql-query) or use a prompt. |
-  | prompt                      | Prompt                     | A Natural Language description of the data to extract from the page. Alternative to AgentQL query.                                                   |
-  | is_stealth_mode_enabled     | Enable Stealth Mode (Beta) | Enable experimental anti-bot evasion strategies. May not work for all websites at all times.                                                         |
-  | timeout                     | Timeout                    | Seconds to wait for a request.                                                                                                                       |
-  | mode                        | Request Mode               | 'standard' uses deep data analysis, while 'fast' trades some depth of analysis for speed. Options: fast, standard.                                   |
-  | wait_for                    | Wait For                   | Seconds to wait for the page to load before extracting data.                                                                                         |
-  | is_scroll_to_bottom_enabled | Enable scroll to bottom    | Scroll to bottom of the page before extracting data.                                                                                                 |
-  | is_screenshot_enabled       | Enable screenshot          | Take a screenshot before extracting data. Returned in 'metadata' as a Base64 string.                                                                 |
+  | api_key | API Key | Your AgentQL API key from [dev.agentql.com](http://dev.agentql.com) |
+  | url | URL | The URL of the public web page you want to extract data from. |
+  | query | AgentQL Query | The AgentQL query to execute. Learn more at [<u>https://docs.agentql.com/agentql-query</u>](https://docs.agentql.com/agentql-query) or use a prompt. |
+  | prompt | Prompt | A Natural Language description of the data to extract from the page. Alternative to AgentQL query. |
+  | is_stealth_mode_enabled | Enable Stealth Mode (Beta) | Enable experimental anti-bot evasion strategies. May not work for all websites at all times. |
+  | timeout | Timeout | Seconds to wait for a request. |
+  | mode | Request Mode | 'standard' uses deep data analysis, while 'fast' trades some depth of analysis for speed. Options: fast, standard. |
+  | wait_for | Wait For | Seconds to wait for the page to load before extracting data. |
+  | is_scroll_to_bottom_enabled | Enable scroll to bottom | Scroll to bottom of the page before extracting data.                                                                                                 |
+  | is_screenshot_enabled | Enable screenshot | Take a screenshot before extracting data. Returned in 'metadata' as a Base64 string. |
 
   Outputs
 
-  | Name | Display Name | Info                                        |
+  | Name | Display Name | Info |
   | :--- | :----------- | :------------------------------------------ |
-  | data | Data         | Extracted structured data as a Data object. |
+  | data | Data | Extracted structured data as a Data object. |
 </Accordion>
 
 ### **Olivya (Place Call)**
@@ -311,22 +311,22 @@ This component extracts structured data from a web page using an AgentQL query o
 This component creates an outbound call request from Olivya's platform. It allows configuring the agent's phone number, recipient, introductory message, system prompt, and conversation history.
 
 <Accordion title="Parameters" icon="">
-  **Inputs **
+  **Inputs**
 
-  | Name                 | Display Name         | Info                                       |
+  | Name | Display Name | Info |
   | :------------------- | :------------------- | :----------------------------------------- |
-  | api_key              | API Key              | Your API key for authentication            |
-  | from_number          | From Number          | The Agent's phone number                   |
-  | to_number            | To Number            | The recipient's phone number               |
-  | first_message        | First Message        | The Agent's introductory message           |
-  | system_prompt        | System Prompt        | The system prompt to guide the interaction |
-  | conversation_history | Conversation History | The summary of the conversation            |
+  | api_key | API Key | Your API key for authentication |
+  | from_number | From Number | The Agent's phone number |
+  | to_number | To Number | The recipient's phone number |
+  | first_message | First Message | The Agent's introductory message |
+  | system_prompt | System Prompt | The system prompt to guide the interaction |
+  | conversation_history | Conversation History | The summary of the conversation |
 
   **Outputs**
 
-  | Name   | Display Name | Info                                |
+  | Name | Display Name | Info |
   | :----- | :----------- | :---------------------------------- |
-  | output | Output       | The call response as a Data object. |
+  | output | Output | The call response as a Data object. |
 </Accordion>
 
 ### **Cohere Rerank**
@@ -336,11 +336,17 @@ This component reranks documents using the Cohere API. It takes search results a
 <Accordion title="Parameters" icon="">
   **Inputs**
 
-  <table style="min-width: 75px"><colgroup><col style="min-width: 25px"><col style="min-width: 25px"><col style="min-width: 25px"></colgroup><tbody><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Name</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Display Name</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Info</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>search_query</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Search Query</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>(inherited from base)</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>search_results</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Search Results</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Search Results from a Vector Store.</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>top_n</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Top N</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>(inherited from base, default: 3)</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>api_key</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Cohere API Key</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>model</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Model</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Options: rerank-english-v3.0, rerank-multilingual-v3.0, rerank-english-v2.0, rerank-multilingual-v2.0.</p></td></tr></tbody></table>
+  | Name | Display Name | Info |
+  | :------------------- | :------------------- | :----------------------------------------------------------------------------------------------------------------------------- |
+  | search_query | Search Query | (inherited from base) |
+  | search_results | Search Results | Search Results from a Vector Store. |
+  | top_n | Top N | (inherited from base, default: 3) |
+  | api_key | Cohere API Key | |
+  | model | Model | Options: rerank-english-v3.0, rerank-multilingual-v3.0, rerank-english-v2.0, rerank-multilingual-v2.0. |
 
   Outputs
 
-  | Name               | Display Name       | Info                            |
+  | Name | Display Name | Info |
   | :----------------- | :----------------- | :------------------------------ |
   | reranked_documents | Reranked Documents | Documents reranked by relevance |
 </Accordion>
@@ -352,20 +358,20 @@ Firecrawl is a suite of 4 components for web crawling, scraping, extracting, and
 <Accordion title="Parameters" icon="">
   **Inputs**
 
-  | Name            | Display Name    | Info                                                |
+  | Name | Display Name | Info |
   | :-------------- | :-------------- | :-------------------------------------------------- |
-  | api_key         | API Key         | The API key to use Firecrawl API.                   |
-  | url             | URL             | The URL to scrape.                                  |
-  | timeout         | Timeout         | Timeout in milliseconds for the request.            |
+  | api_key | API Key | The API key to use Firecrawl API. |
+  | url | URL | The URL to scrape. |
+  | timeout | Timeout | Timeout in milliseconds for the request. |
   | idempotency_key | Idempotency Key | Optional idempotency key to ensure unique requests. |
-  | crawlerOptions  | Crawler Options | The crawler options to send with the request.       |
-  | scrapeOptions   | Scrape Options  | The page options to send with the request.          |
+  | crawlerOptions | Crawler Options | The crawler options to send with the request. |
+  | scrapeOptions | Scrape Options | The page options to send with the request. |
 
   Outputs
 
-  | Name | Display Name | Info                            |
+  | Name | Display Name | Info |
   | :--- | :----------- | :------------------------------ |
-  | data | Data         | Crawl results as a Data object. |
+  | data | Data | Crawl results as a Data object. |
 </Accordion>
 
 ### **Firecrawl Scrape API**
@@ -375,22 +381,21 @@ This component scrapes a single web page using the Firecrawl Scrape API.
 <Accordion title="Parameters" icon="">
   **Inputs**
 
-  | Name             | Display Name      | Info                                            |
+  | Name | Display Name | Info |
   | :--------------- | :---------------- | :---------------------------------------------- |
-  | api_key          | API Key           | The API key to use Firecrawl API.               |
-  | url              | URL               | The URL to scrape.                              |
-  | timeout          | Timeout           | Timeout in milliseconds for the request.        |
-  | scrapeOptions    | Scrape Options    | The page options to send with the request.      |
+  | api_key | API Key | The API key to use Firecrawl API. |
+  | url | URL | The URL to scrape. |
+  | timeout | Timeout | Timeout in milliseconds for the request. |
+  | scrapeOptions | Scrape Options | The page options to send with the request. |
   | extractorOptions | Extractor Options | The extractor options to send with the request. |
 
   Outputs
 
-  | Name | Display Name | Info                                |
+  | Name | Display Name | Info |
   | :--- | :----------- | :---------------------------------- |
-  | data | Data         | Scraped page data as a Data object. |
+  | data | Data | Scraped page data as a Data object. |
 </Accordion>
 
-### **\
-Firecrawl Extract API**
+### **Firecrawl Extract API**
 
 This component extracts structured data from web pages using the Firecrawl Extract API with prompt-guided extraction.
