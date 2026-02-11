@@ -278,3 +278,119 @@ The agent uses XML formatting for tool instructions to the Language Model.
   | :------- | :------------ | :---------------------- |
   | agent    | AgentExecutor | The XML Agent instance. |
 </Accordion>
+
+### **Agent QL (Extract Web Data)**
+
+This component extracts structured data from a web page using an AgentQL query or a Natural Language description. It supports configurable request modes, stealth mode, scrolling, and screenshots.
+
+<Accordion title="Parameters" icon="">
+  **Inputs **
+
+  | Name                        | Display Name               | Info                                                                                                                                                 |
+  | :-------------------------- | :------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | api_key                     | API Key                    | Your AgentQL API key from [dev.agentql.com](http://dev.agentql.com)                                                                                  |
+  | url                         | URL                        | The URL of the public web page you want to extract data from.                                                                                        |
+  | query                       | AgentQL Query              | The AgentQL query to execute. Learn more at [<u>https://docs.agentql.com/agentql-query</u>](https://docs.agentql.com/agentql-query) or use a prompt. |
+  | prompt                      | Prompt                     | A Natural Language description of the data to extract from the page. Alternative to AgentQL query.                                                   |
+  | is_stealth_mode_enabled     | Enable Stealth Mode (Beta) | Enable experimental anti-bot evasion strategies. May not work for all websites at all times.                                                         |
+  | timeout                     | Timeout                    | Seconds to wait for a request.                                                                                                                       |
+  | mode                        | Request Mode               | 'standard' uses deep data analysis, while 'fast' trades some depth of analysis for speed. Options: fast, standard.                                   |
+  | wait_for                    | Wait For                   | Seconds to wait for the page to load before extracting data.                                                                                         |
+  | is_scroll_to_bottom_enabled | Enable scroll to bottom    | Scroll to bottom of the page before extracting data.                                                                                                 |
+  | is_screenshot_enabled       | Enable screenshot          | Take a screenshot before extracting data. Returned in 'metadata' as a Base64 string.                                                                 |
+
+  Outputs
+
+  | Name | Display Name | Info                                        |
+  | :--- | :----------- | :------------------------------------------ |
+  | data | Data         | Extracted structured data as a Data object. |
+</Accordion>
+
+### **Olivya (Place Call)**
+
+This component creates an outbound call request from Olivya's platform. It allows configuring the agent's phone number, recipient, introductory message, system prompt, and conversation history.
+
+<Accordion title="Parameters" icon="">
+  **Inputs **
+
+  | Name                 | Display Name         | Info                                       |
+  | :------------------- | :------------------- | :----------------------------------------- |
+  | api_key              | API Key              | Your API key for authentication            |
+  | from_number          | From Number          | The Agent's phone number                   |
+  | to_number            | To Number            | The recipient's phone number               |
+  | first_message        | First Message        | The Agent's introductory message           |
+  | system_prompt        | System Prompt        | The system prompt to guide the interaction |
+  | conversation_history | Conversation History | The summary of the conversation            |
+
+  **Outputs**
+
+  | Name   | Display Name | Info                                |
+  | :----- | :----------- | :---------------------------------- |
+  | output | Output       | The call response as a Data object. |
+</Accordion>
+
+### **Cohere Rerank**
+
+This component reranks documents using the Cohere API. It takes search results and a query, then returns documents reranked by relevance using Cohere's reranking models.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  <table style="min-width: 75px"><colgroup><col style="min-width: 25px"><col style="min-width: 25px"><col style="min-width: 25px"></colgroup><tbody><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Name</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Display Name</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Info</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>search_query</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Search Query</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>(inherited from base)</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>search_results</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Search Results</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Search Results from a Vector Store.</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>top_n</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Top N</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>(inherited from base, default: 3)</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>api_key</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Cohere API Key</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>model</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Model</p></td><td colspan="1" rowspan="1" style="border-left:solid #454545 0.75pt;border-right:solid #454545 0.75pt;border-bottom:solid #454545 0.75pt;border-top:solid #454545 0.75pt;vertical-align:top;background-color:#ffffff;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;"><p>Options: rerank-english-v3.0, rerank-multilingual-v3.0, rerank-english-v2.0, rerank-multilingual-v2.0.</p></td></tr></tbody></table>
+
+  Outputs
+
+  | Name               | Display Name       | Info                            |
+  | :----------------- | :----------------- | :------------------------------ |
+  | reranked_documents | Reranked Documents | Documents reranked by relevance |
+</Accordion>
+
+### **Firecrawl**
+
+Firecrawl is a suite of 4 components for web crawling, scraping, extracting, and mapping. All require a Firecrawl API Key.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name            | Display Name    | Info                                                |
+  | :-------------- | :-------------- | :-------------------------------------------------- |
+  | api_key         | API Key         | The API key to use Firecrawl API.                   |
+  | url             | URL             | The URL to scrape.                                  |
+  | timeout         | Timeout         | Timeout in milliseconds for the request.            |
+  | idempotency_key | Idempotency Key | Optional idempotency key to ensure unique requests. |
+  | crawlerOptions  | Crawler Options | The crawler options to send with the request.       |
+  | scrapeOptions   | Scrape Options  | The page options to send with the request.          |
+
+  Outputs
+
+  | Name | Display Name | Info                            |
+  | :--- | :----------- | :------------------------------ |
+  | data | Data         | Crawl results as a Data object. |
+</Accordion>
+
+### **Firecrawl Scrape API**
+
+This component scrapes a single web page using the Firecrawl Scrape API.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name             | Display Name      | Info                                            |
+  | :--------------- | :---------------- | :---------------------------------------------- |
+  | api_key          | API Key           | The API key to use Firecrawl API.               |
+  | url              | URL               | The URL to scrape.                              |
+  | timeout          | Timeout           | Timeout in milliseconds for the request.        |
+  | scrapeOptions    | Scrape Options    | The page options to send with the request.      |
+  | extractorOptions | Extractor Options | The extractor options to send with the request. |
+
+  Outputs
+
+  | Name | Display Name | Info                                |
+  | :--- | :----------- | :---------------------------------- |
+  | data | Data         | Scraped page data as a Data object. |
+</Accordion>
+
+### **\
+Firecrawl Extract API**
+
+This component extracts structured data from web pages using the Firecrawl Extract API with prompt-guided extraction.
