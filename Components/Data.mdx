@@ -303,6 +303,28 @@ This component recursively loads files from a directory and converts the content
 2. Optionally select specific file types to filter
 3. Set the search depth and enable recursive mode if needed
 
+<Accordion title="Paramters" iconType="light">
+  **Inputs**
+
+  | Name               | Display Name       | Info                                                                                     |
+  | :----------------- | :----------------- | :--------------------------------------------------------------------------------------- |
+  | path               | Path               | Path to the directory to load files from. Defaults to current directory ('.')            |
+  | types              | File Types         | File types to load. Select one or more types or leave empty to load all supported types. |
+  | depth              | Depth              | Depth to search for files.                                                               |
+  | max_concurrency    | Max Concurrency    | Maximum concurrency for loading files.                                                   |
+  | load_hidden        | Load Hidden        | If true, hidden files will be loaded.                                                    |
+  | recursive          | Recursive          | If true, the search will be recursive.                                                   |
+  | silent_errors      | Silent Errors      | If true, errors will not raise an exception.                                             |
+  | use_multithreading | Use Multithreading | If true, multithreading will be used.                                                    |
+
+  **Outputs**
+
+  | Name      | Display Name | Info                                           |
+  | :-------- | :----------- | :--------------------------------------------- |
+  | data      | Data         | The loaded files as a list of Data objects.    |
+  | dataframe | DataFrame    | The loaded file content as a DataFrame object. |
+</Accordion>
+
 ### Load Spreadsheet
 
 This component loads and parses spreadsheet files (.xlsx, .xls) and converts the content into a searchable data format for analysis. It supports sheet selection, row limits, caching, and optimized loading for large files.
@@ -312,6 +334,36 @@ This component loads and parses spreadsheet files (.xlsx, .xls) and converts the
 1. Click the Select files button and upload an .xlsx or .xls file
 2. Optionally specify a sheet name (defaults to the first sheet)
 3. Configure row limits and caching as needed
+
+<Accordion title="Parameters" icon="">
+  **Inputs **
+
+  | Name                                | Display Name                        | Info                                                                                                                                                             |
+  | :---------------------------------- | :---------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | path                                | Files                               | The path to the spreadsheet file to load. Supports .xlsx and .xls files.                                                                                         |
+  | file_path                           | Server File Path                    | A Data object with a file_path property pointing to the server file or a Message object with a path to the file. Supercedes 'Path' but supports same file types. |
+  | separator                           | Separator                           | Specify the separator to use between multiple outputs in Message format.                                                                                         |
+  | silent_errors                       | Silent Errors                       | If true, errors will not raise an exception.                                                                                                                     |
+  | delete_server_file_after_processing | Delete Server File After Processing | If true, the Server File Path will be deleted after processing.                                                                                                  |
+  | ignore_unsupported_extensions       | Ignore Unsupported Extensions       | If true, files with unsupported extensions will not be processed.                                                                                                |
+  | ignore_unspecified_files            | Ignore Unspecified Files            | If true, Data with no file_path property will be ignored.                                                                                                        |
+  | sheet_name                          | Sheet Name                          | Name of the sheet to load (default: first sheet).                                                                                                                |
+  | max_rows                            | Max Rows                            | Maximum number of rows to load (0 = all rows).                                                                                                                   |
+  | include_index                       | Include Row Index                   | Include row index as a column.                                                                                                                                   |
+  | text_key                            | Text Key                            | The key to use for the text column. Defaults to 'text'.                                                                                                          |
+  | enable_caching                      | Enable Caching                      | Cache loaded data to avoid reloading for subsequent queries.                                                                                                     |
+  | cache_dir                           | Cache Directory                     | Directory to store cached data (default: system temp directory).                                                                                                 |
+  | optimize_for_large_files            | Optimize for Large Files            | Use optimized loading for files with 100,000+ rows.                                                                                                              |
+  | chunk_size                          | Chunk Size                          | Number of rows to process in chunks for large files.                                                                                                             |
+
+  **Outputs**
+
+  | Name      | Display Name | Info                                                                                      |
+  | :-------- | :----------- | :---------------------------------------------------------------------------------------- |
+  | data_list | Data List    | The parsed spreadsheet content as a list of Data objects.                                 |
+  | summary   | Data Summary | Summary information about the loaded data including total rows, columns, and sample data. |
+  | dataframe | DataFrame    | The spreadsheet content as a DataFrame object for SQL queries.                            |
+</Accordion>
 
 ### Recursive URL Crawler
 
@@ -323,6 +375,26 @@ This component loads and parses child links from a root URL recursively. It craw
 2. Set the Max Depth to control how many link levels to crawl
 3. Configure output format (Text or HTML)
 
+<Accordion title="Parameters" icon="">
+  **Inputs **
+
+  | Name            | Display Name    | Info                                                                                                                                                                                                                                                                                             |
+  | :-------------- | :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | urls            | URLs            | Enter one or more URLs to crawl recursively, by clicking the '+' button.                                                                                                                                                                                                                         |
+  | max_depth       | Max Depth       | Controls how many 'clicks' away from the initial page the crawler will go: depth 1: only the initial page; depth 2: initial page + all pages linked directly from it; depth 3: initial page + direct links + links found on those pages. Note: This is about link traversal, not URL path depth. |
+  | prevent_outside | Prevent Outside | If enabled, only crawls URLs within the same domain as the root URL. This helps prevent the crawler from going to external websites.                                                                                                                                                             |
+  | use_async       | Use Async       | If enabled, uses asynchronous loading which can be significantly faster but might use more system resources.                                                                                                                                                                                     |
+  | format          | Output Format   | Output Format. Use 'Text' to extract the text from the HTML or 'HTML' for the raw HTML content.                                                                                                                                                                                                  |
+
+  #### Outputs
+
+  | Name      | Display Name | Info                                                  |
+  | :-------- | :----------- | :---------------------------------------------------- |
+  | data      | Data         | The crawled content as a list of Data objects.        |
+  | text      | Message      | The crawled content as a concatenated Message object. |
+  | dataframe | DataFrame    | The crawled content as a DataFrame object.            |
+</Accordion>
+
 ### S3 Bucket Uploader
 
 This component uploads files to an Amazon S3 bucket. It supports two upload strategies: storing parsed data or uploading the original file as-is, with options for path prefixing and stripping.
@@ -333,3 +405,25 @@ This component uploads files to an Amazon S3 bucket. It supports two upload stra
 2. Enter the Bucket Name
 3. Connect Data inputs from upstream components
 4. Choose an upload strategy
+
+ 
+
+<Accordion title="Parameters" icon="">
+  #### Inputs
+
+  | Name                  | Display Name             | Info                                                                                                                                                                         |
+  | :-------------------- | :----------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | aws_access_key_id     | AWS Access Key ID        | AWS Access key ID.                                                                                                                                                           |
+  | aws_secret_access_key | AWS Secret Key           | AWS Secret Key.                                                                                                                                                              |
+  | bucket_name           | Bucket Name              | Enter the name of the bucket.                                                                                                                                                |
+  | strategy              | Strategy for file upload | Choose the strategy to upload the file. By Data means that the source file is parsed and stored as LangFlow data. By File Name means that the source file is uploaded as is. |
+  | data_inputs           | Data Inputs              | The data to split.                                                                                                                                                           |
+  | s3_prefix             | S3 Prefix                | Prefix for all files.                                                                                                                                                        |
+  | strip_path            | Strip Path               | Removes path from file path.                                                                                                                                                 |
+
+  #### Outputs
+
+  | Name | Display Name         | Info                                                    |
+  | :--- | :------------------- | :------------------------------------------------------ |
+  | data | Writes to AWS Bucket | Processes and uploads files to the configured S3 bucket |
+</Accordion>
