@@ -60,32 +60,8 @@ This component creates a `CassandraChatMessageHistory` instance, enabling storag
   | **Name**        | **Type**               | **Description**                                             |
   | :-------------- | :--------------------- | :---------------------------------------------------------- |
   | message_history | BaseChatMessageHistory | An instance of CassandraChatMessageHistory for the session. |
-</Accordion>
 
-## **Mem0 Chat Memory**
-
-The Mem0 Chat Memory component retrieves and stores chat messages using Mem0 memory storage.
-
-<Accordion title="Parameters">
-  **Inputs**
-
-  | **Name**        | **Display Name**         | **Info**                                                                                        |
-  | :-------------- | :----------------------- | :---------------------------------------------------------------------------------------------- |
-  | mem0_config     | Mem0 Configuration       | The configuration dictionary for initializing the Mem0 memory instance.                         |
-  | ingest_message  | Message to Ingest        | The message content to be ingested into Mem0 memory.                                            |
-  | existing_memory | Existing Memory Instance | An optional existing Mem0 memory instance.                                                      |
-  | user_id         | User ID                  | The identifier for the user associated with the messages.                                       |
-  | search_query    | Search Query             | The input text for searching related memories in Mem0.                                          |
-  | mem0_api_key    | Mem0 API Key             | The API key for the Mem0 platform. Leave empty to use the local version.                        |
-  | metadata        | Metadata                 | The additional metadata to associate with the ingested message.                                 |
-  | openai_api_key  | OpenAI API Key           | The API key for OpenAI. Required when using OpenAI embeddings without a provided configuration. |
-
-  **Outputs**
-
-  | **Name**       | **Display Name** | **Info**                                               |
-  | :------------- | :--------------- | :----------------------------------------------------- |
-  | memory         | Mem0 Memory      | The resulting Mem0 Memory object after ingesting data. |
-  | search_results | Search Results   | The search results from querying Mem0 memory.          |
+  ## **Mem0 Chat Memory**
 </Accordion>
 
 ## **Redis Chat Memory**
@@ -110,25 +86,4 @@ This component retrieves and stores chat messages from Redis.
   | **Name** | **Display Name** | **Info**                              |
   | :------- | :--------------- | :------------------------------------ |
   | memory   | Memory           | The Redis chat message history object |
-</Accordion>
-
-### **ZepChatMemory Component**
-
-This component creates a `ZepChatMessageHistory` instance, enabling storage and retrieval of chat messages using Zep, a memory server for Large Language Models (LLMs).
-
-<Accordion title="Parameters">
-  **Inputs**
-
-  | **Name**      | **Type**     | **Description**                                           |
-  | :------------ | :----------- | :-------------------------------------------------------- |
-  | url           | MessageText  | The URL of the Zep instance. Required.                    |
-  | api_key       | SecretString | The API Key for authentication with the Zep instance.     |
-  | api_base_path | Dropdown     | The API version to use. Options include api/v1 or api/v2. |
-  | session_id    | MessageText  | The unique identifier for the chat session. Optional.     |
-
-  **Outputs**
-
-  | **Name**        | **Type**               | **Description**                                       |
-  | :-------------- | :--------------------- | :---------------------------------------------------- |
-  | message_history | BaseChatMessageHistory | An instance of ZepChatMessageHistory for the session. |
 </Accordion>
