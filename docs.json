@@ -80,7 +80,6 @@
           {
             "group": "Components",
             "pages": [
-              "Components/HomeAssistant",
               "Components/componentoverview",
               "Components/Agents",
               "Components/Bundles",
@@ -95,7 +94,8 @@
               "Components/Processing",
               "Components/Prompts",
               "Components/Tools",
-              "Components/Vectorstores"
+              "Components/Vectorstores",
+              "Components/HomeAssistant"
             ]
           },
           {
