@@ -212,7 +212,12 @@ The flow looks like this:
 
 4. In the **Structured Output** component, click **Open Table**. This opens a pane for structuring your table. The table contains the rows **Name**, **Description**, **Type**, and **Multiple**.
 5. Create a table that maps to the data you're loading from the **File** loader. For example, to create a table for employees, you might have the rows `id`, `name`, and `email`, all of type `string`.
-6. In the **Template** field of the **Parser** component, enter a template for parsing the **Structured Output** component's DataFrame output into structured text. Create variables for values in the `template` the same way you would in a [Prompt](/Components/Prompts) component. For example, to present a table of employees in Markdown:
+6. In the **Template** field of the **Parser** component, enter a template for parsing the **Structured Output** component's DataFrame output into structured text. Create variables for values in the `template` the same way you would in a [Prompt](/Components/Prompts) component. For example, to present a table of employees in Markdown: 
+
+   ```
+   
+   | {id} | {name} | {email} |
+   ```
 7. To run the flow, in the **Parser** component, click **Run component**.
 8. To view your parsed text, in the **Parser** component, click **Inspect output**.
 9. Optionally, connect a **Chat Output** component, and open the **Playground** to see the output.
