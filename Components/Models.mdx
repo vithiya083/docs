@@ -637,6 +637,30 @@ This component generates text using Qianfan's language models.
 
 For more information, see [Qianfan documentation](https://github.com/baidubce/bce-qianfan-sdk).
 
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name           | Display Name   | Info                                                                                                                                                                                                                                                                               |
+  | :------------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | input_value    | Input          | (inherited from base)                                                                                                                                                                                                                                                              |
+  | system_message | System Message | System message to pass to the model.                                                                                                                                                                                                                                               |
+  | stream         | Stream         | (inherited from base, advanced)                                                                                                                                                                                                                                                    |
+  | model          | Model Name     | Options: ERNIE-4.0-8K, ERNIE-3.5-8K, ERNIE-Bot, ERNIE-Bot-4, ERNIE-Bot-turbo-AI, ERNIE-Speed, ERNIE-Speed-8K, ERNIE-Speed-128k, ERNIE-Lite-8K-0308, Llama-2-70b-chat, Llama-2-13b-chat, Llama-2-7b-chat, Mixtral-8x7B-Instruct, Yi-34B-Chat, ChatGLM2-6B-32K, BLOOMZ-7B, and more. |
+  | qianfan_ak     | Qianfan Ak     | Which you could get from [<u>https://cloud.baidu.com/product/wenxinworkshop</u>](https://cloud.baidu.com/product/wenxinworkshop)                                                                                                                                                   |
+  | qianfan_sk     | Qianfan Sk     | Which you could get from [<u>https://cloud.baidu.com/product/wenxinworkshop</u>](https://cloud.baidu.com/product/wenxinworkshop)                                                                                                                                                   |
+  | top_p          | Top p          | Model params, only supported in ERNIE-Bot and ERNIE-Bot-turbo. Default: 0.8.                                                                                                                                                                                                       |
+  | temperature    | Temperature    | Model params, only supported in ERNIE-Bot and ERNIE-Bot-turbo. Default: 0.95.                                                                                                                                                                                                      |
+  | penalty_score  | Penalty Score  | Model params, only supported in ERNIE-Bot and ERNIE-Bot-turbo. Default: 1.0.                                                                                                                                                                                                       |
+  | endpoint       | Endpoint       | Endpoint of the Qianfan LLM, required if custom model used.                                                                                                                                                                                                                        |
+
+  **Outputs**
+
+  | Name         | Display Name   | Info                                                                   |
+  | :----------- | :------------- | :--------------------------------------------------------------------- |
+  | text_output  | Message        | Model response as a Message object.                                    |
+  | model_output | Language Model | An instance of Qianfan model configured with the specified parameters. |
+</Accordion>
+
 ## **SambaNova**
 
 This component generates text using SambaNova LLMs.
