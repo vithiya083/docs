@@ -112,12 +112,6 @@
                 ]
               },
               {
-                "group": "Opik",
-                "pages": [
-                  "Integrations/Opik/opik"
-                ]
-              },
-              {
                 "group": "Notion",
                 "pages": [
                   "Integrations/Notion/notion-setup"
