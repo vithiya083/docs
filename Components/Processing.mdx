@@ -310,35 +310,6 @@ For `Message` inputs, the component can create:
   | confirmation | Confirmation     | The confirmation message after saving the file.      |
 </Accordion>
 
-## **Smart function**
-
-This component uses an LLM to generate a Lambda function for filtering or transforming structured data.
-
-To use the **Smart function** component, you must connect it to a [Language Model](https://docs.llmcontrols.ai/Components/Models#language-model) component, which the component uses to generate a function based on the natural language instructions in the **Instructions** field.
-
-This example gets JSON data from the `https://jsonplaceholder.typicode.com/users` API endpoint. The **Instructions** field in the **Smart function** component specifies the task `extract emails`. The connected LLM creates a filter based on the instructions, and successfully extracts a list of email addresses from the JSON data.
-
-![Download](/images/download.png)
-
-<Accordion title="Parameters">
-  ## **Inputs**
-
-  | **Name**           | **Display Name** | **Info**                                                                                                                                                                           |
-  | :----------------- | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | data               | Data             | The structured data to filter or transform using a Lambda function.                                                                                                                |
-  | llm                | Language Model   | The connection port for a <u>Model</u> component.                                                                                                                                  |
-  | filter_instruction | Instructions     | The natural language instructions for how to filter or transform the data using a Lambda function, such as `Filter the data to only include items where the 'status' is 'active'`. |
-  | sample_size        | Sample Size      | For large datasets, the number of characters to sample from the dataset head and tail.                                                                                             |
-  | max_size           | Max Size         | The number of characters for the data to be considered "large", which triggers sampling by the `sample_size` value.                                                                |
-
-  **Outputs**
-
-  | **Name**      | **Display Name** | **Info**                                        |
-  | :------------ | :--------------- | :---------------------------------------------- |
-  | filtered_data | Filtered Data    | The filtered or transformed <u>Data object</u>. |
-  | dataframe     | DataFrame        | The filtered data as a <u>DataFrame</u>.        |
-</Accordion>
-
 ## **Split text**
 
 This component splits text into chunks based on specified criteria. It's ideal for chunking data to be tokenized and embedded into vector databases.
@@ -400,11 +371,11 @@ This component dynamically updates or appends data with specified fields.
   | data     | Data             | The updated Data objects. |
 </Accordion>
 
-## Text Input
+## **Text Input**
 
 This component gets text inputs from the Playground and passes them as a Message to downstream components.
 
-### To Use Text Input
+### **To Use Text Input**
 
 1. Add the component to your flow
 2. Enter text in the Text field or connect it to the Playground input
@@ -423,11 +394,11 @@ This component gets text inputs from the Playground and passes them as a Message
   | text | Message      | The input text as a Message object. |
 </Accordion>
 
-## Filter Data
+## **Filter Data**
 
 This component filters a Data object based on a list of keys, returning a new Data object containing only the matching key-value pairs.
 
-### To Filter Data
+### **To Filter Data**
 
 1. Connect a Data object from an upstream component
 2. Specify one or more keys in the Filter Criteria list to keep
@@ -447,11 +418,11 @@ This component filters a Data object based on a list of keys, returning a new Da
   | filtered_data | Filtered Data | A new Data object containing only the filtered key-value pairs. |
 </Accordion>
 
-## Filter Values
+## **Filter Values**
 
 This component filters a list of data items based on a specified key, filter value, and comparison operator. Check the advanced options to select match comparison.
 
-### To Filter Values
+### **To Filter Values**
 
 1. Connect a list of Data items from an upstream component
 2. Set the Filter Key (e.g., 'route') and Filter Value (e.g., 'CMIP')
@@ -474,11 +445,11 @@ This component filters a list of data items based on a specified key, filter val
   | filtered_data | Filtered Data | The filtered list of Data items matching the criteria. |
 </Accordion>
 
-## Lambda Filter
+## **Lambda Filter**
 
 This component uses an LLM to generate a lambda function for filtering or transforming structured data. Provide natural language instructions, and the component will create and apply a Python lambda function to your data.
 
-### To Use Lambda Filter
+### **To Use Lambda Filter**
 
 1. Connect structured Data from an upstream component
 2. Connect a Language Model output from an LLM component
@@ -507,7 +478,7 @@ This component uses an LLM to generate a lambda function for filtering or transf
 
 This component batch processes document chunks to extract structured information using LLM with custom prompts. It processes chunks in configurable batches, extracts JSON from LLM responses, and merges results across batches.
 
-### To Use LLMC Parser
+### **To Use LLMC Parser**
 
 1. Connect Document Chunks from a Split Text component (accepts list or single input)
 2. Connect a Language Model from an LLM component
