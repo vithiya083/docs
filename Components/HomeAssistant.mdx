@@ -1,0 +1,56 @@
+---
+title: "Home Assistant"
+---
+
+## **Home Assistant Control**
+
+This component controls Home Assistant devices. It provides actions like turn_on, turn_off, and toggle for any entity. The domain is automatically extracted from the entity ID.
+
+### **Prerequisites**
+
+- A Home Assistant Long-Lived Access Token
+- A Home Assistant server URL
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name              | Display Name                 | Info                                                              |
+  | :---------------- | :--------------------------- | :---------------------------------------------------------------- |
+  | ha_token          | Home Assistant Token         | Home Assistant Long-Lived Access Token.                           |
+  | base_url          | Home Assistant URL           | e.g., [<u>http://192.168.0.10:8123</u>](http://192.168.0.10:8123) |
+  | default_action    | Default Action (Optional)    | One of turn_on, turn_off, toggle.                                 |
+  | default_entity_id | Default Entity ID (Optional) | Default entity ID to control (e.g., switch.unknown_switch_3).     |
+
+  Outputs
+
+  | Name           | Display Name | Info                                                          |
+  | :------------- | :----------- | :------------------------------------------------------------ |
+  | api_run_model  | Data         | The Home Assistant API response as a Data object.             |
+  | api_build_tool | Tool         | A tool for use by an agent to control Home Assistant devices. |
+</Accordion>
+
+## **List HomeAssistant States**
+
+This component retrieves device states from Home Assistant. It can return all states or filter by domain (e.g., light, switch, sensor).
+
+### **Prerequisites**
+
+- A Home Assistant Long-Lived Access Token
+- A Home Assistant server URL
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name          | Display Name                     | Info                                                              |
+  | :------------ | :------------------------------- | :---------------------------------------------------------------- |
+  | ha_token      | Home Assistant Token             | Home Assistant Long-Lived Access Token.                           |
+  | base_url      | Home Assistant URL               | e.g., [<u>http://192.168.0.10:8123</u>](http://192.168.0.10:8123) |
+  | filter_domain | Default Filter Domain (Optional) | light, switch, sensor, etc. (Leave empty to fetch all)            |
+
+  Outputs
+
+  | Name           | Display Name | Info                                                      |
+  | :------------- | :----------- | :-------------------------------------------------------- |
+  | api_run_model  | Data         | The device states as a Data object.                       |
+  | api_build_tool | Tool         | A tool for use by an agent to list Home Assistant states. |
+</Accordion>

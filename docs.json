@@ -80,7 +80,7 @@
           {
             "group": "Components",
             "pages": [
-              "Components/untitled-page",
+              "Components/HomeAssistant",
               "Components/componentoverview",
               "Components/Agents",
               "Components/Bundles",
