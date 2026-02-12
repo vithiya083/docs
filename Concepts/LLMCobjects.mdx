@@ -67,9 +67,48 @@ Each content type has specific fields related to its data type. For example:
 
 Create a `ContentBlock` object with a list of different content types.
 
+```
+
+from llmcontrols.schema.content_block import ContentBlock
+from llmcontrols.schema.content_types import TextContent, MediaContent, CodeContent, JSONContent, ToolContent
+
+# Create a ContentBlock with mixed content types
+content_block = ContentBlock(
+    title="My Content Block",
+    contents=[
+        TextContent(text="Hello, this is a text block."),
+        MediaContent(urls=["https://example.com/image.png"], caption="An example image"),
+        CodeContent(code="print('Hello World')", language="python"),
+        JSONContent(data={"key": "value", "count": 42}),
+    ]
+)
+```
+
 ### **Add ContentBlocks objects to a message**
 
 In this example, a text and a media `ContentBlock` are added to a message.
+
+```
+
+from llmcontrols.schema.message import Message
+from llmcontrols.schema.content_block import ContentBlock
+from llmcontrols.schema.content_types import TextContent, MediaContent
+
+# Create content blocks
+text_block = ContentBlock(
+    title="Summary",
+    contents=[TextContent(text="Here is the analysis result.")]
+)
+
+media_block = ContentBlock(
+    title="Related Images",
+    contents=[MediaContent(urls=["https://example.com/chart.png"], caption="Results chart")]
+)
+
+# Add to a message
+message = Message(text="Analysis complete.")
+message.content_blocks = [text_block, media_block]
+```
 
 ### **DataFrame object**[**​**](https://docs.langflow.org/concepts-objects#dataframe-object)
 
