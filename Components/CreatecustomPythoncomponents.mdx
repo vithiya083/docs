@@ -118,7 +118,7 @@ class ExampleComponent(Component):
 
 A component can define multiple outputs. Each output can have a different corresponding method.
 
-**For example:** 
+**For example:**
 
 ```
 
@@ -233,7 +233,29 @@ Components must be placed inside **category folders**, not directly in the base 
 
 For example, to add a component to the **Helpers** menu, place it in a `helpers` subfolder:
 
+```
+
+my_custom_components/
+└── helpers/
+    └── my_helper_component.py
+```
+
 You can have **multiple category folders** to organize components into different menus:
+
+```
+
+
+my_custom_components/
+├── helpers/
+│   └── my_helper_component.py
+├── tools/
+│   ├── my_custom_tool.py
+│   └── another_tool.py
+├── models/
+│   └── my_custom_model.py
+└── processing/
+    └── my_processor.py
+```
 
 This folder structure is required for LLM Controls to properly discover and load your custom components. Components placed directly in the base directory will not be loaded.
 
@@ -478,7 +500,6 @@ class ConditionalRouterComponent(Component):
     def process(self) -> Message:
         # Component logic here
         return Message(text="Result")
-
 ```
 
 In this example, the operator field triggers updates via `real_time_refresh=True`. The `regex_pattern` field is initially hidden and controlled via `dynamic=True`.
