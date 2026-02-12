@@ -142,10 +142,7 @@ This component converts markdown-formatted text to plain text output. It strips 
 
 ## **Chat components example flow**[**​**](https://docs.langflow.org/components-io#chat-components-example-flow)
 
-1. To use the **Chat Input** and **Chat Output** components in a flow, connect them to components that accept or send the [Message](https://docs.llmcontrols.ai/Concepts/LLMCobjects#message-object%E2%80%8B) type.
-
-For this example, connect a **Chat Input** component to an **OpenAI** model component's **Input** port, and then connect the **OpenAI** model component's **Message** port to the **Chat Output** component.
-
+1. To use the **Chat Input** and **Chat Output** components in a flow, connect them to components that accept or send the [Message](https://docs.llmcontrols.ai/Concepts/LLMCobjects#message-object%E2%80%8B) type. For this example, connect a **Chat Input** component to an **OpenAI** model component's **Input** port, and then connect the **OpenAI** model component's **Message** port to the **Chat Output** component.
 2. In the **OpenAI** model component, in the **OpenAI API Key** field, add your **OpenAI API key**.
 
 The flow looks like this:
@@ -156,8 +153,8 @@ The flow looks like this:
 4. In the LLM Controls UI, click your flow name, and then click **Logs**. The **Logs** pane opens. Here, you can inspect your component logs.
 
    ![Logs Pn](/images/logs.png)
-5. Your first message was sent by the **Chat Input** component to the **OpenAI** model component. Click **Outputs** to view the sent message:
-6. Your second message was sent by the **OpenAI** model component to the **Chat Output** component. This is the raw text output of the model's response. The **Chat Output** component accepts this text as input and presents it as a formatted message. Click **Outputs** to view the sent message:
+5. Your first message was sent by the **Chat Input** component to the **OpenAI** model component. 
+6. Your second message was sent by the **OpenAI** model component to the **Chat Output** component. This is the raw text output of the model's response. The **Chat Output** component accepts this text as input and presents it as a formatted message. 
 
 <Tip>
   **tip**
