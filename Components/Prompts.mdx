@@ -37,3 +37,24 @@ When variables are added to a prompt template, new fields are automatically crea
   | :------- | :--------------- | :-------------------------------------------------------------- |
   | prompt   | Prompt Message   | The built prompt message returned by the `build_prompt` method. |
 </Accordion>
+
+## **Results**
+
+This component displays and compares model performance based on evaluation metrics from the Prompt Optimizer. It stores ranked results in a leaderboard with accuracy, speed, cost, and detailed feedback.
+
+<Accordion title="Parameters" icon="">
+  **Inputs**
+
+  | Name             | Display Name        | Info                                                 |
+  | :--------------- | :------------------ | :--------------------------------------------------- |
+  | evaluator_input  | Evaluator Input     | The evaluation results from the Evaluator component. |
+  | prompt_selection | Select Prompt/Model | Choose a prompt/model config from the leaderboard.   |
+  | top_k            | Top K Results       | Number of top results to include in the output.      |
+  | include_details  | Include Details     | Whether to include detailed metrics in the output.   |
+
+  Outputs
+
+  | Name        | Display Name | Info                                                                                                                                                        |
+  | :---------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | leaderboard | Leaderboard  | The ranked results as a DataFrame containing Rank, Model, Token Size, Accuracy, Speed, Cost, Prompt, and optionally Strengths, Weaknesses, and Suggestions. |
+</Accordion>
