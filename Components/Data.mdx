@@ -219,58 +219,9 @@ To test the webhook component:
   | **Name**    | **Display Name** | **Description**                                                                                                                                                                               |
   | :---------- | :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
   | output_data | Data             | Outputs processed data from the webhook input, and returns an empty <u>Data</u> object if no input is provided. If the input is not valid JSON, the component wraps it in a `payload` object. |
-</Accordion>
 
-### **Gmail Loader**
+  ation about creating a service account JSON, see [Service Account JSON](https://developers.google.com/identity/protocols/oauth2/service-account).
 
-This component loads emails from Gmail using provided credentials and filters.
-
-For more information about creating a service account JSON, see [Service Account JSON](https://developers.google.com/identity/protocols/oauth2/service-account).
-
-<Accordion title="Parameters">
-  **Inputs**
-
-  | **Input**   | **Type**         | **Description**                                                                         |
-  | :---------- | :--------------- | :-------------------------------------------------------------------------------------- |
-  | json_string | SecretStrInput   | A JSON string containing OAuth 2.0 access token information for service account access. |
-  | label_ids   | MessageTextInput | A comma-separated list of label IDs to filter emails.                                   |
-  | max_results | MessageTextInput | The maximum number of emails to load.                                                   |
-
-  **Outputs**
-
-  | **Output** | **Type** | **Description**        |
-  | :--------- | :------- | :--------------------- |
-  | data       | Data     | The loaded email data. |
-</Accordion>
-
-### **Google Drive Loader**
-
-This component loads documents from Google Drive using the provided credentials and a single document ID.
-
-For more information about creating a service account JSON, see [Service Account JSON](https://developers.google.com/identity/protocols/oauth2/service-account).
-
-<Accordion title="Parameters">
-  **Inputs**
-
-  | **Input**   | **Type**         | **Description**                                                                         |
-  | :---------- | :--------------- | :-------------------------------------------------------------------------------------- |
-  | json_string | SecretStrInput   | A JSON string containing OAuth 2.0 access token information for service account access. |
-  | document_id | MessageTextInput | A single Google Drive document ID.                                                      |
-
-  **Outputs**
-
-  | **Output** | **Type** | **Description**           |
-  | :--------- | :------- | :------------------------ |
-  | docs       | Data     | The loaded document data. |
-</Accordion>
-
-### **Google Drive Search**
-
-This component searches Google Drive files using provided credentials and query parameters.
-
-For more information about creating a service account JSON, see [Service Account JSON](https://developers.google.com/identity/protocols/oauth2/service-account).
-
-<Accordion title="Parameters">
   **Inputs**
 
   | **Input**      | **Type**         | **Description**                                                                         |
