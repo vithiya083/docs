@@ -96,41 +96,6 @@ For an example of using the **Astra DB Vector Store** component with an embeddin
 
 For more information, see the [Astra DB Serverless documentation](https://docs.datastax.com/en/astra-db-serverless/databases/embedding-generation.html).
 
-### **Hybrid search**
-
-The **Astra DB** component includes **hybrid search**, which is enabled by default.
-
-The component fields related to hybrid search are **Search Query**, **Lexical Terms**, and **Reranker**.
-
-- **Search Query** finds results by vector similarity.
-- **Lexical Terms** is a comma-separated string of keywords, like `features, data, attributes, characteristics`.
-- **Reranker** is the re-ranker model used in the hybrid search. The re-ranker model is `nvidia/llama-3.2-nv.reranker`.
-
-[Hybrid search](https://docs.datastax.com/en/astra-db-serverless/databases/hybrid-search.html) performs a vector similarity search and a lexical search, compares the results of both searches, and then returns the most relevant results overall.
-
-<Note>
-  **important**
-
-  To use hybrid search, your collection must be created with vector, lexical, and rerank capabilities enabled. These capabilities are enabled by default when you create a collection in a database in the AWS us-east-2 region. For more information, see the [<u>DataStax documentation</u>](https://docs.datastax.com/en/astra-db-serverless/api-reference/collection-methods/create-collection.html#example-hybrid).
-</Note>
-
-To use **Hybrid search** in the **Astra DB** component, do the following:
-
-1. Click **New Flow** \> **RAG** \> **Hybrid Search RAG**.
-2. In the **OpenAI** model component, add your **OpenAI API key**.
-3. In the **Astra DB** vector store component, add your **Astra DB Application Token**.
-4. In the **Database** field, select your database.
-5. In the **Collection** field, select or create a collection with hybrid search capabilities enabled.
-6. In the **Playground**, enter a question about your data, such as `What are the features of my data?` Your query is sent to two components: an **OpenAI** model component and the **Astra DB** vector database component. The **OpenAI** component contains a prompt for creating the lexical query from your input:
-7. To view the keywords and questions the **OpenAI** component generates from your collection, in the **OpenAI** component, click **Inspect output**.
-8. To view the [DataFrame](https://docs.llmcontrols.ai/Concepts/LLMCobjects#dataframe-object%E2%80%8B) generated from the **OpenAI** component's response, in the **Structured Output** component, click **Inspect output**. The DataFrame is passed to a **Parser** component, which parses the contents of the **Keywords** column into a string.
-
-   This string of comma-separated words is passed to the **Lexical Terms** port of the **Astra DB** component. Note that the **Search Query** port of the Astra DB port is connected to the **Chat Input** component from step 6. This **Search Query** is vectorized, and both the **Search Query** and **Lexical Terms** content are sent to the reranker at the `find_and_rerank` endpoint.
-
-   The reranker compares the vector search results against the string of terms from the lexical search. The highest-ranked results of your hybrid search are returned to the **Playground**.
-
-For more information, see the [DataStax documentation](https://docs.datastax.com/en/astra-db-serverless/databases/hybrid-search.html).
-
 ## **AstraDB Graph vector store**
 
 This component implements a Vector Store using AstraDB with graph capabilities. For more information, see the [Astra DB Serverless documentation](https://docs.datastax.com/en/astra-db-serverless/tutorials/graph-rag.html).
@@ -659,40 +624,6 @@ This component creates a Pinecone Vector Store with search capabilities. For mor
   | :------------- | :--------------- | :--------------------------------------------------------------------------- |
   | vector_store   | Vector Store     | The Pinecone vector store instance configured with the specified parameters. |
   | search_results | Search Results   | The results of the similarity search as a list of <u>Data</u> objects.       |
-</Accordion>
-
-## **Qdrant**
-
-This component creates a Qdrant Vector Store with search capabilities. For more information, see the [Qdrant documentation](https://qdrant.tech/documentation/).
-
-<Accordion title="Parameters">
-  **Inputs**
-
-  | **Name**             | **Type**     | **Description**                                |
-  | :------------------- | :----------- | :--------------------------------------------- |
-  | collection_name      | String       | The name of the Qdrant collection.             |
-  | host                 | String       | The Qdrant server host.                        |
-  | port                 | Integer      | The Qdrant server port.                        |
-  | grpc_port            | Integer      | The Qdrant gRPC port.                          |
-  | api_key              | SecretString | The API key for Qdrant.                        |
-  | prefix               | String       | The prefix for Qdrant.                         |
-  | timeout              | Integer      | The timeout for Qdrant operations.             |
-  | path                 | String       | The path for Qdrant.                           |
-  | url                  | String       | The URL for Qdrant.                            |
-  | distance_func        | String       | The distance function for vector similarity.   |
-  | content_payload_key  | String       | The content payload key.                       |
-  | metadata_payload_key | String       | The metadata payload key.                      |
-  | search_query         | String       | The query for similarity search.               |
-  | ingest_data          | Data         | The data to be ingested into the vector store. |
-  | embedding            | Embeddings   | The embedding function to use.                 |
-  | number_of_results    | Integer      | The number of results to return in search.     |
-
-  **Outputs**
-
-  | **Name**       | **Type**   | **Description**                                                        |
-  | :------------- | :--------- | :--------------------------------------------------------------------- |
-  | vector_store   | Qdrant     | A Qdrant vector store instance.                                        |
-  | search_results | List[Data] | The results of the similarity search as a list of <u>Data</u> objects. |
 </Accordion>
 
 ## **Redis**
