@@ -4,7 +4,7 @@ title: "Embedded chat widget"
 
 On the [Publish pane](/Concepts/publish-flows), the **Embed into site** tab displays code that can be inserted in the `<body>` of your HTML to interact with your flow.
 
-The chat widget is implemented as a web component called `llmc-chat` and is loaded from a CDN. 
+The chat widget is implemented as a web component called `llmc-chat` and is loaded from a CDN.
 
 The following example includes the minimum required inputs, called [props](https://react.dev/learn/passing-props-to-a-component) in React, for using the chat widget in your HTML code, which are `host_url` and `flow_id`. The `host_url` value must be `HTTPS`, and may not include a `/` after the URL. The `flow_id` value is found in your LLM Controls URL. For an LLM Controls server running the [Basic prompting flow](https://docs.llmcontrols.ai/Components/Models#use-a-model-component-in-a-flow) at `https://c822-73-64-93-151.ngrok-free.app/flow/dcbed533-859f-4b99-b1f5-16fce884f28f`, your chat widget code is similar to the following:
 
@@ -22,9 +22,60 @@ When this code is embedded within HTML, it becomes a responsive chatbot, powered
 
 To configure your chat widget further, include additional props.
 
+```
+
+<llmc-chat
+  chat_inputs='{"message":"your_message_value"}'
+  chat_input_field="message"
+  flow_id="your_flow_id"
+  host_url="https://your-llmc-server.com"
+  window_title="My Chatbot"
+  placeholder="Ask me anything..."
+  placeholder_sending="Thinking..."
+  online="true"
+  online_message="Chat is live"
+  chat_output_key="output_key"
+  height="600"
+  width="400"
+  tweaks='{"parameter_name":"value"}'
+></llmc-chat>
+```
+
 To add some styling to the chat widget, customize its elements with JSON:
 
+```
+
+<llmc-chat
+  chat_inputs='{"message":"your_message_value"}'
+  chat_input_field="message"
+  flow_id="your_flow_id"
+  host_url="https://your-llmc-server.com"
+  chat_window_style='{"backgroundColor":"#1a1a2e", "borderRadius":"12px"}'
+  bot_message_style='{"backgroundColor":"#16213e", "color":"#e0e0e0"}'
+  user_message_style='{"backgroundColor":"#0f3460", "color":"#ffffff"}'
+  input_style='{"backgroundColor":"#1a1a2e", "color":"#e0e0e0"}'
+  input_container_style='{"backgroundColor":"#1a1a2e"}'
+  send_button_style='{"backgroundColor":"#533483"}'
+  send_icon_style='{"color":"#ffffff"}'
+  error_message_style='{"backgroundColor":"#ff4444", "color":"#ffffff"}'
+  chat_trigger_style='{"backgroundColor":"#533483"}'
+  chat_position="bottom-right"
+></llmc-chat>
+```
+
 To add a custom session ID value and an API key for authentication to your LLM Controls server:
+
+```
+
+<llmc-chat
+  chat_inputs='{"message":"your_message_value"}'
+  chat_input_field="message"
+  flow_id="your_flow_id"
+  host_url="https://your-llmc-server.com"
+  session_id="your_custom_session_id"
+  api_key="your_llmc_api_key"
+></llmc-chat>
+```
 
 The chat widget requires your flow to contain **Chat Input** and **Chat Output** components for the widget to communicate with it. Sending a message to LLM Controls that, without a **Chat Input,** still triggers the flow, but the LLM warns you that the message is empty. **Text Input** and **Text Output** components can send and receive messages with LLM Controls, but without the ongoing LLM "chat" context.
 
