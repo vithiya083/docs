@@ -252,7 +252,7 @@ This component recursively loads files from a directory and converts the content
 2. Optionally select specific file types to filter
 3. Set the search depth and enable recursive mode if needed
 
-<Accordion title="Paramters" iconType="light">
+<Accordion iconType="light" title="Paramters">
   **Inputs**
 
   | Name               | Display Name       | Info                                                                                     |
@@ -284,7 +284,7 @@ This component loads and parses spreadsheet files (.xlsx, .xls) and converts the
 2. Optionally specify a sheet name (defaults to the first sheet)
 3. Configure row limits and caching as needed
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   Inputs 
 
   | Name                                | Display Name                        | Info                                                                                                                                                             |
@@ -324,7 +324,7 @@ This component loads and parses child links from a root URL recursively. It craw
 2. Set the Max Depth to control how many link levels to crawl
 3. Configure output format (Text or HTML)
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   Inputs 
 
   | Name            | Display Name    | Info                                                                                                                                                                                                                                                                                             |
@@ -355,18 +355,18 @@ This component uploads files to an Amazon S3 bucket. It supports two upload stra
 3. Connect Data inputs from upstream components
 4. Choose an upload strategy
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   #### Inputs
 
-  | Name                  | Display Name             | Info                                                                                                                                                                         |
-  | :-------------------- | :----------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | aws_access_key_id     | AWS Access Key ID        | AWS Access key ID.                                                                                                                                                           |
-  | aws_secret_access_key | AWS Secret Key           | AWS Secret Key.                                                                                                                                                              |
-  | bucket_name           | Bucket Name              | Enter the name of the bucket.                                                                                                                                                |
-  | strategy              | Strategy for file upload | Choose the strategy to upload the file. By Data means that the source file is parsed and stored as LangFlow data. By File Name means that the source file is uploaded as is. |
-  | data_inputs           | Data Inputs              | The data to split.                                                                                                                                                           |
-  | s3_prefix             | S3 Prefix                | Prefix for all files.                                                                                                                                                        |
-  | strip_path            | Strip Path               | Removes path from file path.                                                                                                                                                 |
+  | Name                  | Display Name             | Info                                                                                                                                                                             |
+  | :-------------------- | :----------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | aws_access_key_id     | AWS Access Key ID        | AWS Access key ID.                                                                                                                                                               |
+  | aws_secret_access_key | AWS Secret Key           | AWS Secret Key.                                                                                                                                                                  |
+  | bucket_name           | Bucket Name              | Enter the name of the bucket.                                                                                                                                                    |
+  | strategy              | Strategy for file upload | Choose the strategy to upload the file. By Data means that the source file is parsed and stored as LLM Controls data. By File Name means that the source file is uploaded as is. |
+  | data_inputs           | Data Inputs              | The data to split.                                                                                                                                                               |
+  | s3_prefix             | S3 Prefix                | Prefix for all files.                                                                                                                                                            |
+  | strip_path            | Strip Path               | Removes path from file path.                                                                                                                                                     |
 
   #### Outputs
 
