@@ -1,134 +1,113 @@
 ---
-title: "LLM Controls Foundation, Tools, and Models"
+title: "Open Source Foundations, Tools, and Models"
 ---
 
-This page outlines the foundation behind LLM Controls, including the open-source architecture it is built on, the backend and frontend technology stack, and the open-source model runtimes it supports.
+This page recognizes the open-source technologies that power, extend, and strengthen LLM Controls. We are grateful to the communities and maintainers whose work forms part of the foundation on which the platform operates.
 
-## **Built on Langflow (Open Source)**
+## **Core Architecture Foundations**
 
-LLM Controls is built on top of **Langflow**, an MIT-licensed open-source platform that provides the core architectural foundation.
+LLM Controls is built on top of Langflow.
 
-Langflow's core design patterns include:
+Langflow provides the underlying flow-based orchestration engine that enables node-based workflow construction and execution. Within LLM Controls, this foundation has been extended and adapted to support expanded execution controls, additional abstractions, and platform-level capabilities.
 
-- Flow-based orchestration for building AI applications
-- Component-driven execution through connected workflow nodes
-- A built-in API server for running flows as endpoints
+Flows originally created in Langflow can be migrated into LLM Controls with light adjustments where required.
 
-Several internal modules within LLM Controls retain Langflow conventions, such as:
-
-- Naming structures
-- Service layouts
-- Flow scheduling mechanisms
-
-This open-source foundation provides the workflow engine that powers LLM Controls' flow creation and execution.
+We acknowledge and appreciate the Langflow team for releasing their work under an MIT license and enabling broader innovation in AI workflow tooling.
 
 ## **Open-Source Tools & Libraries (Backend)**
 
-The LLM Controls backend is Python-first and composes a broad open-source ecosystem for orchestration, retrieval, observability, and infrastructure.
+LLM Controls is Python-first and integrates a focused set of open-source technologies across orchestration, retrieval, evaluation, and data processing.
 
 ### **Orchestration & LLM Integration**
 
 LLM Controls integrates:
 
-- **LangChain** and a broad set of LangChain provider packages to connect with multiple LLM vendors and tooling backends
-- **LiteLLM** for unified LLM API routing across providers
-- **MCP** for tool and agent interoperability with external tool servers
+- LangChain and its provider ecosystem
+- LiteLLM for unified model routing
+- MCP for tool and agent interoperability
 
-This enables flexible model usage and seamless tool integration across workflows.
+These integrations enable flexible model usage and structured tool execution within workflows.
 
-### **Retrieval & Vector Databases**
+## **Retrieval & Vector Infrastructure**
 
-For vector storage and retrieval, LLM Controls supports:
+LLM Controls includes a native **LLM Controls Vector Database**, powered by Qdrant and hosted within the platform.
 
-- ChromaDB
+This managed layer provides:
+
+- High-performance similarity search
+- Scalable embedding storage
+- Production-ready vector retrieval
+
+LLM Controls also provides first-party connectors for:
+
+- Chroma
 - Qdrant
 - Weaviate
 - FAISS
 
-Additional integrations include:
+Search-grade indexing is supported through open-source Elasticsearch integrations.
 
-- **pgvector** for PostgreSQL-based vector search
-- **OpenSearch** and **Elasticsearch** for search-grade indexing
-- **Milvus** support through pymilvus
+We extend particular appreciation to the Qdrant team for their contributions to the vector database ecosystem.
 
-This allows teams to select storage solutions based on performance, scalability, and deployment needs.
+## **Observability & Experiment Tracking**
 
-### **Observability, Tracing, and Evaluation**
+LLM Controls integrates MLflow for experiment tracking and evaluation workflows.
 
-LLM Controls integrates open-source observability and evaluation tooling, including:
+MLflow enables structured logging, reproducibility, and lifecycle management across AI experiments.
 
-- **MLflow** for experiment tracking and monitoring
-- **Langfuse**, **LangSmith**, **LangWatch**, and **Opik** for LLM tracing, evaluation, and prompt analytics
-- **OpenInference** instrumentation for standardized tracing
+## **Data Ingestion & Utilities**
 
-These tools provide deep visibility into workflow behavior and AI performance.
+For ingestion and structured processing, LLM Controls leverages:
 
-### **Data Ingestion & Utilities**
+- Beautiful Soup
+- DuckDuckGo Search integrations
+- Wikipedia and YouTube transcript APIs
+- pytube
 
-For structured data ingestion and processing, LLM Controls uses:
-
-- **BeautifulSoup** for web scraping
-- **DuckDuckGo Search**
-- **Wikipedia** and **YouTube** transcript APIs
-- **pytube** for video ingestion
-
-For NLP and data processing:
+For NLP and data handling:
 
 - NLTK
 - tiktoken
 - pandas
-- pyarrow
+- Apache Arrow (via pyarrow)
 
-This supports efficient handling of text, documents, and structured datasets.
+These tools support efficient handling of text, documents, and structured datasets.
 
-### **Infrastructure & Platform**
+## **Infrastructure**
 
-Core infrastructure components include:
+LLM Controls relies on:
 
-- **SQLAlchemy** and **psycopg** for database management
-- **Redis** for caching and state handling
-- **Kubernetes** for orchestration and deployment
-- **boto3** for cloud infrastructure integration
+- SQLAlchemy
+- psycopg
+- PostgreSQL
+- Redis
+- Docker for containerized deployment
 
-This ensures scalability, reliability, and production readiness.
+These components provide persistence, state management, and operational reliability.
 
-## **Open-Source Tools & Libraries (Frontend)**
+## **Frontend Technology Stack**
 
-The LLM Controls frontend is built using a modern open-source React stack.
+The LLM Controls frontend is built on a modern open-source React ecosystem:
 
-### **Core Framework**
+- React
+- React Router
+- Vite
+- Radix UI
+- Shadcn-ui
+- Tailwind CSS
+- Framer Motion
+- React Flow
 
-- **React** for user interface development
-- **React Router** for navigation
-- **Vite** for fast build and runtime performance
-
-### **UI Components & Layout**
-
-- **Radix UI** and **Chakra UI** as component foundations
-- **Tailwind CSS** for utility-based styling and layout
-- **Framer Motion** for animations and interactions
-- **React Flow** for node-based visual flow building
-
-This stack provides an intuitive and responsive workflow-building experience.
-
-## **Open-Source Models & Local Runtimes**
-
-LLM Controls does not ship model weights. Instead, it supports a range of open-source and local model runtimes and embedding stacks, including:
-
-- **llama.cpp** (via llama-cpp-python)
-- **sentence-transformers**
-- **ctransformers**
-- **Ollama** integration
-- **Hugging Face Hub** for open-source model access
-
-This architecture allows users to switch between hosted LLM APIs and local open-source models without changing flow logic.
+This stack enables a responsive and extensible visual workflow-building experience.
 
 ## **Acknowledgments**
 
-LLM Controls is made possible by the incredible work of the open-source community. We extend our deepest gratitude to:
+We extend our gratitude to:
 
-- The **Langflow** team for providing the MIT-licensed foundation upon which LLM Controls is built
-- The maintainers and contributors of **LangChain**, **LiteLLM**, **React**, **Vite**, and the hundreds of other open-source projects that power our platform
-- The broader AI and developer communities who continue to advance the ecosystem through collaboration, innovation, and shared knowledge
+- The team behind Langflow
+- The maintainers of LangChain and LiteLLM
+- The contributors to Qdrant
+- The teams behind React and React Flow
+- The broader open-source AI and developer community
 
-We are proud to build on the shoulders of giants and remain committed to supporting and contributing back to the open-source community.
+We remain committed to supporting and contributing back to the open-source ecosystem.
