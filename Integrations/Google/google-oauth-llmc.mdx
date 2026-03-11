@@ -1,5 +1,6 @@
 ---
 title: "Integrate Google OAuth with LLM Controls"
+keywords: ["google oauth integration", "read google docs with ai", "automate gmail with ai ", "Google OAuth setup"]
 ---
 
 LLM Controls integrates with [Google OAuth](https://developers.google.com/identity/protocols/oauth2) for authenticating the [Gmail loader](https://docs.llmcontrols.ai/Components/Data#gmail-loader), [Google Drive loader](https://docs.llmcontrols.ai/Components/Data#gmail-loader), and [Google Drive Search](https://docs.llmcontrols.ai/Components/Data#gmail-loader) components.
@@ -47,7 +48,7 @@ For a pre-built JSON file of a flow that uses the Google Drive loader component,
 
 **Example flow structure:**
 
-```
+```text
 Google OAuth Token → Parse Data → JSON Cleaner → Google Drive Loader → Prompt → OpenAI Model → Chat Output
 ```
 
@@ -84,7 +85,7 @@ This component creates, reads, and writes Google Sheets using credentials from G
 4. For write/append: Provide data via Input Data connection or Data to Write (JSON)
 5. Optionally configure Range, Include Headers, and Value Input Option
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   **Inputs**
 
   | Name                | Display Name                                | Info                                                                                                                                 |
@@ -123,7 +124,7 @@ This component reads Google Docs and extracts text content and metadata using cr
 3. Select an Operation (read or metadata)
 4. Optionally toggle Include Metadata and Preserve Formatting
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   **Inputs**
 
   | Name                | Display Name            | Info                                                                                                                                                    |
@@ -142,7 +143,6 @@ This component reads Google Docs and extracts text content and metadata using cr
   | text     | Document Text     | Extracted document text as a Data object.                                                    |
   | metadata | Document Metadata | Document metadata (ID, title, revision, word count, etc.) as a Data object.                  |
   | result   | Operation Result  | Result of the last operation as a Data object.                                               |
-
 </Accordion>
 
 ## **Gmail Manager**
@@ -161,38 +161,38 @@ This component provides complete Gmail management with email extraction, sending
 4. For send: Provide To, Subject, and Body in advanced options
 5. Optionally enable Include Attachments, Download Attachments, and Google Drive Upload
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   **Inputs**
 
-  | Name | Display Name | Info |
-  | :------------------ | :------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------- |
-  | credentials_json    | Gmail Credentials JSON | Paste credentials JSON from Gmail Setup Script or Universal Authenticator. |
-  | operation           | Operation | Options: extract, list, send, delete, mark_read, mark_unread, add_labels, remove_labels, create_label, move, create_and_apply_label, show_extracted_emails. |
-  | target_labels       | Target Labels | Comma-separated Gmail labels (e.g., INBOX,IMPORTANT) |
-  | search_query        | Gmail Search Query | Gmail search operators (e.g., 'from:<a target="_blank" rel="noopener noreferrer noflow" href="mailto:user@domain.com">user@domain.com</a> has:attachment') |
-  | max_emails          | Maximum Emails | |
-  | include_attachments | Include Attachments | |
-  | clean_content       | Clean Email Content | |
-  | download_attachments| Download Attachments | |
-  | avoid_duplicate_extraction | Avoid Duplicate Extraction | Only extract new emails, skip already processed ones |
-  | processed_label     | Processed Label Name | Label to mark processed emails |
-  | days_lookback       | Days Lookback | How many days back to check for new emails |
-  | enable_drive_upload | Enable Google Drive Upload | Upload attachments to Google Drive (optimized: ~2-3 seconds per file, provides permanent storage) |
-  | drive_folder_name   | Drive Folder Name | Folder name in Google Drive to store attachments |
-  | create_timestamped_subfolder | Create Timestamped Subfolder | |
-  | organize_by_email_subject | Organize by Email Subject | |
-  | email_to            | To (Recipients) | |
-  | email_cc            | CC | |
-  | email_subject       | Email Subject | |
-  | email_body          | Email Body | |
-  | message_ids         | Message IDs | |
-  | labels_to_add       | Labels to Add | |
-  | labels_to_remove    | Labels to Remove | |
-  | new_label_name      | New Label Name | |
-  | destination_label   | Destination Label | |
-  | apply_label_after_extract | Apply Label After Extract | |
-  | label_name_for_application | Label Name for Application | |
-  | label_action_type   | Label Action Type | Options: create_new, use_existing. |
+  | Name                         | Display Name                 | Info                                                                                                                                                                                   |
+  | :--------------------------- | :--------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | credentials_json             | Gmail Credentials JSON       | Paste credentials JSON from Gmail Setup Script or Universal Authenticator.                                                                                                             |
+  | operation                    | Operation                    | Options: extract, list, send, delete, mark_read, mark_unread, add_labels, remove_labels, create_label, move, create_and_apply_label, show_extracted_emails.                            |
+  | target_labels                | Target Labels                | Comma-separated Gmail labels (e.g., INBOX,IMPORTANT)                                                                                                                                   |
+  | search_query                 | Gmail Search Query           | Gmail search operators (e.g., 'from:<a target="_blank" rel="noopener noreferrer noflow" href="mailto:user@domain.com">[user@domain.com](mailto:user@domain.com)</a>   has:attachment') |
+  | max_emails                   | Maximum Emails               |                                                                                                                                                                                        |
+  | include_attachments          | Include Attachments          |                                                                                                                                                                                        |
+  | clean_content                | Clean Email Content          |                                                                                                                                                                                        |
+  | download_attachments         | Download Attachments         |                                                                                                                                                                                        |
+  | avoid_duplicate_extraction   | Avoid Duplicate Extraction   | Only extract new emails, skip already processed ones                                                                                                                                   |
+  | processed_label              | Processed Label Name         | Label to mark processed emails                                                                                                                                                         |
+  | days_lookback                | Days Lookback                | How many days back to check for new emails                                                                                                                                             |
+  | enable_drive_upload          | Enable Google Drive Upload   | Upload attachments to Google Drive (optimized: ~2-3 seconds per file, provides permanent storage)                                                                                      |
+  | drive_folder_name            | Drive Folder Name            | Folder name in Google Drive to store attachments                                                                                                                                       |
+  | create_timestamped_subfolder | Create Timestamped Subfolder |                                                                                                                                                                                        |
+  | organize_by_email_subject    | Organize by Email Subject    |                                                                                                                                                                                        |
+  | email_to                     | To (Recipients)              |                                                                                                                                                                                        |
+  | email_cc                     | CC                           |                                                                                                                                                                                        |
+  | email_subject                | Email Subject                |                                                                                                                                                                                        |
+  | email_body                   | Email Body                   |                                                                                                                                                                                        |
+  | message_ids                  | Message IDs                  |                                                                                                                                                                                        |
+  | labels_to_add                | Labels to Add                |                                                                                                                                                                                        |
+  | labels_to_remove             | Labels to Remove             |                                                                                                                                                                                        |
+  | new_label_name               | New Label Name               |                                                                                                                                                                                        |
+  | destination_label            | Destination Label            |                                                                                                                                                                                        |
+  | apply_label_after_extract    | Apply Label After Extract    |                                                                                                                                                                                        |
+  | label_name_for_application   | Label Name for Application   |                                                                                                                                                                                        |
+  | label_action_type            | Label Action Type            | Options: create_new, use_existing.                                                                                                                                                     |
 
   **Outputs**
 
@@ -218,19 +218,19 @@ This component authenticates with Gmail, Drive, Sheets, Docs, and Calendar using
 
 ### **To Use Gmail Setup Script**
 
-1. Paste the contents of your client_secret_*.json file from Google Cloud Console
+1. Paste the contents of your client_secret\_\*.json file from Google Cloud Console
 2. Run the component to generate an OAuth URL
 3. Visit the OAuth URL in your browser and sign in to your Google account
 4. Copy the authorization code from the browser
 5. Paste the authorization code in the "Authorization Code (Step 2)" field
 6. Run the component again to complete authentication
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   **Inputs**
 
   | Name               | Display Name                | Info                                                                                                                                      |
   | :----------------- | :-------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
-  | client_secret_json | Client Secret JSON Content  | Paste the contents of your client_secret_*.json file from Google Cloud Console here                                                     |
+  | client_secret_json | Client Secret JSON Content  | Paste the contents of your client_secret\_\*.json file from Google Cloud Console here                                                     |
   | custom_scopes      | Custom Scopes (optional)    | Comma-separated or newline-separated list of OAuth scopes. Leave blank to use default: Gmail, Drive, Sheets, Docs, Calendar (full access) |
   | authorization_code | Authorization Code (Step 2) | After visiting the OAuth URL, paste the authorization code here and run again                                                             |
   | saved_scopes_json  | Saved Scopes (Internal)     | DO NOT MODIFY - Internal field to persist scopes between OAuth steps                                                                      |
@@ -256,18 +256,18 @@ This component is a universal Google services authenticator. Select which Google
 
 ### **To Use Google Universal Authenticator**
 
-1. Paste the contents of your client_secret_*.json file from Google Cloud Console
+1. Paste the contents of your client_secret\_\*.json file from Google Cloud Console
 2. Enter the services you want to authenticate for in Selected Services (comma-separated)
 3. Run the component — a browser window will open for OAuth authentication
 4. Sign in with your Google account and grant the requested permissions
 5. Copy the generated credentials to use in other Google components (Gmail Manager, Google Sheets, Google Docs, etc.)
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   **Inputs**
 
   | Name               | Display Name                | Info                                                                                                                                                                                                                                                                                                                                                      |
   | :----------------- | :-------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | client_secret_json | Client Secret JSON Content  | Paste the contents of your client_secret_*.json file from Google Cloud Console here                                                                                                                                                                                                                                                                     |
+  | client_secret_json | Client Secret JSON Content  | Paste the contents of your client_secret\_\*.json file from Google Cloud Console here                                                                                                                                                                                                                                                                     |
   | selected_services  | Selected Services           | Comma-separated list of services to authenticate for. Available: gmail, gmail_readonly, sheets, sheets_readonly, drive, drive_readonly, drive_file, docs, docs_readonly, calendar, calendar_readonly, calendar_events, photos, photos_readonly, contacts, contacts_readonly, youtube, youtube_readonly, cloud_platform, admin_directory, all_full_access. |
   | redirect_message   | Authentication Instructions | Instructions that will be shown to the user during OAuth flow                                                                                                                                                                                                                                                                                             |
   | auto_open_browser  | Auto Open Browser           | Automatically open browser for OAuth authentication (disable if running on server)                                                                                                                                                                                                                                                                        |
