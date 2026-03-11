@@ -1,14 +1,15 @@
 ---
 title: "Embeddings models in LLM Controls"
+keywords: ["best embedding model", "embedding models ", "text embeddings", "text embedding model "]
 ---
 
-Embeddings models convert text into numerical vectors. These embeddings capture the semantic meaning of the input text, and allow LLMs to understand context.
+embedding models Embeddings models convert text into numerical vectors. These embeddings capture the semantic meaning of the input text, and allow LLMs to understand context.
 
 Refer to your specific component's documentation for more information on parameters.
 
 ## **Use an embeddings model component in a flow**[**​**](https://docs.langflow.org/components-embedding-models#use-an-embeddings-model-component-in-a-flow)
 
-```
+```text
 
 from llmc.components.data import FileComponent
 from llmc.components.embeddings import OpenAIEmbeddingsComponent
@@ -40,14 +41,10 @@ def ingestion_graph():
 
 **In this example :**
 
- FileComponent loads documents from a local machine
+FileComponent loads documents from a local machine
 
 - SplitTextComponent chunks the documents into smaller pieces
-
-
 - OpenAIEmbeddingsComponent converts text chunks into numerical vectors
-
-
 - AstraDBVectorStoreComponent stores the vectorized data in the vector database
 
 The stored vectors can then be retrieved for similarity searches, RAG applications, and agent-based workflows.
