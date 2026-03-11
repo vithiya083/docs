@@ -1,5 +1,6 @@
 ---
 title: "Create custom Python components"
+keywords: ["custom python ai components", "no code to python ai workflow"]
 ---
 
 Custom components extend LLM Controls' functionality through Python classes that inherit from `Component`. This enables integration of new features, data manipulation, external services, and specialized tools.
@@ -94,7 +95,7 @@ Each output is linked to a method:
 
 **For example:**
 
-```
+```text
 
 from llmc.custom import Component
 from llmc.io import MessageTextInput, Output
@@ -120,7 +121,7 @@ A component can define multiple outputs. Each output can have a different corres
 
 **For example:**
 
-```
+```text
 
 from llmc.custom import Component
 from llmc.io import MessageTextInput, IntInput, Output
@@ -149,7 +150,7 @@ class MultipleOutputsComponent(Component):
 
 To initialize a custom component with counters or state variables :
 
-```
+```text
 
 class ConditionalRouterComponent(Component):
     def __init__(self, *args, **kwargs):
@@ -165,7 +166,7 @@ class ConditionalRouterComponent(Component):
 
 You can override `async def _run(self): ...` to define custom execution logic, although the default behavior from the base class usually covers most cases.
 
-```
+```text
 
 async def _run(self):
     # Custom execution logic here
@@ -177,7 +178,7 @@ async def _run(self):
 
 Use `self.ctx` as a shared storage for data or counters across the component's execution flow:
 
-```
+```text
 
 from llmc.custom import Component
 from llmc.io import MessageTextInput, Output
@@ -211,7 +212,7 @@ class ComponentWithContext(Component):
 
 Using add_to_ctx()You can also add individual values to the context:
 
-```
+```text
 
 # Add a single value to context
 self.add_to_ctx("user_preference", "dark_mode")
@@ -233,7 +234,7 @@ Components must be placed inside **category folders**, not directly in the base 
 
 For example, to add a component to the **Helpers** menu, place it in a `helpers` subfolder:
 
-```
+```text
 
 my_custom_components/
 └── helpers/
@@ -242,7 +243,7 @@ my_custom_components/
 
 You can have **multiple category folders** to organize components into different menus:
 
-```
+```text
 
 
 my_custom_components/
@@ -335,7 +336,7 @@ The method must exist in the class, and it is recommended to annotate its return
 - `DataFrame`: Pandas-based tables (`llmc.schema.DataFrame`).
 - **Primitive types**: `str`, `int`, `bool` (not recommended if you need type/color consistency).
 
-```
+```text
 
 from llmc.custom import Component
 from llmc.io import DataInput, Output
@@ -445,7 +446,7 @@ When using typed annotations, consider the following best practices:
 
 In **LLM Controls**, dynamic fields allow inputs to change or appear based on user interactions. You can make an input dynamic by setting `dynamic=True`. Optionally, setting `real_time_refresh=True` triggers the `update_build_config` method to adjust the input's visibility or properties in real time, creating a contextual UI that only displays relevant fields based on the user's choices.
 
-```
+```text
 
 from llmc.custom import Component
 from llmc.io import DropdownInput, MessageTextInput, Output
