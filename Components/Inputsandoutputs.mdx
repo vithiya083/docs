@@ -1,5 +1,6 @@
 ---
 title: "Input and output components in LLM Controls"
+keywords: ["ai chatbot api integration", "ai workflow chat input output", "data input processing"]
 ---
 
 Input and output components define where data enters and exits your flow.
@@ -126,7 +127,7 @@ This component converts markdown-formatted text to plain text output. It strips 
 1. Enter or connect markdown-formatted text in the Markdown Text field
 2. The component outputs the stripped plain text as a Message
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   **Inputs**
 
   | Name        | Display Name  | Info                                              |
@@ -153,8 +154,8 @@ The flow looks like this:
 4. In the LLM Controls UI, click your flow name, and then click **Logs**. The **Logs** pane opens. Here, you can inspect your component logs.
 
    ![Logs Pn](/images/logs.png)
-5. Your first message was sent by the **Chat Input** component to the **OpenAI** model component. 
-6. Your second message was sent by the **OpenAI** model component to the **Chat Output** component. This is the raw text output of the model's response. The **Chat Output** component accepts this text as input and presents it as a formatted message. 
+5. Your first message was sent by the **Chat Input** component to the **OpenAI** model component.
+6. Your second message was sent by the **OpenAI** model component to the **Chat Output** component. This is the raw text output of the model's response. The **Chat Output** component accepts this text as input and presents it as a formatted message.
 
 <Tip>
   **tip**
