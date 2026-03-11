@@ -1,5 +1,6 @@
 ---
 title: "Processing"
+keywords: ["data processing ai", "ai data processing components", "context aware chunking "]
 ---
 
 Processing components process and transform data within a flow.
@@ -212,9 +213,9 @@ The flow looks like this:
 
 4. In the **Structured Output** component, click **Open Table**. This opens a pane for structuring your table. The table contains the rows **Name**, **Description**, **Type**, and **Multiple**.
 5. Create a table that maps to the data you're loading from the **File** loader. For example, to create a table for employees, you might have the rows `id`, `name`, and `email`, all of type `string`.
-6. In the **Template** field of the **Parser** component, enter a template for parsing the **Structured Output** component's DataFrame output into structured text. Create variables for values in the `template` the same way you would in a [Prompt](/Components/Prompts) component. For example, to present a table of employees in Markdown: 
+6. In the **Template** field of the **Parser** component, enter a template for parsing the **Structured Output** component's DataFrame output into structured text. Create variables for values in the `template` the same way you would in a [Prompt](/Components/Prompts) component. For example, to present a table of employees in Markdown:
 
-   ```
+   ```text
    
    | {id} | {name} | {email} |
    ```
@@ -385,7 +386,7 @@ This component gets text inputs from the Playground and passes them as a Message
 1. Add the component to your flow
 2. Enter text in the Text field or connect it to the Playground input
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   **Inputs**
 
   | Name        | Display Name | Info                        |
@@ -408,7 +409,7 @@ This component filters a Data object based on a list of keys, returning a new Da
 1. Connect a Data object from an upstream component
 2. Specify one or more keys in the Filter Criteria list to keep
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   **Inputs**
 
   | Name            | Display Name    | Info                       |
@@ -433,7 +434,7 @@ This component filters a list of data items based on a specified key, filter val
 2. Set the Filter Key (e.g., 'route') and Filter Value (e.g., 'CMIP')
 3. Optionally change the Comparison Operator in the advanced options
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   **Inputs**
 
   | Name         | Display Name        | Info                                                                                                           |
@@ -460,7 +461,7 @@ This component uses an LLM to generate a lambda function for filtering or transf
 2. Connect a Language Model output from an LLM component
 3. Write natural language Instructions describing how to filter or transform the data
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   **Inputs**
 
   | Name               | Display Name   | Info                                                                                                                                                                          |
@@ -490,7 +491,7 @@ This component batch processes document chunks to extract structured information
 3. Write a Custom Prompt defining what information to extract and the JSON structure
 4. Optionally adjust Batch Size and Max Tokens in advanced options
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   Inputs 
 
   | Name          | Display Name    | Info                                                                                                                                   |
