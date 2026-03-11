@@ -1,5 +1,6 @@
 ---
 title: "Model components in LLM Controls"
+keywords: ["ai model components", "llm models", "llm model components ", "llm models example "]
 ---
 
 Model components generate text using large language models.
@@ -255,7 +256,7 @@ This component sends requests to the Hugging Face API to generate text using the
 
 The Hugging Face API is a hosted inference API for models hosted on Hugging Face, and requires a [Hugging Face API token](https://huggingface.co/docs/hub/security-tokens) to authenticate.
 
-```
+```text
 
 from llmc.components.inputs import ChatInput
 from llmc.components.models import HuggingFaceEndpointsComponent
@@ -637,7 +638,7 @@ This component generates text using Qianfan's language models.
 
 For more information, see [Qianfan documentation](https://github.com/baidubce/bce-qianfan-sdk).
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   **Inputs**
 
   | Name           | Display Name   | Info                                                                                                                                                                                                                                                                               |
@@ -745,7 +746,7 @@ For more information, see the [xAI documentation](https://x.ai/).
 
 This component generates images using OpenAI's DALL-E 3 model. It accepts a text prompt and returns the generated image as a URL, base64-encoded data, or a Message with generation details.
 
-<Accordion title="Parameters" icon="">
+<Accordion title="Parameters">
   **Inputs**
 
   | Name            | Display Name     | Info                                                                                                                                                          |
