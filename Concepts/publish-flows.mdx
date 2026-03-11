@@ -1,5 +1,6 @@
 ---
 title: "Publish flows"
+keywords: ["publish ai workflows", "deploy ai workflows"]
 ---
 
 LLM Controls provides flexible ways to publish your flows and integrate them into external applications. Whether you want to expose your flow as a secure API, embed it on a website, or share it with your team or organization, this guide walks you through all options.
@@ -154,7 +155,7 @@ In static mode, the API **waits for the full result** before returning the respo
 
 **Example Request:**
 
-```
+```text
 
 POST https://api.llmcontrols.ai/api/v1/run/YOUR_FLOW_ID?stream=false
 Content-Type: application/json
@@ -174,7 +175,7 @@ x-api-key: YOUR_API_KEY
 
 **Example Response:**
 
-```
+```text
 
 {
   "result": "Here's the response...",
@@ -194,7 +195,7 @@ In polling mode, the API returns immediately with a task_id and task_url. You mu
 
 **Initial Request:**
 
-```
+```text
 
 POST https://api.llmcontrols.ai/api/v1/run/YOUR_FLOW_ID?sync=false
 Content-Type: application/json
@@ -214,7 +215,7 @@ x-api-key: YOUR_API_KEY
 
 **Initial Response:**
 
-```
+```text
 
 {
   "task_id": "abc123",
@@ -225,7 +226,7 @@ x-api-key: YOUR_API_KEY
 
 **Polling Request:**
 
-```
+```text
 
 GET https://api.llmcontrols.ai/api/v1/task/abc123
 x-api-key: YOUR_API_KEY
@@ -233,7 +234,7 @@ x-api-key: YOUR_API_KEY
 
 **Polling Response:**
 
-```
+```text
 
 {
   "status": "COMPLETED",  // or "PENDING", "FAILED"
@@ -262,7 +263,7 @@ You can embed your flow as a chat widget or a full-screen application.
 
 #### Usage Example:
 
-```
+```text
 <script
   src="https://cdn.jsdelivr.net/gh/llm-controls/llmc-embedded-chat@v1.0.0/dist/build/static/js/bundle.min.js">
 </script>

@@ -1,5 +1,6 @@
 ---
 title: "LLM Controls objects"
+keywords: ["llm structured output", "workflow objects"]
 ---
 
 In LLM Controls, objects are [Pydantic](https://docs.pydantic.dev/latest/api/base_model/) models that serve as structured, functional representations of data.
@@ -67,7 +68,7 @@ Each content type has specific fields related to its data type. For example:
 
 Create a `ContentBlock` object with a list of different content types.
 
-```
+```text
 
 from llmcontrols.schema.content_block import ContentBlock
 from llmcontrols.schema.content_types import TextContent, MediaContent, CodeContent, JSONContent, ToolContent
@@ -88,7 +89,7 @@ content_block = ContentBlock(
 
 In this example, a text and a media `ContentBlock` are added to a message.
 
-```
+```text
 
 from llmcontrols.schema.message import Message
 from llmcontrols.schema.content_block import ContentBlock
@@ -120,7 +121,7 @@ A `DataFrame` object accepts various input formats, including lists of `Data` ob
 
 You can create a DataFrame object using different data formats
 
-```
+```text
 from llmcontrols.schema import Data
 from llmcontrols.schema.data import DataFrame
 # From a list of Data objects
@@ -142,7 +143,7 @@ df = DataFrame(data_dict)
 
 ### Usage Example
 
-```
+```text
 # Create a DataFrame
 df = DataFrame([Data(data={"name": "John"}), Data(data={"name": "Jane"})])
 # Add a new row
@@ -155,7 +156,7 @@ filtered_df = df[df["name"].str.startswith("J")]
 
 ### To use DataFrame objects in a component input, use the DataFrameInput input type:
 
-```
+```text
 DataFrameInput(
     name="dataframe_input", 
     display_name="DataFrame Input", 
