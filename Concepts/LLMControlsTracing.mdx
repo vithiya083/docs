@@ -147,12 +147,31 @@ Click on any trace row to open the detail view with three panels:
 **Events Tab:**
 
 - Shows events like agent actions, tool calls, streaming tokens
-- Special handling for agent_action events showing:
+- Special handling for agent\_action events showing:
   - Tool name
   - Tool input
   - Log output
   - Token streaming events
   - Chunk events
+
+**Evaluate Tab:**
+
+- Allows assessing the quality of a run’s output directly from any trace.
+- Automatically detects the flow type and surfaces the relevant evaluation frameworks
+- To use this,
+  - Open any trace and click the Evaluate tab.
+  - Select the metrics you want to run.
+  - Provide a reference answer or expected output if required to unlock accuracy metrics.
+  - Click Run
+    <Accordion title="Available Metrics">
+      | **LLM Judge** | General text flows | Safety, correctness, coherence, helpfulness, conciseness, groundedness |
+      | :-- | :-- | :-- |
+      | **RAGAS** | RAG flows | Faithfulness, answer relevancy, context precision, context recall |
+      | **DeepEval** | General text flows | Hallucination, bias, toxicity |
+      | **Extraction** | JSON output flows | Field accuracy, field presence, schema match |
+      | **Transcription** | Transcription flows | WER, ROUGE-1, ROUGE-2, ROUGE-L |
+      | **Classification** | Label as output flows | Exact match, normalized match |
+    </Accordion>
 
 **Right Panel - Metadata:**
 
@@ -160,7 +179,7 @@ Click on any trace row to open the detail view with three panels:
 - End Time: When the trace completed
 - Status: Execution status
 - Latency: Total execution duration
-- Type: Span type (CHAT_MODEL, TOOL, CHAIN, etc.)
+- Type: Span type (CHAT\_MODEL, TOOL, CHAIN, etc.)
 
 ## Debugging Component Issues
 
@@ -202,9 +221,9 @@ Click on any trace row to open the detail view with three panels:
 
 ## Implementing LLMC Tracing in Custom Components
 
-If you're building a custom component and want it to appear in LLMC traces, wrap your component execution with **mlflow_component_span:**
+If you're building a custom component and want it to appear in LLMC traces, wrap your component execution with **mlflow\_component\_span:**
 
-**from llmc.utils.mlflow_tracing import mlflow_component_span**
+**from llmc.utils.mlflow\_tracing import mlflow\_component\_span**
 
 ```text
 class MyComponent(Component):
@@ -252,8 +271,8 @@ class MyComponent(Component):
 
 **Span Methods**
 
-- **span.set_inputs(inputs)**: Log component inputs (dict)
-- **span.set_outputs(outputs)**: Log component outputs (dict)
+- **span.set\_inputs(inputs)**: Log component inputs (dict)
+- **span.set\_outputs(outputs)**: Log component outputs (dict)
 - Errors are automatically captured if they occur within the span
 
 ## Common Use Cases
