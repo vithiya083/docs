@@ -134,9 +134,9 @@
             ]
           },
           {
-            "group": "Use Cases",
+            "group": "UseCases",
             "pages": [
-              "Use Cases/AI Builder"
+              "UseCases/AIBuilder"
             ]
           }
         ]
