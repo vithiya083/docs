@@ -132,6 +132,12 @@
                 ]
               }
             ]
+          },
+          {
+            "group": "Use Cases",
+            "pages": [
+              "UseCases/AIBuilder"
+            ]
           }
         ]
       }

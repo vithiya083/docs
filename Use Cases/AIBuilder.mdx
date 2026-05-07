@@ -1,0 +1,150 @@
+---
+title: "AI Builder"
+---
+
+## **Overview**
+
+The AI Builder is a chat-based assistant inside LLMC that helps you create and modify flows using natural language. Instead of manually configuring nodes on the canvas, you describe the workflow you want and the assistant builds it for you.
+
+It's designed to make flow creation faster and more accessible. You don't need to learn the canvas, memorize component names, or figure out which output connects to which input. You describe the outcome in plain English and the assistant takes care of the rest.
+
+The AI Builder lives in a side panel next to your canvas. As you chat, you watch the flow assemble in real time - nodes appear, connections form, and the assistant explains what it's doing. You can keep the conversation going to refine, test, run, and publish the flow without leaving the chat.
+
+## **Key Capabilities**
+
+### **Build from a description**
+
+Describe the workflow you want in plain language and the assistant creates the corresponding flow on the canvas.
+
+**Example:**
+
+"Build a chatbot that answers questions from company documents."
+
+"Create a workflow that generates short blog drafts from topics."
+
+"Set up a flow that summarizes uploaded reports into a one-page brief."
+
+The assistant picks the right components, configures them with sensible defaults, and connects everything correctly so the flow is ready to run.
+
+### **Build from uploaded files or images**
+
+You can upload requirement documents, PDFs, specs, meeting notes, or reference images and ask the assistant to create a flow based on them.
+
+**Example:**
+
+"Read this requirements doc and build the workflow it describes."
+
+"Here's a sketch of the pipeline I want - build it."
+
+The assistant reads the document, extracts the inputs, processing steps, and outputs, and builds a flow that matches what's described - so you don't have to translate the spec into components yourself.
+
+### **Edit existing flows conversationally**
+
+Once a flow is on the canvas, you keep iterating in chat. There's no need to click into individual nodes to adjust fields manually.
+
+Common edits the assistant handles in plain language:
+
+- Change prompts or system instructions
+- Replace or swap models
+- Update model settings like temperature
+- Add or remove nodes
+- Wire newly uploaded files into existing components
+
+**Example:**
+
+"Change the prompt to focus on technical answers."
+
+"Swap the model for Claude Sonnet."
+
+"Add memory so it remembers the conversation."
+
+"Remove the reranker."
+
+### Ask questions about the flow
+
+You can ask the assistant questions about the current canvas or any node's configuration. It reads the live state of your flow and answers from it directly.
+
+**Example:**
+
+"Which model is being used?"
+
+"What does this node do?"
+
+"Walk me through this flow."
+
+"Is the system prompt set on the agent?"
+
+It can also recap requirements from a document you uploaded earlier in the conversation, even if the original message has scrolled out of view.
+
+### **Run flows directly from chat**
+
+Skip the Run button - just ask. You can trigger flow execution directly through the assistant instead of using the canvas controls manually.
+
+**Example:**
+
+"Run the flow."
+
+"Test the chatbot."
+
+"Ingest the documents."
+
+If your canvas has more than one independent flow (for example, an ingestion flow and a chat flow side by side), the assistant figures out which one you mean from context. If it's genuinely ambiguous, it asks before running.
+
+### **Wire uploaded files into existing flows**
+
+If you've already built a flow that needs documents - a RAG bot, a CSV processor, a PDF summarizer - you can upload files in chat afterwards and the assistant connects them to the right input automatically.
+
+**Example:**
+
+"Use these docs."
+
+"Here are the files - load them into the knowledge base."
+
+You don't need to specify which node or which field. The assistant matches the files to the correct component on its own.
+
+### **Publish flows**
+
+When a flow is ready to share, the assistant walks you through publishing it behind email or domain-based access controls. Give it a subdomain and an access list, and it deploys the flow to a live URL. You can update access later just by asking.
+
+**Example:**
+
+"Publish this flow to acme-support."
+
+"Add [bob@example.com](mailto:bob@example.com) to the access list."
+
+## **Example Use Cases**
+
+### **Customer Support Assistant**
+
+Create a chatbot that answers questions using your internal documentation or help center files.
+
+**"Build a support chatbot grounded in our internal docs."**
+
+Upload the documents, run the flow, and refine the tone or scope by asking for prompt changes in chat.
+
+### **Document Q&A**
+
+Create workflows where users upload documents and ask questions about the content - useful for research, legal review, contract analysis, and internal lookup tools.
+
+**"Create a workflow for querying uploaded PDFs with citations."**
+
+### **Content Generation**
+
+Generate structured content from prompts or input topics - blog drafts, summaries, social posts, or marketing copy.
+
+**"Build a flow that takes a topic and writes a short blog draft, then saves it as a markdown file."**
+
+### **Document Summarization**
+
+Summarize long-form reports, research papers, meeting transcripts, or earnings calls into structured briefs.
+
+**"Build a workflow that summarizes uploaded reports into a one-page summary."**
+
+<Tip>
+  - Mention the model if you have a preference. Otherwise the assistant picks a sensible default.
+  - Upload files early when they're part of the spec. If your requirements live in a doc, attach it in your first message and ask the assistant to build what's described.
+  - Iterate in small steps. Build the base flow first, run it, then add complexity. Smaller iterations are easier to refine.
+  - Use plain language. You don't need to know component names. "Add memory so it remembers the conversation" works just as well as a technical description.
+</Tip>
+
+\
